@@ -1,0 +1,479 @@
+\chapter{矩阵与变换}
+
+\section{知识点解析}
+\begin{Def}
+给定矩阵$A\in M_{m\times n}$, 则如下定义由$A$确定的矩阵映射,
+\begin{displaymath}\begin{aligned}
+\varphi_A: & \mathbb{R}^n\ \rightarrow\ \mathbb{R}^m\\
+& \vec{\alpha}\ \mapsto\ A\vec{\alpha}.\end{aligned}\end{displaymath}
+特别地，当$m=n$时, $\varphi_A$称为矩阵变换.
+\end{Def}
+
+\begin{thm}
+任意$\mathbb{R}^n$到$ \mathbb{R}^m$的线性映射$\sigma$均为矩阵映射, 且其表示矩阵的第 $j$ 列就是第 $j$ 个自然基$\vec{e}$在$\sigma$作用下的像.
+
+\end{thm}
+
+\begin{thm}
+在$\mathbb{R}^3$中, 以单位向量$\vec{l} =(a,b,c)^T$为旋转轴, 旋转角度为$\theta$ 的旋转变换的变换矩阵为:
+\begin{displaymath}
+T_{\vec{l},\theta}=\begin{bmatrix} a^2+(1-a^2)\cos\theta & ab(1-\cos\theta)-c\sin\theta & ac(1-\cos\theta)+b\sin\theta\\
+ab(1-\cos\theta)+c\sin\theta & b^2+(1-b^2)\cos\theta & bc(1-\cos\theta)-a\sin\theta  \\
+ac(1-\cos\theta)-b\sin\theta& bc(1-\cos\theta)+a\sin\theta & c^2+(1-c^2)\cos\theta\end{bmatrix}\end{displaymath}
+\end{thm}
+
+
+\begin{Def}
+设$\varphi_B:\mathbb{R}^l \rightarrow \mathbb{R}^n, \varphi_A:\mathbb{R}^n \rightarrow \mathbb{R}^m$为矩阵映射, 则$\varphi_A$与$\varphi_B$的复合映射$\varphi_A\circ \varphi_B$如下定义:
+\begin{displaymath}
+ \varphi_A\circ \varphi_B(\vec{x}):=\varphi_A( \varphi_B(\vec{x}))\ \ \ (\forall \vec{x}\in \mathbb{R}^l).\end{displaymath}
+\end{Def}
+
+\begin{Def}
+设$A$为$n$阶方阵, 若有子空间$W\in\mathbb{R}^n$, 满足$\forall \vec{x}\in W$, 均有$A\vec{x}\in W$ , 则称$W$ 是矩阵变换$A$的不变子空间.
+\end{Def}
+
+\begin{Def}
+在$\mathbb{R}^n$, 设$(\vec{\alpha},\vec{\beta})$表示标准内积, $\varphi_A$ 为一个矩阵变换, 若$\forall \vec{\alpha},\vec{\beta}$, 均有
+$$(\varphi_A(\vec{\alpha}),\varphi_A(\vec{\beta}))=(A\vec{\alpha}  ,A\vec{\beta})=(\alpha,\beta).$$
+则称$\varphi_A$为正交变换.
+\end{Def}
+
+\begin{thm}
+在$\mathbb{R}^n$中, $\varphi_A$为矩阵变换, 则下述条件等价
+\begin{enumerate}
+\item $\varphi_A$为正交变换(保内积);
+\item $|A\vec{\alpha}|=|\vec{\alpha}|(\forall \vec{\alpha}\in \mathbb{R}^n)$(保长度);
+\item $A$为正交矩阵.
+\end{enumerate}
+\end{thm}
+
+\begin{thm}
+在$\mathbb{R}^2$与$\mathbb{R}^3$中, 第一类正交变换必为旋转变换. 第二类正交变换必为反射变换, 或某个反射变换与某个旋转变换的复合.
+\end{thm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{例题讲解}
+
+\begin{eg}
+令$A=\begin{bmatrix}0&1\\1&0\end{bmatrix}$, 求下列列向量在矩阵变换$A$作用下的像,
+\begin{displaymath}
+\vec{e}_1=\begin{bmatrix}1\\0\end{bmatrix},\ \vec{e}_2=\begin{bmatrix}0\\1\end{bmatrix},\ \vec{\alpha}=\begin{bmatrix}-1\\-2\end{bmatrix}.\end{displaymath}
+\end{eg}
+解: \begin{displaymath}\begin{aligned}
+&A\vec{e}_1=\begin{bmatrix}0&\ 1\\1&\ 0\end{bmatrix}\ \begin{bmatrix}1\\0\end{bmatrix}
+=\begin{bmatrix}0\\1\end{bmatrix};\\
+&A\vec{e}_2=\begin{bmatrix}0&\ 1\\1&0\end{bmatrix}\ \begin{bmatrix}0\\1\end{bmatrix}
+=\begin{bmatrix}1\\0\end{bmatrix};\\
+&A\vec{\alpha}=\begin{bmatrix}0&\ 1\\1&0\end{bmatrix}\ \begin{bmatrix}-1\\-2\end{bmatrix}
+=\begin{bmatrix}-2\\-1\end{bmatrix}.
+\end{aligned}\end{displaymath}
+
+\begin{eg}
+(平移变换)设变换$\varphi_:  \mathbb{R}^2\ \rightarrow\ \mathbb{R}^2$ 将所有的点向右移动$a_1$个单位, 同时向上移动$a_2$个单位, 那么可以用向量表示为: \begin{displaymath}
+\varphi(\vec{x})=\varphi\begin{bmatrix}x_1\\x_2\end{bmatrix}=\begin{bmatrix} x_1+a_1\\x_2+a_2\end{bmatrix}=\begin{bmatrix}x_1\\x_2\end{bmatrix}+\begin{bmatrix}
+a_1\\a_2\end{bmatrix}=\vec{x}+\vec{\alpha},\end{displaymath}
+其中, $\vec{\alpha}=\begin{bmatrix}a_1\\a_2\end{bmatrix}$. 由矩阵变换的定义, 可以看出平移变换一般并不是矩阵变换. 而这一点, 从下一小节矩阵映射(变换)的性质也可看出.
+\end{eg}
+
+\begin{eg}
+在$\mathbb{R}^3$中, 矩阵变换把线段变成什么图形?
+\end{eg}
+解: 设线段的端点分别为$X$和$Y$, 则以线段上点为终点的向量可表示为
+\begin{displaymath}
+\lambda\vec{OX}+(1-\lambda)\vec{OY}\ \ \ (\forall \lambda\in[0,1])
+\end{displaymath}
+如果记$\vec{OX}=\vec{\alpha}, \vec{OY}=\vec{\beta}$, 则在矩阵变换$A$的作用下, 可得
+\begin{displaymath}
+A(\lambda\vec{\alpha}+(1-\lambda)\vec{\beta})=\lambda A\vec{\alpha}+(1-\lambda)A \vec{\beta}\ \ \ (\forall  \lambda\in[0,1])
+\end{displaymath}
+这依然是一条线段, 两个端点分别为向量$A\vec{\alpha}$与$A \vec{\beta}$的终点.
+
+因此矩阵变换将线段变成线段, 或者变成点 (线段的退化情形).
+
+\begin{eg}
+设$A=\begin{bmatrix}1&2\\2&1\end{bmatrix}$, 在平面$\mathbb{R}^2$中三点:
+$$E=\begin{bmatrix}1\\1\end{bmatrix}, \ \ F=\begin{bmatrix}-1\\0\end{bmatrix}, \ \
+G=\begin{bmatrix}1\\-1\end{bmatrix}.$$
+构成的$\triangle EFG$, 在$A$作用下变换成什么图形?
+\end{eg}
+解: 由于矩阵变换将线段变为线段，故$A$作用将$\triangle EFG$映为$\triangle E^{'}F^{'}G^{'}$
+$$E^{'}=A\begin{bmatrix}1\\1\end{bmatrix}=\begin{bmatrix}3\\3\end{bmatrix},\ \ F^{'}=A\begin{bmatrix}-1\\0\end{bmatrix}=\begin{bmatrix}-1\\-2\end{bmatrix},\ \ G^{'}=A\begin{bmatrix}1\\-1\end{bmatrix}=\begin{bmatrix}-1\\1\end{bmatrix}.$$
+
+
+\begin{eg}
+对$\mathbb{R}^3$中的线投影变换$P_{\vec{l}}=\vec{l}\vec{l}^T$, 其中$\vec{l}$为单位向量.
+\begin{displaymath}P_{\vec{l}}\vec{l}=(\vec{l}\vec{l}^T)\vec{l}
+=\vec{l}(\vec{l}^T\vec{l})=\vec{l}\ \Rightarrow\ \lambda=1.\end{displaymath}
+
+特征子空间$L(\vec{l})$维数为1.
+
+若$\vec{v}$与$\vec{l}$正交, 有
+
+$$P_{\vec{l}}\vec{v}=(\vec{l}\vec{l}^T)\vec{v}
+=\vec{l}(\vec{l}^T\vec{v})=\vec{l}\dot 0=\vec{0}\ \Rightarrow \ \lambda=0.$$
+
+特征子空间为$L(\vec{l})^{\bot}$, 维数为$n-1$.
+
+\end{eg}
+
+\begin{eg}
+对$\mathbb{R}^3$中的面投影变换$P_{\pi}=I-\vec{n}\vec{n}^T$, 其中$\vec{n}$为投影平面$\pi$的单位法向量.
+$$P_{\pi}\vec{n}=\vec{n}-\vec{n}(\vec{n}^T\vec{n})=\vec{0}\ \Rightarrow \ \lambda_1=0.$$
+
+特征子空间为$L(\vec{n})$, 1维.
+
+若$\vec{v}$与$\vec{n}$正交, 则$$P_{\pi}\vec{v}=\vec{v}-\vec{n}(\vec{n}^T\vec{v})=\vec{v}-\vec{0}=\vec{v}. \Rightarrow \ \lambda_2=1.$$
+
+特征子空间为$L(\vec{n})^{\bot}$, 2维.
+
+\end{eg}
+
+\begin{eg}
+$\mathbb{R}^3$中的线反射变换: $R_{\vec{l}}=-I+2\vec{l}\vec{l}^T$. 其中$\vec{l}$为反射直线的单位向量.
+$$R_{\vec{l}}\vec{l}=-\vec{l}+2\vec{l}\vec{l}^T\vec{l}=\vec{l}\ \Rightarrow \  \lambda_1=1$$
+
+特征子空间为$L(\vec{l})$, 1维.
+
+若$\vec{v}$与$\vec{l}$正交, 有$R_{\vec{l}}\vec{v}=-\vec{v}$. 所以$\lambda_2=-1$, 特征子空间为$L(\vec{l})^{\bot}$, 2维.
+\end{eg}
+
+\begin{eg}
+对$\mathbb{R}^3$中的面反射变换$R_{\pi}=I-2\vec{n}\vec{n}^T$, 其中$\vec{n}$为反射平面$\pi$的单位法向量.
+
+$$R_{\pi}\vec{n}=\vec{n}-2\vec{n}\vec{n}^T\vec{n}=-\vec{n}\ \Rightarrow \ \lambda_1=-1.$$
+
+特征子空间为$L(\vec{n})$, 1维.
+
+若$\vec{v}$与$\vec{n}$正交, 则$$R_{\pi}\vec{v}=\vec{v}-\vec{0}=\vec{v}\ \Rightarrow \ \lambda_2=1$$
+
+特征子空间为$L(\vec{n})^{\bot}$, 2维.
+
+\end{eg}
+
+\begin{eg}
+对$\mathbb{R}^2$中的旋转变换$T_{\theta}=\begin{bmatrix} \cos\theta&-\sin\theta\\ \sin\theta&\cos\theta\end{bmatrix}.$
+
+特征多项式为
+$$|\lambda I-T_{\theta}|=\lambda^2-(2\cos\theta)\lambda +1.$$
+特征值$\lambda_{1,2}=\cos\theta\pm\sqrt{1-\cos^2\theta}i.$
+
+当$\theta\not=0,\pi$时, $T_{\theta}$无实特征值, 从而没有实特征向量. 这说明, 此时$T_{\theta}$在$\mathbb{R}^2$中, 除$\vec{0}$之外, 没有向量是保持方向不变或方向相反的.
+\end{eg}
+
+\begin{eg}
+用坐标系替换的方式，重新推导$\mathbb{R}^2$内线投影变换的矩阵公式.
+
+设$\vec{l}$为投影直线的单位向量, 选取$\{\vec{l},\vec{l}^{\bot}\}$为新的坐标系, 其中
+$$\vec{l}=\begin{bmatrix}l_1\\l_2\end{bmatrix},\ \vec{l}=\begin{bmatrix}-l_2\\l_1\end{bmatrix}$$
+故过渡矩阵为
+$$P=(\vec{l},\vec{l}^{\bot})=\begin{bmatrix} l_1&-l_2\\l_2&l_1\end{bmatrix}$$
+设该变换在旧基$\{\vec{e}_1,\vec{e}_2\}$与新基$\{\vec{l},\vec{l}^{\bot}\}$下的矩阵表示分别为$A$和$B$. 于是
+有$B=P^{-1}AP$. 易知$B=\begin{bmatrix}1&0\\0&0\end{bmatrix}$, 从而有
+$$A=PBP^{-1}=\begin{bmatrix}l_1&-l_2\\l_2&l_1\end{bmatrix}\begin{bmatrix}1&0\\
+0&0\end{bmatrix}\begin{bmatrix}l_1&l_2\\-l_2&l_1\end{bmatrix}=\begin{bmatrix}
+l_1^2&l_1l_2\\l_1l_2&l_2^2\end{bmatrix}=\vec{l}\vec{l}^T.$$
+\end{eg}
+
+\begin{eg}
+设平行光束的方向为$\vec{\beta}=\begin{bmatrix}b_1\\b_2\end{bmatrix}$, 投影直线的方向向量为$\vec{\alpha}=\begin{bmatrix}a_1\\a_2\end{bmatrix}$. 设$\vec{\alpha}$与$\vec{\alpha}$不共线(也不一定正交). 那么, 沿$\vec{\beta}$方向在$\vec{\alpha}$上的投影变换所对应的矩阵是什么?
+
+用坐标系替换的方法来解决. 以$\{\vec{\alpha},\vec{\beta}\}$为新坐标系, 于是过渡矩阵为
+$$P=(\vec{\alpha},\vec{\beta})=\begin{bmatrix}a_1&b_1\\a_2&b_2\end{bmatrix}.$$
+易知在新坐标系下投影变换的矩阵为$\begin{bmatrix}1&0\\0&0\end{bmatrix}$, 故在原基(自然基)下的矩阵为
+$$A=P\begin{bmatrix}1&0\\0&0\end{bmatrix}P^{-1}=(a_1b_2-a_2b_1)^{-1}\begin{bmatrix}
+a_1b_1&-a_1b_1\\a_2b_2&-a_2b_1\end{bmatrix}.$$
+\end{eg}
+
+\begin{eg}
+对$\mathbb{R}^n$中的旋转变换,
+$$R_{\theta}=\begin{bmatrix}\cos\theta&-\sin\theta\\ \sin\theta &\cos\theta\end{bmatrix},$$
+易知, $\forall \theta\in [0, 2\pi), \vec{\alpha}_1=\begin{bmatrix} \cos\theta\\ \sin\theta\end{bmatrix}, \vec{\alpha}_2=\begin{bmatrix} -\sin\theta\\ \cos\theta\end{bmatrix}.$ 总满足
+$$(\vec{\alpha}_i, \vec{\alpha}_j)=\delta_{ij}(1\leq i, j\leq 2).$$
+故$R_{\theta}$为正交阵, 且$\det R_{\theta}=1$, 所以旋转变换为正交变换.
+\end{eg}
+
+\begin{eg}
+对$\mathbb{R}^n$中的线反射变换$R_{\vec{l}}=-I+2\vec{l}\vec{l}^T$(简记为$R$), 其中$\vec{l}$为反射轴方向的单位向量. 由于
+\begin{displaymath}\begin{aligned}
+RR^T&=(-I+2\vec{l}\vec{l}^T)(-I+2\vec{l}\vec{l}^T)^T\\
+&=I^2-4\vec{l}\vec{l}^T+4(\vec{l}\vec{l}^T)(\vec{l}\vec{l}^T)\\
+&=I-4\vec{l}\vec{l}^T+4\vec{l}(\vec{l}^T\vec{l})\vec{l}^T\\
+&=I-4\vec{l}\vec{l}^T+4\vec{l}\vec{l}^T=I\end{aligned}\end{displaymath}
+其中$\vec{l}^T\vec{l}=(\vec{l},\vec{l})=1$. 故$R_{\vec{l}}$为正交阵. 线反射变换为正交变换.
+\end{eg}
+
+\begin{eg}
+对$\mathbb{R}^n$中的面反射变换, $R_{\pi}=I-2\vec{n}\vec{n}^T$, 其中$\vec{n}$为反射平面$\pi$的单位法向量. 由于$R_{\pi}=-R_{\vec{n}}$. 由上例可知, $R_{\pi}$也为正交变换, 且将$\vec{n}$扩充为$\mathbb{R}^3$的一组标准正交基$\{\vec{n}=\vec{n}_1,\vec{n}_2,\vec{n}_3\}$后, $R_{\pi}$可正交对角化. 即
+$$Q^TR_{\pi}Q=\begin{bmatrix} -1&&\\&1&\\&&1\end{bmatrix}.$$
+其中$Q=(\vec{n}_1,\vec{n}_2,\vec{n}_3)$为正交阵. 从而, 面反射变换$R_{\pi}$ 为正交变换, 且$\det R_{\pi}=-1$.
+\end{eg}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{课后习题}
+\begin{ex}\label{8.1}
+1. 以下哪些变换不是矩阵变换？\\
+A. 关于点$(1,1)$的旋转变换.\\		
+B. 关于直线$y=kx$的对称变换.\\
+C. 关于向量$(3,4)$的平移变换.\\		
+D. 在$y$轴上的投影变换.
+\end{ex}
+
+\begin{ex}\label{8.2}
+恒等变换是（    ）.\\
+A. 保持所有向量不变的矩阵变换.\\
+B. 保持所有向量方向不变的矩阵变换.\\
+C. 保持所有向量长度不变的矩阵变换.\\
+D. 保持所有向量夹角不变的矩阵变换.
+\end{ex}
+
+\begin{ex}\label{8.3}
+矩阵变换$\begin{bmatrix}1&0\\0&-2\end{bmatrix}$ 的作用是在$x_1$方向上(~~~~)，(~~~~).
+\end{ex}
+
+\begin{ex}\label{8.4}
+设$\vec{\alpha}_0=\vec{OO^{'}}$, 则向量$\vec{x}$作关于$O^{'}$的中心对称是(~~~~).(用$\vec{\alpha}_0,\vec{x}$填写)
+\end{ex}
+
+\begin{ex}\label{8.5}
+在$\mathbb{R}^2$中，求解满足如下矩阵变换的矩阵.\\
+（1） 关于$y$轴轴对称变换.\\
+（2） 关于原点逆时针旋转90度.\\
+（3） 为关于直线$x_1=-x_2$的对称变换.\\
+（4） 在$x$轴上的投影.\\
+（5） 关于原点顺时针旋转90度.\\
+（6） 关于原点顺时针旋转45度.
+\end{ex}
+
+\begin{ex}\label{8.6}
+设过原点的直线L的单位方向向量为$\vec{l}_0$ （列向量），则向量$\vec{x}$ 作关于$L$ 的轴对称后变为（     ）.\\
+A. $(I-2\vec{l}_0 \vec{l}_0^T )\vec{x}$  \\
+B. $(I+2\vec{l}_0 \vec{l}_0^T )\vec{x}$\\
+C. $(-I-2\vec{l}_0 \vec{l}_0^T )\vec{x}$  \\
+D. $(-I+2\vec{l}_0 \vec{l}_0^T )\vec{x}$
+\end{ex}
+
+\begin{ex}\label{8.7}
+在$\mathbb{R}^2$中，给定列向量$\vec{l}$ ，设$L$为过原点，方向为$\vec{l}$的直线。求$L$的线反射变换矩阵$R_{\vec{l}}$.\\
+（1） $\vec{l}=\begin{bmatrix}0\\1\end{bmatrix}$\\
+（2） $\vec{l}=\begin{bmatrix}1\\0\end{bmatrix}$\\
+（3） $\vec{l}=\begin{bmatrix}1\\1\end{bmatrix}$\\
+（4） $\vec{l}=\begin{bmatrix}-3\\4\end{bmatrix}$\\
+（5） $\vec{l}=\begin{bmatrix}12\\-5\end{bmatrix}$
+\end{ex}
+
+\begin{ex}\label{8.8}
+(1) 设过原点的平面$\pi$的单位法向量为$\vec{n}_0$, 则向量$\vec{x}$作关于$\pi$ 的镜面对称后变为（     ）.\\
+A. $(-I-2\vec{n}_0\vec{n}_0^T )\vec{x}$\\
+B. $(-I+2\vec{n}_0\vec{n}_0^T )\vec{x}$\\
+C. $(I-2\vec{n}_0\vec{n}_0^T )\vec{x}$\\
+D. $(I+2\vec{n}_0\vec{n}_0^T )\vec{x}$\\
+(2). 设$\vec{l}_0$为单位向量, 则向$\vec{l}_0$ 方向投影对应的线投影矩阵为（     ）.\\
+A. $-\vec{l}_0 \vec{l}_0^T$\\
+B. $\vec{l}_0 \vec{l}_0^T$\\
+C. $I-\vec{l}_0 \vec{l}_0^T$\\
+D. $I-\vec{l}_0 \vec{l}_0^T$\\
+(3). 设过原点的平面$\pi$的单位法向量为$\vec{n}_0$, 则关于$\pi$的投影对应的面投影矩阵为（      ）.\\
+A. $I-\vec{n}_0 \vec{n}_0^T$\\
+B. $I+\vec{n}_0 \vec{n}_0^T$\\
+C. $-\vec{n}_0 \vec{n}_0^T$\\
+D. $-\vec{n}_0 \vec{n}_0^T$
+\end{ex}
+
+\begin{ex}\label{8.9}
+平面上绕原点逆时针旋转$\theta$角对应的旋转矩阵为（      ）.\\
+A.  $\begin{bmatrix}-\cos\theta&\sin\theta \\ \sin\theta&\cos\theta\end{bmatrix}$\\
+B.  $\begin{bmatrix}\cos\theta&-\sin\theta \\ \sin\theta&\cos\theta\end{bmatrix}$\\
+C. $\begin{bmatrix}\cos\theta&\sin\theta \\ -\sin\theta&\cos\theta\end{bmatrix}$\\
+D. $\begin{bmatrix}\cos\theta&\sin\theta \\ \sin\theta&-\cos\theta\end{bmatrix}$
+\end{ex}
+
+\begin{ex}\label{8.10}
+$\phi_A,\phi_B$分别为对应于2 阶矩阵$A$,$B$ 的映射，记$\phi_C=\phi_A\circ\phi_B$. 任取向量$\vec{x}=(x_1,x_2 )^T$，
+$\phi_B\begin{bmatrix}x_1\\x_2\end{bmatrix}=\begin{bmatrix}x_1+2x_2\\2x_1+3x_2\end{bmatrix}$，
+而$\phi_C\begin{bmatrix}x_1\\x_2\end{bmatrix}=\begin{bmatrix}2x_1+3x_2\\5x_1+8x_2\end{bmatrix}$，则矩阵$A$为（     ）.\\
+A.  $\begin{bmatrix}0&1\\-1&2\end{bmatrix}$\\
+B.  $\begin{bmatrix}0&1\\1&2\end{bmatrix}$\\
+C.  $\begin{bmatrix}12&7\\31&18\end{bmatrix}$\\
+D.  $\begin{bmatrix}4&7\\-1&-2\end{bmatrix}$
+\end{ex}
+
+\begin{ex}\label{8.11}
+11. (1) 计算$A^{10}\cdot\vec{b}$ 其中$A=\begin{bmatrix}0&1\\-2&3\end{bmatrix},\vec{b}=\begin{bmatrix}3\\4\end{bmatrix}$.\\
+(2) 计算$A^4\cdot\vec{b}$，其中$A=\begin{bmatrix}1&2\\2&1\end{bmatrix},\vec{b}=\begin{bmatrix}6\\-4\end{bmatrix}$.
+\end{ex}
+
+\begin{ex}\label{8.12}
+设$\vec{l}=\begin{bmatrix}1\\1\end{bmatrix}$，$P_{\vec{l}}$是$\mathbb{R}^2$ 中对$\vec{l}$ 的线投影变换矩阵，求$P_{\vec{l}}^{2016}\begin{bmatrix}4\\2\end{bmatrix}$.
+\end{ex}
+
+\begin{ex}\label{8.13}
+设$\vec{l}=\begin{bmatrix}3\\4\\5\end{bmatrix}$，$P_{\vec{l}}$是$\mathbb{R}^3$ 中对$\vec{l}$的线投影变换矩阵，求$P_{\vec{l}}^{314}\begin{bmatrix}50\\50\\50\end{bmatrix}$.
+\end{ex}
+
+\begin{ex}\label{8.14}
+设$\vec{n}=\begin{bmatrix}1\\2\\2\end{bmatrix}$，$R_{\pi}$是$\mathbb{R}^3$ 中对$\pi$的面反射变换矩阵，其中$\vec{n}$是$\pi$ 的法向量.
+求$R_{\pi}^{233}\begin{bmatrix}-9\\-9\\-9\end{bmatrix}$.
+\end{ex}
+
+\begin{ex}\label{8.15}
+设$\vec{n}=\begin{bmatrix}2*\\*2\\1**\end{bmatrix}$，$R_\pi$是$\mathbb{R}^3$ 中对$\pi$的面反射变换矩阵，
+其中$\vec{n}$是$\pi$的法向量. 但是法向量$\vec{n}$已经模糊辨认不清. 求$R_{\pi}^{666}\begin{bmatrix}1\\2\\3\end{bmatrix}$.
+\end{ex}
+
+\begin{ex}\label{8.16}
+判断下列命题真假.\\
+（1）从一组基到另一组基的过渡矩阵可能是奇异阵.\\
+（2）从一组基到任意一组基有且仅有一个过渡矩阵.\\
+（3）同一个线性变换在不同基下的矩阵相似.
+\end{ex}
+
+\begin{ex}\label{8.17}
+判断下列命题真假.\\
+（1）刚体变换（在变换前后能保持任意两点距离，两直线夹角不变的变换）一定是正交变换.\\
+（2）正交变换的逆变换也为正交变换.\\
+（3）两个正交变换的加法也为正交变换.\\
+（4）两个正交变换的乘法也为正交变换.
+\end{ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{习题答案}
+
+\textbf{习题 \ref{8.1} 解答:}\\
+A, C.(矩阵变换必将零向量映为零向量，只要观察变换对零向量的作用即可)\\
+\textbf{习题 \ref{8.2} 解答:}\\
+A. (显然，由定义所得.)\\
+\textbf{习题 \ref{8.3} 解答:}\\
+保持不变, 在$x_2$反方向上伸长为原来的2 倍.\\
+\textbf{习题 \ref{8.4} 解答:}\\
+$2\vec{\alpha}_0-\vec{x}$. （由中点公式，$\vec{x}+\vec{y}(\text{设为答案})=2\vec{\alpha}_0$，得证.）\\
+\textbf{习题 \ref{8.5} 解答:}\\
+（1）设该变换为$\eta$，将$(x,y)^T$ 变为$(-x,y)^T$. 可以看做
+\begin{eqnarray*}
+    \eta(x) &=& -1\cdot x+0\cdot y \\
+    \eta(y) &=& 0\cdot x+1\cdot y
+\end{eqnarray*}
+写成矩阵形式为
+\begin{equation*}
+\eta\begin{bmatrix}x\\y\end{bmatrix}=
+\begin{bmatrix}-1&0\\0&1)\end{bmatrix}
+\begin{bmatrix}x\\y\end{bmatrix}
+\end{equation*}
+所以η的变换矩阵为$\begin{bmatrix}-1&0\\0&1\end{bmatrix}$.\\
+(2) 我们利用复数工具，将$(x,y)^T$视为$x+yi$，
+则平面上的点绕原点逆时针旋转90度即等效于对应的复数乘以复数$i$，结果为$-y+xi$.
+由（1）的做法，该矩阵变换为$\begin{bmatrix}0&-1\\1&0\end{bmatrix}$.\\
+（3） 方法同上，根据
+\begin{eqnarray*}
+    \eta(x) &=& - y \\
+    \eta(y) &=& - x
+\end{eqnarray*}
+得变换矩阵为$\begin{bmatrix}0&-1\\-1&0\end{bmatrix}$.\\
+（4） 方法同上，根据
+\begin{eqnarray*}
+    \eta(x) &=& x \\
+    \eta(y) &=& 0
+\end{eqnarray*}
+得变换矩阵为$\begin{bmatrix}1&0\\0&0\end{bmatrix}$.\\
+（5）  方法同上，根据$(x+yi)(-i)=y-xi$
+\begin{eqnarray*}
+    \eta(x) &=& y \\
+    \eta(y) &=& -x
+\end{eqnarray*}
+得变换矩阵为$\begin{bmatrix}0&1\\-1&0\end{bmatrix}$.\\
+（6）方法同上，
+根据$(x+yi)(\cos{\frac{-\pi}{4}}?+i\sin{\frac{-\pi}{4}})=\frac{\sqrt{2}}{2}(x+y)+\frac{\sqrt{2}}{2}(y-x)i$，得
+\begin{eqnarray*}
+    \eta(x) &=& \frac{\sqrt{2}}{2}x+\frac{\sqrt{2}}{2}y\\
+    \eta(y) &=& -\frac{\sqrt{2}}{2}x+\frac{\sqrt{2}}{2}y
+\end{eqnarray*}
+得变换矩阵为$\begin{bmatrix}\frac{\sqrt{2}}{2}&\frac{\sqrt{2}}{2}\\
+-\frac{\sqrt{2}}{2}&\frac{\sqrt{2}}{2}\end{bmatrix}$.\\
+\textbf{习题 \ref{8.6} 解答:}\\
+分析：设直线$L$的单位法方向向量为$\vec{n}_0$，
+注意有$(\vec{l}_0,\vec{l}_0)=\vec{l}_0^T \vec{l}_0=1,(\vec{l}_0,\vec{n}_0)=(\vec{l}_0^T \vec{n}_0=\vec{n}_0^T\vec{l}_0=0$.
+这里，$(\cdot,\cdot)$ 表示向量的内积，即数量积.
+注意到选项里的四个变换可统一写为$aI+b\vec{l}_0 \vec{l}_0^T$，
+我们只需要在一组线基上观察作用，即可以获得其完整信息.
+显然关于$L$的轴对称变换$\eta$，应有$\eta\vec{l}_0=\vec{l}_0$，$\eta\vec{n}_0=-\vec{n}_0$，
+则$\vec{l}_0=\eta\vec{l}_0=(aI+b\vec{l}_0 \vec{l}_0^T ) \vec{l}_0=aI\vec{l}_0+b\vec{l}_0 (\vec{l}_0^T \vec{l}_0 )=a\vec{l}_0+b\vec{l}_0\Rightarrow a+b=1$;
+$-\vec{n}_0=\eta\vec{n}_0=(aI+b\vec{l}_0 \vec{l}_0^T ) \vec{n}_0=a\vec{n}_0 \Rightarrow a=-1，b=-2$，故选D.\\
+\textbf{习题 \ref{8.7} 解答:}\\
+根据公式$R_{\vec{l}}=-I+2\vec{l}_0 \vec{l}_0^T$.\\
+（1）$R_{\vec{l}} =-I_2+2\begin{bmatrix}0\\1\end{bmatrix}\begin{bmatrix}0&1\end{bmatrix}
+     =-I_2+2\begin{bmatrix}0&0\\0&1\end{bmatrix}=\begin{bmatrix}-1&0\\0&1\end{bmatrix}$\\
+（2）$R_{\vec{l}} =-I_2+2\begin{bmatrix}1\\0\end{bmatrix}\begin{bmatrix}1&0\end{bmatrix}=-I_2+2\begin{bmatrix}1&0\\0&0\end{bmatrix}=
+      \begin{bmatrix}1&0\\0&-1\end{bmatrix}.$\\
+（3） 要将$\vec{l}$单位化，\\
+      $R_{\vec{l}} =-I_2+2\begin{bmatrix}\frac{1}{\sqrt{2}}\\ \frac{1}{\sqrt{2}}\end{bmatrix}
+      \begin{bmatrix}\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\end{bmatrix}=-I_2+2\begin{bmatrix}1&1\\1&1\end{bmatrix}=
+      \begin{bmatrix}0&1\\1&0\end{bmatrix}.$\\
+（4） 要将$\vec{l}$单位化，\\
+      $R_{\vec{l}} =-I_2+2\begin{bmatrix}\frac{-3}{5}\\ \frac{4}{5}\end{bmatrix}
+      \begin{bmatrix}\frac{-3}{5}&\frac{4}{5}\end{bmatrix}=-I_2+\frac{2}{25}\begin{bmatrix}9&-12\\-12&16\end{bmatrix}=
+      \begin{bmatrix}\frac{-7}{25}&\frac{-24}{25}\\ \frac{-24}{25}&\frac{7}{25}\end{bmatrix}.$\\
+（5） 要将$\vec{l}$单位化，\\
+      $R_{\vec{l}} =-I_2+2\begin{bmatrix}\frac{12}{13}\\ \frac{-5}{13}\end{bmatrix}
+      \begin{bmatrix}\frac{12}{13}&\frac{-5}{13}\end{bmatrix}=-I_2+\frac{2}{169}\begin{bmatrix}144&-60\\-60&25\end{bmatrix}=
+      \begin{bmatrix}\frac{119}{169}&\frac{-120}{169}\\ \frac{-120}{169}&\frac{-119}{169}\end{bmatrix}.$\\
+\textbf{习题 \ref{8.8} 解答:}\\
+(1) 分析：设平面$\pi$上的一个单位方向向量为$\vec{l}_0$，
+则有$(\vec{n}_0,\vec{n}_0)=\vec{n}_0^T\vec{n}_0=1$,$(\vec{n}_0,\vec{l}_0)=\vec{n}_0^T\vec{l}_0=0$.
+设关于$\pi$的镜面对称变换为$\eta=aI+b\vec{n}_0\vec{n}_0^T$，应有$\eta\vec{l}_0=\vec{l}_0,\eta\vec{n}_0=-\vec{n}_0$，
+则$-\vec{n}_0=\eta\vec{n}_0=(aI+b\vec{n}_0\vec{n}_0^T)\vec{n}_0=aI\vec{n}_0+b\vec{n}_0 (\vec{n}_0^T\vec{n}_0)=a\vec{n}_0
++b\vec{n}_0a+b=-1$; $\vec{l}_0=\eta\vec{l}_0=(aI+b\vec{n}_0\vec{n}_0^T )\vec{l}_0=a\vec{l}_0 \Rightarrow a=1$，故选C.\\
+(2)  方法同上，设线投影变换$\eta=aI+b\vec{l}_0\vec{l}_0^T$ 根据$\eta\vec{l}_0=\vec{l}_0$，$\eta\vec{n}_0=0$，得
+\begin{equation*}\begin{cases}a+b=1\\a=0\end{cases}\end{equation*}
+故选B.\\
+(3)  方法同上，设面投影变换$\eta=aI+b\vec{n}_0 \vec{n}_0^T$ 根据$\vec{l}_0=\vec{l}_0$，$\eta\vec{n}_0=0$，
+\begin{equation*}\begin{cases}a=1\\a+b=0\end{cases}\end{equation*}
+故选A.\\
+\textbf{习题 \ref{8.9} 解答:}\\
+B.  (视为乘以复数$\cos\theta+i\sin\theta?$)\\
+\textbf{习题 \ref{8.10} 解答:}\\
+B.  (可以得到矩阵$B=\begin{bmatrix}1&2\\2&3\end{bmatrix}$，而$C=\begin{bmatrix}2&3\\5&8\end{bmatrix}$，$AB=C$)\\
+\textbf{习题 \ref{8.11} 解答:}\\
+(1) 由特征值理论，$A$的特征多项式为$\lambda^2-3\lambda+2$，两个特征值为1,2，
+其中属于1的特征向量取$\vec{x}_1=\begin{bmatrix}1\\1\end{bmatrix}$，
+属于2的特征向量取$\vec{x}_1=\begin{bmatrix}1\\2\end{bmatrix}$，
+将$\vec{b}$在$A$取定的特征向量上进行分解，有$\vec{b}=2\vec{x}_1 +\vec{x}_2$.
+则由性质$A^{10}\cdot\vec{b}=A^{10}(2\vec{x}_1+\vec{x}_2)=2A^{10}\cdot\vec{x}_1+A^{10}\cdot\vec{x}_2=2\vec{x}_1+2^{10}\vec{x}_2=
+\begin{bmatrix}2\\2\end{bmatrix}+ \begin{bmatrix}1024\\2048\end{bmatrix}=\begin{bmatrix}1026\\2050\end{bmatrix}$\\
+(2)  同上，由特征值理论，$A$的特征多项式为$\lambda^2-2\lambda-3$，
+两个特征值为-1,3，其中属于-1的特征向量取$\vec{x}_1=\begin{bmatrix}1\\-1\end{bmatrix}$，
+属于3的特征向量取$\vec{x}_2=\begin{bmatrix}1\\1\end{bmatrix}$，
+将$\vec{b}$在$A$取定的特征向量上进行分解，有$\vec{b}=5\vec{x}_1 +\vec{x}_2$.
+则由性质$A^4\cdot\vec{b}=A^4(5\vec{x}_1+\vec{x}_2)=5A^4\cdot\vec{x}_1+A^4\cdot\vec{x}_2=5(-1)^4\vec{x}_1+3^4\vec{x}_2=
+\begin{bmatrix}5\\-5\end{bmatrix}+ \begin{bmatrix}81\\81\end{bmatrix}=\begin{bmatrix}86\\76\end{bmatrix}$\\
+\textbf{习题 \ref{8.12} 解答:}\\
+$(3,3)^T$.(由于投影变换是幂等变换，即$\eta^2=\eta$，故$P_{\vec{l}}^{2016}=P_{\vec{l}}$)\\
+\textbf{习题 \ref{8.13} 解答:}\\
+$(72,96,120)^T$. (由于投影变换是幂等变换，故$P_{\vec{l}}^{314}=P_{\vec{l}}$ ，
+由公式$P_{\vec{l}}=\vec{l}_0 \vec{l}_0^T$，得
+\begin{equation*}
+P_{\vec{l}}=\begin{bmatrix}\frac{3}{5}\\ \frac{4}{5}\\1\end{bmatrix}
+\begin{bmatrix}\frac{3}{5}&\frac{4}{5}&1\end{bmatrix}=\frac{1}{25}\begin{bmatrix}9&12&15\\12&16&20\\15&20&25\end{bmatrix}.
+\end{equation*}
+\begin{equation*}
+P_{\vec{l}}^{314}\begin{bmatrix}50\\50\\50\end{bmatrix}=
+\begin{bmatrix}9&12&15\\12&16&20\\15&20&25\end{bmatrix}
+\begin{bmatrix}2\\2\\2\end{bmatrix}=
+\begin{bmatrix}72\\96\\120\end{bmatrix}.
+\end{equation*}
+\textbf{习题 \ref{8.14} 解答:}\\
+$(1,11,11)^T$.  (由于反射变换是对合变换$\eta^2=1$，故$R_{\pi}^{233}=R_{\pi}$)\\
+\textbf{习题 \ref{8.15} 解答:}\\
+$(1,2,3)^T$.  ($R_{\pi}^{666}=1$，即$\mathbb{R}^3$上的恒等变换，与$\vec{n}$ 无关)\\
+\textbf{习题 \ref{8.16} 解答:}\\
+（1）假.  （一定是可逆阵。由于两组基可以互相表示，所以过渡矩阵是可逆的.）\\
+（2）真. （因为一组新的基（作为向量看）在原来的基上的线性表示是唯一的.）\\
+（3）真. （由过渡矩阵的复合知.）\\
+\textbf{习题 \ref{8.17} 解答:}\\
+（1）假.（平移变换是刚体变换，但不是正交变换，因为正交变换必将零向量映为零向量. ）\\
+（2）真. （若$AA^T=A^TA=I$，则$A^(-1) (A^T )^(-1)=(A^T A)^(-1)=I$，$(A^T )^(-1) A^(-1)=(AA^T )^(-1)=I$）\\
+（3）假. （反例：$A=I$,$B=-I$）\\
+（4）真. （若$AA^T=A^T A=I$，$BB^T=B^T B=I$，则$AB(AB)^T=ABB^T A^T=AA^T=I$, $(AB)^T AB=B^T A^T AB=B^T B=I$）.
+

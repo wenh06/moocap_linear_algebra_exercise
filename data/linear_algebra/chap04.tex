@@ -1,0 +1,840 @@
+\chapter{向量空间}
+
+\section{知识点解析}
+\begin{Def}
+设 $\mathbb{R}$ 是实数集, $n$ 个数 $a_1, a_2 ,\dots, a_n \in\mathbb{R}$,  组成的有序数组 $(a_1, a_2 ,\dots, a_n)$ 称为 $n$ 维向量,  记作
+
+\begin{displaymath}
+\vec{\alpha}=(a_1,a_2,\dots,a_n) \ \mbox{或}\ \vec{\alpha}=\begin{bmatrix}a_1\\a_2\\ \vdots \\ a_n\end{bmatrix}=(a_1,a_2,\dots,a_n)^T
+\end{displaymath}
+
+其中 $a_i$ 称为向量的第 $i$ 个分量.  前一个表示式称为行向量,  后一个称为列向量.  一般用带箭头的希腊字母表示一个向量，且默认为列向量.
+
+\end{Def}
+
+\begin{Def}
+设有两个 $n$ 维向量: $\vec{\alpha}=(a_1,a_2,\dots,a_n)^T, \vec{\beta}=(b_1,b_2,\dots,b_n)^T$, 称$\vec{\alpha}$与$\vec{\beta}$是相等的向量当且仅当它们对应分量全相等, 即
+
+\begin{displaymath}
+\vec{\alpha}=\vec{\beta}\Leftrightarrow a_i=b_i, (i=1,2,\dots,n).
+\end{displaymath}
+
+\end{Def}
+
+\begin{Def}
+设 $n$ 维向量: $\vec{\alpha}=(a_1,a_2,\dots,a_n)^T, \vec{\beta}=(b_1,b_2,\dots,b_n)^T$ 和数$k\in\mathbb{R}$, 则定义:
+
+\begin{displaymath}\begin{aligned}
+&(1)\vec{\alpha}+\vec{\beta}=(a_1+b_1,a_2+b_2,\dots,a_n+b_n)^T.\\
+&(2)k\vec{\alpha}=(ka_1,ka_2,\dots,ka_n)^T.\\
+&(3)-\vec{\alpha}=(-1)\vec{\alpha}=(-a_1,-a_2,\dots,-a_n)^T.
+\end{aligned}\end{displaymath}
+\end{Def}
+
+\begin{Def}
+全体$n$维向量组成的集合, 当定义了上述向量的加法及数乘运算之后, 就称为 $n$ 维向量空间 (vector space), 记作 $\mathbb{R}^n$.
+
+\end{Def}
+
+\begin{Def}
+设$W$是$\mathbb{R}^n$中的非空子集合，满足
+
+(1)对向量的加法是封闭的, 即: $\forall \vec{\alpha},\vec{\beta}\in W$, 有$\vec{\alpha}+\vec{\beta}\in W$.
+
+(2) 对向量的数乘运算是封闭的, 即: $\forall \vec{\alpha}\in W, \forall k\in \mathbb{R}$, 有$k\vec{\alpha}\in W$.\\
+则称$W$是$\mathbb{R}^n$的子空间.
+
+\end{Def}
+
+\begin{Def}
+设 $\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$是$s$个$n$维向量, $k_1,k_2,\dots,k_s\in\mathbb{R}$, 称$$k_1\vec{\alpha}_1+k_2\vec{\alpha}_2+\dots+k_s\vec{\alpha}_s$$是$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$ 的线性组合.
+
+如果对于给定的向量$\vec{\beta}$而言, 若存在一组数$k_1,k_2,\dots,k_s\in\mathbb{R}$, 使得$$\vec{\beta}=k_1\vec{\alpha}_1+k_2\vec{\alpha}_2+\dots+k_s\vec{\alpha}_s$$
+则称$\vec{\beta}$是$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$ 的一个线性组合, 也称 $\vec{\beta}$可由$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$线性表出.
+\end{Def}
+
+\begin{Def}
+给定向量空间$\mathbb{R}^n$中$s$个向量$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$, 若存在不全为零的常数 $k_1, k_2,\dots, k_s$  使得
+$$k_1\vec{\alpha}_1+k_2\vec{\alpha}_2+\dots+k_s \vec{\alpha}_s=\vec{0}.$$
+
+则称这个向量组线性相关(linearly dependent);
+
+否则, 称这个向量组线性无关(linearly independent).
+
+\end{Def}
+
+\begin{Def}
+设有两个向量组 \\
+(1) $\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$\\
+(2) $\vec{\beta}_1,\vec{\beta}_2,\dots,\vec{\beta}_t$.
+
+如果向量组(1)中每个向量$\vec{\alpha}_i(i=1,2,3,\dots,s)$都可由向量组(2)中的向量$\vec{\beta}_1,\vec{\beta}_2,\dots,\vec{\beta}_t$线性表出, 则称向量组(1)可由向量组(2)线性表出.
+
+如果同时向量组(1), (2)可以相互线性表出,  则称这两个向量组等价, 记为:
+\begin{displaymath}
+( \vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s)\sim(\vec{\beta}_1,\vec{\beta}_2,\dots,\vec{\beta}_t)\ \ \mbox{或}\ \ (1)\sim(2).
+\end{displaymath}
+
+\end{Def}
+
+\begin{thm}
+设向量组 $\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$可由向量组$\vec{\beta}_1,\vec{\beta}_2,\dots,\vec{\beta}_t$ 线性表出,
+
+(1). 若$s>t$, 则$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$线性相关.
+
+(2). 若$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$线性无关, 则$s\leq t$.
+\end{thm}
+
+\begin{Def}
+如果向量组$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$ 中
+
+(1) 存在$r$个线性无关的向量$\vec{\alpha}_{i_1},\vec{\alpha}_{i_2},\dots, \vec{\alpha}_{i_r}$;
+
+(2)再加入任意一个向量$\vec{\alpha}_i(i=1,2,\dots,s)$都线性相关;\\
+那么向量组$\vec{\alpha}_{i_1},\vec{\alpha}_{i_2},\dots, \vec{\alpha}_{i_r}$称为向量组$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$的极大线性无关组, 简称为极大无关组.
+
+
+\end{Def}
+
+\begin{thm}
+如果矩阵 $A$ 经过初等行变换化为 $B$, 则$ A$ 与 $B$ 的列向量组的任何对应部分组有相同的线性相关性.
+
+\end{thm}
+
+\begin{Def}
+向量组$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$的极大线性无关组中向量个数 $r$ 称为该向量组的秩, 记为$r(\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s)$或秩$(\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s)$.只含零向量的向量组的秩规定为0.
+\end{Def}
+
+\begin{thm}
+若向量组 $A$ 可由向量组 $B$ 线性表出,  则 $r(A)\leq
+r(B)$.
+\end{thm}
+
+\begin{Def}
+设$V$表示$\mathbb{R}^n$或$\mathbb{R}^n$中的子空间, 则$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$是$V$中$s$个线性无关的向量, 且$V$中任何向量$\vec{\beta}$均可由$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$唯一地线性表示, 设为
+$$\vec{\beta}=x_1\vec{\alpha}_1+x_2\vec{\alpha}_2+\dots+x_s \vec{\alpha}_s,$$
+则我们称$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$为空间$V$的一组基, $x_1,x_2\dots,x_s$称为向量$\vec{\beta}$在$\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s$下的坐标, $s$称为$V$的维数, 记为$\dim V$.
+
+\end{Def}
+
+\begin{Def}
+设$1\leq \min\{m,n\}$, 在矩阵$A=(a_{ij})_{m\times n}$中任取出 $k$ 行 $k$ 列, 位于这些行、列交叉处的$k^2$个元素, 按原次序组成的 $k$ 阶行列式, 称为矩阵 $A$ 的一个 $k$ 阶子式.
+
+具体地, 设所取出的行为: 第$i_1,i_2,\dots,i_k$行, 满足$1\leq i_1\leq i_2\leq \dots\leq i_k\leq m;$ 设所取出的列为: 第$j_1,j_2,\dots,j_k$行, 满足$1\leq j_1\leq j_2\leq \dots\leq j_k\leq n.$ 将上述$k$行$k$列上的元素组成的$A$的子矩阵记为$A_{\left( i_1,i_2,\dots,i_k \atop j_1,j_2,\dots,j_k  \right)}$.
+\end{Def}
+
+\begin{Def}
+矩阵$A=(a_{ij})_{m\times n}$中行向量组的秩称为矩阵$A$的行秩, 列向量组的秩称为矩阵$A$的列秩. 分别简记为: $r_r(A)$和$r_c(A)$.
+
+\end{Def}
+
+\begin{Def}
+矩阵 $A$ 中非零子式的最高阶数称为 $A$ 的秩 (或行列式秩),  记为 $r(A)$.
+\end{Def}
+
+\begin{thm}
+初等行变换不改变矩阵的秩.
+\end{thm}
+
+\begin{thm}
+初等列变换不改变矩阵的秩.
+\end{thm}
+
+\begin{thm}
+矩阵 $A$ 的秩=行秩=列秩, 即 $r(A) =r_r(A) =r_c(A)$.
+
+\end{thm}
+
+\begin{Def}
+若$A\in M_{m\times n}$, 若$r(A)=m$, 则称$A$行满秩; 若 $r(A) = n$, 则称A列满秩. 若$A$既行满秩又列满秩, 则称$A$为满秩矩阵.
+
+\end{Def}
+
+
+\begin{thm}
+设 $A$ 为 $n$ 阶方阵, 则下列命题等价:
+\begin{enumerate}
+\item $A$满秩$(r(A)=n)$;
+\item $|A|\not=0$;
+\item $A$可逆(称$A$为非奇异或非退化);
+\item $A$的$n$个列(行)向量线性无关;
+\item 齐次线性方程组 $A\vec{X}=\vec{0}$ 只有零解;
+\item 对$\vec{b}\in \mathbb{R}^n$, 线性方程组$A\vec{X}=\vec{b}$ 有唯一解 $\vec{X}=A^{-1}\vec{b}$.
+\end{enumerate}
+
+\end{thm}
+
+\begin{thm}
+设以下运算可行, 则
+\begin{enumerate}
+\item 转置: $r(A^T)=r(A)$;
+\item 求逆: $r(A^{-1})=r(A)$;
+\item 加法: $r(A+B)\leq r(A)+r(B);$
+\item 乘法: $r(A)+r(B)-n\leq r(A_{m\times n}B_{n\times p })\leq \min \{r(A),r(B)\}$.
+
+\end{enumerate}
+
+\end{thm}
+
+\begin{thm}
+设以下矩阵分块和运算可行, 则
+\begin{enumerate}
+\item 列并排: $\max\{r(A),r(B)\}\leq r(A|b)\leq  r(A)+r(B)$. (行并排也有相同结论)
+\item 准对角: $r\begin{bmatrix} A&0\\0&B\end{bmatrix}=r(A)+r(B)$;
+\item 准三角: $r\begin{bmatrix} A&0\\c&B\end{bmatrix}\geq r(A)+r(B)$.
+\end{enumerate}
+\end{thm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{例题讲解}
+
+\begin{eg}
+矩阵$$A=\begin{bmatrix}1&-1&2&3\\2&5&4&-1\\3&0&1&-2\end{bmatrix}=\begin{bmatrix}
+\vec{\alpha}_1\\ \vec{\alpha}_2\\ \vec{\alpha}_3\end{bmatrix}=\begin{bmatrix} \vec{\beta}_1&\vec{\beta}_2&\vec{\beta}_3&\vec{\beta}_4\end{bmatrix}$$
+有三个4维行向量:
+\begin{displaymath}\begin{aligned}
+&\vec{\alpha}_1=(1,-1,2,3)\\
+&\vec{\alpha}_2=(2,5,4,-1)\\
+&\vec{\alpha}_3=(3,0,1,-2)\end{aligned}
+\end{displaymath}
+有四个3维列向量:
+\begin{displaymath}
+\vec{\beta}_1=\begin{bmatrix}1\\2\\3\end{bmatrix},\ \vec{\beta}_2=\begin{bmatrix}-1\\5\\0\end{bmatrix},\ \vec{\beta}_3=\begin{bmatrix}2\\4\\1\end{bmatrix},\ \vec{\beta}_4=\begin{bmatrix}3\\-1\\-2\end{bmatrix}.
+\end{displaymath}
+\end{eg}
+
+\begin{eg}
+设 $V_1=\{(x,0,\dots,0)^T|x\in\mathbb{R}\}$, 显然$V_1\subset \mathbb{R}^n$, 对向量的加法和数乘运算都是封闭的，所以$V_1$是$\mathbb{R}^n$ 的子空间;
+
+由零向量一个元素组成的集合$V_0=\{(0,0,\dots, 0)^T\}$，作向量的加法和数乘仍然为零向量，故对线性运算是封闭的，所以$V_0$是$\mathbb{R}^n$的子空间，称为零子空间.
+\end{eg}
+
+
+\begin{eg}
+(1)若$$\vec{\alpha}_1=\begin{bmatrix}1\\0\end{bmatrix},\ \vec{\alpha}_2=\begin{bmatrix}1\\1\end{bmatrix},\ \vec{\beta}=\begin{bmatrix}-3\\2\end{bmatrix}.$$
+则$\vec{\beta}$可唯一地由$\vec{\alpha}_1$与$\vec{\alpha}_2$线性表出:$$\vec{\beta}=-5\vec{\alpha}_1+2\vec{\alpha}_2.$$
+
+(2)若$$\vec{\alpha}_1=\begin{bmatrix}0\\1\end{bmatrix},\ \vec{\alpha}_2=\begin{bmatrix}1\\2\end{bmatrix},\
+\vec{\alpha}_3=\begin{bmatrix}-2\\4\end{bmatrix},\
+\vec{\beta}=\begin{bmatrix}3\\5\end{bmatrix}.$$
+有:
+\begin{displaymath}\begin{aligned}
+&\vec{\beta}=-\vec{\alpha}_1+3\vec{\alpha}_2-0\vec{\alpha}_3,\\
+\mbox{或}\ \ &\vec{\beta}=7\vec{\alpha}_1+\vec{\alpha}_2-\vec{\alpha}_3,\\
+\mbox{或}\ \ &\vec{\beta}=11\vec{\alpha}_1+0\vec{\alpha}_2-\frac{3}{2}\vec{\alpha}_3,\dots
+\end{aligned}\end{displaymath}
+故$\vec{\beta}$是$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$的线性组合,且线性表出的方式不是唯一的.
+
+(3)若$$\vec{\alpha}_1=\begin{bmatrix}2\\0\end{bmatrix},\ \vec{\alpha}_2=\begin{bmatrix}3\\0\end{bmatrix},\ \vec{\beta}=\begin{bmatrix}0\\1\end{bmatrix}.$$
+无论$k_1,k_2$取什么数, 均有$$k_1\vec{\alpha}_1+k_2\vec{\alpha}_2\not=\vec{\beta},$$
+即$\vec{\beta}$不能由$\vec{\alpha}_1,\vec{\alpha}_2$线性表出.
+
+\end{eg}
+
+\begin{eg}
+已知
+$$\vec{\alpha}_1=\begin{bmatrix}-1\\0\\1\\2\end{bmatrix},\ \vec{\alpha}_2=\begin{bmatrix}3\\4\\-2\\5\end{bmatrix},\
+\vec{\alpha}_3=\begin{bmatrix}1\\4\\0\\9\end{bmatrix},\  \vec{\beta}=\begin{bmatrix}5\\4\\-4\\1\end{bmatrix}.$$
+问$\vec{\beta}$能否由$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$线性表出?如能线性表出写出表达式.
+\end{eg}
+解：设$$\vec{\beta}=x_1\vec{\alpha}_1+x_2\vec{\alpha}_2+x_3\vec{\alpha}_3.$$ 若$x_1, x_2, x_3$有解, 则$\vec{\beta}$能由$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$线性表出, 否则不能. 将表达式用分量形式写出, 得
+\begin{displaymath}\left\{\begin{aligned}
+&-x_1+3x_2+x_3=5,\\
+&4x_2+4x_3=4,\\
+&x_1-x_3=-4,\\
+&2x_1+5x_2+9x_3=1.\end{aligned}\right.\Rightarrow\begin{bmatrix}-1&3&1&5\\0&4&4&4
+\\ 1&-2&0&-4\\2&5&9&1\end{bmatrix}\rightarrow\begin{bmatrix}1&0&2&-2\\0&1&1&1\\0&0&0&0\\0&0&0&0
+\end{bmatrix}.\end{displaymath}
+解得$$x_1=-2-2t,\ x_2=1-t,\ x_3=t.$$
+因此$\vec{\beta}$能由$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$线性表出, 且表示方法有无穷多种，表达式为
+$$\vec{\beta}=(-2-2t)\vec{\alpha}_1+(1-t)\vec{\alpha}_2+t\vec{\alpha}_3.$$
+
+
+\begin{eg}
+设$\vec{\alpha}_1=\begin{bmatrix}1\\2\end{bmatrix},\ \vec{\alpha}_2=\begin{bmatrix}2\\4\end{bmatrix}$是$\mathbb{R}^2$中的两个向量. 易知$\vec{\alpha}_2=2\vec{\alpha}_1,$ 即$$2\vec{\alpha}_1-\vec{\alpha}_2=0,$$
+组合系数$2,-1$不全为零. 由定义知$\vec{\alpha}_1,\vec{\alpha}2$线性相关.
+\end{eg}
+
+\begin{eg}
+设$\vec{\alpha}_1=\begin{bmatrix}1\\0\\0\end{bmatrix},\ \vec{\alpha}_2=\begin{bmatrix}0\\1\\0\end{bmatrix},\ \vec{\alpha}_3=\begin{bmatrix}0\\0\\1\end{bmatrix}$ 是$\mathbb{R}^3$中的3个向量. 试判断它们的线性相关性.
+\end{eg}
+解：设$$k_1\begin{bmatrix}1\\0\\0\end{bmatrix}+k_2\begin{bmatrix}0\\1\\0\end{bmatrix}
+ +k_3\begin{bmatrix}0\\0\\1\end{bmatrix}=\begin{bmatrix}0\\0\\0\end{bmatrix},$$
+ 即$\begin{bmatrix}k_1\\k_2\\k_3\end{bmatrix}=\begin{bmatrix}0\\0\\0\end{bmatrix}$. 则$k_1=k_2=k_3=0$, 所以$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$是线性无关的.
+
+
+\begin{eg}
+已知$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$线性无关, 试判断\\
+(1) $\vec{\alpha}_1-\vec{\alpha}_2, \vec{\alpha}_2-\vec{\alpha}_3,\vec{\alpha}_3-\vec{\alpha}_1$;\\
+(2) $\vec{\alpha}_1+\vec{\alpha}_2, \vec{\alpha}_2+\vec{\alpha}_3,\vec{\alpha}_3+\vec{\alpha}_1$的线性相关性, 并给出证明.
+\end{eg}
+解：(1) 线性相关. 因为
+$$1(\vec{\alpha}_1-\vec{\alpha}_2)+1( \vec{\alpha}_2-\vec{\alpha}_3)+1(\vec{\alpha}_3-\vec{\alpha}_1)=\vec{0}.$$
+系数$1, 1, 1$, 不全为$0$, 所以$\vec{\alpha}_1-\vec{\alpha}_2, \vec{\alpha}_2-\vec{\alpha}_3,\vec{\alpha}_3-\vec{\alpha}_1$线性相关.
+
+(2) 线性无关. 设
+$$k_1(\vec{\alpha}_1+\vec{\alpha}_2)+k_2( \vec{\alpha}_2+\vec{\alpha}_3)+k_3(\vec{\alpha}_3+\vec{\alpha}_1)=\vec{0}.$$
+即$$(k_1+k_3)\vec{\alpha}_1+(k_1+k_2)\vec{\alpha}_2+(k_2+k_3)\vec{\alpha}_3=\vec{0}.$$
+由于$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$线性无关, 有
+\begin{displaymath}\left\{\begin{aligned}&k_1+k_3=0,\\&k_1+k_2=0,\\&k_2+k_3=0\end{aligned}
+\right.\end{displaymath}
+解这个齐次方程组得$k_1=k_2=k_3=0$, 因此$\vec{\alpha}_1+\vec{\alpha}_2, \vec{\alpha}_2+\vec{\alpha}_3,\vec{\alpha}_3+\vec{\alpha}_1$线性无关.
+
+
+\begin{eg}
+$a$取何值时, $$\vec{\beta}_1=\begin{bmatrix}1\\3\\6\\2\end{bmatrix},\  \vec{\beta}_2=\begin{bmatrix}2\\1\\2\\-1\end{bmatrix},\
+\vec{\beta}_3=\begin{bmatrix}1\\-1\\a\\-2\end{bmatrix}$$线性无关?
+\end{eg}
+解：设$x_1\vec{\beta}_1+x_2\vec{\beta}_2+x_3\vec{\beta}_3=\vec{0}.$
+\begin{displaymath}
+(\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3)=\begin{bmatrix}1&2&1\\3&1&-1\\6&2&
+a\\2&-1&-2\end{bmatrix}\rightarrow\begin{bmatrix}1&2&1\\0&-5&-4\\0&-10&a-1\\0&5 &-4\end{bmatrix}\rightarrow\begin{bmatrix}1&2&1\\0&-5&-4\\0&0&a+2\\0&0&0\end{bmatrix}.
+\end{displaymath}
+当$a\not=2$时, 方程组只有零解$x_1=x_2=x_3=0$. 此时, $\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3$线性无关.
+
+\begin{eg}
+判断下列命题是否正确?\\
+(1) 若向量组线性相关, 则其中每一向量都是其余向量的线性组合.\\
+(2) 若一个向量组线性无关,  则其中每一向量都不是其余向量的线性组合.\\
+(3) 若$\vec{\alpha}_1,\vec{\alpha}_2$线性相关, $\vec{\beta}_1,\vec{\beta}_2$ 线性相关, 则$\vec{\alpha}_1+\vec{\beta}_1, \vec{\alpha}_2+\vec{\beta}_2$ 也线性相关.
+\end{eg}
+解：(1) 不正确. 例如非零向量$\vec{\alpha}_1$v线性无关, 再添一个向量$\vec{\alpha}_2=\vec{0}$就线性相关, 但$\vec{\alpha}_1$不能用 $\vec{\alpha}_2$ 线性表出.\\
+(2) 正确. 用反证法: 若存在一向量是其余向量的线性组合,  则线性相关.\\
+(3) 不正确. 例如$(1,0),(2,0)$线性相关, $(0,1),(0,3)$线性相关, 但$(1,1),(2,3)$ 线性无关.
+
+\begin{eg}
+设 $$\vec{\alpha}_1=\begin{bmatrix}1\\0\end{bmatrix},\ \vec{\alpha}_2=\begin{bmatrix}0\\1\end{bmatrix},\ \vec{\beta}_1=\begin{bmatrix}1\\1\end{bmatrix}, \ \vec{\beta}_2=\begin{bmatrix}1\\2\end{bmatrix}, \
+\vec{\beta}_3=\begin{bmatrix}2\\2\end{bmatrix} $$
+则\begin{displaymath}\begin{aligned}
+&\vec{\alpha}_1=2\vec{\beta}_1-\vec{\beta}_2 , \ \ \vec{\alpha}_2=\vec{\beta}_2-\vec{\beta}_1,\\
+& \vec{\beta}_1=\vec{\alpha}_1+\vec{\alpha}_2, \ \ \vec{\beta}_2=\vec{\alpha}_1+2\vec{\alpha}_2, \ \ \vec{\beta}_3=2\vec{\alpha}_1+2\vec{\alpha}_2.
+\end{aligned}\end{displaymath}
+因此, 向量组$\vec{\alpha}_1,\vec{\alpha}_2$与向量组$ \vec{\beta}_1, \vec{\beta}_2, \vec{\beta}_3$等价.
+\end{eg}
+
+\begin{eg}
+考虑向量组$$\vec{\alpha}_1=\begin{bmatrix}1\\0\end{bmatrix},\ \vec{\alpha}_2=\begin{bmatrix}1\\2\end{bmatrix},\
+\vec{\alpha}_3=\begin{bmatrix}2\\3\end{bmatrix}.$$
+由于$\vec{\alpha}_1$与$\vec{\alpha}_2$不成比例, 故$\vec{\alpha}_1$, $\vec{\alpha}_2$线性无关. 且$$\vec{\alpha}_3=\frac{1}{2}\vec{\alpha}_1+\frac{3}{2}\vec{\alpha}_2,$$
+则再添加$\vec{\alpha}_3$后就线性相关了, 由定义, $\{\vec{\alpha}_1, \vec{\alpha}_2\}$是一个极大线性无关组.
+
+实际上，容易验证$\{\vec{\alpha}_1, \vec{\alpha}_3\}$与$\{\vec{\alpha}_2, \vec{\alpha}_3\}$也都是原向量组的极大线性无关组.
+\end{eg}
+
+\begin{eg}
+线性无关的向量组是自身的极大无关组.
+
+验证:(1)无关系;(2)极大性.
+\end{eg}
+
+\begin{eg}
+(自然基)设$\vec{e}_i=(0,\dots,0,1,0,\dots,0)^T\ (1\leq i\leq n)$, 则向量组$\{\vec{e}_1,\vec{e}_2,\dots,\vec{e}_n\}$是$\mathbb{R}^n$中全体列向量集的极大无关组.
+
+验证: (1) 无关性:(2) 极大性.
+\end{eg}
+
+\begin{eg}
+对如下简化阶梯形矩阵,
+\begin{displaymath}
+C=\begin{bmatrix}1&0&\dots&0&c_{1,r+1}&\dots&c_{1n}\\0&1&\dots & 0&c_{2,r+1}&\dots&c_{2,n}\\ \vdots&\vdots&&\vdots&\vdots&&\vdots\\0&0&\dots&1&c_{r,r+1}&\dots&c_{rn}\\0& 0&\dots&0&0&\dots&0\\ \vdots&\vdots&&\vdots&\vdots&&\vdots \\0& 0&\dots&0&0&\dots&0\end{bmatrix}\end{displaymath}
+主元素所在的列 ($1\sim r$列) 是线性无关的 (自然基的无关性). 其它列 ($r+1 \sim n$列)，可表示为前$r$列的线性组合,  并且线性组合的系数就是该列的前$r$ 个元素; (表出性). 主元素所在的列 ($1\sim r$列) 就是$C$的列向量集的一个极大无关组.
+\end{eg}
+
+\begin{eg}
+设$A=\begin{bmatrix}-1&-2&1&0\\1&4&1&4\\1&3&0&2\end{bmatrix}$, 求矩阵 $A$ 列向量组的一个极大无关组, 并把其余列向量用所求出的极大无关组表示出来.
+\end{eg}
+解：通过初等行变换把 $A$ 化为简化的阶梯形矩阵:
+\begin{displaymath}
+A=\begin{bmatrix}-1&-2&1&0\\1&4&1&4\\1&3&0&2\end{bmatrix}\rightarrow
+\begin{bmatrix}-1&-2&1&0\\ 0&2&2&4\\0&1&1&2\end{bmatrix}\rightarrow
+\begin{bmatrix}-1&0&3&4\\0&1&2&2\\0&0&0&0\end{bmatrix}\rightarrow
+\begin{bmatrix}-1&0&3&4\\0&1&1&2\\0&0&0&0\end{bmatrix}=C\end{displaymath}
+从而, $c_1$与$c_2$是$A$ 的列向量组的极大无关组; 且
+\begin{displaymath}\begin{aligned}
+&c_3=(-3)\times c_1+c_2;\\
+&c_4=(-4)\times c_1+2\times c_2.\end{aligned}\end{displaymath}
+
+\begin{eg}
+(1) 若$r(\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s)=r$, 则$r<s$, 且其中任意$r$ 个线性无关的向量组都是一个极大无关组, 而其中任意 $r +1$ 个向量 (如果存在) 都线性相关.
+
+(2) \begin{displaymath}
+\begin{aligned}&\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s \mbox{ 线性无关}\Leftrightarrow r(\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s)=s. \\
+&\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s\mbox{线性相关}\Leftrightarrow r(\vec{\alpha}_1,\vec{\alpha}_2,\dots, \vec{\alpha}_s)<s.\end{aligned}\end{displaymath}
+\end{eg}
+
+\begin{eg}
+设$A=\begin{bmatrix}1&0&0&0\\0&1&0&0\\0&0&0&0\end{bmatrix}$, 求$A$的行秩与列秩.
+
+易知: $r_1$与$r_2$是$A$的行向量集的极大无关组, 故 $r_r(A)=2$; $c_1$与$c_2$是$A$的列向量集的极大无关组, 故 $r_c(A)=2$.
+
+\end{eg}
+
+\begin{eg}
+设$A=\begin{bmatrix}1&-1&0&1\\1&1&1&0\\2&0&1&1\end{bmatrix}$, 则$A$有$3\times 4=12$ 个$1$阶子式, 就是每个分量上的元素$a_{ij}$.
+
+$A$有$C_3^2\dot C_4^2=3\times 6=18$个$2$阶子式, 例如$|A_{1,2\atop 1,2}|=\left|\begin{array}{cc}1&-1\\1&1\end{array}\right|=2$.
+
+$A$有4个三阶子式, 如下:
+\begin{displaymath}\begin{aligned}&
+|A_{1,2,3\atop 1,2,3}|=\left|\begin{array}{ccc}1&-1&0\\1&1&1\\2&0&1\end{array}\right|.\\
+&|A_{1,2,3\atop 1,2,4}|=\left|\begin{array}{ccc}1&-1&1\\1&1&0\\2&0&1\end{array}\right|.\\
+&|A_{1,2,3\atop 1,3,4}|=\left|\begin{array}{ccc}1&\ 0&\ 1\\1&1&0\\2&1&1\end{array}\right|.\\
+&|A_{1,2,3\atop 2,3,4}|=\left|\begin{array}{ccc}-1&0&1\\1&1&0\\0&1&1\end{array}\right|.\end{aligned}
+\end{displaymath}
+
+由于在上述$4$个三阶行列式中，均有 $r_3 = r_1+r_2$ , 故均等于$0$.
+
+\end{eg}
+
+\begin{eg}(续). 设$A=\begin{bmatrix}1&-1&0&1\\1&1&1&0\\2&0&1&1\end{bmatrix}$, 因为$A$的所有$3$ 阶子式均为$0$, 即:
+\begin{displaymath}
+|A_{1,2,3\atop 1,2,3}|=|A_{1,2,3\atop 1,2,4}|=|A_{1,2,3\atop 1,3,4}|=|A_{1,2,3\atop 2,3,4}|=0.\end{displaymath}
+又因为$A$存在非零的$2$阶子式, 例如:$|A_{1,2\atop 1,2}|=\left|\begin{array}{cc}1&-1\\1&1\end{array}\right|=2\not=0$. $\Rightarrow r(A)=2$.
+
+另一方面, 由 $r_3 = r_1+r_2$ 知, $r_r(A) = 2$. 由 $c_1 = c_3+c_4; c_2 = c_3-c_4$ 知, $r_c(A) = 2$.
+\end{eg}
+
+\begin{eg}
+对于阶梯形矩阵
+$$B=\begin{bmatrix}b_{11}&b_{12}&\dots &b_{1r}&b_{1,r+1}&\dots&b_{1n}\\ 0& b_{22}&\dots &b_{2,r}&b_{2,r+1}&\dots &b_{2n}\\ \vdots&\vdots&&\vdots&\vdots&&\vdots\\ 0&0&\dots&b_{rr}&b_{r,r+1}&\dots&b_{rn}\\ 0&0&\dots&0&0&\dots&0\\\vdots&\vdots&&\vdots&\vdots&&\vdots\\0&0&\dots&0&0&\dots&0
+\end{bmatrix}.$$
+一方面, $B$的任意$r+1$阶子式均会包含一个全零行, 则必为$0$.
+
+另一方面, $B$的前$r$行$r$列组成的$r$阶子式, 为三角行列式, 由主元素$b_{ii}
+not= 0$ 知, 此$r$ 阶子式非零.
+ 从而, $r(B) = r$, 即阶梯形矩阵的秩 = 非零行数 = 主元素个数.
+\end{eg}
+
+\begin{eg}
+已知$A=\begin{bmatrix}1&1&1&1\\0&1&-1&b\\2&3&a&4\\3&5&1&7\end{bmatrix},\ r(A)=3$. 求参数$a,b$的值.
+\end{eg}
+解: 对$A$做初等行, 列变换, 得:
+\begin{displaymath}
+A\rightarrow\begin{bmatrix}1&1&1&1\\0&1&-1&b\\0&1&a-2&2\\0&2&-2&4\end{bmatrix}
+\rightarrow\begin{bmatrix}1&1&1&1\\0&1&-1&b\\0&0&a-2&2-b\\0&0&0&4-2b\end{bmatrix}
+\rightarrow\begin{bmatrix}1&0&0&0\\0&1&0&0\\0&0&a-1&0\\0&0&0&2-b\end{bmatrix}=B.
+\end{displaymath}
+由 $r(A)=r(B)=3$知,
+$$a\not= 1, b=2\ \mbox{或}\ a=1,\not=2.$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{课后习题}
+
+\begin{ex}\label{4.1}
+判断下列子集是否为给定线性空间$\mathbb{R}^3$的子空间， 并说明理由。\\
+(1)$V=\{(x_1,2,0)\in \mathbb{R}^3\}$\\
+(2)$V=\{(x_1,0,x_3)\in \mathbb{R}^3\}$\\
+(3)$V=\{(x_1,x_2,x_3)\in \mathbb{R}^3| x_1-3x_2+2x_3=0\}$\\
+(4)$V=\{(x_1,x_2,x_3)\in \mathbb{R}^3| x_1-3x_2+2x_3=1\}$\\
+(5)$V=\{(x_1,x_2,x_3)\in \mathbb{R}^3|\frac{x_1}{2}=\frac{x_2-4}{3}=\frac{x_3-3}{4}\}$\\
+(6)$V=\{(x_1,x_2,x_3)\in \mathbb{R}^3|x_1=x_3\mbox{且}x_1+x_2+x_3=0\}$
+\end{ex}
+
+\begin{ex}\label{4.2}
+已知向量$\vec{\alpha}_1^T=(4,1,-3,2), \vec{\alpha}_2^T=(1,0,3,2), \vec{\alpha}_3^T=(0,0,5,1)$。
+求线性组合$5\vec{\alpha}_1+\vec{\alpha}_2+2\vec{\alpha}_3$ 的值。
+\end{ex}
+
+\begin{ex}\label{4.3}
+已知$\vec{\alpha}_i(i=1, 2, 3)$满足
+$$4(\vec{\alpha}_1+\vec{\alpha})+2(\vec{\alpha}_2+\vec{\alpha}_3)=5(\vec{\alpha}+\vec{\alpha}_1+\vec{\alpha}_2+\vec{\alpha}_3)$$
+其中$\vec{\alpha}_1^T=(2,5,3), \vec{\alpha}_2^T=(1,0,0), \vec{\alpha}_3^T=(3,6,7)$。 求$\vec{\alpha}$。
+\end{ex}
+
+\begin{ex}\label{4.4}
+$\vec{\alpha}_1^T=(1,0,1), \vec{\alpha}_2^T=(1,1,0), \vec{\alpha}_3^T=(3,-1,4)$。$\beta_1^T=(1,1,1), \beta_2^T=(1,3,1)$.\\
+$\beta_1,\beta_2$是否可以用$\alpha_1,\alpha_2,\alpha_3$线性表出? 若可以, 表示是否唯一。
+\end{ex}
+
+\begin{ex}\label{4.5}
+设$\vec{\alpha}_1,\ \vec{\alpha}_2,\ \vec{\alpha}_3\in \mathbb{R}^n$, $d_1,\ d_2,\ d_3 \in \mathbb{R}$。
+若$d_1\vec{\alpha}_1+d_2\vec{\alpha}_2+d_3\vec{\alpha}_3=0$, 且$d_1d_2\not=0$.\\
+证明:$L(\vec{\alpha}_1,\ \vec{\alpha}_3)=L(\vec{\alpha}_1,\ \vec{\alpha}_2).$
+\end{ex}
+
+\begin{ex}\label{4.6}
+判断下列向量组的线性相关性.\\
+(1) $(1,0,1)^T,\ (1,1,0)^T,\ (3,5,4)^T.$\\
+(2) $(3,7,10)^T,\ (-1,0,1)^T,\ (1,7,8)^T.$\\
+(3) $(2,2,0,0)^T,\  (2,0,2,0)^T,\ (0,0,2,2)^T,\ (0,2,0,2)^T.$\\
+(4) $(1,3,-5,1)^T,\ (2,6,0,1)^T,\ (3,9,7,10)^T.$
+\end{ex}
+
+\begin{ex}\label{4.7}
+证明:下三角阵$A=\begin{bmatrix} a&0&0\\b&d&0\\c&d&f\end{bmatrix}$ 的列向量线性相关的
+充要条件是对角元素$a,d,f$中至少有一个为零元素.
+\end{ex}
+
+\begin{ex}\label{4.8}
+求$(\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3)$ 和$(\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3,\vec{\beta})$ 的秩,\\
+其中
+$\vec{\alpha}_1=\begin{bmatrix}-1\\3\\0\\-5\end{bmatrix},\vec{\alpha}_2=\begin{bmatrix}2\\0\\7\\-3\end{bmatrix},
+\vec{\alpha}_3=\begin{bmatrix}-4\\1\\-2\\6\end{bmatrix}$\\
+(1)$\vec{\beta}=\begin{bmatrix} 8\\3\\-1\\-25\end{bmatrix}$;\\
+(2)$\vec{\beta}=\begin{bmatrix} 1\\1\\1\\1\end{bmatrix}$
+\end{ex}
+
+\begin{ex}\label{4.9}
+设$n$维向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$线性无关,令
+\begin{displaymath}
+\left\{\begin{aligned}\vec{\beta}_1=a_{11}\vec{\alpha}_1+a_{12}\vec{\alpha}_2+\dots+a_{1n}\vec{\alpha}_n \\ \vec{\beta}_2=a_{21}\vec{\alpha}_1+a_{22}\vec{\alpha}_2+\dots+a_{2n}\vec{\alpha}_n \\ \dots \ \dots \ \dots
+\ \dots \ \dots \ \dots  \ \dots \ \dots   \ \dots   \\ \vec{\beta}_n=a_{n1}\vec{\alpha}_1+a_{n2}\vec{\alpha}_2+\dots+a_{nn}\vec{\alpha}_n\end{aligned}\right.
+\end{displaymath}
+试证明:向量组$\vec{\beta}_1,\ \vec{\beta}_2,\ \dots,\ \vec{\beta}_n$ 线性无关$\Leftrightarrow$\ $|A|=\left|\begin{array}{cccc}a_{11}&a_{12}&\dots&a_{1n}
+\\a_{21}&a_{22}&\dots&a_{2n}\\ \dots&\dots&\dots&\dots\\a_{n1}&a_{n2}&\dots&a_{nn}\end{array}\right|\not=0$
+\end{ex}
+
+\begin{ex}\label{4.10}
+试证明:\\
+(1) n维向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n(\ n\leq 2)\ $ 线性相关的充分必要条件是其中至少有一个向量可由其余向量线性表出;\\
+(2) n维向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n(\ n\leq 2)\ $ 线性无关的充分必要条件是其中任何一个向量都不能由其余向量线性表出.
+\end{ex}
+
+\begin{ex}\label{4.11}
+设有向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n(\ n\leq 2)$. 其中的任意$r$个$(1\leq r\leq s)$ 向量称为向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$
+的一个部分向量组. 试证明:\\
+(1) 若$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 线性无关, 则它的任何一个部分向量组都线性无关；\\
+(2) 若$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$的一个部分向量组线性相关, 则该向量组也线性相关。
+\end{ex}
+
+\begin{ex}\label{4.12}
+设$n$维向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}n$ 线性无关, $\vec{\beta}$ 是一个$n$维向量,
+试证明: 向量组$\vec{\beta},\ \vec{\alpha}_1, \ \dots,\ \vec{\alpha}_n$线性无关的充要条件是$\vec{\beta}$不可由向量组
+$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 线性表出.
+\end{ex}
+
+\begin{ex}\label{4.13}
+设向量组$\vec{\alpha}_1,\ \vec{\alpha}_2$ 线性无关,
+证明向量组$\vec{\beta}_1=\vec{\alpha}_1+\vec{\alpha}_2, \vec{\beta}_2=\vec{\alpha}_1-\vec{\alpha}_2$ 也线性无关.
+\end{ex}
+
+\begin{ex}\label{4.14}
+设$n$维向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 线性无关, 若$\vec{\alpha}_{n+1}=\lambda_1\vec{\alpha}_1+\lambda_2\vec{\alpha}_2+\dots+\lambda_n\vec{\alpha}_n$ 且
+$\lambda_i\not=0(i=1,2,\dots, n)$, 试证明: $\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n,\ \vec{\alpha}_{n+1}$ 中任意$n$ 个向量都线性无关.
+\end{ex}
+
+\begin{ex}\label{4.15}
+设$n$维向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 线性无关, 其中$\vec{\alpha}_i=(a_{i1},a_{i2},\dots,a_{in}),i=1,2,\dots,n.$ 试证明:存在不全为零的数
+$k_1,k_2,\dots,k_n$使得$$k_1\vec{\alpha}_1+k_2\vec{\alpha}_2+\dots+k_n\vec{\alpha}_n=(c,0,\dots,0),\ \ \ \ c\not=\vec{0}.$$
+\end{ex}
+
+\begin{ex}\label{4.16}
+$a$取什么值时,下列向量组线性相关?
+\begin{displaymath}\vec{\alpha}_1=\begin{bmatrix}a\\1\\1\end{bmatrix},\ \ \ \  \ \  \vec{\alpha}_2=\begin{bmatrix}1\\a\\-1\end{bmatrix},\ \ \ \     \ \ \vec{\alpha}_3=\begin{bmatrix}1\\-1\\a\end{bmatrix}.
+\end{displaymath}
+\end{ex}
+
+\begin{ex}\label{4.17}
+设$\vec{\alpha}_1,\ \vec{\alpha}_2$ 线性无关, $\vec{\alpha}_1+\vec{\beta}, \ \vec{\alpha}_2+\vec{\beta}$线性相关,
+求向量$\vec{\beta}$用$\vec{\alpha}_1,\ \vec{\alpha}_2$ 的线性表示式.
+\end{ex}
+
+\begin{ex}\label{4.18}
+设$\vec{\alpha}_1,\ \vec{\alpha}_2$ 线性相关, $\vec{\beta}_1,\ \vec{\beta}_2$ 也线性相关,
+问$\vec{\alpha}_1+\vec{\beta}_1,\ \vec{\alpha}_2+\vec{\beta}_2$是否一定线性相关? 试举例说明.
+\end{ex}
+
+\begin{ex}\label{4.19}
+求矩阵$A=\begin{bmatrix}1&1&-1\\2&-1&0\\1&0&1\end{bmatrix}$ 的秩.
+\end{ex}
+
+\begin{ex}\label{4.20}
+求下列矩阵的秩.\\
+(1)$A=\left[\begin{array}{ccccc}4&3&-5&2&3\\8&6&-7&4&2\\4&3&-8&2&7\\4&3&1&2&-5\\8&6&-1&4&-6\end{array}\right] $\\
+(2)$A=\left[\begin{array}{ccccc}0&1&1&1&1\\1&0&1&1&1\\1&1&0&1&1\\ 1&1&1&0&1\\1&1&1&1&0\end{array}\right]$\\
+(3)$A=\begin{bmatrix}a_1b_1 & a_1b_2& \dots & a_1b_n\\a_2b_1 &a_2b_2& \dots & a_2b_n\\ \vdots & \vdots &\ddots  &\vdots \\ a_nb_1 &a_nb_2 &\dots& a_nb_n\end{bmatrix}$
+\end{ex}
+
+\begin{ex}\label{4.21}
+求矩阵$\lambda E-A$的秩, 其中$\lambda=2$, $A=\begin{bmatrix}1&-1&1\\2&4&-2\\-3&-3&5\end{bmatrix}$.
+\end{ex}
+
+\begin{ex}\label{4.22}
+求矩阵$\lambda E-A$的秩, 其中$A=\begin{bmatrix}4&-1&-1&1\\-1&4&1&-1\\-1&1&4&-1\\1&-1&-1&4\end{bmatrix}$.\\
+(1)$\lambda=3$\\
+(2)$\lambda=7$
+\end{ex}
+
+\begin{ex}\label{4.23}
+求$A$和$(A\ b)$的秩,其中
+$$A=\begin{bmatrix}3&1&-1&-2\\1&-5&2&1\\2&6&-3&-3\\-1&-11&5&4\end{bmatrix}$$
+(1)$b=\begin{bmatrix}2\\-1\\3\\-4\end{bmatrix}$ \\
+(2)$b=\begin{bmatrix}2\\-1\\c\\-4\end{bmatrix}$
+\end{ex}
+
+\begin{ex}\label{4.24}
+证明$r(A+B)\leq r(A)+r(B).$
+\end{ex}
+
+\begin{ex}\label{4.25}
+设$A,B$为$n\times n$矩阵.证明: 如果$AB=0$, 那么$$r(A)+r(B)\leq n.$$
+\end{ex}
+
+\begin{ex}\label{4.26}
+设$A$为$n\times n$矩阵,证明:如果$A^2=E$, 那么$$r(A+E)+r(A-E)=n.$$
+\end{ex}
+
+\begin{ex}\label{4.27}
+设$A$是$n\times n$矩阵, 且$r(A)=r$. 证明: 存在一个$n\times n$的可逆矩阵$P$, 使得$PAP^{-1}$ 的后$n-r$行全为零.
+\end{ex}
+
+\begin{ex}\label{4.28}
+设$B$为一$r\times r$矩阵, $C$ 为一$r\times n$矩阵,且$r(C)=r$, 证明:\\
+(1)如果$BC=0$, 那么$B=0$; \\
+(2)如果$BC=C$, 那么$B=E$.
+\end{ex}
+
+\begin{ex}\label{4.29}
+已知3阶矩阵$A$与3维列向量$x$ 满足$A^3 \vec{x}=3A\vec{x}-A^2\vec{x}$. 且向量组$\vec{x},\ A\vec{x},\ A^2\vec{x}$线性无关.\\
+(1) 记$y=A\vec{x},\ \vec{z}=A\vec{y},\ P=(\vec{x},\ \vec{y},\ \vec{z})$. 求3 阶矩阵$B$, 使$AP=PB$;\\
+(2) 求$|A|$
+\end{ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{习题答案}
+
+\textbf{习题 \ref{4.1} 解答:}\\
+(1)任取$(x,2,0),(y,2,0)\in V$, 则$$ (x,2,0)+(y,2,0)=(x+y,4,0)\not \in V.$$ 因此$V$ 不是$\mathbb{R}^3$的线性子空间.\\
+(2)任取与(1)同样的方法, $V$ 对加法保持封闭. 对任意的$\vec{x}=(x_1,0,x_3)\in V$ 和$\lambda\in \mathbb{R}$, $$\lambda \vec{x}=(\lambda x_1,0,\lambda x_3)\in V.$$ 即$V$ 对数乘也保持封闭. 所以$V$是$\mathbb{R}^3$ 的线性子空间.\\
+(3)任取$\vec{x}=(x_1,x_2,x_3)$和$\vec{y}=(y_1,y_2,y_3)\in V$, 以及$\lambda, \mu \in \mathbb{R}$, 则 $$(\lambda x_1+\mu y_1)-3(\lambda x_2+\mu y_2)+2(\lambda x_3+\mu y_3)=\lambda(x_1-3x_2+2x_3)+\mu(y_1-3y_2+2y_3)=0.$$
+因此$$\lambda \vec{x}+\mu \vec{y}=(\lambda x_1+\mu y_1,\lambda x_2+\mu y_2,\lambda x_3+\mu y_3)\in V.$$ 所以$V$是$\mathbb{R}^3$ 的线性子空间.\\
+(4)与(3)同样的方法, $V$不是$\mathbb{R}^3$的线性子空间.\\
+(5)任取$\vec{x}=(x_1,x_2,x_3)$和$\vec{y}=(y_1,y_2,y_3)\in V$, 则$$\frac{x_1+y_1}{2}-\frac{x_2+y_2-4}{3}=\frac{x_1}{2}-\frac{x_2-4}{3}+\frac{y_1}{2}-\frac{y_2-4}{3}-\frac{4}{3}=-\frac{4}{3}.$$
+即$$\frac{x_1+y_1}{2}\not =\frac{x_2+y_2-4}{3},$$ 因此$\vec{x}+\vec{y}\not\in V$. 所以$V$不是$\mathbb{R}^3$的线性子空间.\\
+(6)\ 任取$\vec{x}=(x_1,x_2,x_3)$ 和$\vec{y}=(y_1,y_2,y_3)\in V$, 以及$\lambda, \mu \in \mathbb{R}$, 则$\lambda x_1+\mu y_1=\lambda x_3+\mu y_3$, 且 $$(\lambda x_1+\mu y_1)+(\lambda x_2+\mu y_2)+(\lambda x_3+\mu y_3)=0.$$ 因此$\lambda \vec{x}+\mu \vec{y}\in V$, 所以$V$是$\mathbb{R}^3$ 的线性子空间.\\
+\textbf{习题 \ref{4.2} 解答:}\\
+$$5\vec{\alpha}_1+\vec{\alpha}_2+2\vec{\alpha}_3=(20,5,-15,10)+(1,0,3,2)+(0,0,10,2)=(21, 5, -2, 14).$$
+\textbf{习题 \ref{4.3} 解答:}\\
+由关系式, 有$$\vec{\alpha}=-\vec{\alpha}_1-3\vec{\alpha}_2-3\vec{\alpha}_3=(-14,-23,-24)$$.
+\textbf{习题 \ref{4.4} 解答:}\\
+记$A=(\vec{\alpha}_1, \vec{\alpha}_2, \vec{\alpha}_3)$, 题目等价于解方程组$$A\vec{x}=\vec{\beta}_1\ \ \  \ \mbox{和}\ \ \ \ A\vec{x}=\vec{\beta}_2$$.
+因此写成拓展矩阵的形式并对其做基础行变换:
+\begin{displaymath}
+\left[\begin{array}{ccccc}1 & 1 & 3 & 1 & 1 \\ 0 & 1 &-1 & 1 & 3\\ 1 & 0 & 4 & 1 & 1 \end{array}\right]\longrightarrow \left[\begin{array}{ccccc}1 & 1 & 3 & 1 & 1 \\ 0 & 1 &-1 & 1 & 3\\ 0 & -1 & 1 & 0 & 0 \end{array}\right]\longrightarrow
+\left[\begin{array}{ccccc}1 & 1 & 3 & 1 & 1 \\ 0 & 1 &-1 & 1 & 3\\ 0 & 0 & 0 & 1 & 3 \end{array}\right]\end{displaymath}
+$\vec{\beta}_1^{'}$和$\vec{\beta}_2^{'}$ 的第三个位置均不为零, 然而 $A^{'}$的第三行全部为零, 因此方程组$A\vec{x}=\vec{\beta}_1$ 和
+$A\vec{x}=\vec{\beta}_2$均无解, 所以$\vec{\beta}_1$ 和$\vec{\beta}_2$ 均不可以用$\vec{\alpha}_1, \vec{\alpha}_2, \vec{\alpha}_3$线性表出.\\
+\textbf{习题 \ref{4.5} 解答:}\\
+因为$d_2\not=0, d_3\not =0$, 由关系式,得$$\vec{\alpha}_2=-\frac{d_1}{d_2}\vec{\alpha}_1-\frac{d_3}{d_2}\vec{\alpha}_3\in L(\vec{\alpha}_1,\vec{\alpha}_3).$$ 因此$$L(\vec{\alpha}_1,\vec{\alpha}_2)\subset L(\vec{\alpha}_1,\vec{\alpha}_3).$$
+同理有$$L(\vec{\alpha}_1,\vec{\alpha}_3)\subset L(\vec{\alpha}_1,\vec{\alpha}_2).$$ 因此$L(\vec{\alpha}_1,\vec{\alpha}_2)=L(\vec{\alpha}_1,\vec{\alpha}_3)$.\\
+\textbf{习题 \ref{4.6} 解答:}\\
+(1)$$\begin{bmatrix}1&1&3\\0&1&5\\1&0&4\end{bmatrix}\longrightarrow \begin{bmatrix}1&1&3\\0&1&5\\0&-1&1\end{bmatrix} \longrightarrow \begin{bmatrix}1&1&3\\0&1&5\\0&0&6\end{bmatrix} .$$ 因此三个向量线性无关.\\
+(2)$$A=\begin{bmatrix}-1&1&3\\0&7&7\\1&8&10\end{bmatrix}\longrightarrow \begin{bmatrix}-1&1&3\\0&7&7\\0&9&13\end{bmatrix}.$$ 所以矩阵$A$的行列式为$-28$, $A$ 非奇异, 因此三个向量线性无关.\\
+(3)与(1)同样的方法, 所给的四个向量线性相关, 且极大线性无关组向量个数为3.\\
+(4)与(1)同样的方法, 所给的三个向量线性无关.\\
+\textbf{习题 \ref{4.7} 解答:}\\
+"$\Rightarrow$" 若否, 即$a,d,f$ 均不为零, 此时解方程$$A\vec{x}=0$$ 得到唯一解$\vec{x}=0$. 即$A$的列向量线性无关, 矛盾.\\
+"$\Leftarrow$" 若否, 则$A$的列向量线性无关, 因此$$|A|=adf\not=0.$$ 矛盾.\\
+\textbf{习题 \ref{4.8} 解答:}\\
+$$(\vec{\alpha}_1, \vec{\alpha}_2,\vec{\alpha}_3)=\begin{bmatrix}-1&2&-4\\ 3&0&1\\ 0&7&-2\\-5&-3&6\end{bmatrix}
+\rightarrow \begin{bmatrix}-1&2&-4\\ 0&6&-11\\ 0&7&-2\\0&-13&26\end{bmatrix}
+\rightarrow \begin{bmatrix}-1&2&-4\\ 0&1&-2\\ 0&0&12\\0&0&1\end{bmatrix}
+\rightarrow \begin{bmatrix}-1&2&-4\\ 0&1&-2\\ 0&0&1\\0&0&0\end{bmatrix}$$
+所以$r(\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3)=3$.\\
+(1)\begin{displaymath}\begin{aligned}(\vec{\alpha}_1, \vec{\alpha}_2,\vec{\alpha}_3,\vec{\beta})=&\begin{bmatrix}-1&2&-4&8\\ 3&0&1&3\\ 0&7&-2&-1\\-5&-3&6&-25\end{bmatrix}
+\rightarrow \begin{bmatrix}-1&2&-4&-8\\ 0&6&-11&27\\ 0&7&-2&-1\\0&-13&26&-65\end{bmatrix}\\
+\rightarrow &\begin{bmatrix}-1&2&-4&-8\\ 0&1&-2&5\\ 0&0&12&-36\\0&0&1&-3\end{bmatrix}
+\rightarrow \begin{bmatrix}-1&2&-4&-8\\ 0&1&-2&5\\ 0&0&1&-3\\0&0&0&0\end{bmatrix}\end{aligned}\end{displaymath}
+所以$r(\vec{\alpha}_1, \vec{\alpha}_2,\vec{\alpha}_3,\vec{\beta})=3$.\\
+(2)\begin{displaymath}\begin{aligned}(\vec{\alpha}_1, \vec{\alpha}_2,\vec{\alpha}_3,\vec{\beta})=&\begin{bmatrix}-1&2&-4&1\\ 3&0&1&1\\ 0&7&-2&1\\-5&-3&6&1\end{bmatrix}
+\rightarrow \begin{bmatrix}-1&2&-4&-1\\ 0&6&-11&4\\ 0&7&-2&1\\0&-13&26&-4\end{bmatrix}\\
+\rightarrow &\begin{bmatrix}-1&2&-4&-1\\ 0&1&-2&\frac{4}{13}\\ 0&0&12&\frac{-15}{13}\\0&0&1&\frac{28}{13}\end{bmatrix}
+\rightarrow \begin{bmatrix}-1&2&-4&-1\\ 0&1&-2&\frac{4}{13}\\ 0&0&1&\frac{28}{13}3\\0&0&0&1\end{bmatrix}\end{aligned}\end{displaymath}
+所以$r(\vec{\alpha}_1, \vec{\alpha}_2,\vec{\alpha}_3,\vec{\beta})=4$.
+
+\textbf{习题 \ref{4.9} 解答:}\\
+$"\Rightarrow"$ 向量组$\vec{\beta}_1,\ \vec{\beta}_2,\ \dots,\ \vec{\beta}_n$ 线性无关, 所以对任意的$x_1,x_2,\dots,x_n\in \mathbb{R}$, 若满足
+$$x_1\vec{\beta}_1+x_2\vec{\beta}_2+\dots+x_n\vec{\beta}_n=\vec{0}$$
+则必有$x_1=x_2=\dots=x_n=0$. 由$\beta_i$ 的表示式代入到上式,得到
+$$(a_{11}x_1+a_{21}x_2+\dots+a_{n1}x_n)\vec{\alpha}_1+\dots+(a_{1n}x_1+a_{2n}x_2+\dots+a_{nn}x_n)\vec{\alpha}_n=0$$
+又因为向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 线性无关, 所以有
+\begin{displaymath}
+\left\{\begin{aligned}
+&a_{11}x_1+a_{21}x_2+\dots+a_{n1}x_n=0\\
+&a_{12}x_1+a_{22}x_2+\dots+a_{n2}x_n=0\\
+&\dots\ \ \dots\ \ \dots\ \ \dots\ \ \dots \ \ \dots \ \ \dots\\
+&a_{1n}x_1+a_{2n}x_2+\dots+a_{nn}x_n=0
+\end{aligned}
+\right.
+\end{displaymath}
+即$A^{*}\vec{x}=0$, 其中$\vec{x}=(x_1,x_2,\dots,x_n)$. 也就是说, 方程组$A^{*}\vec{x}=0$ 仅有零解$\Leftrightarrow$ 矩阵$A^{*}$ 非奇异$\Leftrightarrow|A^{*}|\not=0\Leftrightarrow |A|\not=0$.\\
+$"\Leftarrow"$ 反设向量组$\vec{\beta}_1,\ \vec{\beta}_2,\ \dots,\ \vec{\beta}_n$ 线性相关, 即存在不全为零的$x_1,x_2,\dots,x_n\in \mathbb{R}$, 使得
+$$x_1\vec{\beta}_1+x_2\vec{\beta}_2+\dots+x_n\vec{\beta}_n=0$$
+由上面的分析, 知这等价于$A^{*}\vec{x}=0$,  $\vec{x}=(x_1,x_2,\dots,x_n)\not=0$. 即方程组$A^{*}\vec{x}=0$有非零解, 从而$|A^{*}|=0$, 因此$|A|=0$, 矛盾.
+
+\textbf{习题 \ref{4.10} 解答:}\\
+(1)$"\Rightarrow"\  \vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n\ $ 线性相关, 因此存在不全为零的数$k_1,k_2,\dots,k_n$, 使得
+$$k_1\vec{\alpha}_1+k_2\vec{\alpha}_2+dots+k_n\vec{\alpha}_n=\vec{0}.$$
+设$k_i\not=0 $, 则由上式得到:$$\vec{\alpha}_i=-\frac{k_1}{k_i}\vec{\alpha}_1-\frac{k_2}{k_i}\vec{\alpha}_2-\dots-\frac{k_{i-1}}{k_i}\vec{\alpha}_{i-1}-\frac{k_{i+1}}{k_i}\vec{\alpha}_{
+i+1}-\dots-\frac{k_n}{k_i}\vec{\alpha}_n.$$
+即$\vec{\alpha}_i$可以由其余向量线性表出.\\
+"$\Leftarrow$"\ 设$\vec{\alpha}_i$可以由其余向量表出, 存在$k_1,\dots,k_{i-1},k_{i+1},\dots,k_n$ 使得$$\vec{\alpha}_i=k_1\vec{\alpha}_1+\dots+k_{i-1}\vec{\alpha}_{i-1}+k_{i+1}\vec{\alpha}_{i+1}+\dots+k_{n}\vec{\alpha}_{n}.$$ 即$$
+k_1\vec{\alpha}_1+\dots+k_{i-1}\vec{\alpha}_{i-1}-\vec{\alpha}_i+\dots+k_{i+1}\vec{\alpha}_{i+1}+\dots+k_{n}\vec{\alpha}_{n}=0.$$
+即$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 线性相关.\\
+(2)$"\Rightarrow"$\ 若不然, 则至少有一个向量可由其余向量线性表出, 由(1) 的结论, 知$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$线性相关, 矛盾.\\
+$"\Leftarrow"$\ 若不然, 则$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 线性相关, 由(1), 至少有一个向量可由其余向量线性表出, 矛盾.\\
+\textbf{习题 \ref{4.11} 解答:}\\
+(1)任取$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$的一个部分向量组$\vec{\alpha}_{k_1}, \vec{\alpha}_{k_2}, \dots, \vec{\alpha}_{k_l}$, 其中$k_i\in\{1,2,\dots,n\}(i=1,\dots,l)$. 对
+任意的一组参数$\lambda_1,\dots,\lambda_l$, 设
+$$\lambda_1\vec{\alpha}_{k_1}+\lambda_2\vec{\alpha}_{k_2}+\dots+\lambda_l\vec{\alpha}_{k_l}=0.$$
+由于向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 线性无关, 因此$\lambda_1=\lambda_2=\dots=\lambda_l=0$. 即$\vec{\alpha}_{k_1}, \vec{\alpha}_{k_2}, \dots, \vec{\alpha}_{k_l}$ 线性无关.\\
+(2)假设$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$的一个部分向量组$\vec{\alpha}_{k_1}, \vec{\alpha}_{k_2}, \dots, \vec{\alpha}_{k_l}$线性相关,
+其中$k_i\in\{1,2,\dots,n\}(i=1,\dots,l)$. 即存在不全为零的参数$\lambda_1,\dots,\lambda_l$,
+使得$$\lambda_1\vec{\alpha}_{k_1}+\lambda_2\vec{\alpha}_{k_2}+\dots+\lambda_l\vec{\alpha}_{k_l}=0.$$
+因此$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$线性相关.\\
+\textbf{习题 \ref{4.12} 解答:}\\
+$"\Rightarrow"$\  是显然的, 若$\vec{\beta}$ 可由$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 线性表出, 由10 题中的结论,
+则向量组$\vec{\beta},\ \vec{\alpha}_1, \ \dots,\ \vec{\alpha}_n$线性相关, 矛盾.\\
+$"\Leftarrow"$\ 对任意的$k_0,k_1,\dots,k_n$, 若
+$$k_0\vec{\beta}+k_1\vec{\alpha}_1+\dots+k_n\vec{\alpha}_n=0.$$
+若$k_0\not=0$, 则$\vec{\beta}$可由$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$线性表出,矛盾. \\
+因此$k_0=0$, 由$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 的线性无关性, 知$k_1=k_2=\dots=k_n=0$.\\
+\textbf{习题 \ref{4.13} 解答:}\\
+因为$\vec{\beta}_1=\vec{\alpha}_1+\vec{\alpha}_2, \vec{\beta}_2=\vec{\alpha}_1-\vec{\alpha}_2$,
+所以\begin{displaymath}\begin{bmatrix}\vec{\beta}_1\\ \vec{\beta}_2\end{bmatrix}=
+\begin{bmatrix}1&1\\1&-1\end{bmatrix}\begin{bmatrix}\vec{\alpha}_1\\ \vec{\alpha}_2\end{bmatrix}.\end{displaymath}
+因为$\vec{\alpha}_1,\vec{\alpha}_2$ 线性无关, 因此$$r(\vec{\alpha}_1,\vec{\alpha}_2)=2.$$
+又因为$$\left|\begin{array}{cc}1&1\\1&-1\end{array}\right|=-2\not=0,$$
+所以矩阵$\begin{bmatrix}1&1\\1&-1\end{bmatrix}$ 可逆, 因此$$r(\vec{\beta}_1,\vec{\beta}_2)=r(\vec{\alpha}_1,\vec{\alpha}_2)=2.$$
+因此$\vec{\beta}_1,\vec{\beta}_2$也是线性无关的.\\
+\textbf{习题 \ref{4.14} 解答:}\\
+（方法一）\\
+在$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n,\ \vec{\alpha}_{n+1}$ 中任取$n$ 个向量, 不失一般性, 我们不妨记这$n$ 个向量为$$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_{n-1},\ \vec{\alpha}_{n+1}.$$
+对任意的$k_1,k_2,\dots,k_{n-1},k_{n+1}$, 设满足
+$$k_1\vec{\alpha}_1+k_2\vec{\alpha}_2+\dots+k_{n-1}\vec{\alpha}_{n-1}+k_{n+1}\vec{\alpha}_{n+1}=0.$$
+将条件$\vec{\alpha}_{n+1}=\lambda_1\vec{\alpha}_1+\lambda_2\vec{\alpha}_2+\dots+\lambda_n\vec{\alpha}_n$ 代入上式, 得:
+$$(k_1+\lambda_1k_{n+1})\vec{\alpha}_1+(k_2+\lambda_2k_{n+1})\vec{\alpha}_2+\dots+(k_{n-1}+\lambda_{n-1}k_{n+1}\vec{\alpha}_{n-1}+
+\lambda_nk_{n+1}\vec{\alpha}_n=\vec{0}.$$
+因为向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 线性无关, 所以有
+\begin{displaymath}\left\{\begin{aligned}&k_1+\lambda_1k_{n+1}=0\\&k_2+\lambda_2k_{n+1}=0\\&\dots \\ &k_{n-1}+\lambda_{n-1}k_{n+1}=0 \\ &\lambda_nk_{n+1}=0\end{aligned}
+\right.\end{displaymath}
+因为$\lambda_n\not=0$, 由最后一个方程, 得$k_{n+1}=0$, 从而解出$$k_1=k_1=\dots=k_{n-1}.$$
+所以向量组$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_{n-1},\ \vec{\alpha}_{n+1}$ 线性无关. 同样的道理,
+可以知道$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n,\ \vec{\alpha}_{n+1}$ 中任意$n$个向量都线性无关.\\
+（方法二）\\
+利用两个向量组的等价性来计算向量组的秩. 设
+\begin{displaymath}\begin{aligned}&(A)\vec{\alpha}_1,  \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_{n-1},\ \vec{\alpha}_{n+1}\\
+&(B)\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_{n-1},\ \vec{\alpha}_n,\ \vec{\alpha}_{n+1}\end{aligned}\end{displaymath}
+显然向量组(A)中所有向量都可以由向量组(B) 线性表出. 而根据$$\vec{\alpha}_{n+1}=\lambda_1\vec{\alpha}_1+\lambda_2\vec{\alpha}_2+\dots+\lambda_n\vec{\alpha}_n$$ 以及$\lambda_i\not=0(i=1,
+\dots,n)$,得
+$$\vec{\alpha}_n=-\frac{\lambda_1}{\lambda_n}\vec{\alpha}_1-\frac{\lambda_2}{\lambda_n}\vec{\alpha}_2-\dots-
+\frac{\lambda_{n-1}}{\lambda_n}\vec{\alpha}_{n-1}-\frac{1}{\lambda_n}\vec{\alpha}_{n+1}.$$
+所以$\vec{\alpha}_n$可由(A)线性表出. 而(B) 中的其余向量都在(A) 中, 显然可以用(A) 线性表出. 也就是说, (B)可由(A)线性表出, 所以向量组(A)与(B)等价.\\
+又因为$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_n$ 线性无关, $\vec{\alpha}_{n+1}=\lambda_1\vec{\alpha}_1+\lambda_2\vec{\alpha}_2+\dots+\lambda_n\vec{\alpha}_n$, 所以
+$$r(B)=r(A)=n.$$因此$\vec{\alpha}_1, \ \vec{\alpha}_2, \ \dots,\ \vec{\alpha}_{n-1},\ \vec{\alpha}_{n+1}$ 线性无关.\\
+（方法三）\\
+等价证法二\ \ \ 利用矩阵的秩. 设矩阵$$A=(\vec{\alpha}_1,\vec{\alpha}_2,\dots,\vec{\alpha}_{n-1},\vec{\alpha}_{n+1}).$$ 则
+\begin{displaymath}\begin{aligned}A&=(\vec{\alpha}_1,\vec{\alpha}_2,\dots,\vec{\alpha}_n)\begin{bmatrix}1&0&\dots&0&\lambda_1\\0&1&\dots&0\lambda_2\\
+\vdots&\vdots&\ddots&\vdots&\vdots\\0&0&\dots&1&
+\lambda_{n-1} \\0&0&\dots&0&\lambda_n\end{bmatrix}\\&=(\vec{\alpha}_1,\vec{\alpha}_2,\dots,\vec{\alpha}_n)C.\end{aligned}\end{displaymath}
+其中$$|C|=\lambda_n\not=0$$即矩阵$C$可逆, 因此$$r(A)=r(\vec{\alpha}_1,\vec{\alpha}_2,\dots,\vec{\alpha}_n=n.$$
+即$\vec{\alpha}_1,\vec{\alpha}_2,\dots,\vec{\alpha}_{n-1},\vec{\alpha}_{n+1}$ 线性无关.\\
+\textbf{习题 \ref{4.15} 解答:}\\
+反证法, 设$n$元线性方程组$k_1\vec{\alpha}_1+k_2\vec{\alpha}_2+\dots+k_n\vec{\alpha}_n=b$ 只有零解$k_1,\dots,k_n$,其中
+$$a_i=(a_{i1},a_{i2},\dots,a_{in}),\ \ i=1,2,\dots,n$$
+$$b=(c,0,\dots,0)$$
+即
+\begin{displaymath}\begin{bmatrix}a_{11}&a_{12}&\dots &a_{1n}\\a_{21}&a_{22}&\dots&a_{2n}\\ \vdots&\vdots&\ddots&\vdots\\ a_{n1}&a_{n2}&\dots&a_{nn}\end{bmatrix}
+\begin{bmatrix}k_1\\k_2\\ \vdots\\ k_n\end{bmatrix}=\begin{bmatrix}c\\0\\ \vdots \\ 0\end{bmatrix}\end{displaymath}
+由于系数矩阵的$n$个列向量线性无关, 因此$r(A)=n$. 于是方程组有唯一解, 而$c\not=0$, 因此此解非零. 与假设矛盾. 也就是说, 存在不全为零的数
+$k_1,k_2,\dots,k_n$使得$$k_1\vec{\alpha}_1+k_2\vec{\alpha}_2+\dots+k_n\vec{\alpha}_n=(c,0,\dots,0),\ \ \ \ c\not=0.$$
+\textbf{习题 \ref{4.16} 解答:}\\
+令矩阵$A=(\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3)$, 三个向量线性相关等价于$|A|=0$, 而
+$$|A|=\left|\begin{array}{ccc}a&1&1\\1&a&-1\\1&-1&a\end{array}\right|=(a+1)^2(a-2).$$
+因此当$c=-1$或$c=2$时, $R(A)<3$, 此时向量组线性相关.\\
+\textbf{习题 \ref{4.17} 解答:}\\
+因为$\vec{\alpha}_1+\vec{\beta}, \ \vec{\alpha}_2+\vec{\beta}$线性相关, 故存在不全为零的数$\lambda_1$, $\lambda_2$, 使得
+$$\lambda_1(\vec{\alpha}_1+\vec{\beta})+\lambda_2(\vec{\alpha}_2+\vec{\beta})=0.$$
+由此得
+$$\vec{\beta}=-\frac{\lambda_1}{\lambda_1+\lambda_2}\vec{\alpha}_1--\frac{\lambda_2}{\lambda_1+\lambda_2}\vec{\alpha}_2
+=-\frac{\lambda_1}{\lambda_1+\lambda_2}\vec{\alpha}_1
+-(1-\frac{\lambda_1}{\lambda_1+\lambda_2})\vec{\alpha}_2.$$
+设$$c=-\frac{\lambda_1}{\lambda_1+\lambda_2}.$$
+则$$\vec{\beta}=c\vec{\alpha}_1-(c+1)\vec{\alpha}_2,\ \ \ c\in\mathbb{R}$$
+\textbf{习题 \ref{4.18} 解答:}\\
+不一定. 例如
+\begin{displaymath}\begin{aligned} &\vec{\alpha}_1=\begin{bmatrix}1\\2\end{bmatrix},\ \ \ \ \ &\vec{\alpha}_2=\begin{bmatrix}2\\4\end{bmatrix}\\&\vec{\beta}_1=\begin{bmatrix}-1\\-1\end{bmatrix}
+, &\vec{\beta}_2=\begin{bmatrix}0\\0\end{bmatrix}\end{aligned}\end{displaymath}
+此时,有
+\begin{displaymath}\begin{aligned}&\vec{\alpha}_1+\vec{\beta}_1=\begin{bmatrix}1\\2\end{bmatrix}+\begin{bmatrix}-1\\-1\end{bmatrix}=\begin{bmatrix}0\\1\end{bmatrix}\\
+&\vec{\alpha}_2+\vec{\beta}_2=\begin{bmatrix}2\\4\end{bmatrix}+\begin{bmatrix}0\\0\end{bmatrix}=\begin{bmatrix}2\\4\end{bmatrix}\end{aligned}\end{displaymath}
+可以看到, $\vec{\alpha}_1+\vec{\beta}_1$ 和$\vec{\alpha}_2+\vec{\beta}_2$ 的对应分量不成比例, 是线性无关的.\\
+\textbf{习题 \ref{4.19} 解答:}\\
+方法一: 初等变换法.交换矩阵$A$的第一列和第三列, 不改变矩阵的秩, 得到$$A^{'}=\begin{bmatrix}-1&1&1\\0&-1&2\\1&0&1\end{bmatrix},\ \ \ \ r(A^{'})=r(A).$$ 再对矩阵$A^{'}$ 做初等行变换, 得到
+$$\begin{bmatrix}-1&1&1\\0&-1&2\\1&0&1\end{bmatrix}\rightarrow \begin{bmatrix}-1&1&1\\0&-1&2\\0&1&2\end{bmatrix}\rightarrow \begin{bmatrix}-1&1&1\\0&-1&2\\0&0&4\end{bmatrix}$$
+所以$r(A^{'})=3$, 从而$r(A)=3$.\\
+方法二:主子式法. 由矩阵的(第二,三行)$\times$ (第二,三列)组成的主子式为$$\begin{bmatrix}-1&0\\0&1\end{bmatrix},$$ 其行列式为$-1$. 因此$r(A)\geq
+2$. 而$|A|=-4$, 所以$r(A)=3$.\\
+\textbf{习题 \ref{4.20} 解答:}\\
+(1) 对$A$做初等行变换
+$$A=\left[\begin{array}{ccccc}4&3&-5&2&3\\8&6&-7&4&2\\4&3&-8&2&7\\4&3&1&2&-5\\8&6&-1&4&-6\end{array}\right]\rightarrow \left[\begin{array}{ccccc}4&3&-5&2&3\\0&0&3&0&-4\\0&0&-3&0&4\\0&0&6&0&-8\\0&0&9&0&-12\end{array}\right]
+\rightarrow \left[\begin{array}{ccccc}4&3&-5&2&3\\0&0&3&0&-4\\0&0&0&0&0\\0&0&0&0&0\\0&0&0&0&0\end{array}\right] $$
+所以$r(A)=2$.\\
+(2) 同样对$A$做行初等变换
+\begin{displaymath}
+\begin{aligned}A=&\left[\begin{array}{ccccc}0&1&1&1&1\\1&0&1&1&1\\1&1&0&1&1\\ 1&1&1&0&1\\1&1&1&1&0\end{array}\right]\rightarrow
+\left[\begin{array}{ccccc}1&1&1&1&0 \\0&1&1&1&1\\1&0&1&1&1\\1&1&0&1&1\\ 1&1&1&0&1\end{array}\right]
+\rightarrow \left[\begin{array}{ccccc}1&1&1&1&0 \\0&1&1&1&1\\0&-1&0&0&1\\0&0&-1&0&1\\ 0&0&0&-1&1\end{array}\right]\\
+\rightarrow &\left[\begin{array}{ccccc}1&1&1&1&0 \\0&1&1&1&1\\0&0&1&1&2\\0&0&-1&0&1\\ 0&0&0&-1&1\end{array}\right]
+\rightarrow \left[\begin{array}{ccccc}1&1&1&1&0 \\0&1&1&1&1\\0&0&1&1&2\\0&0&0&1&3\\ 0&0&0&-1&1\end{array}\right]
+\rightarrow \left[\begin{array}{ccccc}1&1&1&1&0 \\0&1&1&1&1\\0&0&1&1&2\\0&0&0&1&3\\ 0&0&0&0&4\end{array}\right] \end{aligned}\end{displaymath}
+因此$r(A)=5$.\\
+(3)注意到$A=\begin{bmatrix}a_1\\a_2\\ \vdots\\a_n\end{bmatrix}\begin{bmatrix}b_1&b_2&\dots&b_n\end{bmatrix}$, 因此$r(A)=1$.
+\textbf{习题 \ref{4.21} 解答:}\\
+$$\lambda E-A=\begin{bmatrix}1&1&-1\\-2&-2&2\\3&3&-3\end{bmatrix}\rightarrow\begin{bmatrix}1&1&-1\\0&0&0\\0&0&0\end{bmatrix}.$$ 因此$r(\lambda E-A)=1$.\\
+\textbf{习题 \ref{4.22} 解答:}\\
+(1) $$3E-A=\begin{bmatrix}-1&1&1&-1\\1&-1&-1&1\\1&-1&-1&1\\-1&1&1&-1\end{bmatrix}\rightarrow \begin{bmatrix}-1&1&1&-1\\0&0&0&0\\0&0&0&0\\0&0&0&0\end{bmatrix}$$
+因此$r(3E-A)=1.$\\
+(2)\begin{displaymath}\begin{aligned}7E-A=&\begin{bmatrix}3&1&1&-1\\1&3&-1&1\\1&-1&3&1\\-1&1&1&3\end{bmatrix}
+\rightarrow \begin{bmatrix}1&-1&-1&-3\\0&4&0&4\\0&0&4&4\\0&4&4&8\end{bmatrix}
+\rightarrow  \begin{bmatrix}1&-1&-1&-3\\0&1&0&1\\0&0&1&1\\0&1&1&2\end{bmatrix}\\
+\rightarrow & \begin{bmatrix}1&-1&-1&-3\\0&1&0&1\\0&0&1&1\\0&0&1&1\end{bmatrix}
+\rightarrow  \begin{bmatrix}1&-1&-1&-3\\0&1&0&1\\0&0&1&1\\0&0&0&0\end{bmatrix}
+\end{aligned}\end{displaymath}
+因此$r(7E-A)=3.$\\
+\textbf{习题 \ref{4.23} 解答:}\\
+$$A=\begin{bmatrix}3&1&-1&-2\\1&-5&2&1\\2&6&-3&-3\\-1&-11&5&4\end{bmatrix}\rightarrow\begin{bmatrix}1&-5&2&1\\ 0&16&-7&-5\\0&16&-7&-5\\0&-16&7&5\end{bmatrix}
+\rightarrow\begin{bmatrix}1&-5&2&1\\ 0&16&-7&-5\\0&0&0&0\\0&0&0&0\end{bmatrix}$$
+所以$r(A)=2$.\\
+(1) $$(A\ b)=\begin{bmatrix}3&1&-1&-2&2\\1&-5&2&1&-1\\2&6&-3&-3&3\\-1&-11&5&4&-4\end{bmatrix}\rightarrow
+\begin{bmatrix}1&5&2&1&-1\\0&16&-7&-5&5\\0&16&-7&-5&5\\0&-16&7&5&-5\end{bmatrix}\rightarrow
+\begin{bmatrix}1&5&2&1&-1\\0&16&-7&-5&5\\0&0&0&0&0\\0&0&0&0&0\end{bmatrix} $$
+所以$r(A)=2$.\\
+(2) $$(A\ b)=\begin{bmatrix}3&1&-1&-2&2\\1&-5&2&1&-1\\2&6&-3&-3&c\\-1&-11&5&4&-4\end{bmatrix}\rightarrow
+\begin{bmatrix}1&5&2&1&-1\\0&16&-7&-5&5\\0&16&-7&-5&c+3\\0&-16&7&5&-5\end{bmatrix}\rightarrow
+\begin{bmatrix}1&5&2&1&-1\\0&16&-7&-5&5\\0&16&-7&-5&c-3\\0&-16&7&5&-5\end{bmatrix}\rightarrow$$
+若$c=3$, 则$r(A)=2$. 若$c\not=3$, 则$r(A)=3$.\\
+\textbf{习题 \ref{4.24} 解答:}\\
+设$$A=(\vec{a}_1,\vec{a}_2,\dots,\vec{a}_n),\ \ \ \ \mbox{以及}\ \ \ \   B=(\vec{b}_1,\vec{b}_2,\dots,\vec{b}_n).$$
+则$$A+B=(\vec{a}_1+\vec{b}_1,\vec{a}_2+\vec{b}_2,\dots,\vec{a}_n+\vec{b}_n).$$
+由于$\vec{a}_i$可以由$A$的最大线性无关组表出.$\vec{b}_i$可由$B$ 的最大线性无关组表出,因此$\vec{a}_i+\vec{b}_i$可由$A$的最大线性无关组和$B$的最大线性无关组表出.因此$r(A+B)\leq r(A)+r(B)$.\\
+\textbf{习题 \ref{4.25} 解答:}\\
+$AB=0,\ \Leftrightarrow \ B$ 的列向量是方程组$A\vec{x}=0$ 的解
+  \quad  \quad  \quad \quad   $\Leftrightarrow\  r(B)\leq n-r(A)$
+   \quad  \quad  \quad \quad  $\Leftrightarrow\ r(A)+r(B)\leq n.$\\
+\textbf{习题 \ref{4.26} 解答:}\\
+因为$A^2=E,$ 所以$A$非奇异, 因此$r(A)=n.$又有$$(A+E)(A-E)=A^2+A-A-E=0,$$ 由第25 题结论$$r(A+E)+r(A-E)\leq n.$$ 由第24题结论,  $$r(A+E)+r(A-E)\geq r(A+E+A-E)=r(A)=n.$$
+因此有$$r(A+E)+r(A-E)=n.$$
+\textbf{习题 \ref{4.27} 解答:}\\
+由于$r(A)=r$, 因此经过有限次的初等行变换, 总能将$A$的后$n-r$行变为0, 即 矩阵$$P_sP_{s-1}\dots P_1A$$的后$n-r$行为0, 其中$P_i(i=1,2,\dots,s)$代表行初等变换. 令$$P=P_s\dots P_1,$$ 则
+$P$为可逆矩阵,且$PA$的后$n-r$ 行为0. 由于$P^{-1}$正在$PA$后只对列做变换, 不改变后$n-r$ 行为0 的性质, 所以存在一个$n\times n$ 可逆矩阵$P$使得$PAP^{-1}$ 的后$n-r$ 行全为零.\\
+\textbf{习题 \ref{4.28} 解答:}\\
+(1)\ $BC=0\ \Leftrightarrow \ C$ 的列向量是方程组$B\vec{x}=0$的解
+\quad \quad \quad \quad \quad  \ \ $ \Leftrightarrow B\vec{x}=0$ 的解空间的维数$\geq r$
+\quad \quad \quad \quad \quad  \ \  $ \Leftrightarrow\ r(B)\leq r-r=0$
+\quad \quad \quad \quad \quad  \ \  $ \Leftrightarrow\ r(B)=0$
+所以$B=0$.\\
+(2) $BC=C \ \Leftrightarrow \ (B-E)C=0$. 由(1) 中的证明,知$B-E=0$,即$B=E$.\\
+\textbf{习题 \ref{4.29} 解答:}\\
+(1) 因为\begin{displaymath}\begin{aligned}AP&=A(\vec{x},\vec{y},\vec{z})=(A\vec{x},A^2\vec{x},A^3\vec{x})=(A\vec{x},A^2\vec{x},3A\vec{x}-A^2\vec{x})\\
+&=(\vec{x},A\vec{x},A^2\vec{x})\begin{bmatrix}0&0&0\\1&0&3\\0&1&-1\end{bmatrix}=P\begin{bmatrix}0&0&0\\1&0&3\\0&1&-1\end{bmatrix}\end{aligned}\end{displaymath}
+所以\begin{displaymath}B=\begin{bmatrix}0&0&0\\1&0&3\\0&1&-1\end{bmatrix}\end{displaymath}
+(2) 由于$A^3\vec{x}=3A\vec{x}-A^2\vec{x}$, 有$$A(3\vec{x}-A\vec{x}-A^2\vec{x})=\vec{0}$$
+而向量组$\vec{x},A\vec{x},A^2\vec{x}$ 线性无关, 因此$$3\vec{x}-A\vec{x}-A^2\vec{x}\not=\vec{0}.$$
+即线性方程组$A\vec{x}=0$有非零解, 因此$$r(A)<3,\ \ \  |A|=0$$
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

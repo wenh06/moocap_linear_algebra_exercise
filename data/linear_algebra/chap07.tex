@@ -1,0 +1,912 @@
+\chapter{矩阵的特征值理论}
+
+\section{知识点解析}
+
+\begin{Def}
+设$A$为$n$阶方阵，若存在数$\lambda$以及$n$维非零（列）向量$\vec{x}$，使得
+$$
+A\vec{x}=\lambda\vec{x}
+$$
+则称$\lambda$是$A$的特征值，$\vec{x}$是$A$的属于特征值$\lambda$的特征向量。
+\end{Def}
+
+\begin{Def}
+下述关于$\lambda$的$n$次多项式称为$n$次方阵$A$的特征多项式
+\begin{equation*}
+f_A(\lambda)=|\lambda I-A|
+=\begin{vmatrix}\lambda-a_{11}&-a_{12}&\cdots&-a_{n1}\\
+-a_{21}&\lambda-a_{22}&\cdots&-a_{2n}\\
+\cdots&\cdots&\cdots&\cdots\\
+-a_{n1}&-a_{n2}&\cdots&\lambda-a_{nn}\end{vmatrix}
+\end{equation*}
+\end{Def}
+
+\begin{thm}
+设$A=(a_{ij})_{n\times n}$为$n$阶方阵，又设$\lambda_1,\lambda_2,\cdots,\lambda_n$为$A$的全部（复）特征值，则
+\begin{enumerate}
+  \item $\sum_{i=1}^n\lambda_i=\sum_{i=1}^na_{ii}=trA$;
+  \item $|A|=\lambda_1\cdots\lambda_n=\Pi_{i=1}^n\lambda_i$
+\end{enumerate}
+\end{thm}
+
+\begin{cor}
+$n$阶方阵$A$不可逆$\Leftrightarrow$$|A|\neq 0$$\Leftrightarrow$$A$的特征值全不为零；
+\end{cor}
+
+\begin{cor}
+设$\lambda_0$为$A$的特征值，$\vec{x}_0$为对应的特征向量，则
+\begin{enumerate}
+  \item $k\lambda_0$为$kA$的特征值，$\vec{x}_0$为对应的特征向量；
+  \item $\lambda_0^k$为$A^k$的特征值，$\vec{x}_0$为对应的特征向量；
+  \item $g(\lambda_0)$为$g(A)$的特征值，$\vec{x}_0$为对应的特征向量；
+  \item 进一步，若$A$可逆，$\lambda^{-1}_0$为$A^{-1}$的特征值，$\vec{x}$为对应的特征向量，$\lambda_0|A|$为$A^{*}$的特征值，$\vec{x}$为对应的特征向量。
+\end{enumerate}
+\end{cor}
+
+\begin{Def}
+设$A$为$n$阶方阵，$\lambda$是$A$的一个特征值，则称
+$$V_{\lambda}:=\{\vec{x}\in\mathbb{R}^n|A\vec{x}=\lambda\vec{x}\}$$
+为$A$的关于特征值$\lambda$的特征子空间，其维数为特征值$\lambda$的几何重数。
+\end{Def}
+
+\begin{thm}
+属于$A$的不同特征值的特征向量是线性无关的。
+\end{thm}
+
+\begin{Def}
+设$A,B$是两个$n$阶方阵，如果存在一个$n$阶可逆矩阵$P$，使得$P^{-1}AP=B$，
+则称方阵$B$相似于方阵$A$，记作$A\sim B$.
+\end{Def}
+
+\begin{cor}
+相似矩阵的基本性质：
+\begin{enumerate}
+  \item 若$A\sim B$，$A_1\sim B_1$，则$kA\sim kB$，$A^m\sim B^m$，$A+A_1\sim B+B_1$，进而有$g(A)\sim g(B)$，对任意多项式$g(x)$成立。
+  \item 相似矩阵有相同的秩，即若$A\sim B$，则$r(A)=r(B)$；进而，相似的矩阵有
+  相同的可逆性，且若$A\sim B$，则$A^{-1}\sim B^{-1}$；
+  \item 相似矩阵有相同的特征多项式；
+  \item 相似矩阵具有相同的特征值；
+  \item 相似矩阵具有相同的行列式与迹；
+  \item 设$P^{-1}AP=B$，且$\lambda_0$为$A$的特征值，$\vec{x}$为相对应的特征向量，则$P^{-1}\vec{x}$为$B$的属于特征值$\lambda_0$的特征向量。
+\end{enumerate}
+\end{cor}
+
+\begin{thm}
+$n$阶方阵$A$的可对角化的充分必要条件是$A$有$n$个线性无关的特征向量。
+\end{thm}
+
+\begin{cor}
+若$n$阶方阵$A$有$n$个互异的特征值，则$A$可对角化。
+\end{cor}
+
+\begin{cor}
+若$n$阶方阵$A$可对角化，即存在可逆阵$P$与对角阵$\Lambda$，满足$P^{-1}AP=\Lambda$，则$\Lambda$对角线上的$n$个元即为$A$的$n$个特征值$\lambda_i(1\leq i\leq n)$；而可逆阵$P$的$n$个列向量$\vec{x}_i$即为属于
+$\lambda_i(1\leq i\leq n)$的特征向量。
+\end{cor}
+
+\begin{Def}
+设复数$z=a+bi,(a,b\in\mathbb{R}^n,i=\sqrt{-1})$，则$z$的复共轭运算记为$\bar{z}$，定义为：$\bar{z}:=a-bi$
+\end{Def}
+
+\begin{Def}
+若$A=(a_{ij})_{m\times n}$，其中$a_{ij}\in\mathbb{C}$，则称$A$为$m\times n$ 型的复矩阵，复矩阵的共轭定义为：$\bar{A}=(\bar{a}_{ij})_{m\times n}$.
+\end{Def}
+
+\begin{thm}
+设$A$是$n$阶实对称矩阵，则$A$的特征值都是实数。
+\end{thm}
+
+\begin{thm}
+实对称矩阵$A$的属于不同特征值的特征向量是正交的。
+\end{thm}
+
+\begin{cor}
+设$\lambda_i,\lambda_j$为实对称矩阵$A$的两个互异的特征值，则$V_{\lambda_i}\bot V_{\lambda_j}$。
+\end{cor}
+
+\begin{thm}
+对$n$阶实对称阵$A$，总存在正交阵$Q$，使得$Q^{-1}AQ=Q^TAQ$为对角阵。
+\end{thm}
+
+\begin{cor}
+$n$阶实对称阵必有$n$个线性无关的特征向量，且对$A$的全体互异的特征值
+$\lambda_1,\lambda_2,\cdots,\lambda_s$，
+有$\sum_{i=1}^s m_i=\sum_{i=1}^s dimV_{\lambda_i}=n$
+\end{cor}
+
+\begin{cor}
+$n$阶实对称阵有$n$个相互正交的单位特征向量。
+\end{cor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{例题讲解}
+\begin{eg}
+求$A=\begin{bmatrix}1&-2\\1&4\end{bmatrix}$的所有特征值和特征向量。
+\end{eg}
+解:设$A$的特征值是$\lambda$，属于特征值$\lambda$的特征向量为$\vec{x}$，则$A\vec{x}=\lambda\vec{x}$，即
+\begin{equation*}
+\begin{bmatrix}1&-2\\1&4\end{bmatrix}\begin{bmatrix}x_1\\x_2\end{bmatrix}=
+\lambda\begin{bmatrix}x_1\\x_2\end{bmatrix}
+\end{equation*}
+亦即
+\begin{equation*}
+\begin{cases}
+(\lambda-1)x_1+2x_2=0\\
+-x_1+(\lambda-4)x_2=0
+\end{cases}
+\end{equation*}
+这是两个未知数两个方程的其次线性方程组，按定义，特征向量是非零向量，于是要求
+上述齐次线性方程组有非零解，这等价于
+\begin{equation*}
+\begin{vmatrix}
+\lambda-1&2\\-1&\lambda-4
+\end{vmatrix}
+=(\lambda-1)(\lambda-4)+2=(\lambda-2)(\lambda-3)=0
+\end{equation*}
+解得$\lambda_1=2,\lambda_2=3$，这就是$A$的两个特征值。\\
+下面，分别求解属于特征值$\lambda_1=2$与$\lambda_2=3$的特征向量。\\
+对于特征值2，代入得到齐次线性方程组：
+$\begin{cases}x_1+2x_2=0\\-x_1-2x_2=0\end{cases}$
+解得属于2的特征向量是$\begin{bmatrix}x_1\\x_2\end{bmatrix}=k\begin{bmatrix}2\\-1\end{bmatrix}$，
+其中$k$是任意非零常数。\\
+对于特征值3，代入得到齐次线性方程组：
+$\begin{cases}2x_1+2x_2=0\\-x_1-x_2=0\end{cases}$
+解得属于3的特征向量是$\begin{bmatrix}x_1\\x_2\end{bmatrix}=k\begin{bmatrix}1\\-1\end{bmatrix}$，
+其中$k$是任意非零常数。
+
+\begin{eg}
+考虑对角阵$A=\begin{bmatrix}a_1&&&\\&a_2&&\\&&\ddots&\\&&&a_n\end{bmatrix}$，
+其中$a_1,a_2,\cdots,a_n$为互不相同的实数，求$A$的特征值与特征向量。
+\end{eg}
+解：计算$A$的特征多项式：$|\lambda I-A|=(\lambda-a_1)(\lambda-a_2)\cdots(\lambda-a_n)$，显然得到全部特征值为
+\begin{equation*}
+\lambda_1=a_1,\lambda_2=a_2,\cdots,\lambda_n=a_n.
+\end{equation*}
+对每一个特征值$\lambda_i=a_i$，计算属于它的特征向量满足的线性方程组
+$(a_iI-A)\vec{x}=\vec{0}$，即
+\begin{equation*}
+\begin{bmatrix}
+a_i-a_1&&&&\\
+&\ddots&&&\\
+&&0&&\\
+&&&\ddots&\\
+&&&&a_i-a_n
+\end{bmatrix}
+\vec{x}=\vec{0}
+\end{equation*}
+由于$a_i\neq a_j(i\neq j)$，故上述方程组的稀疏矩阵主对角线上只有一个位置为0，
+故它的基础解系为$\vec{x}_i=\vec{e}_i$
+故属于特征值$\lambda=a_i$的特征向量为$k_i\vec{e}_i(k_i\neq 0)$，对所有的$i=1,2,\cdots,n$.
+
+
+\begin{eg}
+设$A$是三阶方阵，它的特征值为1，2，-1，$B=A^3-5A^2$，求$|B|$.
+\end{eg}
+解:设$A\vec{x}=\lambda\vec{x},\vec{x}\neq\vec{0}$，则$$B\vec{x}=A^3\vec{x}-5A^2\vec{x}=(\lambda^3-5\lambda^2)\vec{x}$$
+取$\lambda=1,2,-1$，则$\lambda^3-5\lambda^2=-4,-12,-6$.
+所以$B$的特征值为-4,-12,-6.\\
+故$|B|=(-4)(-12)(-6)=-288$.
+
+\begin{eg}
+已知$n$阶方阵$A$的$n$个特征值为$\lambda_1,\cdots,\lambda_n$，求$2I-A$的特征值
+以及$det(2I-A)$。
+\end{eg}
+解:由题设知$|\lambda I-A|=\Pi_{i=1}^n(\lambda-\lambda_i)$。下考虑$2I-A$的特征多项式
+\begin{equation*}
+|\mu I-(2I-A)|=|(\mu -2)I + A|=\Pi_{i=1}^n(\mu-(2-\lambda_i))
+\end{equation*}
+所以$2I-A$的$n$个特征值为$2-\lambda_i,i=1,2,\cdots,n$，从而
+$$det(2I-A)=\Pi_{i=1}^n(2-\lambda_i)$$.
+
+\begin{eg}
+已知$A^2=A$，求矩阵$A$的特征值。
+\end{eg}
+解:设$\lambda$是$A$任意一个特征值，$\vec{x}$是$\lambda$所属的特征向量，则$A\vec{x}=\lambda\vec{x}$，所以$A^2\vec{x}=A(\lambda\vec{x})=\lambda A\vec{x}=\lambda^2\vec{x}$,
+利用已知条件$A^2=A$与上式，有
+$$\lambda\vec{x}=A\vec{x}=A^2\vec{x}=\lambda^2\vec{x}$$,
+所以$(\lambda^2-\lambda)\vec{x}=\vec{0}$，因为$\vec{x}$为特征向量，所以$\vec{x}\neq\vec{0}$，故
+$$\lambda^2=\lambda,\Rightarrow\lambda =0 \text{或}\lambda=1$$.
+
+\begin{eg}
+设$A=\begin{bmatrix}0.95&0.15\\0.05&0.85\end{bmatrix},
+\Lambda=\begin{bmatrix}1&0\\0&0.8\end{bmatrix},
+P=\begin{bmatrix}3&-1\\1&1\end{bmatrix}.$
+验证$P^{-1}AP=\Lambda$，并且求$A^k$($k$为正整数)。
+\end{eg}
+解：由于
+\begin{equation*}
+AP=\begin{bmatrix}0.95&0.15\\0.05&0.85\end{bmatrix}
+\begin{bmatrix}3&-1\\1&1\end{bmatrix}=
+\begin{bmatrix}3&-0.8\\1&0.8\end{bmatrix}=
+\begin{bmatrix}3&-1\\1&1\end{bmatrix}
+\begin{bmatrix}1&0\\0&0.8\end{bmatrix}
+=P\Lambda
+\end{equation*}
+\begin{equation*}
+A^k=(P\Lambda P^{-1})^k=P\Lambda^kP^{-1}=\frac{1}{4}
+\begin{bmatrix}3+0.8^k&3-3\cdot0.8^k\\1-0.8^k&1+3\cdot0.8^k\end{bmatrix}
+\end{equation*}
+
+\begin{eg}
+判断下列矩阵能否对角化，如能对角化，求出可逆阵$P$与对角阵$\Lambda$，使得
+$P^{-1}AP=\Lambda$.\\
+(1)$A=\begin{bmatrix}2&1&1\\1&2&1\\1&1&2\end{bmatrix}$；
+(2)$A=\begin{bmatrix}2&2&-1\\-1&0&1\\-1&0&2\end{bmatrix}$。
+\end{eg}
+解：(1)先求$A$的特征值，特征多项式为
+\begin{equation*}
+f_A(\lambda)=
+\begin{vmatrix}\lambda-2&-1&-1\\-1&\lambda-2&-1\\-1&-1&\lambda-2\end{vmatrix}
+=(\lambda-1)^2(\lambda-1)
+\end{equation*}
+所以得到$A$的特征值为：$\lambda-1=1$（重数为2）；$\lambda-2=4$。
+再求$A$的特征向量。\\
+对于$\lambda_1=1$，解齐次线性方程组$(\lambda_1 I-A)\vec{x}=\vec{0}$，
+得到属于特征值$\lambda_1=1$的两个线性无关的特征向量为$\vec{x}_{11}=(-1,1,0)^T,\vec{x}_{12}=(-1,0,1)^T$.\\
+对于$\lambda_2=4$，解齐次线性方程组$(\lambda_2 I-A)\vec{x}=\vec{0}$，
+得到属于特征值$\lambda_2=4$的一个线性无关的特征向量为$\vec{x}_{21}=(1,1,1)^T$.\\
+因此，$A$存在3个线性无关的特征向量$\vec{x}_{11},\vec{x}_{12},\vec{x}_{21}$，
+故$A$可对角化，且
+\begin{equation*}
+P=(\vec{x}_{11},\vec{x}_{12},\vec{x}_{21})=\begin{bmatrix}-1&-1&1\\1&0&1\\0&1&1
+\end{bmatrix}
+\end{equation*}
+\begin{equation*}
+\Lambda=P^{-1}AP=\begin{bmatrix}1&0&0\\0&1&0\\0&0&4\end{bmatrix}
+\end{equation*}
+(2)先求$A$的特征值，特征多项式为
+\begin{equation*}
+f_A(\lambda)=
+\begin{vmatrix}\lambda-2&-2&1\\1&\lambda&-1\\1&0&\lambda-2\end{vmatrix}
+=(\lambda-1)^2(\lambda-2)
+\end{equation*}
+所以得到$A$的特征值为：$\lambda_1=1$（重数为2）；$\lambda_2=2$。
+再求$A$的特征向量。\\
+对于$\lambda_1=1$，解齐次线性方程组$(\lambda_1 I-A)\vec{x}=\vec{0}$，
+得到属于特征值$\lambda_1=1$的一个线性无关的特征向量为$\vec{x}_{11}=(1,0,1)^T$.\\
+对于$\lambda_2=2$，解齐次线性方程组$(\lambda_2 I-A)\vec{x}=\vec{0}$，
+得到属于特征值$\lambda_2=2$的一个线性无关的特征向量为$\vec{x}_{21}=(0,1,2)^T$.\\
+因此，$A$只存在2个线性无关的特征向量$\vec{x}_{11},\vec{x}_{21}$，因此$A$不可对角化。
+
+\begin{eg}
+(1)若$A$为$n$阶方阵，且$A$可对角化，则$A^k$($k$为正整数)，$g(A)$($g$为实系数多项式)均可以对角化。\\
+(2)若$A$可逆，则$A^{-1},A^{*}$也可以对角化。
+\end{eg}
+证明：(1)由于$A$可对角化，则存在可逆阵$P$与对角阵$\Lambda$，使得
+$$P^{-1}AP=\Lambda=diag(\lambda_1,\lambda_2,\cdots,\lambda_n)$$，
+故$A^k=Pdiag(\lambda_1^k,\lambda_2^k,\cdots,\lambda_n^k)P^{-1}$ $\Rightarrow$ $A^k$可对角化。
+再由矩阵乘法的分配律有：
+$$g(A) = P diag(g(\lambda_1),g(\lambda_2),\cdots,g(\lambda_n)) P^{-1}$$
+$\Rightarrow$ $g(A)$可对角化。\\
+(2)若$A$可逆，则$\lambda_i$均不为0，两边求逆可得：
+$$P^{-1}A^{-1}P=diag(\lambda_1^{-1},\lambda_2^{-1},\cdots,\lambda_n^{-1})$$，
+故$A^{-1}$可对角化。\\
+由$A^*=|A|A^{-1}$得：
+$$P^{-1}A^{*}P=|A|diag(\lambda_1^{-1},\lambda_2^{-1},\cdots,\lambda_n^{-1})$$，
+故$A^*$可对角化。
+
+\begin{eg}
+设$A$为$n$阶方阵，满足$A^2=I$，证明：$A$可对角化。
+\end{eg}
+证明：设$\lambda$是$A$的任一特征值，$\vec{x}$是$\lambda$所属的特征向量，则
+$$A^2\vec{x}=\lambda^2\vec{x},\Rightarrow(\lambda^2-1)\vec{x}=\vec{0}
+(\vec{x}\neq\vec{0}),\Rightarrow\lambda=\pm 1$$
+设$\lambda_1=1,\lambda_2=-1$，且$m_1,m_2$为对应的几何重数，则
+$$m_1+m_2=(n-r(A-I))+(n-r(A+I))=2n-[r(I-A)+r(I+A)]$$，
+由矩阵秩的相关结论知
+$$n=r(2I)=r[(I-A)+(I+A)]\leq r(I-A)+r(I+A)\leq n$$
+其中第二个小于等于号是因为$(I-A)(I+A)=O$。故
+$$r(A-I)+r(A+I)=n,\Rightarrow m_1+m_2=n$$
+从而$A$可对角化。
+
+\begin{eg}
+设$A=\begin{bmatrix}0&1&1&-1\\1&0&-1&1\\1&-1&0&1\\-1&1&1&0\end{bmatrix}$，将其对角化。
+\end{eg}
+解：首先求特征值与代数重数
+\begin{equation*}
+|\lambda I-A|=\begin{vmatrix}\lambda&-1&-1&1\\-1&\lambda&1&-1\\
+-1&1&\lambda&-1\\1&-1&-1&\lambda\end{vmatrix}=(\lambda-1)^2(\lambda+3)
+\end{equation*}
+得到$\lambda_1=1,n_1=3,\lambda_2=-3,n_2=1$.\\
+其次，对特征值$\lambda_1=1$，解齐次线性方程组$(\lambda_1 I-A)\vec{x}=\vec{0}$，
+求特征向量$\vec{x}_{11}=(1,1,0,0)^T,\vec{x}_{12}=(1,0,1,0)^T,\vec{x}_{13}=(-1,0,0,1)^T$;\\
+再次，对特征值$\lambda_2=-3$，解齐次线性方程组$(\lambda_2 I-A)\vec{x}=\vec{0}$，
+求特征向量$\vec{x}_{21}=(1,-1,-1,1)^T$;\\
+于是，令$P=\begin{bmatrix}1&1&-1&1\\1&0&0&-1\\0&1&0&-1\\0&0&1&1\end{bmatrix}$
+从而$\Lambda=P^{-1}AP=
+\begin{bmatrix}1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&-3\end{bmatrix}$
+
+\begin{eg}
+已知$A$为3阶实对称矩阵，其特征值为1,1,2，且属于2的特征向量是$(1,0,1)^T$，求$A$.
+\end{eg}
+解：$A$是3阶实对称矩阵，正交相似于对角阵$\Lambda=diag(1,1,2)$，属于特征值1的特征向量与属于特征值2的特征向量$(1,0,1)^T$正交，这等价于求解齐次线性方程组：
+$$x_1+x_3=0$$
+求解得到属于1的特征向量为：$(0,1,0)^T,(1,0,-1)^T$，且彼此正交，故得到相应的
+正交矩阵为
+$$Q=\begin{bmatrix}0&\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\\1&0&0\\
+0&-\frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\end{bmatrix}$$
+故
+$$A=Q\Lambda Q^T=\begin{bmatrix}\frac{3}{2}&0&\frac{1}{2}\\0&1&0\\
+\frac{1}{2}&0&\frac{3}{2}\end{bmatrix}$$
+
+\begin{eg}
+经过统计，某地区猫头鹰和森林鼠的数量有如下的规律：每个月只有一半的猫头鹰可以存活；森林鼠的数量每个月会增加$10\%$。如果森林鼠充足（数量为$Q$），则下个月猫头鹰的数量将会增加$0.4Q$。平均每个月每只猫头鹰的捕食会导致104森林鼠死亡，试确定该系统的长期演变情况。
+\end{eg}
+解：设猫头鹰和森林鼠在时刻$k$的数量为$\vec{x}=\begin{bmatrix}P_k\\Q_k\end{bmatrix}$，其中$k$是以月份为单位的时间，$P_k$为研究区域中猫头鹰的数量（只），$Q_k$为研究区域中森林鼠的数量（千只），则
+\begin{equation*}
+\begin{cases}
+P_{k+1}=0.5P_{k}+0.4Q_k\\
+Q_{k+1}=-0.104P_k+1.1Q_k
+\end{cases}
+\Rightarrow
+\begin{bmatrix}P_{k+1}\\Q_{k+1}\end{bmatrix}=
+\begin{bmatrix}0.5&0.4\\-0.104&1.1\end{bmatrix}
+\begin{bmatrix}P_k\\Q_k\end{bmatrix}
+\end{equation*}
+令$A=\begin{bmatrix}0.5&0.4\\-0.104&1.1\end{bmatrix}$，经过计算得，矩阵$A$的两个特征值为$\lambda_1=1.02,\lambda_2=0.58$，对应的特征向量分别为：
+$\vec{x}_1=(10,13)^T,\vec{x}_2=(5,1)^T$,设初始向量$\vec{x}_0$可以表示为：
+$\vec{x}_0=c_1\vec{x}_1+c_2\vec{x}_2$，于是对于$k\geq0$，有：
+\begin{align*}
+\vec{x}_k=&A^k(c_1\vec{x}_1+c_2\vec{x}_2)=c_1\lambda_1^k\vec{x}_1+c_2\lambda_2^k\vec{x}_2\\
+=&c_1(1.02)^k\begin{bmatrix}10\\13\end{bmatrix}+c_2(0.58)^k\begin{bmatrix}5\\1\end{bmatrix}
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{课后习题}
+
+\begin{ex}\label{7.1}
+求下列矩阵的特征值与特征向量。\\
+(1)$\begin{bmatrix}1&2\\0&3\end{bmatrix}$；
+(2)$\begin{bmatrix}1&3\\2&2\end{bmatrix}$；
+(3)$\begin{bmatrix}1&1&1\\0&2&1\\0&0&3\end{bmatrix}$；\\
+(4)$\begin{bmatrix}1&2&3\\2&1&3\\3&3&6\end{bmatrix}$；
+(5)$\begin{bmatrix}1&-\sqrt{3}\\ \sqrt{3}&1\end{bmatrix}$；
+\end{ex}
+
+\begin{ex}\label{7.2}
+已知$A=\begin{bmatrix}a&1&b\\0&c&0\\-4&c&1-a\end{bmatrix}$ 有一个特征值是1. 对应的特征向量是$\vec{\alpha}=(1,1,1)^T$，求$a,b,c$的值。
+\end{ex}
+
+\begin{ex}\label{7.3}
+已知$A=\begin{bmatrix}1&1&2\\5&a&0\\1&b&2\end{bmatrix}$ 有一个特征向量是$\vec{\alpha}=(1,1,-1)^T$，求$a,b$的值以及$\vec{\alpha}$对应的特征值。
+\end{ex}
+
+\begin{ex}\label{7.4}
+设三阶方阵$A$的特征值分别为$\lambda_1=-1,\lambda_2=1,\lambda_3=3$，对应的特征向量依次是:
+\begin{equation*}
+\vec{\alpha}_1=\begin{bmatrix}1\\0\\-1\end{bmatrix},
+\vec{\alpha}_2=\begin{bmatrix}1\\2\\1\end{bmatrix},
+\vec{\alpha}_3=\begin{bmatrix}0\\1\\-1\end{bmatrix},
+\end{equation*}
+求矩阵$A$。
+\end{ex}
+
+\begin{ex}\label{7.5}
+求$\begin{bmatrix}2&1&1\\0&3&1\\0&0&5\end{bmatrix}^{n}$。
+\end{ex}
+
+\begin{ex}\label{7.6}
+假设$\lambda_1$和$\lambda_2$是矩阵$A$ 的特征值，且$\lambda_1\neq\lambda_2$，
+$\vec{\xi}_1$和$\vec{\xi}_2$分别是$\lambda_1$ 以及$\lambda_2$所对应的特征向量。\\
+(1)证明$\vec{\xi}_1,\vec{\xi}_2$ 线性无关。\\
+(2)证明$\vec{\xi}_1-\vec{\xi}_2$ 不是$A$ 的特征向量。
+\end{ex}
+
+\begin{ex}\label{7.7}
+设$f(x)=a_0+a_1x+\cdots+a_nx^n$，$A$是$n$ 阶方阵且$f(A)=0$，若$A$没有零特征值，
+证明$a_0\neq0$。
+\end{ex}
+
+\begin{ex}\label{7.8}
+设$E$是$n$阶单位矩阵，如果$n$ 阶矩阵$A$ 满足$|A+E|=|A-2E|=|4E-A|=0$，求$|A^3-5A^2|$ 的值。
+\end{ex}
+
+\begin{ex}\label{7.9}
+已知3阶矩阵$A$的特征值为$1,2,-1$，求$|A^*+3A|$的值。
+\end{ex}
+
+\begin{ex}\label{7.10}
+已知$A$是三阶实矩阵，$tr(A)=5$且$|A|=4$，设$A$的特征值为$\lambda_1,\lambda_2,\lambda_2$，
+且$\lambda_1=2$，求$\lambda_2,\lambda_2$ 的值。
+\end{ex}
+
+\begin{ex}\label{7.11}
+已知$A$是$n$阶方阵，假设$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$ 是$A$ 的三个属于
+不同特征值$\lambda_1,\lambda_2,\lambda_3$ 的特征向量，
+令$\vec{\beta}=\vec{\alpha}_1+\vec{\alpha}_2+\vec{\alpha}_3$，证明$\vec{\beta},A\vec{\beta},A^2\vec{\beta}$ 线性无关。
+\end{ex}
+
+\begin{ex}\label{7.12}
+已知矩阵$A=\begin{bmatrix}2&0&0\\0&1&-1\\0&-1&1\end{bmatrix}$，求$A$ 的每个特征子空间的一组基。
+\end{ex}
+
+\begin{ex}\label{7.13}
+判断$A=\begin{bmatrix}1&1&0\\0&2&1\\0&0&5\end{bmatrix}$
+与$B=\begin{bmatrix}1&0&0\\0&2&0\\0&0&5\end{bmatrix}$ 是否相似，并说明理由。
+\end{ex}
+
+\begin{ex}\label{7.14}
+设$A\sim B$，其中
+\begin{equation*}
+A=\begin{bmatrix}1&-1&1\\x&4&-2\\-3&-3&5\end{bmatrix},
+B=\begin{bmatrix}3&\sqrt{2}&1\\ \sqrt{2}&4&\sqrt{2}\\1&\sqrt{2}&y\end{bmatrix},
+\end{equation*}
+求$x$和$y$的值。
+\end{ex}
+
+\begin{ex}\label{7.15}
+设$A$和$B$都是$n$阶实矩阵，且$B$可逆，证明$AB$和$BA$是相似的。
+\end{ex}
+
+\begin{ex}\label{7.16}
+设
+\begin{equation*}
+  A=\begin{bmatrix}1&2&-2\\0&0&0\\0&0&0\end{bmatrix}
+\end{equation*}
+试问$A$能否对角化？如果可以对角化，求出使$A$ 相似于对角矩阵的相似变换矩阵$P$，同时写出这个对角阵。
+\end{ex}
+
+\begin{ex}\label{7.17}
+设$\vec{\alpha}=(a_1,a_2,\cdots,a_n)^T$，$\vec{\beta}=(b_1,b_2,\cdots,b_n)^T$且$\vec{\alpha}^T\vec{\beta}=1$，
+$E$是$n$阶单位矩阵，令$A=E+\vec{\alpha}\vec{\beta}^T$。\\
+(1)求$A$的特征值和特征向量。\\
+(2)讨论$A$是否可以对角化；若可以，求可逆阵$P$ 以及对角阵$\Lambda$，使$P^{-1}AP=\Lambda$。若不行，说明理由。
+\end{ex}
+
+\begin{ex}\label{7.18}
+设$A=\begin{bmatrix}3&-1&1\\0&x&y\\0&z&w\end{bmatrix}$，已知$A$有3线性无关的特征向量，
+$\lambda=1$是$A$的二重特征值。\\
+(1)求$x,y,z,w$的值。\\
+(2)将$A$对角化，求可逆阵$P$以及对角阵$\Lambda$，使$P^{-1}AP=\Lambda$。
+\end{ex}
+
+\begin{ex}\label{7.19}
+已知二阶实矩阵$A=\begin{bmatrix}a&c\\b&d\end{bmatrix}$，若$bc>0$，证明$A$可以对角化。
+\end{ex}
+
+\begin{ex}\label{7.20}
+判断$A=\begin{bmatrix}1&-3&3\\3&-5&3\\6&-6&4\end{bmatrix}$ 与
+是否可以对角化，若可以，请求出可逆阵$P$ 以及对角阵$\Lambda$，若不可以，请说明理由。
+\end{ex}
+
+\begin{ex}\label{7.21}
+已知$A$是实对称矩阵，满足$A^2+3A=O$ 且$r(A)=2$，其中$O$表示零矩阵，求$A$的全部特征值。
+\end{ex}
+
+\begin{ex}\label{7.22}
+设$A$是3阶实对称矩阵，其特征值为$\lambda_1=1,\lambda_2=2,\lambda_3=-3$，$\vec{\alpha}_1=(1,1,1)^T$是
+$A$属于$\lambda_2$的一个特征向量，记$B=A^2+2A$，求$A$的所有特征值以及特征向量。
+\end{ex}
+
+\begin{ex}\label{7.23}
+已知实对称矩阵$A=\begin{bmatrix}1&-2&0\\-2&2&-2\\0&-2&3\end{bmatrix}$，将其正交对角化。
+\end{ex}
+
+\begin{ex}\label{7.24}
+已知实对称矩阵$A=\begin{bmatrix}1&-2&2\\-2&-2&4\\2&4&-2\end{bmatrix}$，将其正交对角化。
+\end{ex}
+
+\begin{ex}\label{7.25}
+设$A$是3阶实矩阵，且$A$有3个正交的特征向量，证明$A$是对称矩阵。
+\end{ex}
+
+\begin{ex}\label{7.26}
+设$A$是$n$阶实对称矩阵，$\lambda_1,\lambda_2,\cdots,\lambda_n$ 是$A$ 的特征值，
+相应的标准正交特征向量为$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$，证明
+\begin{equation*}
+  A = \lambda_1\vec{\alpha}_1\vec{\alpha}_1^T+\cdots+\lambda_n\vec{\alpha}_n\vec{\alpha}_n^T
+\end{equation*}
+\end{ex}
+
+\begin{ex}\label{7.27}
+设$A$是$n$阶实对称矩阵，且存在正整数$k$，使得$A^{k}=O$，其中$O$是$n$ 阶零矩阵，则$A=O$。
+\end{ex}
+
+\begin{ex}\label{7.28}
+在某省，每年有比例$p$的农村居民移居城镇，有比例为$q$的城镇居民移居到农村，假设该省的人口总数不变，
+且上述人口迁移的规律不变，将$n$ 年后农村人口和城镇人口占总人口的比例分别记为$x_n$ 和$y_n$ （$x_n+y_n=1$）。\\
+(1)求关系式$\begin{bmatrix}x_{n+1}\\y_{n+1}\end{bmatrix}=A\begin{bmatrix}x_n\\y_n\end{bmatrix}$ 中的矩阵$A$；\\
+(2)设目前农村人口和城镇人口相等，即$\begin{bmatrix}x_0\\y_0\end{bmatrix}=\begin{bmatrix}0.5\\0.5\end{bmatrix}$，
+求$\begin{bmatrix}x_{n}\\y_{n}\end{bmatrix}$。
+\end{ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{习题答案}
+
+\textbf{习题 \ref{7.1} 解答:}\\
+(1)考虑$A$的特征多项式：
+\begin{align*}
+  |A-\lambda E|&=\begin{vmatrix}1-\lambda&2\\0&3-\lambda\end{vmatrix}\\
+   & =(1-\lambda)(3-\lambda)
+\end{align*}
+因此$A$的特征值为$\lambda_1=1,\lambda_2=3$。 对于特征值$\lambda_1=1$，解方程组$(A-E)\vec{x}_1=\vec{0}$，
+得到特征向量$\vec{x}_1=k(1,0)^T$。同理，对于特征值$\lambda_2=3$，解方程组$(A-3E)\vec{x}_2=\vec{0}$，
+得到特征向量$\vec{x}_2=k(1,-1)^T$。\\
+(2)特征值为：$\lambda_1=-1,\lambda_2=4$；\\
+对应的特征向量为：$\vec{x}_1=k(-\frac{3}{2},1)^T,\vec{x}_2=k(1,1)^T$。\\
+(3)特征值为：$\lambda_1=1,\lambda_2=2,\lambda_3=3$；\\
+对应的特征向量为：$\vec{x}_1=k(1,0,0)^T,\vec{x}_2=k(1,1,0)^T,\vec{x}_3=k(1,1,1)^T$。\\
+(4)特征值为：$\lambda_1=-1,\lambda_2=0,\lambda_3=9$；\\
+对应的特征向量为：$\vec{x}_1=k(-1,1,0)^T,\vec{x}_2=k(-1,-1,0)^T,\vec{x}_3=k(1,1,2)^T$。\\
+(5)特征值为：$\lambda_1=1+\sqrt{3}i,\lambda_2=1-\sqrt{3}i$；\\
+对应的特征向量为：$\vec{x}_1=k(i,1)^T,\vec{x}_2=k(-i,1)^T$。\\
+\textbf{习题 \ref{7.2} 解答:}\\
+根据题目，有
+\begin{equation*}
+  \begin{bmatrix}a&1&b\\0&c&0\\-4&c&1-a\end{bmatrix}
+  \begin{bmatrix}1\\1\\1\end{bmatrix}=
+  \begin{bmatrix}1\\1\\1\end{bmatrix}
+\end{equation*}
+解得：
+\begin{equation*}
+  \begin{cases}
+  a = -3\\
+  b = 4\\
+  c = 1
+  \end{cases}
+\end{equation*}
+\textbf{习题 \ref{7.3} 解答:}\\
+设$\vec{\alpha}$所对应的特征值为$\lambda$，则$A\vec{\alpha}=\lambda\vec{\alpha}$。
+得到：
+\begin{equation*}
+  \begin{cases}
+  0 = \lambda\\
+  5+a = \lambda\\
+  1+b-2= -\lambda
+  \end{cases}
+\end{equation*}
+解得
+\begin{equation*}
+  \begin{cases}
+  \lambda=0\\
+  a = -5\\
+  b = 1
+  \end{cases}
+\end{equation*}
+\textbf{习题 \ref{7.4} 解答:}\\
+由于$A\vec{\alpha}_1=\lambda_1\vec{\alpha}_1$，$A\vec{\alpha}_2=\lambda_2\vec{\alpha}_2$，
+$A\vec{\alpha}_3=\lambda_3\vec{\alpha}_3$ 可得
+\begin{equation*}
+A(\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3)
+=(A\vec{\alpha}_1,A\vec{\alpha}_2,A\vec{\alpha}_3)
+=(\lambda_1\vec{\alpha}_1,\lambda_2\vec{\alpha}_2,\lambda_3\vec{\alpha}_3)
+\end{equation*}
+令$P=(\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3)$，则有
+\begin{equation*}
+AP=P\begin{bmatrix}\lambda_1&0&0\\0&\lambda_2&0\\0&0&\lambda_3\end{bmatrix}
+\end{equation*}
+由于$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$ 线性无关，$P$可逆，所以
+\begin{align*}
+A=&P\begin{bmatrix}\lambda_1&0&0\\0&\lambda_2&0\\0&0&\lambda_3\end{bmatrix}P^{-1}\\
+ =&\begin{bmatrix}1&1&0\\0&2&1\\-1&1&-1\end{bmatrix}
+   \begin{bmatrix}-1&0&0\\0&1&0\\0&0&3\end{bmatrix}
+   \begin{bmatrix}1&1&0\\0&2&1\\-1&1&-1\end{bmatrix}^{-1}\\
+  =&\begin{bmatrix}-\frac{1}{2}&\frac{1}{2}&\frac{1}{2}\\
+     -1&2&-1\\ \frac{5}{2}&-\frac{3}{2}&\frac{3}{2}\end{bmatrix}
+\end{align*}
+\textbf{习题 \ref{7.5} 解答:}\\
+设$A=\begin{bmatrix}2&-1&2\\0&3&1\\0&0&5\end{bmatrix}$，
+则$A$的特征值为$2$，$3$，$5$，对应的特征向量为$k(1,0,0)^T$，
+$k(-1,1,0)^T$，$k(1,1,2)^T$，
+那么令$P=\begin{bmatrix}1&-1&1\\0&1&1\\0&0&2\end{bmatrix}$，则有
+\begin{equation*}
+A=P\begin{bmatrix}2&0&0\\0&3&0\\0&0&5\end{bmatrix}P^{-1}
+\end{equation*}
+因此
+\begin{equation*}
+A^{n}=P\begin{bmatrix}2^{n}&0&0\\0&3^{n}&0\\0&0&5^{n}\end{bmatrix}P^{-1}
+=\begin{bmatrix}2^{n}&2^n-3^n&\frac{1}{2}(3^n+5^n-2^{n+1})\\0&3^n&\frac{1}{2}(5^n-3^n)\\0&0&5^n\end{bmatrix}
+\end{equation*}
+\textbf{习题 \ref{7.6} 解答:}\\
+(1)假设$\xi_1$和$\xi_2$是线性相关的，即存在不为零的常数$k$，使得$\xi_1=k\xi_2$。
+由于$A\xi_2=\lambda_2\xi$，那么
+\begin{equation*}
+  A\xi_1=A(k\xi_2)=kA\xi_2=k\lambda_2\xi_2
+\end{equation*}
+又由于$A\xi_1=\lambda_1\xi_1$，那么$k\lambda_2\xi_2=\lambda_1\xi_1=k\lambda_1\xi_2$，
+又$k\neq0$，故$\lambda_2=\lambda_1$。 这与$\lambda_1\neq\lambda_2$矛盾，
+故$\xi_1$和$\xi_2$线性无关。\\
+(2)假设$\xi_1-\xi_2$是$A$的特征值，即存在$\lambda_0$，使得：
+\begin{equation*}
+  A(\xi_1-\xi_2)=\lambda_0(\xi_1-\xi_2)
+\end{equation*}
+由于$A\xi_1=\lambda_1\xi_1$以及$A\xi_2=\lambda_2\xi$，因此：
+\begin{equation*}
+  \lambda_1\xi_1-\lambda_2\xi_2=\lambda_0(\xi_1-\xi_2)
+\end{equation*}
+即$(\lambda_1-\lambda_0)\xi_1-(\lambda_2-\lambda_0)\xi_2=0$。 由(1)可知，
+$\xi_1$和$\xi_2$是线性无关的，故
+$\lambda_1-\lambda_0=\lambda_2-\lambda_0=0$
+这与$\lambda_1\neq\lambda_2$矛盾。
+故$\xi_1-\xi_2$不是$A$的特征值。\\
+\textbf{习题 \ref{7.7} 解答:}\\
+设$\lambda$是$A$的特征值，由于$f(A)=0$，那么$f(\lambda)=0$，即$\lambda$ 是$f(x)=0$ 的根，
+ 又由于$\lambda\neq0$，那么$a_0\neq0$。\\
+\textbf{习题 \ref{7.8} 解答:}\\
+通过题目可知，$A$的特征值为$-1,2,4$；因此
+$A^3-5A^2$的特征值为$-6,-12,-16$，故$|A^3-5A^2|=-1152$。\\
+\textbf{习题 \ref{7.9} 解答:}\\
+由于$|A|=1\times2\times2=-2$，因此$A$ 可逆。故$|A^*|=|A|A^{-1}=-2A^{-1}$，即
+\begin{equation*}
+  A^*+3A=-2A^{-1}+3A
+\end{equation*}
+令$\varphi(x)=-\frac{2}{x}+3x$，则$\varphi(1)=1$，$\varphi(2)=5$，$\varphi(-1)=-1$。故
+\begin{equation*}
+  |A^*+3A|=|-2A^{-1}+3A|=\varphi(1)\times\varphi(2)\times\varphi(-1)=-5
+\end{equation*}
+\textbf{习题 \ref{7.10} 解答:}\\
+由题意可知：
+\begin{equation*}
+  \begin{cases}
+  \lambda_2+\lambda_3=5-\lambda_1=3\\
+  \lambda_2\lambda_3=\frac{4}{\lambda_1}=2\\
+  \end{cases}
+\end{equation*}
+解得
+\begin{equation*}
+  \begin{cases}
+  \lambda_2=1\\
+  \lambda_3=2
+  \end{cases},
+  \text{或者}
+    \begin{cases}
+  \lambda_2=2\\
+  \lambda_3=1
+  \end{cases},
+\end{equation*}
+\textbf{习题 \ref{7.11} 解答:}\\
+假设存在常数$k_1,k_2,k_3$，使得
+\begin{equation*}
+  k_1\vec{\beta}+k_2A\vec{\beta}+k_3A^2\vec{\beta}=0
+\end{equation*}
+由于$\vec{\beta}=\vec{\alpha}_1+\vec{\alpha}_2+\vec{\alpha}_3$，即
+\begin{equation*}
+  k_1(\vec{\alpha}_1+\vec{\alpha}_2+\vec{\alpha}_3)+
+  k_2A(\vec{\alpha}_1+\vec{\alpha}_2+\vec{\alpha}_3)+
+  k_3A^2(\vec{\alpha}_1+\vec{\alpha}_2+\vec{\alpha}_3)=0
+\end{equation*}
+又由于$A\vec{\alpha}_1=\lambda_1\vec{\alpha}_1,A\vec{\alpha}_2=\lambda_2\vec{\alpha}_2,A\vec{\alpha}_3=\lambda_3\vec{\alpha}_3$，化简得到
+\begin{equation*}
+  (k_1+k_2\lambda_1+k_3\lambda_1^2)\vec{\alpha}_1+
+  (k_1+k_2\lambda_2+k_3\lambda_2^2)\vec{\alpha}_2+
+  (k_1+k_2\lambda_3+k_3\lambda_3^2)\vec{\alpha}_3)=0
+\end{equation*}
+由于$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$ 线性无关，故
+\begin{equation}\label{aa}
+\begin{cases}
+  k_1+k_2\lambda_1+k_3\lambda_1^2=0\\
+  k_1+k_2\lambda_2+k_3\lambda_2^2=0\\
+  k_1+k_2\lambda_3+k_3\lambda_3^2=0
+\end{cases}
+\end{equation}
+将\eqref{aa}可以看做是关于$k_1,k_2,k_3$ 的方程组，则系数矩阵的行列式是一个三阶的范德蒙行列式，
+且因为$\lambda_1,\lambda_2,\lambda_3$ 是互不相等，从而
+\begin{equation*}
+\begin{vmatrix}
+  1&\lambda_1&\lambda_1^2\\
+  1&\lambda_2&\lambda_2^2\\
+  1&\lambda_3&\lambda_3^2
+\end{vmatrix}=(\lambda_1-\lambda_2)(\lambda_2-\lambda_3)(\lambda_3-\lambda_1)\neq0
+\end{equation*}
+因此$k_1=k_2=k_3=0$，故$\vec{\beta},A\vec{\beta},A^2\vec{\beta}$ 线性无关。\\
+\textbf{习题 \ref{7.12} 解答:}\\
+\begin{align*}
+  |A-\lambda E|&=\begin{vmatrix}2-\lambda&0&0\\0&1-\lambda&-1\\0&-1&1-\lambda\end{vmatrix}\\
+   & =(2-\lambda)[(1-\lambda)^2-1]=(2-\lambda)^2\lambda
+\end{align*}
+因此$A$的特征值为$\lambda_1=0,\lambda_2=2(\text{二重})$。 首先，考虑$A\vec{x}=\vec{0}$，
+得到$\lambda_1$的特征子空间的基为$(0,1,1)^T$；考虑$(A-2E)\vec{x}=\vec{0}$，得到$\lambda_2$ 的
+特征子空间的基为$(1,0,0)^T,(0,1,-1)^T$。\\
+\textbf{习题 \ref{7.13} 解答:}\\
+因为$|A-\lambda E|=(1-\lambda)(2-\lambda)(5-\lambda)$，故$A$ 有3个不同的特征值，从而有3 个不同的特征向量，故$A$
+可以对角化，即存在可逆矩阵$P$，使得:
+\begin{equation*}
+P^{-1}AP=\begin{bmatrix}
+  1&0&0\\
+  0&2&0\\
+  0&0&5
+\end{bmatrix}=B
+\end{equation*}
+因此$A\sim B$。\\
+\textbf{习题 \ref{7.14} 解答:}\\
+由于$A\sim B$，故$tr(A)=tr(B)$，即$1+4+5=3+4+y$，因此$y=3$。
+于是
+\begin{equation*}
+|B-\lambda E|=\begin{vmatrix}3-\lambda&\sqrt{2}&1\\ \sqrt{2}&4-\lambda&\sqrt{2}\\1&\sqrt{2}&3-\lambda\end{vmatrix}
+=(6-\lambda)(2-\lambda)^2.
+\end{equation*}
+因此，$B$的特征值为$\lambda_1=2(\text{二重})$ 以及$\lambda_2=6$。\\
+由于$A\sim B$，故$A$的特征值为$\lambda_1=2(\text{二重})$以及$\lambda_2=6$。
+\begin{equation*}
+  |A-6E|=\begin{vmatrix}-5&-1&1\\x&-2&-2\\-3&-3&-1\end{vmatrix}=8-4x
+\end{equation*}
+故$x=2$。\\
+\textbf{习题 \ref{7.15} 解答:}\\
+取$P=B$，则$P^{-1}BAP=AB$，因此$AB$与$BA$是相似的。\\
+\textbf{习题 \ref{7.16} 解答:}\\
+由$|A-\lambda E|=0$解得特征值$\lambda_1=\lambda_2=0$，$\lambda_3=1$。下面求对应于特征值的特征向量：
+当$\lambda_1=\lambda_2=0$时，由方程组$A-\lambda E)\vec{x}=\vec{0}$得到对应的两个线性无关的特征向量：
+\begin{equation}
+  \vec{\alpha}_1=(0,1,1)^T;\vec{\alpha}_2=(-2,1,0)^T.
+\end{equation}
+当$\lambda_3=1$时，由方程组$A-\lambda E)\vec{x}=\vec{0}$得到对应的两个线性无关的特征向量：
+\begin{equation}
+  \vec{\alpha}_3=(1,0,0)^T.
+\end{equation}
+显然$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$ 线性无关，故$A$可对角化。令矩阵：
+\begin{equation*}
+ P=(\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3)=\begin{bmatrix}0&-2&1\\1&1&0\\1&0&0\end{bmatrix}
+\end{equation*}
+则$P$为所求相似变换矩阵，且
+\begin{equation*}
+ P^{-1}AP=\begin{bmatrix}0&0&0\\0&0&0\\0&0&1\end{bmatrix}
+\end{equation*}
+\textbf{习题 \ref{7.17} 解答:}\\
+设$\lambda$是$A$的特征值，$\vec{\xi}\neq0$ 是相应的特征向量，则
+\begin{equation*}
+A\xi=(E+\vec{\alpha}\vec{\beta}^T)\vec{\xi}=\lambda\vec{\xi}
+\end{equation*}
+左乘以$\vec{\beta}^T$，得
+\begin{equation*}
+(1+\vec{\beta}^T\vec{\alpha})\vec{\beta}^T\vec{\xi}=\lambda\vec{\beta}^T\vec{\xi}
+\end{equation*}
+若$\vec{\beta}^T\vec{\xi}\neq0$，则$\lambda=1+\vec{\beta}^T\vec{\alpha}=2$；
+若$\vec{\beta}^T\vec{\xi}=0$，则$A\vec{\xi}=\lambda\vec{\xi}$，故$\lambda=1$；
+即$A$的特征值为$\lambda_1=1$，$\lambda_2=3$。
+对于$\lambda_1=1$，即$\vec{\beta}^T\vec{\xi}=0$，故可取
+\begin{eqnarray*}
+  \vec{\xi}_1&=& (-b_2,b_1,0,\cdots,0)^T \\
+  \vec{\xi}_2&=& (-b_3,0,b_1,\cdots,0)^T\\
+  \cdots \\
+  \vec{\xi}_{n-1} &=& (-b_n,0,0,\cdots,b_1)^T
+\end{eqnarray*}
+对于$\lambda_2=2$，可取$\vec{\xi}_n=\vec{\alpha}$。\\
+(2)由于$A$有$n$个线性无关的特征向量，故可对角化，且
+\begin{equation*}
+P=(\vec{\xi}_1,\vec{\xi}_2,\cdots,\vec{\xi}_n),\Lambda=diag{1,1,\cdots,1,3}.
+\end{equation*}
+\textbf{习题 \ref{7.18} 解答:}\\
+由于$A$有3个线性无关的特征向量且$\lambda=1$ 是$A$的2重特征值，故$A$的属于
+特征值$\lambda=1$的线性无关的特征向量有2 个，从而$r(A-E)=3-2=1$。由于
+\begin{equation*}
+  A-E=\begin{bmatrix}2&-1&1\\0&x-1&y\\0&z&w-1\end{bmatrix}
+\end{equation*}
+故为使$r(A-E)=1$，则
+\begin{equation*}
+ \begin{cases}
+ x-1=0\\
+ y=0\\
+ z=0\\
+ w-1=0
+ \end{cases}
+\end{equation*}
+解得
+\begin{equation*}
+ \begin{cases}
+ x=1\\
+ y=0\\
+ z=0\\
+ w=1
+ \end{cases}
+\end{equation*}
+因此，$A=\begin{bmatrix}3&-1&1\\0&1&0\\0&0&1\end{bmatrix}$。\\
+(2)从而确定$A$的另一个特征值为$\lambda_1=3$，其对应的特征向量$(1,0,0)^T$；
+对于$\lambda_2=\lambda_3=1$，其对应的线性无关特征向量为$(1,2,0)^T,(1,0，-2)^T$。
+因此，令$P=\begin{bmatrix}1&1&1\\0&2&0\\0&0&-2\end{bmatrix}$，则：
+\begin{equation*}
+ P^{-1}AP=\begin{bmatrix}2&0&0\\0&1&0\\0&0&1\end{bmatrix}
+\end{equation*}
+\textbf{习题 \ref{7.19} 解答:}\\
+\begin{equation*}
+|A-\lambda E|=\begin{vmatrix}a-\lambda&c\\b&d-\lambda\end{vmatrix}=\lambda^2-(a+d)\lambda+ad-bc
+\end{equation*}
+又由于$bc>0$，则$(a+d)^2-4(ad-bc)=(a-d)^2+4bc>0$，因此$A$有两个不同的特征值，即$A$ 可以对角化。\\
+\textbf{习题 \ref{7.20} 解答:}\\
+可以对角化。
+\begin{equation*}
+  P=\begin{bmatrix}1&1&1\\1&0&-1\\0&-1&2\end{bmatrix},
+  P^{-1}AP=\begin{bmatrix}-2&0&0\\0&-2&0\\0&0&4\end{bmatrix}
+\end{equation*}
+\textbf{习题 \ref{7.21} 解答:}\\
+设$\lambda$是$A$的特征值，由题意知，$\lambda^2+3\lambda=0$，
+因此$A$的特征值只可能是$-3$和$0$ 是$A$ 的特征值。因为$A$是对称矩阵，所以$A$可以经过正交变换化为
+对角矩阵$\Lambda$，由于$r(A)=2$，故$r(\Lambda)=2$，由此可知$A$的特征值为：
+\begin{equation*}
+  \lambda_1=\lambda_2=-3,\lambda_3=0
+\end{equation*}
+\textbf{习题 \ref{7.22} 解答:}\\
+易知$A^n\vec{\alpha}_1=\lambda_1^n\vec{\alpha}_1(n=1,2,...)$，于是
+\begin{equation*}
+  B\vec{\alpha}_1=A^2\vec{\alpha}_1+2A\vec{\alpha}_1=(\lambda_1^2+2\lambda)\vec{\alpha}_1=3\vec{\alpha}_1
+\end{equation*}
+因此$\vec{\alpha}_1$是$B$的特征向量，$B$ 的特征值可以由$A$的特征值以及$A$ 和$B$ 的关系得到，
+即$B$的全部特征值为$3,8,3$。由于$A$是实对称的矩阵，那么$B$也是实对称的，设$B$ 属于$\lambda_2=3$的特征值对应
+的特征向量为$(x_1,x_2,x_3)^T$，则有$x_1+x_2+x_3=0$，求得$B$属于$\lambda_2=3$的特征值对应的特征向量为：
+\begin{equation*}
+  \vec{\alpha}_2=(1,0,-1)^T,\vec{\alpha}_3=(1,-1,0)^T
+\end{equation*}
+\textbf{习题 \ref{7.23} 解答:}\\
+\begin{equation*}
+ |A-\lambda E| = \begin{vmatrix}1-\lambda&-2&0\\-2&2-\lambda&-2\\0&-2&3-\lambda\end{vmatrix}
+               =(\lambda+1)(\lambda-2)(\lambda-5)
+\end{equation*}
+因此$A$的特征值为$\lambda_1=-1,\lambda_2=2,\lambda_3=5$。
+对于$\lambda_1$，考虑方程组$(A+E)\vec{x}=\vec{0}$，
+解得其对应的单位特征向量为$\vec{\alpha}_1=(\frac{2}{3},\frac{2}{3},\frac{1}{3})^T$；\\
+对于$\lambda_2$，考虑方程组$(A+E)\vec{x}=\vec{0}$，
+解得其对应的单位特征向量为$\vec{\alpha}_2=(-\frac{2}{3},\frac{1}{3},\frac{2}{3})^T$；\\
+对于$\lambda_3$，考虑方程组$(A+E)\vec{x}=\vec{0}$，
+解得其对应的单位特征向量为$\vec{\alpha}_3=(\frac{1}{3},-\frac{2}{3},\frac{2}{3})^T$。
+故令$Q=\begin{bmatrix}\frac{2}{3}&\frac{2}{3}&\frac{1}{3}\\-\frac{2}{3}&\frac{1}{3}&\frac{2}{3}\\
+\frac{1}{3}&-\frac{2}{3}&\frac{2}{3}\end{bmatrix}$，那么
+\begin{equation*}
+  Q^TAQ=\begin{bmatrix}-1&0&0\\0&2&0\\0&0&5\end{bmatrix}
+\end{equation*}
+\textbf{习题 \ref{7.24} 解答:}\\
+\begin{equation*}
+  Q=\begin{bmatrix}\frac{1}{3}&\frac{2}{\sqrt{5}}&\frac{2}{\sqrt{5}}
+       \\ \frac{2}{3}&-\frac{1}{\sqrt{5}}&0\\-\frac{2}{3}&0&\frac{1}{\sqrt{5}}\end{bmatrix},
+  Q^TAQ=\begin{bmatrix}-7&0&0\\0&2&0\\0&0&2\end{bmatrix}
+\end{equation*}
+\textbf{习题 \ref{7.25} 解答:}\\
+设$A$的3个正交特征向量是$\vec{\xi}_1,\vec{\xi}_2,\vec{\xi}_3$，
+单位化后是$\vec{\eta}_1,\vec{\eta}_2,\vec{\eta}_3$ 仍是$A$的特征向量，
+令$Q=(\vec{\eta}_1,\vec{\eta}_2,\vec{\eta}_3)$，则$Q$是正交矩阵，$Q^{-1}=Q^T$，
+由于$A$是3阶实矩阵且有3个正交的特征向量，从而$A$可以对角化，即
+\begin{equation*}
+  Q^{-1}AQ=\Lambda
+\end{equation*}
+其中$\Lambda$为对角阵，因此$A=Q\Lambda Q^T$，故
+\begin{equation*}
+  A^T=Q\Lambda^TQ^T=Q\Lambda Q^T=A
+\end{equation*}
+\textbf{习题 \ref{7.26} 解答:}\\
+令$Q=(\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n)$，则
+\begin{equation*}
+  Q^{-1}AQ=\Lambda=diag\{\lambda_1,\lambda_2,\cdots,\lambda_n\}.
+\end{equation*}
+于是$A=Q\Lambda Q^T=\lambda_1\vec{\alpha}_1\vec{\alpha}_1^T+\cdots+\lambda_n\vec{\alpha}_n\vec{\alpha}_n^T$。\\
+\textbf{习题 \ref{7.27} 解答:}\\
+由于$A$是$n$阶实对称矩阵，故存在正交阵$Q$以及对角矩阵$\Lambda$，使得
+\begin{equation*}
+  A=Q\Lambda Q^T
+\end{equation*}
+故$A^{k}=Q\Lambda^kQ^T$，即$\Lambda^k=O$，所以$\Lambda=O$。 从而$A=O$。\\
+\textbf{习题 \ref{7.28} 解答:}\\
+由题意知：
+\begin{eqnarray*}
+  x_{n+1} &=& x_n+qy_n-px_n=(1-p)x_n+qy_n \\
+  y_{n+1} &=& y_n+px_n-qy_n=px_n+(1-q)y_n
+\end{eqnarray*}
+可用矩阵表示为：
+\begin{equation*}
+\begin{bmatrix}x_{n+1}\\y_{n+1}\end{bmatrix}=
+\begin{bmatrix}1-p&q\\p&1-q\end{bmatrix}
+\begin{bmatrix}x_n\\y_n\end{bmatrix}
+\end{equation*}
+即
+\begin{equation*}
+A=\begin{bmatrix}1-p&q\\p&1-q\end{bmatrix}
+\end{equation*}
+(2)由于$\begin{bmatrix}x_{n+1}\\y_{n+1}\end{bmatrix}=A\begin{bmatrix}x_n\\y_n\end{bmatrix}$，
+可知$\begin{bmatrix}x_{n}\\y_{n}\end{bmatrix}=A^n\begin{bmatrix}x_0\\y_0\end{bmatrix}$。
+由
+\begin{equation*}
+  |A-\lambda E|=\begin{vmatrix}1-p-\lambda&q\\p&1-q-\lambda\end{vmatrix}=(\lambda-1)(\lambda-1+p+q)
+\end{equation*}
+得到$A$的特征值为$\lambda_1=1,\lambda_2=r$，其中$r=1-p-q$。
+得到相应的特征向量为$\vec{\alpha}_1=(q,p)^T,\vec{\alpha}_2=(-1,1)^T$。
+令$P=\begin{bmatrix}q&-1\\p&1\end{bmatrix}$，$\Lambda=\begin{bmatrix}1&0\\0&r\end{bmatrix}$，故
+\begin{equation*}
+  A^n=P\Lambda^nP^{-1}=\frac{1}{p+q}\begin{bmatrix}q+pr^n&q-qr^n\\p-pr^n&p+qr^n\end{bmatrix}
+\end{equation*}
+故
+\begin{equation*}
+ \begin{bmatrix}x_{n}\\y_{n}\end{bmatrix}=\frac{1}{2(p+q)}\begin{bmatrix}2q+(p-q)r^n\\2p+(q-p)r^n\end{bmatrix}
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

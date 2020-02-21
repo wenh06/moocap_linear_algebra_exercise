@@ -1,0 +1,487 @@
+\chapter{线性方程组}
+
+\section{知识点解析}
+
+\begin{Def}[二阶行列式]
+$$\begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix} = a_{11}a_{22} - a_{12}a_{21}$$
+被称为二阶行列式。
+\end{Def}
+
+\begin{Def}[三阶行列式]
+$$\begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{vmatrix} = a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32} - a_{11}a_{23}a_{32} - a_{12}a_{21}a_{33} - a_{13}a_{22}a_{31}$$
+被称为三阶行列式。
+\end{Def}
+
+\begin{prop}[含参二元一次方程组的解]\
+
+当系数行列式$D = \begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix} \neq 0$时，二元线性方程组
+$$\left\{ \begin{array}{rcl} a_{11}x_1 + a_{12}x_2 & = & b_1 \\ a_{21}x_1 + a_{22}x_2 & = & b_2 \end{array}\right.$$
+的解为
+$$x_1 = \frac{D_1}{D}, \quad x_2 = \frac{D_2}{D},$$
+其中
+$$D_1 = \begin{vmatrix} b_1 & a_{12} \\ b_2 & a_{22} \end{vmatrix}, \quad D_2 = \begin{vmatrix} a_{11} & b_1 \\ a_{21} & b_2 \end{vmatrix}.$$
+\end{prop}
+
+\begin{prop}[含参三元一次方程组的解]\
+
+当系数行列式$D = \begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{vmatrix} \neq 0$时，三元线性方程组
+$$\left\{ \begin{array}{rcl} a_{11}x_1 + a_{12}x_2 + a_{13}x_3 & = & b_1 \\ a_{21}x_1 + a_{22}x_2 + a_{23}x_3 & = & b_2 \\ a_{31}x_1 + a_{32}x_2 + a_{33}x_3 & = & b_3 \end{array}\right.$$
+的解为
+$$x_1 = \frac{D_1}{D}, \quad x_2 = \frac{D_2}{D}, \quad x_3 = \frac{D_3}{D}$$
+其中
+$$D_1 = \begin{vmatrix} b_1 & a_{12} & a_{13} \\ b_2 & a_{22} & a_{23} \\ b_3 & a_{32} & a_{33} \end{vmatrix}, \quad D_2 = \begin{vmatrix} a_{11} & b_1 & a_{13} \\ a_{21} & b_2 & a_{23}  \\ a_{31} & b_3 & a_{33} \end{vmatrix}, \quad D_3 = \begin{vmatrix} a_{11} & a_{12} & b_1 \\ a_{21} & a_{22} & b_2   \\ a_{31} & a_{32} & b_3 \end{vmatrix}.$$
+\end{prop}
+
+\begin{Def}[一般的线性(一次)方程组]\
+
+关于$n$个未知量$x_1,\cdots,x_n$的线性方程组，形式如下
+\begin{equation} \label{eq:2.1}
+\left\{ \begin{array}{rcl} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n & = & b_1 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n & = & b_2 \\ \hdotsfor{3} \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n & = & b_m \end{array}\right.
+\end{equation}
+其中
+\enum
+\item[(1)] $m \in \mathbb{N}$为方程组方程的个数，
+\item[(2)] $a_{ij}\in\mathbb{R}(1\leqslant i \leqslant m, 1\leqslant j \leqslant n)$称为系数，
+\item[(3)] $b_i\in\mathbb{R}(1\leqslant i \leqslant m)$称为常数项。
+\end{list}
+
+若对所有$i=1,2,…,m$，均有$b_i=0$，则称为上述为齐次线性方程组, 否则，称为非齐次线性方程组。
+\end{Def}
+
+\begin{Def}
+对线性方程组进行的如下操作：
+\enum
+\item[(1)] 交换两个方程的位置（对换），
+\item[(2)] 用一个非零数乘以某个方程（倍乘），
+\item[(3)] 把一个方程的倍数加到另一个方程上（倍加），
+\end{list}
+统称为方程组的初等变换。
+\end{Def}
+
+\begin{prop}
+线性方程组的初等变换不改变方程组的解。
+\end{prop}
+
+\begin{Def}[高斯消元法]\
+
+设方程组\eqref{eq:2.1}中$x_1$的系数不全为零，总可以通过对换，使得$a_{11}\neq0$，于是，把第一个方程的$-\frac{a_{j1}}{a_{11}}$倍加到第$j$个方程上$(2 \leqslant j \leqslant m)$，即可在第$2\sim m$个方程中消去未知量$x_1$。按类似的步骤，考察第$2\sim m$个方程，对其他未知量继续做下去。以此类推，便可求解线性方程组。
+
+这样的计算方法就称为高斯消元法.
+
+\end{Def}
+
+\begin{Def}
+由$mn$个实数排成行列的矩形数表, 用圆(或方)括号括起来，即
+$$A = \begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \vdots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}$$
+称为$m\times n$型的矩阵，简记为$A = (a_{ij})_{m\times n}$，其中横排称为矩阵的行，竖排称为矩阵的列。$a_{ij}$称为矩阵的元素，其第一下标表示所在的行数，第二下标表示其所在的列数。全体$m\times n$型的矩阵组成的集合，记为$M_{m\times n}(\mathbb{R})$。
+
+特别地，行数与列数相同的矩阵(即$m = n$)，称为$n$阶方阵，全体n阶方阵组成的集合，记为$M_n(\mathbb{R})$。
+\end{Def}
+
+\begin{Def}
+由线性方程组
+\begin{equation*}
+\left\{ \begin{array}{rcl} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n & = & b_1 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n & = & b_2 \\ \hdotsfor{3} \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n & = & b_m \end{array}\right.
+\end{equation*}
+未知元前的系数给出的矩阵
+$$
+\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}
+$$
+被称为该线性方程组的系数矩阵。
+
+把常数项列添加到系数矩阵最后一列之后得到的矩阵
+$$
+\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n}  & b_1 \\ a_{21} & a_{22} & \cdots & a_{2n} & b_2 \\ \vdots & \vdots & & \vdots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} & b_m
+\end{bmatrix}
+$$
+被称为该线性方程组的增广（系数）矩阵。
+\end{Def}
+
+\begin{Def}
+一个矩阵若满足下列条件，称其为阶梯形矩阵：
+\enum
+\item[(1)]矩阵若有零行（即元素全为0的行），则零行一定全在矩阵的下方。
+\item[(2)]对于矩阵的每一个非零行，从左起第1个非零元素称为此行的主元。矩阵下面行的主元所在列一定在上面行的主元所在列的右端。
+\end{list}
+\end{Def}
+
+\begin{Def}
+一个阶梯矩阵若满足下列条件，称其为简化的阶梯形矩阵：
+\enum
+\item[(1)]主元都是$1$。
+\item[(2)]每个主元所在的列中，除主元外其他的元素都是0。
+\end{list}
+\end{Def}
+
+\begin{prop}
+任一矩阵$A$都可以通过矩阵的初等行变换化为阶梯形矩阵, 进而可再化为简化的阶梯形矩阵。
+\end{prop}
+
+\begin{thm}
+设含$n$个未知量的线性方程组的增广系数矩阵为$\overline{A}$，对$\overline{A}$作初等行变换, 化为阶梯形矩阵$B$。若$B$有一个主元在最后一列，则方程组无解. 若$B$的主元都不在最后一列，则方程组有解。进一步地，若这时主元个数$r=n$，则方程组有唯一解。若$r<n$，则方程组有无穷多组解。
+\end{thm}
+
+\begin{cor}
+对于齐次线性方程组，有如下结论成立：
+
+\enum
+\item[(1)]增广系数矩阵$\overline{A}$的最后一列全为0，故作初等行变换后，最后一列的元素也全为0，于是主元素不可能出现在最后一列，因此一定有解。
+\item[(2)]$x_i=0 (i=1,2,…,m)$一定是一组解，称为零解。
+\item[(3)]若有非零解，则它就必有无穷多个解。
+\item[(4)]作高斯消元法时，只需对系数矩阵$A$操作即可。
+\end{list}
+\end{cor}
+
+\begin{thm}
+若齐次线性方程组的方程个数$m$小于未知量的个数$n$，即$m<n$时，齐次线性方程一定有非零解。
+\end{thm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{例题讲解}
+
+\begin{eg}
+《孙子算经》中著名的数学问题，其内容是：“今有雉（鸡）兔同笼，上有三十五头，下有九十四足。问雉兔各几何。”
+\end{eg}
+\begin{solution}
+设鸡和兔的数量分别为$x, y,$  则
+$$\systeme{ x + y = 35, 2x + 4y = 94}$$
+因为$94-35-35=24$，故兔子数量$y=24/2=12,$ 则鸡的数量$x=35-12=23$。(实际上，就是用方程2 $-$(方程1)$\times 2$，消去$x,$求出$y$后，代回求得$x$)
+\end{solution}
+
+\vspace{1.5em}
+
+\begin{eg}
+解线性方程组
+$\systeme{x_1 - 2x_2 + x_3 = -2 , 2x_1 + x_2 - 3x_3 = 1 , -x_1 + x_2 - x_3 = 0}$
+\end{eg}
+
+\begin{solution}
+\begin{align*}
+D & = \begin{vmatrix} 1 & -2 & 1 \\ 2 & 1 & -3 \\ -1 & 1 & -1 \end{vmatrix} \\
+& = 1\times 1\times (-1) + (-2)\times (-3)\times (-1) + 2\times 1\times 1 - 1\times 1\times (-1) \\
+& \quad - (-2)\times 2\times (-1) - 1\times (-3)\times 1 \\
+& = -5 \neq 0, \\
+D_1 & = \begin{vmatrix} -2 & -2 & 1 \\ 1 & 1 & -3 \\ 0 & 1 & -1 \end{vmatrix} = (-2)\times 1\times (-1) + 1\times 1\times 1 - (-2)\times 1\times (-3) \\
+& \quad - (-2)\times 1\times (-1) \\
+& = -5, \\
+D_2 & = \begin{vmatrix} 1 & -2 & 1 \\ 2 & 1 & -3 \\ -1 & 0 & -1 \end{vmatrix}
+= 1\times 1\times (-1) + (-2)\times (-3)\times (-1) \\
+& \quad - (-1)\times 1\times 1 - (-2)\times 2\times (-1) \\
+& = -10, \\
+D_3 & = \begin{vmatrix} 1 & -2 & -2 \\ 2 & 1 & 1 \\ -1 & 1 & 0 \end{vmatrix}
+ = (-2)\times 1\times (-1) + (-2)\times 2\times 1 \\
+& \quad - (-1)\times 1\times (-2) - 1\times 1\times 1 \\
+& = -5,
+\end{align*}
+
+故方程组的解为：
+$$x_1 = \frac{D_1}{D} = 1, \quad x_2 = \frac{D_2}{D} = 2, \quad x_3 = \frac{D_3}{D} = 1.$$
+\end{solution}
+
+\vspace{1.5em}
+
+\begin{eg}
+解三元线性方程组$\systeme{3x_2 + x_3 = 9, x_1 - 2x_2 + x_3 = 0 , 3x_1 + 3x_2 - x_3 = 6}$
+\end{eg}
+\begin{solution}\
+
+\begin{eqnarray*}
+& & \systeme{3x_2 + x_3 = 9 , x_1 - 2x_2 + x_3 = 0 , 3x_1 + 3x_2 - x_3 = 6} \xrightarrow{(1)\leftrightarrow(2)} \systeme{x_1 - 2x_2 + x_3 = 0 , 3x_2 + x_3 = 9 , 3x_1 + 3x_2 - x_3 = 6} \\
+& \xrightarrow{-3\cdot(1) + (3)} & \systeme{x_1 - 2x_2 + x_3 = 0, 3x_2 + x_3 = 9,  9x_2 - 4x_3 = 6} \xrightarrow{[-3\cdot(2)+(3)]/7} \systeme{x_1 - 2x_2 + x_3 = 0 , 3x_2 + x_3 = 9 , x_3 = 3} \\ & \xrightarrow{\substack{-1\cdot(3)+(1) \\ -1\cdot(3)+(2)}} & \systeme{x_1 - 2x_2 = -3 , 3x_2 = 6, x_3 = 3} \\
+& \xrightarrow{\substack{\frac13\cdot(2) \\ \frac23\cdot(2)+(1)}} & \systeme{x_1 = 1, x_2 = 2, x_3 = 3}
+\end{eqnarray*}
+\end{solution}
+
+\vspace{1.5em}
+
+\begin{eg}
+解线性方程组$\systeme{x_1 - x_2 - 3x_3 + x_4 = 1 , x_1 - x_2 + 2x_3 - x_4 = 3 , 2x_1 - 2x_2 + 3x_3 - 4x_4 = 0 , 3x_1 - 3x_2 + 5x_3 = -1 }$
+\end{eg}
+\begin{solution}
+\begin{eqnarray*}
+& & \begin{vmatrix} 1 & -1 & -3 & 1 & 1 \\ 1 & -1 & 2 & -1 & 3 \\ 2 & -2 & 3 & -4 & 0 \\ 3 & -3 & 5 & 0 & -1 \end{vmatrix} \longrightarrow \begin{vmatrix} 1 & -1 & -3 & 1 & 1 \\ 0 & 0 & 5 & -2 & 2 \\ 0 & 0 & 9 & -6 & -2 \\ 0 & 0 & 14 & -3 & -4 \end{vmatrix} \\
+&\longrightarrow & \begin{vmatrix} 1 & -1 & -3 & 1 & 1 \\ 0 & 0 & 5 & -2 & 2 \\ 0 & 0 & 45 & -30 & -10 \\ 0 & 0 & 70 & -15 & -20 \end{vmatrix}
+\longrightarrow \begin{vmatrix} 1 & -1 & -3 & 1 & 1 \\ 0 & 0 & 5 & -2 & 2 \\ 0 & 0 & 0 & -12 & -28 \\ 0 & 0 & 0 & 13 & -48 \end{vmatrix} \\ &\longrightarrow & \begin{vmatrix} 1 & -1 & -3 & 1 & 1 \\ 0 & 0 & 5 & -2 & 2 \\ 0 & 0 & 0 & 3 & 7 \\ 0 & 0 & 0 & 0 & 1 \end{vmatrix}
+\end{eqnarray*}
+
+上面最后一个矩阵的最后一行对应的方程是
+$$0\cdot x_1 + 0\cdot x_2 + 0\cdot x_3 + 0\cdot x_4 = 1$$
+不管$x_1, x_2, x_3, x_4$取何值，上式均不可能成立，所以原方程组无解。
+\end{solution}
+
+\vspace{1.5em}
+
+\begin{eg}
+解线性方程组$\systeme{x_1 - x_2 - 3x_3 + x_4 = 1 , x_1 - x_2 + 2x_3 - x_4 = 3 , 4x_1 - 4x_2 + 3x_3 - 2x_4 = 10 , 2x_1 - 2x_2 - 11x_3 + 4x_4 = 0}$
+\end{eg}
+
+\begin{solution}
+\begin{eqnarray*}
+& & \begin{vmatrix} 1 & -1 & -3 & 1 & 1 \\ 1 & -1 & 2 & -1 & 3 \\ 4 & -4 & 3 & -2 & 10 \\ 2 & -2 & -11 & 4 & 0 \end{vmatrix} \longrightarrow \begin{vmatrix} 1 & -1 & -3 & 1 & 1 \\ 0 & 0 & 5 & -2 & 2 \\ 0 & 0 & 15 & -6 & 6 \\ 0 & 0 & -5 & 2 & -2 \end{vmatrix} \\
+& \longrightarrow & \begin{vmatrix} 1 & -1 & -3 & 1 & 1 \\ 0 & 0 & 5 & -2 & 2 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \end{vmatrix}
+\longrightarrow \begin{vmatrix} 1 & -1 & -3 & 1 & 1 \\ 0 & 0 & 1 & -\frac25 & \frac25 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \end{vmatrix} \\
+& \longrightarrow & \begin{vmatrix} 1 & -1 & 0 & -\frac15 & \frac{11}{5} \\ 0 & 0 & 1 & -\frac25 & \frac25 \\ 0 & 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 & 0 \end{vmatrix}
+\end{eqnarray*}
+
+这时方程组化为
+$$\left\{ \begin{array}{rcl} x_1 - x_2 - \frac15 x_4 & = & \frac{11}{5} \\ x_3 - \frac25x_4 & = & \frac25 \\ 0 & = & 0 \\ 0 & = & 0 \end{array}\right.$$
+或写为
+\begin{equation} \label{eq:2.4}
+\left\{ \begin{array}{rcl} x_1 & = & x_2 + \frac15 x_4 + \frac{11}{5} \\ x_3 & = & \frac25x_4 + \frac25 \end{array}\right.
+\end{equation}
+
+可以看出，对于未知量$x_2, x_4$的任一组取值， 都可以唯一决定出$x_1, x_3$的值。称$x_1, x_3$为主变量，$x_2, x_4$为自由未知量。用自由未知量表示主变量的\eqref{eq:2.4}式称为方程组的一般解，或者把\eqref{eq:2.4}式表示为如下形式
+$$\systeme*{x_1 = s + \frac15 t + \frac{11}{5}, x_2 = s, x_3 = \frac25 t + \frac25, x_4 = t}$$
+$\forall s,t \in \mathbb{R}$（有无穷多个解）。
+\end{solution}
+
+\vspace{1.5em}
+
+\begin{eg}
+求解齐次线性方程组
+$\systeme{2x_1 - x_2 + 5x_3 - 3x_4 = 0, x_1 - 5x_2 + 3x_3 + 2x_4 = 0, 3x_1 - 4x_2 + 7x_3 - x_4 = 0, 9x_1 - 7x_2 + 15x_3 + 4x_4 = 0}$
+\end{eg}
+\begin{solution}
+只需对系数矩阵$A$作初等行变换：
+\begin{align*}
+& \begin{vmatrix} 2 & -1 & 5 & -3 \\ 1 & -5 & 3 & 2 \\ 3 & -4 & 7 & -1 \\ 9 & -7 & 15 & 4 \end{vmatrix} \longrightarrow \begin{vmatrix} 1 & -5 & 3 & 2 \\ 2 & -1 & 5 & -3 \\ 3 & -4 & 7 & -1 \\ 9 & -7 & 15 & 4 \end{vmatrix} \longrightarrow \begin{vmatrix} 1 & -5 & 3 & 2 \\ 0 & 9 & -1 & -7 \\ 0 & 11 & -2 & -7 \\ 0 & 38 & -12 & -14 \end{vmatrix} \\
+\longrightarrow & \begin{vmatrix} 1 & -5 & 3 & 2 \\ 0 & 9 & -1 & -7 \\ 0 & 11 & -2 & -7 \\ 0 & 19 & -6 & -7 \end{vmatrix} \longrightarrow \begin{vmatrix} 1 & -5 & 3 & 2 \\ 0 & 9 & -1 & -7 \\ 0 & 11 & -2 & -7 \\ 0 & 1 & -4 & 7 \end{vmatrix} \longrightarrow \begin{vmatrix} 1 & -5 & 3 & 2 \\ 0 & 1 & -4 & 7 \\ 0 & 9 & -1 & -7 \\ 0 & 11 & -2 & -7 \end{vmatrix} \\
+\longrightarrow & \begin{vmatrix} 1 & -5 & 3 & 2 \\ 0 & 1 & -4 & 7 \\ 0 & 0 & 42 & -84 \\ 0 & 0 & 35 & -70 \end{vmatrix} \longrightarrow \begin{vmatrix} 1 & -5 & 3 & 2 \\ 0 & 1 & -4 & 7 \\ 0 & 0 & 1 & -2 \\ 0 & 0 & 0 & 0 \end{vmatrix}\longrightarrow \begin{vmatrix} 1 & -5 & 0 & 8 \\ 0 & 1 & 0 & -1 \\ 0 & 0 & 1 & -2 \\ 0 & 0 & 0 & 0 \end{vmatrix} \\
+\longrightarrow & \begin{vmatrix} 1 & 0 & 0 & 3 \\ 0 & 1 & 0 & -1 \\ 0 & 0 & 1 & -2 \\ 0 & 0 & 0 & 0 \end{vmatrix}
+\end{align*}
+所以方程组有无穷多组解，它的一般解为
+$$\begin{cases}
+x_1 = -3x_4 \\ x_2 = x_4 \\ x_3 = 2x_4,
+\end{cases} \qquad (x_4\in\mathbb{R}),$$
+其中，$x_4$为自由未知量，可取任意实数。
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{课后习题}
+
+\begin{ex} \label{ex:1.1}
+求下列线性方程组系数矩阵的行列式并求解线性方程组。
+\enum
+\item[(1)] $\systeme{2x + 5y = 3 , 3x + 7y = 2}$
+\item[(2)] $\systeme{3x + 5y = 0 , 4x + 7y = 2}$
+\item[(3)] $\left\{ \begin{array}{rcl} x + y + z & = & 1 \\ 2x - y & = & 2 \\ x + 2y + 2z & = & 0\end{array}\right.$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:1.2}
+证明：对任意整数$a,b,c$，以下方程组有唯一解。
+$$\left\{ \begin{array}{rcl} 2x + y & = & a \\ x + z & = & b \\ x - 3y - 6z & = & c\end{array}\right.$$
+\end{ex}
+
+\begin{ex} \label{ex:1.3}
+若以$x,y,z$为未知元的方程组
+$$\left\{ \begin{array}{rcl} ax + y + z & = & 0 \\ x + ay + z & = & 0 \\ x + y + az & = & 0\end{array}\right.$$
+有无穷多组解，求$a$的值。
+\end{ex}
+
+\begin{ex} \label{ex:1.4}
+讨论$x_1,x_2,x_3,x_4$为未知元的线性方程组
+$$\left\{ \begin{array}{rcl} x_1 + x_2 + 4x_3 & = & a \\ -x_1 - 2x_3 - x_4 & = & 1 \\ x_3 - 2x_4 & = & -3 \\ 2x_1 + x_2 + 4x_3 + 5x_4 & = & 4 \end{array}\right.$$
+的解的情况。
+\end{ex}
+
+\begin{ex} \label{ex:1.5}
+讨论$x_1,x_2,x_3,x_4$为未知元的线性方程组
+$$\left\{ \begin{array}{rcl} x_1 + x_2 + 4x_3 & = & 1 \\ -x_1 - 2x_3 - x_4 & = & 1 \\ ax_1 + bx_2 + x_3 - 2x_4 & = & -3 \\ 2x_1 + x_2 + 4x_3 + 5x_4 & = & 4 \end{array}\right.$$
+的解的情况。
+\end{ex}
+
+\begin{ex} \label{ex:1.6}
+用高斯消元法求解下列齐次线性方程组
+\enum
+\item[(1)] $\left\{ \begin{array}{rcl} x_1 + x_2 + 2x_3 - x_4 & = & 0 \\ 2x_1 + x_2 + x_3 - x_4 & = & 0 \\ 2x_1 + 2x_2 + x_3 + 2x_4 & = & 0 \end{array}\right.$
+\item[(2)] $\left\{ \begin{array}{rcl} - x_2 -x_3 + x_4 & = & 0 \\ x_1 + x_2 + 3x_3 - x_4 & = & 0 \\ -2x_1 + 3x_2 - x_4 & = & 0 \\ -x_1 - 4x_3 - 4x_4 & = & 0\end{array}\right.$
+\item[(3)] $\left\{ \begin{array}{rcl} 4x_1 + 3x_2 - 3x_3 - 2x_4 & = & 0 \\ x_1 + x_3 + 3x_4 & = & 0 \\ -3x_1 - 2x_2 + 2x_3 + x_4 & = & 0 \\ x_1 + 2x_2 - 3x_3 - 4x_4 & = & 0\end{array}\right.$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:1.7}
+用高斯消元法求解下列非齐次线性方程组
+\enum
+\item[(1)] $\left\{ \begin{array}{rcl} x_1 + 3x_3 & = & 3 \\ x_2 - 2x_3 & = & -4 \\ 2x_1 + 4x_3 & = & 4 \end{array}\right.$
+\item[(2)] $\left\{ \begin{array}{rcl} x_1 + x_2 + x_3 & = & 0 \\ x_2 + x_3 & = & -2 \\ -x_1 - 2x_3 & = & -2 \end{array}\right.$
+\item[(3)] $\left\{ \begin{array}{rcl} - x_2 -x_3 + 3x_4 & = & 0 \\ x_1 + 3x_2 - 4x_4 & = & 5 \\  x_2 + 2x_3 - 4x_4 & = & -1 \\ -2x_1 - x_2- 4x_3 + 3x_4 & = & -3\end{array}\right.$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:1.8}
+设$A = \begin{bmatrix} -2 & 0 & -1 \\ 2 & 1 & 3 \\ 3 & 0 & 1 \\ 1 & 1 & 3 \end{bmatrix}$，对什么样的$b = (b_1, b_2, b_3, b_4)^T$， $Ax = b$有解？其中$x = (x_1, x_2, x_3, x_4)^T$为未知元。
+\end{ex}
+
+\begin{ex} \label{ex:1.9}
+已知$a_1 = (0,1,0)^T, a_2 = (-3,2,2)^T$是线性方程组
+$$\left\{ \begin{array}{rcl} x_1 - x_2 + 2x_3 & = & -1 \\ 3x_1 + x_2 + 4x_3 & = & 1 \\ ax_1 + bx_2 + cx_3 & = & d\end{array}\right.$$
+的两个解，求此方程组的全部解。
+\end{ex}
+
+\begin{ex} \label{ex:1.10}
+求平面上$n$个点$(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)$位于同一条直线上的充分必要条件。
+\end{ex}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{习题答案}
+
+\textbf{习题\ref{ex:1.1} 解答：}
+
+\enum
+\item[(1)] 系数矩阵的行列式$D = \begin{vmatrix} 2 & 5 \\ 3 & 7 \end{vmatrix} = 2\times 7 - 5\times 3 = -1$。另外算得$D_1 = \begin{vmatrix} 3 & 5 \\ 2 & 7 \end{vmatrix} = 11, D_2 = \begin{vmatrix} 2 & 3 \\ 3 & 2 \end{vmatrix} = -5$，所以原解线性方程组解为
+$$\begin{cases} x = \frac{D_1}{D} = -11 \\ y = \frac{D_2}{D} = 5 \end{cases}$$
+
+\item[(2)] 系数矩阵的行列式$\begin{vmatrix} 3 & 5 \\ 4 & 7 \end{vmatrix} = 3\times 7 - 5\times 4 = 1$。类似第(1)小题可算得$D_1 = -10, D_2 = 6$，原解线性方程组解为
+$$\begin{cases} x = -10 \\ y = 6 \end{cases}$$
+
+\item[(3)] 系数矩阵的行列式$\begin{vmatrix} 1 & 1 & 1 \\ 2 & -1 & 0 \\ 1 & 2 & 2 \end{vmatrix} = 1\times (-1) \times 2 + 1 \times 0 \times 1 + 1 \times 2 \times 2 - 2\times 1 \times 2 - 1 \times 2 \times 0 - 1\times (-1) \times 1 = -1$。而$D_1 = -2, D_2 = -2, D_3 = 3$原解线性方程组解为
+$$\begin{cases} x = 2 \\ y = 2 \\ z = -3 \end{cases}$$
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:1.2} 解答：}
+
+因为该线性方程组系数矩阵$A = \begin{bmatrix} 2 & 1 & 0 \\ 1 & 0 & 1 \\ 1 & -3 & -6 \end{bmatrix}$的行列式$D$为13，不等于0，所以它只有
+$$x_1 = \frac{D_1}{D}, \quad x_2 = \frac{D_2}{D}, \quad x_3 = \frac{D_3}{D}$$
+这一组解。
+
+或者也可以利用高斯消元法，把原线性方程组的增广矩阵化为阶梯形
+$$\begin{bmatrix}
+1 & 0 & 0 & \frac{3}{13} a + \frac{6}{13} b + \frac{1}{13} c \\
+0 & 1 & 0 & \frac{7}{13} a - \frac{12}{13} b - \frac{2}{13} c \\
+0 & 0 & 1 & -\frac{3}{13} a + \frac{7}{13} b - \frac{1}{13} c
+\end{bmatrix},$$
+发现其主元都不在最后一列且主元个数等于未知元个数，所以原线性方程组有唯一解。
+
+学过后面的内容可以知道$A$是可逆的，而且容易求出$A^{-1} = \frac{1}{13}\begin{bmatrix} 3 & 6 & 1 \\ 7 & -12 & -2 \\ -3 & 7 & -1 \end{bmatrix}$，原线性方程组有唯一的解
+$$\frac{1}{13}\begin{bmatrix} 3 & 6 & 1 \\ 7 & -12 & -2 \\ -3 & 7 & -1 \end{bmatrix}\cdot\begin{bmatrix} a \\ b \\ c \end{bmatrix}$$
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:1.3} 解答：}
+
+容易求得系数矩阵的行列式为$a^3 - 3a + 2$，要使原线性方程组有无穷多解，就必须有其系数矩阵的行列式为0。解方程$a^3 - 3a + 2 = 0$得$a = -2$ 或 $1$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:1.4} 解答：}
+
+用高斯消元法可将原线性方程组化为
+$$\begin{cases} x_1 + 5x_4 = 5 \\ x_2 + 3x_4 = a+7 \\ x_3 - 2x_4 = -3 \\ 0 = -a-1 \end{cases}$$
+所以当$a = -1$时，原线性方程组有无穷多组解；当$a\neq -1$时，原线性方程组无解。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:1.5} 解答：}
+
+用高斯消元法可将原线性方程组化为
+$$\begin{cases} x_1 + 5x_4 = 3 \\ x_2 + 3x_4 = 6 \\ x_3 - 2x_4 = -2 \\ (5 a + 3 b)x_4 = 3 a + 6 b + 1 \end{cases}$$
+所以当$5a \neq -3b$时，原线性方程组有唯一解；当$a = \frac17, b = -\frac{5}{21}$时，原线性方程组有无穷多组解；其余情况无解。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:1.6} 解答：}
+
+\enum
+\item[(1)] 用高斯消元法化简系数矩阵：
+\begin{eqnarray*}
+& & \begin{bmatrix} 1 & 1 & 2 & -1 \\ 2 & 1 & 1 & -1 \\ 2 & 2 & 1 & 2 \end{bmatrix} \xrightarrow[r_3-2r_1]{r_2-2r_1} \begin{bmatrix} 1 & 1 & 2 & -1 \\ 0 & -1 & -3 & 1 \\ 0 & 0 & -3 & 4 \end{bmatrix} \xrightarrow[r_3\times(-\frac13)]{r_2\times(-1)} \begin{bmatrix} 1 & 1 & 2 & -1 \\ 0 & 1 & 3 & -1 \\ 0 & 0 & 1 & -\frac43 \end{bmatrix} \\
+& \xrightarrow{r_1-r_2} & \begin{bmatrix} 1 & 0 & -1 & 0 \\ 0 & 1 & 3 & -1 \\ 0 & 0 & 1 & -\frac43 \end{bmatrix} \xrightarrow[r_2-3r_3]{r_1+r_3} \begin{bmatrix} 1 & 0 & 0 & -\frac43 \\ 0 & 1 & 0 & 3 \\ 0 & 0 & 1 & -\frac43 \end{bmatrix}
+\end{eqnarray*}
+所以方程组有无穷多组解，它的一般解为
+$$\begin{cases} x_1 = \frac43 x_4 \\ x_2 = -3x_4 \\ x_3 = \frac43 x_4 \end{cases},$$
+其中，$x_4$为自由未知量，可取任意实数。
+
+\item[(2)] 类似第(1)小题用高斯消元法化成阶梯形为
+$$\systeme{ x_1 - 4x_4 = 0 , x_2 - 3x_4 = 0 , x_3 + 2x_4 = 0 },$$
+即方程组有无穷多组解：
+$$\begin{cases} x_1 = 4x_4 \\ x_2 = 3x_4 \\ x_3 = -2x_4 \end{cases},$$
+其中，$x_4$为自由未知量，可取任意实数。
+
+\item[(3)] 类似第(1)小题用高斯消元法，系数矩阵最终可化为
+$$\begin{bmatrix}
+1 & & & \\ & 1 & & \\ & & 1 & \\ & & & 1
+\end{bmatrix},$$
+所以只有零解。
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:1.7} 解答：}
+
+\enum
+\item[(1)] 用高斯消元法将增广矩阵化成阶梯形：
+$$\begin{bmatrix} 1 & 0 & 3 & 3 \\ 0 & 1 & -2 & -4 \\ 2 & 0 & 4 & 4 \end{bmatrix} \longrightarrow \begin{bmatrix} 1 & 0 & 3 & 3 \\ 0 & 1 & -2 & -4 \\ 0 & 0 & -2 & -2 \end{bmatrix}
+\longrightarrow \begin{bmatrix} 1 & 0 & 3 & 3 \\ 0 & 1 & -2 & -4 \\ 0 & 0 & 1 & 1 \end{bmatrix}
+\longrightarrow \begin{bmatrix} 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & -2 \\ 0 & 0 & 1 & 1 \end{bmatrix}$$
+最后的阶梯形为
+$$\systeme{ x_1 = 0, x_2 = -2 , x_3 = 1 },$$
+同时这也是原线性方程组的解。
+
+\item[(2)] 类似第(1)小题用高斯消元法化阶梯形可求得解为
+$$\begin{cases}
+x_1 = 2 \\ x_2 = -2 \\ x_3 = 0
+\end{cases}.$$
+
+\item[(3)] 类似第(1)小题用高斯消元法化阶梯形可求得解为
+$$\begin{cases}
+x_1 = 6 \\ x_2 = -3 \\ x_3 = -3 \\ x_4 = -2
+\end{cases}.$$
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:1.8} 解答：}
+
+用高斯消元法化成
+$$\begin{bmatrix} 1 & 0 &  0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0 \end{bmatrix}x = \begin{bmatrix} b_1 + b_3 \\ 7b_1 + b_2 + 4b_3 \\ -3b_1 - 2b_3 \\ b_1 - b_2 + b_3 + b_4 \end{bmatrix}$$
+所以要使原线性方程组有解，必须有$b_1 - b_2 + b_3 + b_4 = 0$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:1.9} 解答：}
+
+把$a_1 = (0,1,0)^T, a_2 = (-3,2,2)^T$带入第三个方程$ax_1 + bx_2 + cx_3 = d$得到关于$a,b,c,d$为未知元的线性方程组
+$$\left\{ \begin{array}{rcl} b & = & d \\ -3a + 2b + 2c & = & d\end{array}\right.,$$
+得$d = b, b = 3a - 2c$，代入原线性方程组得
+$$\left\{ \begin{array}{rcl} x_1 - x_2 + 2x_3 & = & -1 \\ 3x_1 + x_2 + 4x_3 & = & 1 \\ ax_1 + 2(3a - 2c)x_2 + cx_3 & = & (3a - 2c)\end{array}\right.$$
+用高斯消元法化成阶梯形为
+$$\left\{ \begin{array}{rcl} x_1 + \frac32 x_3 & = & 0 \\ x_2 - \frac12 x_3 & = & 1 \end{array}\right.$$
+所以原线性方程组全部解为$(0,1,0)^T + k\cdot(-3,1,2)^T, k\in\mathbb{R}$。
+
+另解：由于$a_1 = (0,1,0)^T, a_2 = (-3,2,2)^T$是线性无关的两个解，且原线性方程组的前2个方程中任何一个都不是另一个的倍乘，所以原线性方程组对应的齐次线性方程组的解空间最多为1维，所以所以原线性方程组全部解为$(0,1,0)^T + k\cdot((-3,2,2)^T - (0,1,0)^T), k\in\mathbb{R}$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:1.10} 解答：}
+
+平面上一般的直线方程为$ax+by+c=0$，$a,b$不同时为0。如果$(x_1,y_1),(x_2,y_2),\cdots,(x_n,y_n)$都位于这条直线上，那么他们都必须满足这个直线方程，也就是说以$a,b,c$为未知元的线性方程组
+$$\begin{cases} x_1a+y_1b+c = 0 \\ x_2a+y_2b+c = 0 \\ \cdots\cdots\cdots\cdots \\ x_na+y_nb+c = 0\end{cases} \qquad (\ast)$$
+必须有$a,b$不同时为0的解。
+
+反之，如果这个$a,b,c$为未知元的线性方程组有$a,b$不同时为0的解$(a,b,c) = (a_0,b_0,c_0)$，那么说明这$n$个点都满足直线方程$ax_0+by_0+c_0=0$。
+
+线性方程组$(\ast)$用高斯消元法化简为
+$$\begin{cases} c + x_1a + y_1b = 0 \\ (x_2-x_1)a + (y_2-y_1)b = 0 \\ \cdots\cdots\cdots\cdots \\ (x_n-x_1)a + (y_n-y_1)b = 0 \end{cases} \qquad (\ast\ast)$$
+假设有一个$x_i \neq x_1 (i > 1),$ 不妨设其为$x_2,$ 那么可继续化简为
+$$\begin{cases} c + \left[ y_1 - x_1\dfrac{y_2-y_1}{x_2-x_1} \right] b = 0 \\ a + \dfrac{y_2-y_1}{x_2-x_1}b = 0 \\ \left[ y_3-y_1 - (x_3-x_1)\dfrac{y_2-y_1}{x_2-x_1} \right] b = 0 \\ \cdots\cdots\cdots\cdots \\ \left[ y_n-y_1 - (x_n-x_1)\dfrac{y_2-y_1}{x_2-x_1} \right] b = 0 \end{cases}$$
+因此，必须有$(y_3-y_1) - (x_3-x_1)\dfrac{y_2-y_1}{x_2-x_1} = \cdots = (y_n-y_1) - (x_n-x_1)\dfrac{y_2-y_1}{x_2-x_1} = 0,$ 才能保证齐次原线性方程组有非零解。
+
+如果所有$x_i$值都相等，那么方程组$(\ast\ast)$就变为
+$$\begin{cases} c + x_1a + y_1b = 0 \\ (y_2-y_1)b = 0 \\ \cdots\cdots\cdots\cdots \\ (y_n-y_1)b = 0 \end{cases}$$
+这个方程无论$y_i$如何取值，总会有$a,b$不同时为0的解。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

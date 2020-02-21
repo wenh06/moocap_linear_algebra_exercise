@@ -1,0 +1,1420 @@
+\chapter{矩阵}
+
+\section{知识点解析}
+
+\begin{Def}
+由$mn$个实数排成行列的矩形数表, 用圆(或方)括号括起来，即
+$$A = \begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \vdots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}$$
+称为$m\times n$型的矩阵，简记为$A = (a_{ij})_{m\times n}$，其中横排称为矩阵的行，竖排称为矩阵的列。$a_{ij}$称为矩阵的元素，其第一下标表示所在的行数，第二下标表示其所在的列数。全体$m\times n$型的矩阵组成的集合，记为$M_{m\times n}(\mathbb{R})$。
+\end{Def}
+
+\begin{rmk}
+几类特殊矩阵：
+\enum
+\item[(1)] 方阵：行数与列数都等于$n$的矩阵称为$n$阶方阵。全体$n$阶方阵组成的集合，记为$M_n(\mathbb{R})$。
+\item[(2)] 行矩阵，列矩阵：
+
+行数$m=1$时，$(a_1,a_2,\cdots,a_n)$称为行矩阵（或行向量）。
+
+列数$n=1$时，$\begin{bmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix}$称为列矩阵（或列向量）。
+\item[(3)] 零矩阵：元素全为零的矩阵称为零矩阵，记为$O$或$0_{m\times n}$。
+\item[(4)] 负矩阵：$-A = -(a_{ij})_{m\times n} = (-a_{ij})_{m\times n}$
+\item[(5)] 三角形矩阵：
+
+上三角矩阵：主对角线下方的元素全为零的方阵称为上三角形矩阵。
+
+下三角矩阵：主对角线上方的元素全为零的方阵称为下三角形矩阵。
+\item[(6)] 对角矩阵：除主对角线上元素外，全为零的方阵。
+$$\begin{bmatrix} a_{11} & & \\ & \ddots & \\ & & a_{nn} \end{bmatrix} =: diag(a_{11},\cdots,a_{nn})$$
+特别地有：
+\begin{eqnarray*}
+\text{纯量矩阵} & : & \begin{bmatrix} c & & \\ & \ddots & \\ & & c \end{bmatrix} = diag(c,\cdots,c) \\
+\text{单位矩阵} & : & \begin{bmatrix} 1 & & \\ & \ddots & \\ & & 1 \end{bmatrix} = diag(1,\cdots,1) =: I_n
+\end{eqnarray*}
+\item[(7)] 阶梯形矩阵（零行在最下方，非零行左端的零严格增加）。
+
+简化阶梯形矩阵（阶梯形矩阵，主元素$=1$，主元所在列的其它元均为$0$）。
+\end{list}
+\end{rmk}
+
+\begin{Def}\
+
+\enum
+\item[(1)] 如果两个矩阵行数相同且列数相同，则称这两个矩阵是同型的；
+\item[(2)] 两个矩阵同型且对应元素相等，则称这两个矩阵是相等的。
+\end{list}
+\end{Def}
+
+\begin{Def}[矩阵的线性运算]\
+
+\enum
+\item[(1)] 加法：同型矩阵对应分量相加。
+$$A = (a_{ij})_{m\times n}, B = (b_{ij})_{m\times n} \Rightarrow A + B := (a_{ij} + b_{ij})_{m\times n}$$
+\item[(2)] 减法：同型矩阵对应分量相减。
+$$A - B := A + (-B) = (a_{ij} - b_{ij})_{m\times n}$$
+\item[(3)] 数量乘法（或数乘）：矩阵的每个分量同乘一个数。
+$$\text{设 }k\in\mathbb{R}, A = (a_{ij})_{m\times n}, \text{则 } kA = k(a_{ij})_{m\times n} := (ka_{ij})_{m\times n}$$
+\end{list}
+\end{Def}
+
+\begin{rmk}
+由数的乘法可交换，知$kA = (ka_{ij})_{m\times n} = (a_{ij}k)_{m\times n} = Ak$。一般统一都把数$k$乘在矩阵$A$的左边。
+\end{rmk}
+
+\begin{prop}[矩阵线性运算（加法与数乘）的运算律]\
+
+加法运算律：
+\enum
+\item[(1)] 交换律：$A+B = B+A$。
+\item[(2)] 结合律：$A+(B+C) = (A+B)+C$。
+\item[(3)] 零矩阵：$A+0 = A$。
+\item[(4)] 负矩阵：$A+(-A) = 0$。
+\end{list}
+
+数乘运算律
+\enum
+\item[(5)] 单位：$1\cdot A = A$。
+\item[(6)] 结合律：$k(lA) = (kl)A$。
+\item[(7)] 分配律1：$k(A+B) = kA+kB$。
+\item[(8)] 分配律2：$(k+l)A = kA+lA$。
+\end{list}
+\end{prop}
+
+\begin{Def}[矩阵的乘法]
+设$A = (a_{ij})_{m\times s}, B = (b_{ij})_{t\times n}$。如果矩阵$A$的列数等于矩阵$B$的行数，即$s=t$，则$A$与$B$ 可以相乘，记为$AB$。$AB$为一个$m\times n$阶的矩阵，其$(i,j)$位置上的元素是$A$ 的第$i$行的元素与$B$的第$j$列对应位置上的元素乘积之和，即如果记$AB = (c_{ij})_{m\times n}$，那么
+$$c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + \cdots + a_{is}b_{sj} = \sum\limits_{k=1}^s a_{ik}b_{kj}, \quad (i=1,\cdots,m; j=1,\cdots,n)$$
+\end{Def}
+
+\begin{prop}[矩阵乘法的一些``反常''性质]\
+
+\enum
+\item[(1)] 不满足交换律：$AB\neq BA$。
+\item[(2)] 存在零因子:
+\begin{eqnarray*}
+A \neq 0, B \neq 0 & \not\Rightarrow & AB \neq 0; \\
+AB = 0 & \not\Rightarrow & A = 0 \text{ 或 } B = 0.
+\end{eqnarray*}
+\item[(3)] 不满足消去律：$AB = AC \not\Rightarrow B = C$。
+\end{list}
+\end{prop}
+
+\begin{prop}[矩阵乘法的运算律]\
+设$A\in M_{m\times n}(\mathbb{R})$为一个$m\times n$阶矩阵设，且取$B, C$使得下列运算可行，则
+\enum
+\item[(1)] 零矩阵：$0_{k\times m}A = 0_{k\times n}, A0_{n\times l} = 0_{m\times l}$。
+\item[(2)] 单位阵：$I_mA = A, AI_n = A$。
+\item[(3)] 数乘：$(kA)B = A(kB) = k(AB)$。
+\item[(4)] 左右分配律：$A(B+C) = AB + AC, (B+C)A = BA+CA$。
+\item[(5)] 结合律：$A(BC) = (AB)C$。
+\end{list}
+\end{prop}
+
+\begin{Def}
+对于$n$阶方阵$A$，定义$A$的方幂为：$A^k = \underbrace{A\cdots A}_{k \text{ 个}}, k\in \mathbb{Z}$。
+
+另对$A^0$，我们规定$A^0 = I_n$。
+\end{Def}
+
+\begin{prop}[矩阵方幂的性质]
+设$A$为$n$阶方阵，$k,l$为非负整数，则
+\enum
+\item[$\bullet$] $A^k A^l = A^{k+l} = A^l A^k$。
+\item[$\bullet$] $(A^k)^l = A^{kl}$。
+\end{list}
+\end{prop}
+
+\begin{rmk}
+对同一个$n$阶方阵$A$反复进行线性运算与乘法（方幂）运算，经过合并化简后，可得
+$$a_mA^m + a_{m-1}A^{m-1} + \cdots + a_1A + a_0I_n$$
+把上式记为$f(A)$，称为关于矩阵$A$的$m$次多项式。
+
+由于$A^k$与$A^l$乘法可交换，对任意多项式$f(x)$与$g(x)$，有矩阵多项式$f(A)$与$g(A)$乘法可交换，即
+$$f(A)g(A) = g(A)f(A).$$
+\end{rmk}
+
+\begin{Def}
+设矩阵$A=(a_{ij})_{m\times n}$，将$A$的行与列互换得到的矩阵称为$A$的转置，记为$A^T$。
+\end{Def}
+
+\begin{rmk}
+$A^T$为$n\times m$阶矩阵，若记$A^T = (a_{ij}')_{n\times m}$，则有$a_{ij}' = a_{ji}$。
+\end{rmk}
+
+\begin{prop}[矩阵转置的运算律]
+设矩阵$A,B$和实数$\lambda$使得下述相关运算有定义，则
+\enum
+\item[(1)] 两次还原：$(A^T)^T = A$。
+\item[(2)] 加法相容：$(A+B)^T = A^T + B^T$。
+\item[(3)] 数乘相容：$(\lambda A)^T = \lambda A^T$。
+\item[(4)] 乘法反序：$(AB)^T = B^T A^T$。
+\end{list}
+\end{prop}
+
+\begin{Def}
+设$A$为方阵。若$A^T = A$，则称$A$为对称阵；若$A^T = -A$，则称$A$为反对称阵。
+\end{Def}
+
+\begin{prop}[对称阵与反对称阵的运算律]\
+
+线性运算保持矩阵的（反）对称性，即
+\enum
+\item[(1)] 如果$A, B$是同阶对称矩阵，则$A+B, kA$也是对称矩阵。
+\item[(2)] 如果$A, B$是同阶反对称矩阵，则$A+B, kA$也是反对称矩阵。
+\end{list}
+而乘法运算不一定保持（反）对称性。
+\end{prop}
+
+\begin{thm}
+设$A,B\in M_n(\mathbb{R})$，则$\det(AB) = \det(A)\cdot\det(B)$。
+\end{thm}
+
+\begin{cor}
+设$A_1,\cdots,A_s$为$s$个$n$阶方阵，则
+$$\det(A_1\cdots A_s) = \det A_1\cdots\det A_s.$$
+\end{cor}
+
+\begin{prop}
+方阵的行列式运算与其他运算有如下关系（设$A$为$n$阶方阵）：
+\enum
+\item[$\bullet$] $\det A^T = \det A$。
+\item[$\bullet$] $\det (kA) = k^n \det A$。
+\end{list}
+\end{prop}
+
+\begin{Def}
+对一个$m\times n$的矩阵$A$，用若干横线和竖线把$A$的行分成$p$个部分，列分成$q$个部分，整个矩阵$A$分成$pq$个小矩阵，即
+$$A = \begin{bmatrix}
+A_{11} & A_{12} & \cdots & A_{1q} \\
+A_{21} & A_{22} & \cdots & A_{2q} \\
+\vdots & \vdots & \ddots & \vdots \\
+A_{p1} & A_{p2} & \cdots & A_{pq}
+\end{bmatrix}$$
+其中每个小矩阵$A_{ij}(1 \leqslant i \leqslant p, 1 \leqslant j \leqslant q)$称为矩阵$A$的子块，$A$也可视为由子块$A_{ij}$构成的$p\times q$阶矩阵，称为分块矩阵。
+\end{Def}
+
+\begin{rmk}
+矩阵分块的三个原则：
+\enum
+\item[(1)] 体现原矩阵特点，按需划分。
+\item[(2)] 能够把子块看作元素进行运算（除乘法的次序外）。
+\item[(3)] 保持原有运算性质。
+\end{list}
+\end{rmk}
+
+\begin{prop}[分块矩阵的运算]\
+
+\enum
+\item[(1)] 分块矩阵的加法：设分块矩阵$A$与$B$的行列数均相同（同型矩阵），且采用同样的分块方法，即
+$$A = \begin{bmatrix}
+A_{11} & \cdots & A_{1q} \\
+\vdots & \ddots & \vdots \\
+A_{p1} & \cdots & A_{pq}
+\end{bmatrix},
+B = \begin{bmatrix}
+B_{11} & \cdots & B_{1q} \\
+\vdots & \ddots & \vdots \\
+B_{p1} & \cdots & B_{pq}
+\end{bmatrix},
+$$
+其中$A_{ij}$与$B_{ij}$的行数和列数均相同（同型矩阵），则
+$$A + B = \begin{bmatrix}
+A_{11} + B_{11} & \cdots & A_{1q} + B_{1q}\\
+\vdots & \ddots & \vdots \\
+A_{p1} + B_{p1} & \cdots & A_{pq} + B_{pq}
+\end{bmatrix}.
+$$
+\item[(2)] 分块矩阵的数乘:
+
+设$A = \begin{bmatrix}
+A_{11} & \cdots & A_{1q} \\
+\vdots & \ddots & \vdots \\
+A_{p1} & \cdots & A_{pq}
+\end{bmatrix}$（可任意分块），$\lambda$是数，则
+$$\lambda A = \begin{bmatrix}
+\lambda A_{11} & \cdots & \lambda A_{1q} \\
+\vdots & \ddots & \vdots \\
+\lambda A_{p1} & \cdots & \lambda A_{pq}
+\end{bmatrix}$$
+\item[(3)] 分块矩阵的转置：
+
+设$$A = \begin{bmatrix}
+A_{11} & \cdots & A_{1q} \\
+\vdots & \ddots & \vdots \\
+A_{p1} & \cdots & A_{pq}
+\end{bmatrix}$$，则分块矩阵A的转置为
+$$A^T = \begin{bmatrix}
+A_{11}^T & \cdots & A_{p1}^T \\
+\vdots & \ddots & \vdots \\
+A_{1q}^T & \cdots & A_{pq}^T
+\end{bmatrix},$$
+即，每一块子矩阵均做转置，且行列下标互换。
+\item[(4)] 分块矩阵的乘法：
+
+设$A_{m\times n} B_{n\times l}=A_{m\times l}$，要求
+\enum
+\item[$\bullet$] $A$的列数$= B$的行数$= n$。
+\item[$\bullet$] $A$的列的分法$= B$的行的分法（$n$的加法有序分拆）。
+\end{list}
+
+$$A = \begin{bmatrix}
+A_{11} & \cdots & A_{1s} \\
+\vdots & \ddots & \vdots \\
+A_{r1} & \cdots & A_{rs}
+\end{bmatrix},
+B = \begin{bmatrix}
+B_{11} & \cdots & B_{1t} \\
+\vdots & \ddots & \vdots \\
+B_{s1} & \cdots & B_{st}
+\end{bmatrix},
+C = \begin{bmatrix}
+C_{11} & \cdots & C_{1t} \\
+\vdots & \ddots & \vdots \\
+C_{r1} & \cdots & C_{rt}
+\end{bmatrix}.$$
+对乘积矩阵$C$，有
+\enum
+\item[$\bullet$] $C$的行数及行分块法由$A$的行数及行分块法决定；$C$的列数及列分块法由$B$的列数及列分块法决定。
+\item[$\bullet$] $C$的每个子块
+$$C_{ij} = A_{i1}B_{1j} + A_{i2}B_{2j} +\cdots +  A_{is}B_{sj} = \sum\limits_{k=1}^s  A_{ik}B_{kj}, \quad (1 \leqslant i \leqslant r, 1 \leqslant j \leqslant t)$$
+\end{list}
+\end{list}
+\end{prop}
+
+\begin{rmk}
+特殊的分块矩阵：
+\enum
+\item[$\bullet$] 准对角矩阵：
+
+设$A$为方阵，若
+$$A = \begin{bmatrix} A_{11} & & \\ & \ddots & \\ & & A_{nn} \end{bmatrix} = diag(A_{11},\cdots,A_{nn}),$$
+其中$A_{11},\cdots,A_{nn}$都是小方阵，则称$A$为准对角矩阵。
+
+准对角矩阵可作为对角矩阵的推广情形，是最简单的一类分块矩阵。
+
+\item[$\bullet$] 准上三角矩阵：
+
+设矩阵$A$的行与列均分为个$n$子块，且
+$$A = \begin{bmatrix} A_{11} & A_{12} & \cdots & A_{1n} \\ 0 & A_{22} & \cdots & A_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & A_{nn} \end{bmatrix},$$
+则称$A$为准上三角矩阵。
+
+\item[$\bullet$] 准下三角矩阵：
+
+设矩阵$A$的行与列均分为个$n$子块，且
+$$A = \begin{bmatrix} A_{11} & 0 & \cdots & 0 \\ A_{21} & A_{22} & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ A_{n1} & A_{n2} & \cdots & A_{nn} \end{bmatrix},$$
+则称$A$为准下三角矩阵。
+
+一般地，准三角形矩阵不一定是方阵。
+\end{list}
+\end{rmk}
+
+\begin{thm}
+在可运算的条件下，准上（下）三角形矩阵的加法，数乘与乘法仍是准上（下）三角形矩阵。
+\end{thm}
+
+\begin{cor}
+在可运算的条件下，上（下）三角形矩阵的加法，数乘与乘法仍是上（下）三角形矩阵。
+\end{cor}
+
+\begin{Def}
+单位矩阵$I$经过一次初等变换所得到的矩阵称为初等矩阵。
+
+初等矩阵有以下三类：
+\enum
+\item[(1)] 单位矩阵$I$的第$i$行乘以非零数$k$（倍乘行变换）所得矩阵，记为$E_i(k)$，称为倍乘矩阵。它同时也是$I$的第$i$列乘以非零数$k$（倍乘行变换）所得矩阵。
+$$I_n \xrightarrow[(kc_i)]{kr_i} \begin{bmatrix} 1 & & & & & & \\ & \ddots & & & & & \\ & & 1 & & & & \\ & & & k & & & \\ & & & & 1 & &  \\ & & & & & \ddots & \\ & & & & & & 1 \end{bmatrix} =: E_i(k)$$
+\item[(2)] 将单位矩阵$I$第$i$行的$k$倍加到第$j$行，所得矩阵记为$E_{i,j}(k)$，称为倍加矩阵。它也是将$I$第$j$列的$k$倍加到第$i$列，所得的矩阵。
+$$\begin{bmatrix} 1 & & & & & & \\ & \ddots & & & & & \\ & & 1 & & & & \\ & & \vdots & \ddots & & & \\ & & k & \cdots & 1 & &  \\ & & & & & \ddots & \\ & & & & & & 1 \end{bmatrix} =: E_{i,j}(k)$$
+\item[(3)] 交换单位矩阵$I$的第$i$行与第$j$行，所得矩阵记为$E_{i,j}$，称为对换矩阵。它也是交换$I$的第$i$列与第$j$列，所得的矩阵。
+%$$
+%\begin{bmatrix} 1 & & & & & & & \\ & \ddots & & & & & & \\ & & 0 & & 1 & & \\ & & & \ddots & & & & \\ & & 1 & & 0 & & \\ & & & & & & \ddots & \\ & & & & & & & 1\end{bmatrix} =: E_{ij}$$
+$$\left[\begin{array}{*{11}c}
+1 & & & & & & & & &  & \\ & \ddots & & & & & & & & & \\ & & 1 & & & & & & & & \\ & & & 0 & \cdots & \cdots & \cdots & 1 & & & \\ & & & \vdots & 1 & & & \vdots & & & \\ & & & \vdots & & \ddots & & \vdots & & & \\ & & & \vdots & & & 1 & \vdots & & & \\ & & & 1 & \cdots & \cdots & \cdots & 0 & & & \\ & & & & & & & & 1 & & \\ & & & & & & & & & \ddots & \\ & & & & & & & & & & 1 \end{array}\right] =: E_{ij}$$
+\end{list}
+\end{Def}
+
+\begin{prop}[初等矩阵的性质]\
+
+\enum
+\item[(1)] 初等矩阵的转置：
+$$E_i(k)^T = E_i(k), \quad E_{ij}^T = \left[\begin{array}{*{11}c}
+1 & & & & & & & & &  & \\ & \ddots & & & & & & & & & \\ & & 1 & & & & & & & & \\ & & & 0 & \cdots & \cdots & \cdots & 1 & & & \\ & & & \vdots & 1 & & & \vdots & & & \\ & & & \vdots & & \ddots & & \vdots & & & \\ & & & \vdots & & & 1 & \vdots & & & \\ & & & 1 & \cdots & \cdots & \cdots & 0 & & & \\ & & & & & & & & 1 & & \\ & & & & & & & & & \ddots & \\ & & & & & & & & & & 1 \end{array}\right] = E_{ij},$$
+故倍乘矩阵、对换矩阵转置不变（对称阵），转置后仍为初等矩阵。
+
+设$i < j$，则
+$$E_{i,j}(k) = \begin{bmatrix} 1 & & & & & & \\ & \ddots & & & & & \\ & & 1 & & & & \\ & & \vdots & \ddots & & & \\ & & k & \cdots & 1 & &  \\ & & & & & \ddots & \\ & & & & & & 1 \end{bmatrix} = E_{j,i}(k)^T,$$
+故倍加矩阵转置仍为倍加矩阵，但下标顺序交换。
+\item[(2)] 初等矩阵的行列式：易知$|E_i(k)|=k\neq 0; |E_{i,j}(k)|=1$，而
+\begin{eqnarray*}
+|E_{ij}| & = & \left|\begin{array}{*{11}c}
+1 & & & & & & & & &  & \\ & \ddots & & & & & & & & & \\ & & 1 & & & & & & & & \\ & & & 0 & \cdots & \cdots & \cdots & 1 & & & \\ & & & \vdots & 1 & & & \vdots & & & \\ & & & \vdots & & \ddots & & \vdots & & & \\ & & & \vdots & & & 1 & \vdots & & & \\ & & & 1 & \cdots & \cdots & \cdots & 0 & & & \\ & & & & & & & & 1 & & \\ & & & & & & & & & \ddots & \\ & & & & & & & & & & 1 \end{array}\right| \\
+& = & (-1)^{\tau(1\cdots j\cdots i\cdots n)}a_{11}\cdots a_{i-1,i-1}a_{ij}a_{i+1,i+1}\cdots a_{j-1,j-1}a_{ji}a_{j+1,j+1}\cdots a_{nn} \\
+& = & (-1)\times 1\times\cdots\times 1 = -1
+\end{eqnarray*}
+\item[(3)] 初等矩阵的分块表示：
+
+设$e_i = (0,\cdots,0,1,0,\cdots,0)^T$ （$1$在第$i$位）列矩阵（列向量），则
+$$I_n = (e_1,\cdots,e_i,\cdots,e_j,\cdots,e_n), \quad \text{ 或 }\ I_n = I_n^T = \begin{bmatrix} e_1^T \\ \vdots \\ e_i^T \\ \vdots \\ e_n^T \end{bmatrix},$$
+从而，由初等矩阵的定义，有
+\begin{eqnarray*}
+E_{ij} & = & E_{ij}^T = (e_1,\cdots,e_j,\cdots,e_i,\cdots,e_n), \\
+E_i(k) & = & E_i(k)^T = (e_1,\cdots,ke_i,\cdots,e_n), \quad (k\neq 0), \\
+E_{ij}(k) & = & \begin{bmatrix} e_1^T \\ \vdots \\ e_i^T \\ \vdots \\ ke_i^T + e_j^T \\ \cdots \\ e_n^T \end{bmatrix} = (e_1,\cdots,ke_j + e_i,\cdots,e_j,\cdots,e_n)
+\end{eqnarray*}
+\end{list}
+\end{prop}
+
+\begin{prop}[初等矩阵与初等变换的关系]\
+
+\enum
+\item[(1)] 左乘倍乘矩阵$E_i(k)$，相当于对$A$的第$i$行做$k$倍的倍乘变换；右乘倍乘矩阵$E_i(k)$，相当于对$A$的第$i$列做$k$倍的倍乘变换。
+\item[(2)] 左乘对换矩阵$E_{ij}$，相当于对$A$的第$i, j$行做对换变换；右乘对换矩阵$E_{ij}$，相当于对$A$的第$i, j$列做对换变换。
+\item[(3)] 左乘倍加矩阵$E_{ij}(k)$，相当于对$A$做第$i$行的$k$倍加到第$j$行上的倍加变换；右乘倍加矩阵$E_{ij}(k)$，相当于对$A$做第$j$列的$k$倍加到第$i$列上的倍加变换。
+\end{list}
+\end{prop}
+
+\begin{thm}
+用初等矩阵左乘矩阵$A$，相当于对$A$进行一次相应的初等行变换。用初等矩阵右乘矩阵$A$，相当于对$A$进行一次相应的初等列变换。
+\end{thm}
+
+\begin{Def}
+下面三种针对分块矩阵$M$的变形，统称为分块矩阵的初等变换：
+\enum
+\item[(1)] 倍乘：用特定矩阵$P$左（右）乘$M$的某一``行（列）''；
+\item[(2)] 倍加：用矩阵$Q$乘$M$的某``行（列）''加到另外一``行（列）''。
+\item[(3)] 对换：交换$M$的两``行''或``列''。
+\end{list}
+\end{Def}
+
+\begin{Def}
+将单位矩阵分块成准对角形矩阵$I = diag(I_s, I_t)$，对其进行一次初等变换，得到的分块矩阵称为分块初等矩阵：
+\enum
+\item[(1)] 分块倍乘矩阵：$\begin{bmatrix} P & 0 \\ 0 & I_t \end{bmatrix}, \begin{bmatrix} I_s & 0 \\ 0 & P \end{bmatrix}$（其中$P$为可逆方阵）；
+\item[(2)] 分块倍加矩阵：$\begin{bmatrix} I_s & 0 \\ Q & I_t \end{bmatrix}, \begin{bmatrix} I_s & Q \\ 0 & I_t \end{bmatrix}$；
+\item[(3)] 分块对换矩阵：$\begin{bmatrix} 0 & I_t \\ I_s & 0 \end{bmatrix}, \begin{bmatrix} 0 & I_s \\ I_t & 0 \end{bmatrix}$。
+\end{list}
+\end{Def}
+
+\begin{thm}
+对分块矩阵进行一次初等行（列）变换，相当于给它左（右）乘以一个相应的分块初等矩阵。
+\end{thm}
+
+\begin{Def}
+设$A$为$n$阶方阵，若存在$n$阶方阵$B$，使得 $AB = BA = I_n$，则称$A$为可逆矩阵或非奇异矩阵，而称$B$为$A$的逆矩阵，并记为$A^{-1}$。
+\end{Def}
+
+\begin{rmk}\
+
+\enum
+\item[(1)] 定义中矩阵$A$与$B$的地位相同，因而若$A$可逆，且$B$是$A$的逆，则$B$也可逆，$A$即是$B$的逆，并且$A$与$A^{-1}$乘法可交换。
+\item[(2)] 对上述定义式两边取行列式知：若$A$为可逆矩阵，则
+$$|A|\neq 0, |A^{-1}| = |A|^{-1} = 1 / |A|$$
+\item[(3)] 若$A$有逆矩阵，则其逆是唯一的。
+\end{list}
+\end{rmk}
+
+\begin{prop}
+设$A, B, A_i$为$n$阶可逆矩阵，实数$k\neq 0$，则
+\enum
+\item[(1)] $A^{-1}$也可逆，且$(A^{-1})^{-1} = A$。
+\item[(2)] $AB$也可逆，且$(AB)^{-1} = B^{-1}A^{-1}$。进一步有，$(A_1A_2\cdots A_s)^{-1} = A_s^{-1}\cdots A_1^{-1}$。
+\item[(3)] $kA$也可逆，且$(kA)^{-1} = k^{-1}A^{-1}$。
+\item[(4)] $A^T$也可逆，且$(A^T)^{-1} = (A^{-1})^T$。
+\end{list}
+\end{prop}
+
+\begin{Def}
+用$n$阶方阵$A$的元素的代数余子式$A_{ij}$组成的矩阵的转置
+$$(A_{ij})^T_{\tiny \substack{1 \leqslant i \leqslant n \\ 1 \leqslant j \leqslant n}\normalfont} = \begin{bmatrix}
+A_{11} & A_{21} & \cdots & A_{n1} \\
+A_{12} & A_{22} & \cdots & A_{n2} \\
+\vdots & \vdots & \ddots & \vdots \\
+A_{1n} & A_{2n} & \cdots & A_{nn}
+\end{bmatrix} =: A^{\ast}$$
+称为矩阵$A$的伴随矩阵。
+\end{Def}
+
+\begin{rmk}\
+
+\enum
+\item[(1)] 对方阵$A, AA^{\ast} = A^{\ast}A = |A|I$总是成立的（含$|A| = 0$时）。
+\item[(2)] 若$|A| \neq 0$，则$A|A|^{-1}A^{\ast} = |A|^{-1}A^{\ast}A = I$，故$A$和$A^{\ast}$可逆，且
+$$A^{-1} = |A|^{-1}A^{\ast}, \quad (A^{\ast})^{-1} = |A|^{-1}A.$$
+\end{list}
+\end{rmk}
+
+\begin{thm}
+$n$阶方阵$A$可逆的充要条件是$|A| \neq 0$。
+\end{thm}
+
+\begin{cor}
+设$A$为$n$阶方阵，若存在$n$阶方阵$B$，使得$AB = I_n$（或 $BA = I_n$），则$A$可逆，且$B = A^{-1}$。
+\end{cor}
+
+\begin{thm}
+$n$阶方阵$A$可逆 $\Longleftrightarrow$ $A$为若干个初等矩阵的乘积。
+\end{thm}
+
+\begin{cor}
+$n$阶方阵$A$可逆 $\Longleftrightarrow$ 齐次线性方程组$AX=0$只有零解。
+\end{cor}
+
+\begin{prop}[求逆矩阵的初等变换法]\
+
+\enum
+\item[$\bullet$] 行变换法：构造一个$n\times(2n)$阶分块矩阵
+$$[A,I] \xrightarrow{\text{若干初等行变换}} [I,A^{-1}]:$$
+$$P_s\cdots P_1[A,I] = [P_s\cdots P_1A, P_s\cdots P_1I] = [A^{-1}A,A^{-1}I] = [I,A^{-1}].$$
+\item[$\bullet$] 列变换法：构造一个$(2n)\times n$阶分块矩阵
+$$\begin{bmatrix} A \\ I \end{bmatrix} \xrightarrow{\text{若干初等列变换}} \begin{bmatrix} I \\ A^{-1} \end{bmatrix}:$$
+$$\begin{bmatrix} A \\ I \end{bmatrix}P_s\cdots P_1 = \begin{bmatrix} AP_s\cdots P_1 \\ IP_s\cdots P_1 \end{bmatrix} = \begin{bmatrix} AA^{-1} \\ IA^{-1} \end{bmatrix} = \begin{bmatrix} I \\ A^{-1} \end{bmatrix}.$$
+\end{list}
+\end{prop}
+
+\begin{prop}
+对准上三角分块矩阵有
+$$A = \begin{bmatrix} A_{11} & A_{12} & \cdots & A_{1n} \\ 0 & A_{22} & \cdots & A_{1n} \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & A_{nn} \end{bmatrix} \text{ 可逆 }
+\Longleftrightarrow  A_{11},\cdots,A_{nn}\text{ 均可逆，}$$
+此时，
+$$A^{-1} = \begin{bmatrix} A_{11}^{-1} & \ast & \cdots & \ast \\ 0 & A_{22}^{-1} & \cdots & \ast \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & A_{nn}^{-1} \end{bmatrix}.$$
+
+特别地，若$A = diag(A_{11},\cdots,A_{nn})$，则$A^{-1} = diag(A_{11}^{-1},\cdots,A_{nn}^{-1})$。
+\end{prop}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{例题讲解}
+
+\begin{eg}
+设有如下两组变量替换
+\begin{eqnarray*}
+\begin{cases}
+x_1 = a_{11}y_1 + a_{12}y_2 + a_{13}y_3 \\ x_2 = a_{21}y_1 + a_{22}y_2 + a_{23}y_3
+\end{cases}
+& \longrightarrow &
+\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23}
+\end{bmatrix} \\
+\begin{cases}
+y_1 = b_{11}z_1 + b_{12}z_2 \\ y_2 = b_{21}z_1 + b_{22}z_2 \\ y_3 = b_{31}z_1 + b_{32}z_2
+\end{cases}
+& \longrightarrow &
+\begin{bmatrix}
+b_{11} & b_{12} \\ b_{21} & b_{22} \\ b_{31} & b_{32}
+\end{bmatrix}
+\end{eqnarray*}
+将第二组变量替换代入到第一组中，即可将$x_1, x_2$表示为$z_1, z_2$的形式：
+$$
+\begin{cases}
+x_1 = (a_{11}b_{11} + a_{12}b_{21} + a_{13}b_{31})z_1 + (a_{11}b_{12} + a_{12}b_{22} + a_{13}b_{32})z_2 \\ x_2 = (a_{21}b_{11} + a_{22}b_{21} + a_{23}b_{31})z_1 + (a_{21}b_{12} + a_{22}b_{22} + a_{23}b_{32})z_2
+\end{cases}
+\longrightarrow
+\begin{bmatrix}
+c_{11} & c_{12} \\ c_{21} & c_{22}
+\end{bmatrix}
+$$
+且$c_{ij} = a_{i1}b_{1j} + a_{i2}b_{2j} + a_{i3}b_{3j} = \sum\limits_{k=1}^3 a_{ik}b_{kj}, \ (1 \leqslant i,j \leqslant 2).$
+\end{eg}
+
+\begin{eg}
+设$A = \begin{bmatrix} 2 & 3 & 1 \\ 1 & 2 & -1 \\ 0 & 3 & 1\end{bmatrix}, B = \begin{bmatrix} 1 \\ 0 \\ 2 \end{bmatrix}$，求$AB$。
+\end{eg}
+
+\begin{solution}
+$\begin{bmatrix} 2 & 3 & 1 \\ 1 & 2 & -1 \\ 0 & 3 & 1\end{bmatrix} \begin{bmatrix} 1 \\ 0 \\ 2 \end{bmatrix} = \begin{bmatrix} 2\times 1 + 3\times 0 + 1\times 2 \\ 1\times 1 + 2\times 0 + (-1)\times 2 \\ 0\times 1 + 3\times 0 + 1\times 2\end{bmatrix} = \begin{bmatrix} 4 \\ -1 \\ 2 \end{bmatrix}$
+\end{solution}
+
+\begin{eg}
+考虑如下线性方程组
+$$\left\{ \begin{array}{rcl} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n & = & b_1 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n & = & b_2 \\ \hdotsfor{3} \\ a_{m1}x_1 + a_{m2}x_2 + \cdots + a_{mn}x_n & = & b_m \end{array}\right.$$
+记$A = (a_{ij})_{m\times n} = \begin{bmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & & \vdots \\ a_{m1} & \cdots & a_{mn} \end{bmatrix}, X_{n\times 1} = \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix} B_{m\times 1} = \begin{bmatrix} b_1 \\ \vdots \\ b_m \end{bmatrix}$。则由矩阵的乘法定义可知，线性方程组可以写为：$AX = B$，其中$A$为系数矩阵，$\left( A \middle| B \right)_{m\times(n+1)}$为增广系数矩阵。
+\end{eg}
+
+\begin{eg}
+设$A = \begin{bmatrix} a_1 \\ a_2 \end{bmatrix}, B = \begin{bmatrix} b_1 & b_2 \end{bmatrix}$，则$AB = \begin{bmatrix} a_1b_1 & a_1b_2 \\ a_2b_1 & a_2b_2 \end{bmatrix}, BA = (b_1a_1 + b_2a_2)$。
+\end{eg}
+
+\begin{eg}
+设$A = \begin{bmatrix} 1 & 1 \\ -1 & -1 \end{bmatrix}, B = \begin{bmatrix} 1 & -1 \\ -1 & 1 \end{bmatrix}$，则$AB = \begin{bmatrix} 0 & 0 \\0 & 0 \end{bmatrix}, BA = \begin{bmatrix} 2 & 2 \\ -2 & -2 \end{bmatrix}$。
+\end{eg}
+
+\begin{eg}
+  设$A = \begin{bmatrix} 1 & 2 \\ 2 & 4 \end{bmatrix}, B = \begin{bmatrix} -1 & 3 \\ -2 & 1 \end{bmatrix}, C = \begin{bmatrix} -7 & 1 \\ 1 & 2 \end{bmatrix}$，求$AB$以及$AC$。
+\end{eg}
+
+\begin{solution}
+$$\left. \begin{array}{c}
+AB = \begin{bmatrix} 1 & 2 \\ 2 & 4 \end{bmatrix} \begin{bmatrix} -1 & 3 \\ -2 & 1 \end{bmatrix} = \begin{bmatrix} -5 & 5 \\ -10 & 10 \end{bmatrix} \\
+AC = \begin{bmatrix} 1 & 2 \\ 2 & 4 \end{bmatrix} \begin{bmatrix} -7 & 1 \\ 1 & 2 \end{bmatrix} = \begin{bmatrix} -5 & 5 \\ -10 & 10 \end{bmatrix}
+\end{array} \right\} \Rightarrow AB = AC, B \neq C.$$
+\end{solution}
+
+\begin{eg}
+考虑对角阵与矩阵的乘积：
+\begin{eqnarray*}
+\begin{bmatrix}
+k_1 & & & \\ & k_2 & & \\ & & \ddots & \\ & & & k_m
+\end{bmatrix}_{m\times m}
+\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \vdots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}_{m\times n}
+& = & \begin{bmatrix}
+k_1 a_{11} & k_1 a_{12} & \cdots & k_1 a_{1n} \\ k_2 a_{21} & k_2 a_{22} & \cdots & k_2 a_{2n} \\ \vdots & \vdots & \vdots & \vdots \\ k_m a_{m1} & k_m a_{m2} & \cdots & k_m a_{mn}
+\end{bmatrix}_{m\times n} \\
+\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \vdots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}_{m\times n}
+\begin{bmatrix}
+k_1 & & & \\ & k_2 & & \\ & & \ddots & \\ & & & k_n
+\end{bmatrix}_{n\times n}
+& = & \begin{bmatrix}
+k_1 a_{11} & k_2 a_{12} & \cdots & k_n a_{1n} \\ k_1 a_{21} & k_2 a_{22} & \cdots & k_n a_{2n} \\ \vdots & \vdots & \vdots & \vdots \\ k_1 a_{m1} & k_2 a_{m2} & \cdots & k_n a_{mn}
+\end{bmatrix}_{m\times n}
+\end{eqnarray*}
+\end{eg}
+
+\begin{eg}
+设$X = \begin{bmatrix} x_1 \\ x_2 \\ x_3 \end{bmatrix}, Y = \begin{bmatrix} y_1 & y_2 & y_3 \end{bmatrix}$，求$(XY)^{100}$。
+\end{eg}
+
+\begin{solution}
+\begin{eqnarray*}
+(XY)^{100} & = & (XY)(XY)\cdots (XY) \\
+& = & X(YX)(YX)\cdots (YX)Y \\
+& = & X(YX)^{99}Y \\
+& = & (YX)^{99}XY \\
+& = & (x_1y_1 + x_2y_2 + x_3y_3)^{99} \begin{bmatrix} x_1y_1 & x_1y_2 & x_1y_3 \\ x_2y_1 & x_2y_2 & x_2y_3 \\ x_3y_1 & x_3y_2 & x_3y_3 \end{bmatrix}.
+\end{eqnarray*}
+\end{solution}
+
+\begin{eg}
+已知$A = \begin{bmatrix} 2 & 0 & -1 \\ 1 & 3 & 2 \end{bmatrix}, B = \begin{bmatrix} 1 & 7 & -1 \\ 4 & 2 & 3 \\ 2 & 0 & 1 \end{bmatrix}$，求$(AB)^T$。
+\end{eg}
+
+\begin{solution}[解法一]
+\begin{eqnarray*}
+& AB & = \begin{bmatrix} 2 & 0 & -1 \\ 1 & 3 & 2 \end{bmatrix} \begin{bmatrix} 1 & 7 & -1 \\ 4 & 2 & 3 \\ 2 & 0 & 1 \end{bmatrix} = \begin{bmatrix} 0 & 14 & -3 \\ 17 & 13 & 10 \end{bmatrix}\\
+\Longrightarrow & (AB)^T & = \begin{bmatrix} 0 & 17 \\ 14 & 13 \\ -3 & 10 \end{bmatrix}
+\end{eqnarray*}
+\end{solution}
+
+\begin{solution}[解法二]
+$$(AB)^T = B^T A^T =  \begin{bmatrix} 1 & 4 & 2 \\ 7 & 2 & 0 \\ -1 & 3 & 1 \end{bmatrix} \begin{bmatrix} 2 & 1 \\ 0 & 3 \\ -1 & 2 \end{bmatrix} = \begin{bmatrix} 0 & 17 \\ 14 & 13 \\ -3 & 10 \end{bmatrix}.$$
+\end{solution}
+
+\begin{eg}
+试证：奇数阶反对称矩阵的行列式一定为$0$。
+\end{eg}
+
+\begin{proof}[证明]
+设$n$为奇数，$A$为$n$阶反对称矩阵，则
+\begin{eqnarray*}
+& |A| & = |A^T| = |-A| = (-1)^n|A| = -|A| \\
+\Longrightarrow & 2|A| & = 0 \Longrightarrow |A| = 0.
+\end{eqnarray*}
+\end{proof}
+
+\begin{eg}
+矩阵的分块运算：
+\[
+  \setlength{\dashlinegap}{2pt}
+  A = \left[ \begin{array}{c:cc}
+    2 & 0 & 0 \\
+    1 & 0 & 0 \\
+    \hdashline
+    3 & 1 & 0 \\
+    2 & 0 & 1
+  \end{array} \right],
+  B = \left[ \begin{array}{cc:ccc}
+    1 & 2 & 0 & 0 & 0\\
+    \hdashline
+    2 & 3 & 1 & 3 & 1 \\
+    0 & 2 & 2 & 0 & 1
+  \end{array} \right], \text{ 那么 }
+  AB = \left[ \begin{array}{cc:ccc}
+    2 & 4 & 0 & 0 & 0\\
+    1 & 2 & 0 & 0 & 0\\
+    \hdashline
+    5 & 9 & 1 & 3 & 1 \\
+    2 & 6 & 2 & 0 & 1
+  \end{array} \right]
+\]
+\end{eg}
+
+\begin{eg}
+矩阵的分块运算：
+\[
+  \setlength{\dashlinegap}{2pt}
+  A = \left[ \begin{array}{c:cc}
+    2 & 0 & 0 \\
+    1 & 0 & 0 \\
+    \hdashline
+    3 & 1 & 0 \\
+    2 & 0 & 1
+  \end{array} \right],
+  A^T = \left[ \begin{array}{cc:cc}
+    2 & 1 & 0 & 0 \\
+    \hdashline
+    0 & 0 & 1 & 0 \\
+    0 & 0 & 0 & 1
+  \end{array} \right],
+\]
+将$A$与$A^T$如下分块，有
+\begin{eqnarray*}
+A = \begin{bmatrix}
+A_{11} & A_{12} \\ A_{21} & A_{22}
+\end{bmatrix},
+& \text{ 其中 } &
+A_{11} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}, A_{12} = 0_{2\times 2}, A_{21} = \begin{bmatrix} 3 \\ 2 \end{bmatrix}, A_{22} = I_2, \\
+A^T = \begin{bmatrix}
+B_{11} & B_{12} \\ B_{21} & B_{22}
+\end{bmatrix},
+& \text{ 其中 } &
+B_{11} = \begin{bmatrix} 2 & 1 \end{bmatrix}, B_{12} = \begin{bmatrix} 3 & 2 \end{bmatrix}, B_{21} = 0_{2\times 2}, B_{22} = I_2.
+\end{eqnarray*}
+\begin{eqnarray*}
+& \Longrightarrow & \qquad A_{11} = B_{11}^T, A_{12} = B_{21}^T = 0_{2\times 2}, A_{21} = B_{12}^T, A_{22} = B_{22}^T = I_2 \\
+& \Longrightarrow & \qquad A_{ij} = B_{ji}^T, (1 \leqslant i,j \leqslant 2).
+\end{eqnarray*}
+\end{eg}
+
+\begin{eg}
+用初等矩阵与初等变换的关系，再次验证行列式的性质
+\end{eg}
+
+\begin{solution}[验证]\
+
+\enum
+\item[(1)] 逐行保数乘：
+\begin{eqnarray*}
+A \xrightarrow{kr_i} B & \Longleftrightarrow & B = E_i(k)A; \\
+& \Longrightarrow & |B| = |E_i(k)|\cdot|A| = k|A|;
+\end{eqnarray*}
+\item[(2)] 交错性：
+\begin{eqnarray*}
+A \xrightarrow{r_i\leftrightarrow r_j} B & \Longleftrightarrow & B = E_{ij}A; \\
+& \Longrightarrow & |B| = |E_{ij}|\cdot|A| = (-1)|A| = -|A|;
+\end{eqnarray*}
+\item[(3)] 倍加不变性：
+\begin{eqnarray*}
+A \xrightarrow{kr_i + r_j} B & \Longleftrightarrow & B = E_{ij}(k)A; \\
+& \Longrightarrow & |B| = |E_{ij}(k)|\cdot|A| = 1\cdot|A| = |A|.
+\end{eqnarray*}
+\end{list}
+\end{solution}
+
+\begin{eg}
+三类初等矩阵都是可逆矩阵，且
+\begin{eqnarray*}
+E_i(k)^{-1} & = & E_i(1/k) \quad (k\neq 0); \\
+E_{i,j}^{-1} & = & E_{i,j}; \\
+E_{i,j}(k)^{-1} & = & E_{i,j}(-k).
+\end{eqnarray*}
+\end{eg}
+
+\begin{eg}
+考虑矩阵$A = \begin{bmatrix} 1 & -1 \\ 0 & 0 \end{bmatrix}$，对任意$2$阶方阵$B= \begin{bmatrix} a & b \\ c & d \end{bmatrix}$有
+$$AB = \begin{bmatrix} 1 & -1 \\ 0 & 0 \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} a-c & b-d \\ 0 & 0 \end{bmatrix} \neq \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = I_2,$$
+从而，并不是所有的方阵都可逆。
+\end{eg}
+
+\begin{eg}
+若二阶方阵的行列式$|A| \neq 0$，于是
+\begin{eqnarray*}
+A & = & \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{bmatrix} \Rightarrow A^{\ast} = \begin{bmatrix} A_{11} & A_{21} \\ A_{12} & A_{22} \end{bmatrix} = \begin{bmatrix} a_{22} & -a_{12} \\ -a_{21} & a_{11} \end{bmatrix} \\
+& \Rightarrow & A^{-1} = |A|^{-1}A^{\ast} = \frac{1}{a_{11}a_{22} - a_{12}a_{21}} \begin{bmatrix} a_{22} & -a_{12} \\ -a_{21} & a_{11} \end{bmatrix}.
+\end{eqnarray*}
+\end{eg}
+
+\begin{eg}
+求方阵$A = \begin{bmatrix} 1 & 2 & 3 \\ 2 & 2 & 1 \\ 3 & 4 & 3 \end{bmatrix}$的逆矩阵。
+\end{eg}
+
+\begin{solution}
+因为$|A| = \begin{vmatrix} 1 & 2 & 3 \\ 2 & 2 & 1 \\ 3 & 4 & 3 \end{vmatrix} = 2 \neq 0$，所以可以用伴随矩阵求逆法。
+$$A_{11} = \begin{vmatrix} 2 & 1 \\ 4 & 3 \end{vmatrix} = 2, A_{12} = -\begin{vmatrix} 2 & 1 \\ 3 & 3 \end{vmatrix} = -3, A_{13} = \begin{vmatrix} 2 & 2 \\ 3 & 4 \end{vmatrix} = 2,$$
+同理可得$A_{21} = 6, A_{22} = -6, A_{23} = 2, A_{31} = -4, A_{32} = 5, A_{33} = -2$。故
+$$A^{-1} = \frac{1}{|A|}A^{\ast} = \frac12 \begin{bmatrix} 2 & 6 & -4 \\ -3 & -6 & 5 \\ 2 & 2 & -2 \end{bmatrix} = \begin{bmatrix} 1 & 3 & -2 \\ -3/2 & -3 & 5/2 \\ 1 & 1 & -1 \end{bmatrix}.$$
+\end{solution}
+
+\begin{eg}
+设$A = \begin{bmatrix} a_{11} & & & \\ & a_{22} & & \\ & & \ddots & \\ & & & a_{nn} \end{bmatrix}$，其中$a_{ii} \neq 0, 1 \leqslant i \leqslant n$，求$A^{-1}$。
+\end{eg}
+
+\begin{solution}
+若$AB = I_n$，其中$A$与$I_n$均为对角阵，猜测$B$也是（$n$阶）对角阵；再由条件$a_{ii}\neq 0$，用定义可验证结果。
+
+由于$a_{ii} \neq 0$，有
+\begin{eqnarray*}
+& \begin{bmatrix} a_{11} & & & \\ & a_{22} & & \\ & & \ddots & \\ & & & a_{nn} \end{bmatrix} & \begin{bmatrix} a_{11}^{-1} & & & \\ & a_{22}^{-1} & & \\ & & \ddots & \\ & & & a_{nn}^{-1} \end{bmatrix} = \begin{bmatrix} a_{11}a_{11}^{-1} & & & \\ & a_{22}a_{22}^{-1} & & \\ & & \ddots & \\ & & & a_{nn}a_{nn}^{-1} \end{bmatrix} = I_n \\
+& \Longrightarrow & A^{-1} = \begin{bmatrix} a_{11}^{-1} & & & \\ & a_{22}^{-1} & & \\ & & \ddots & \\ & & & a_{nn}^{-1} \end{bmatrix}.
+\end{eqnarray*}
+\end{solution}
+
+\begin{eg}
+设$A = \begin{bmatrix} a_{11} & a_{12} \\ 0 & a_{22} \end{bmatrix}$，其中$a_{11}, a_{22} \neq 0$，求$A^{-1}$。
+\end{eg}
+
+\begin{solution}
+若$AB = I_2$，其中$A$与$I_2$均为上三角阵，猜测$B$也是$2$阶上三角阵，再由待定系数法，可求出$B$。
+
+设$B = \begin{bmatrix} b_{11} & b_{12} \\ 0 & b_{22} \end{bmatrix}$，若
+\begin{eqnarray*}
+& & I_2 = \begin{bmatrix} a_{11} & a_{12} \\ 0 & a_{22} \end{bmatrix} \begin{bmatrix} b_{11} & b_{12} \\ 0 & b_{22} \end{bmatrix} = \begin{bmatrix} a_{11}b_{11} & a_{11}b_{12} + a_{12}b_{22} \\ 0 & a_{22}b_{22} \end{bmatrix} \\
+& \Longrightarrow & \begin{cases} a_{11}b_{11} = 1 \\ a_{22}b_{22} = 1 \\ a_{11}b_{12} + a_{12}b_{22} = 0 \end{cases} \\
+& \Longrightarrow & \begin{cases} b_{11} = a_{11}^{-1} \\ b_{22} = a_{22}^{-1} \\ b_{12} = -a_{11}^{-1}a_{12}a_{22}^{-1} \end{cases} \\
+& \Longrightarrow & A^{-1} = \begin{bmatrix} a_{11}^{-1} & -a_{11}^{-1}a_{12}a_{22}^{-1} \\ 0 & a_{22}^{-1} \end{bmatrix}
+\end{eqnarray*}
+\end{solution}
+
+\begin{eg}
+设方阵$A$满足$A^2-2A+4I=O$，证明：$A+I$和$A-3I$都可逆，并求它们的逆矩阵。
+\end{eg}
+
+\begin{solution}
+关于$A$是多项式，$A^i$与$A^j$乘法可交换，可按通常方法分解多项式，希望能凑出$A+I$和$A-3I$的项。
+
+\begin{eqnarray*}
+& & A^2-2A+4I = (A+I)(A-3I)+7I = O \\
+& \Longrightarrow & -\frac17 (A+I)(A-3I) = I.
+\end{eqnarray*}
+由定义知
+$$(A+I)^{-1} = -\frac17 (A-3I), \quad (A-3I)^{-1} = -\frac17 (A+I).$$
+\end{solution}
+
+\begin{eg}
+用伴随矩阵求下面方阵$A$的逆矩阵：$A = \begin{bmatrix} 2 & 3 & -1 \\ 1 & 2 & 0 \\ 1 & 2 & -2 \end{bmatrix}.$
+\end{eg}
+
+\begin{solution}
+$\because \ |A| = \begin{vmatrix} 2 & 3 & -1 \\ 1 & 2 & 0 \\ 1 & 2 & -2 \end{vmatrix} = -2 \neq 0,$ 所以方阵$A$可逆。
+$$A_{11} = \begin{vmatrix} 2 & 0 \\ 2 & -2 \end{vmatrix} = -4, A_{21} = -\begin{vmatrix} 3 & -1 \\ 2 & -2 \end{vmatrix} = 4, A_{31} = \begin{vmatrix} 3 & -1 \\ 2 & 0 \end{vmatrix} = 2,$$
+$$A_{12} = -\begin{vmatrix} 1 & 0 \\ 1 & -2 \end{vmatrix} = 2, A_{22} = \begin{vmatrix} 2 & -1 \\ 1 & -2 \end{vmatrix} = -3, A_{32} = -\begin{vmatrix} 2 & -1 \\ 1 & 0 \end{vmatrix} = -1,$$
+$$A_{13} = \begin{vmatrix} 1 & 2 \\ 1 & 2 \end{vmatrix} = 0, A_{23} = -\begin{vmatrix} 2 & 3 \\ 1 & 2 \end{vmatrix} = -1, A_{32} = \begin{vmatrix} 2 & 3 \\ 1 & 2 \end{vmatrix} = 1,$$
+从而
+$$A^{\ast} = \begin{bmatrix} -4 & 4 & 2 \\ 2 & -3 & -1 \\ 0 & -1 & 1 \end{bmatrix},$$
+于是
+$$A^{-1} = |A|^{-1}A^{\ast} = \begin{bmatrix} 2 & -2 & -1 \\ -1 & 3/2 & 1/2 \\ 0 & 1/2 & -1/2 \end{bmatrix}.$$
+\end{solution}
+
+\begin{eg}
+用初等行变换求矩阵$A$的逆矩阵：$A = \begin{bmatrix} 0 & 2 & -1 \\ 1 & 1 & 2 \\ -1 & -1 & -1 \end{bmatrix}$。
+\end{eg}
+
+\begin{solution}
+先将$A$化为阶梯形矩阵，再化为单位阵：
+\begin{eqnarray*}
+[A,I] & = &
+  \setlength{\dashlinegap}{2pt}
+  \left[ \begin{array}{ccc:ccc}
+    0 & 2 & -1 & 1 & 0 & 0 \\ 1 & 1 & 2 & 0 & 1 & 0 \\ -1 & -1 & -1 & 0 & 0 & 1
+  \end{array} \right] \xrightarrow[r_1+r_3]{r_1\leftrightarrow r_2}
+  \left[ \begin{array}{ccc:ccc}
+     1 & 1 & 2 & 0 & 1 & 0 \\ 0 & 2 & -1 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 & 1 & 1
+  \end{array} \right] \\
+  & \longrightarrow & \left[ \begin{array}{ccc:ccc}
+     1 & 0 & 0 & -\frac12 & -\frac32 & -\frac52 \\ 0 & 1 & 0 & \frac12 & \frac12 & \frac12 \\ 0 & 0 & 1 & 0 & 1 & 1 \end{array} \right], \\
+\Longrightarrow & A^{-1} & = \frac12\begin{bmatrix} -1 & -3 & -5 \\ 1 & 1 & 1 \\ 0 & 2 & 2 \end{bmatrix}
+\end{eqnarray*}
+\end{solution}
+
+\begin{eg}
+设$A = \begin{bmatrix} 1 & 1 & 2 \\ 0 & 2 & -1 \\ -1 & 1 & -3 \end{bmatrix}$，试判断$A$是否可逆。
+\end{eg}
+
+\begin{solution}
+\begin{eqnarray*}
+[A,I] & = &
+  \setlength{\dashlinegap}{2pt}
+  \left[ \begin{array}{ccc:ccc}
+    1 & 1 & 2 & 1 & 0 & 0 \\ 0 & 2 & -1 & 0 & 1 & 0 \\ -1 & 1 & -3 & 0 & 0 & 1
+  \end{array} \right] \longrightarrow
+  \left[ \begin{array}{ccc:ccc}
+     1 & 1 & 2 & 1 & 0 & 0 \\ 0 & 2 & -1 & 0 & 1 & 0 \\ 0 & 2 & -1 & 1 & 0 & 1
+  \end{array} \right] \\
+  & \longrightarrow & \left[ \begin{array}{ccc:ccc}
+      1 & 1 & 2 & 1 & 0 & 0 \\ 0 & 2 & -1 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 & -1 & 1
+   \end{array} \right],
+\end{eqnarray*}
+此时，$A$经初等行变换化为阶梯形矩阵时，出现全零行，则$A$的行列式为零，故$A$不可逆。
+\end{solution}
+
+\begin{eg}
+求如下矩阵方程$XA=C$，其中$A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix}, C = \begin{bmatrix} 0 & 2 \\ 5 & 6 \\ 7 & 8 \end{bmatrix}$。
+\end{eg}
+
+\begin{solution}
+由$|A|=-2$知，$A$可逆，则$X=CA^{-1}$，对如下分块矩阵进行初等列变换：
+\begin{eqnarray*}
+\begin{bmatrix} A \\ C \end{bmatrix} & = &
+  \setlength{\dashlinegap}{2pt}
+  \left[ \begin{array}{cc}
+    1 & 2 \\ 3 & 4 \\ \hdashline  0 & 2 \\ 5 & 6 \\ 7 & 8 \end{array} \right]
+  \xrightarrow{(-2)c_1+c_2}
+  \left[ \begin{array}{cc}
+    1 & 0 \\ 3 & -2 \\ \hdashline  0 & 2 \\ 5 & -4 \\ 7 & -6 \end{array} \right]
+  \xrightarrow{(-\frac12)c_2}
+  \left[ \begin{array}{cc}
+    1 & 0 \\ 3 & 1 \\ \hdashline  0 & -1 \\ 5 & 2 \\ 7 & 3 \end{array} \right] \\
+  & \xrightarrow{(-3)c_2 + c_1} &
+  \left[ \begin{array}{cc}
+    1 & 0 \\ 0 & 1 \\ \hdashline  3 & -1 \\ -1 & 2 \\ -2 & 3 \end{array} \right]
+  = \begin{bmatrix} I \\ CA^{-1} \end{bmatrix} \\
+\Longrightarrow & X=CA^{-1} & = \left[ \begin{array}{cc}
+    3 & -1 \\ -1 & 2 \\ -2 & 3 \end{array} \right].
+\end{eqnarray*}
+\end{solution}
+
+\begin{eg}
+试判断矩阵$A = \begin{bmatrix} 2 & 0 & 0 & 0 \\ 1 & 2 & 1 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 1 & 1 \end{bmatrix}$是否可逆？若可逆，求出$A^{–1}$。
+\end{eg}
+
+\begin{solution}
+设$A = \begin{bmatrix} A_{11} & A_{12} \\ 0 & A_{22} \end{bmatrix}$，其中
+$A_{11} = \begin{bmatrix} 2 & 0 \\ 1 & 2 \end{bmatrix}, A_{12} = \begin{bmatrix} 0 & 0 \\ 1 & 0 \end{bmatrix}, A_{22} = \begin{bmatrix} 1 & 0 \\ 1 & 1 \end{bmatrix}$，且$|A_{11}| = 4, |A_{22}| = 1$，从而$|A| = |A_{11}|\cdot|A_{22}| = 4$，所以$A, A_{11}, A_{22}$均可逆。
+
+设$A^{–1} = \begin{bmatrix} X & Y \\ 0 & Z \end{bmatrix}$，则
+$$\begin{bmatrix} A_{11} & A_{12} \\ 0 & A_{22} \end{bmatrix}\begin{bmatrix} X & Y \\ 0 & Z \end{bmatrix} = I \Longrightarrow
+\begin{cases} X = A_{11}^{–1} \\ Z = A_{22}^{–1} \\ A_{11}Y + A_{12}A_{22}^{–1} = 0 \end{cases} \Longrightarrow
+Y = -A_{11}^{–1}A_{12}A_{22}^{–1},$$
+所以，
+$$A^{–1} = \begin{bmatrix} A_{11}^{–1} & -A_{11}^{–1}A_{12}A_{22}^{–1} \\ 0 & A_{22}^{–1} \end{bmatrix} = \begin{bmatrix} \frac12 & 0 & 0 & 0 \\ -1 & \frac12 & -\frac12 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & -1 & 1 \end{bmatrix}.$$
+\end{solution}
+
+\begin{eg}
+设$M = \begin{bmatrix} A & B \\ C & D \end{bmatrix}$，其中$A$可逆，$D$为方阵，试证$|M| = |A||D-CA^{-1}B|$。进而证明，$M$可逆$\Longleftrightarrow$ $D-CA^{-1}B$可逆，并求$M$的逆。
+\end{eg}
+
+\begin{proof}[证明]
+\begin{eqnarray*}
+& & \begin{bmatrix} I & 0 \\ CA^{-1} & I \end{bmatrix} \begin{bmatrix} A & B \\ C & D \end{bmatrix} \begin{bmatrix} I & -A^{-1}B \\ 0 & I \end{bmatrix} = \begin{bmatrix} A & 0 \\ 0 & D-CA^{-1}B \end{bmatrix} \\
+& \Longrightarrow & |M| = \begin{vmatrix} A & 0 \\ 0 & D-CA^{-1}B \end{vmatrix} = |A||D-CA^{-1}B|.
+\end{eqnarray*}
+从而$M$可逆$\Longleftrightarrow$ $D-CA^{-1}B$可逆，且
+$$M^{-1} = \begin{bmatrix} I & -A^{-1}B \\ 0 & I \end{bmatrix} \begin{bmatrix} A^{-1} & 0 \\ 0 & (D-CA^{-1}B)^{-1} \end{bmatrix} \begin{bmatrix} I & 0 \\ -CA^{-1} & I \end{bmatrix}.$$
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{课后习题}
+
+\begin{ex} \label{ex:3.1}
+分别给出$3\times3$阶的对角阵，上三角阵，对称阵，反对称阵的一个例子。
+\end{ex}
+
+\begin{ex} \label{ex:3.2}
+对$n \geqslant 2$，构造$n$阶方阵$A,B$，使得$\det(A+B)\neq\det(A)+\det(B)$。
+\end{ex}
+
+\begin{ex} \label{ex:3.3}
+设$A = \begin{bmatrix} 1 & -2 & -2 \\ -1 & 1 & -2 \\ 1 & 1 & -2 \end{bmatrix}, B = \begin{bmatrix} 3 & -1 & 5 \\ 1 & -3 & 1 \\ -4 & 5 & -1 \end{bmatrix}$，求$AB,BA$以及$AB-BA$。
+\end{ex}
+
+\begin{ex} \label{ex:3.4}
+设$A = \begin{bmatrix} 1 & 2 & -1 \\ 2 & 3 & 2 \\ -1 & 0 & 2 \end{bmatrix}, B = \begin{bmatrix} 0 & 1 & 2 \\ 2 & -1 & 0 \\ -1 & -1 & 3 \end{bmatrix}$，计算$A^T,B^T,AB,A^TB^T$。
+\end{ex}
+
+\begin{ex} \label{ex:3.5}
+设$A = \begin{bmatrix} 1 & -3 & 4 \\ 0 & 1 & -2 \\ 2 & -3 & 3 \end{bmatrix}$，求$A$的伴随矩阵。
+\end{ex}
+
+\begin{ex} \label{ex:3.6}
+以下方阵是否可逆？如果可逆，求其逆矩阵。
+
+$$\begin{bmatrix} \cos\varphi & -\sin\varphi \\ \sin\varphi & \cos\varphi \end{bmatrix}$$
+\end{ex}
+
+\begin{ex} \label{ex:3.7}
+求以下可逆阵的逆矩阵。
+
+\enum
+\item[(1)] $\begin{bmatrix} a & b \\ c & d \end{bmatrix}$，满足$ad-bc\neq 0$
+\item[(2)] $\begin{bmatrix}  \cos\varphi & 0 & -\sin\varphi \\ 0 & 1 & 0 \\ \sin\varphi & 0 & \cos\varphi \end{bmatrix}$
+\end{list}
+\end{ex}
+
+\begin{ex}\  \label{ex:3.8}
+
+\enum
+\item[(1)] 设$A\in M_n(\mathbb{R}), B, E\in M_{n\times m}(\mathbb{R}), C, F\in M_{m\times n}(\mathbb{R}), D\in M_m(\mathbb{R})$，证明：矩阵$\begin{bmatrix} A & B \\ C & D \end{bmatrix}$ 与矩阵$\begin{bmatrix} A + EC & B + ED \\ C & D \end{bmatrix},$ $\begin{bmatrix} A & B \\ FA + C & FB + D \end{bmatrix},$ $\begin{bmatrix} A & AE + B \\ C & CE + D \end{bmatrix},$ $\begin{bmatrix} A + BF & B \\ C + DF & D \end{bmatrix}$均有相同的行列式。
+
+\item[(2)] 设$U,V\in M_n(\mathbb{R})$，证明$\det(I_n - UV) = \det(I_n-VU)$。
+
+\item[(3)] 设$P\in M_{n\times (n-1)}(\mathbb{R}), Q\in M_{(n - 1)\times n}(\mathbb{R})$。证明$PQ \in M_n(\mathbb{R})$的行列式为$0$。
+
+\item[(4)] 设$\alpha, \beta$为$n$阶列向量，证明$\det(I_n - \alpha\beta^T) = 1 - \alpha^T\beta$。
+
+\item[(5)] 计算$\begin{bmatrix} \lambda & 1 & \cdots & 1 \\ 1 & \lambda & & \vdots \\ \vdots & & \ddots & 1 \\ 1 & \cdots & 1 & \lambda \end{bmatrix} \in M_n(\mathbb{R})$的行列式。
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:3.9}
+设$A, B$为同阶方阵，证明$\begin{vmatrix} A & B \\ B & A \end{vmatrix} = |A + B||A - B|$。
+\end{ex}
+
+\begin{ex} \label{ex:3.10}
+对$n\geqslant 1$，构造$n$阶方阵$A, B$，使得$A, B, A+B$均可逆，但$(A+B)^{-1}\neq A^{-1}+B^{-1}$。
+\end{ex}
+
+\begin{ex} \label{ex:3.11}
+设$A = \begin{bmatrix} 0 & -1 & 2 \\ -1 & 0 & -1 \end{bmatrix}, B = \begin{bmatrix} 2 & -1 & -3 \\ 1 & -3 & -3 \\ 1 & 0 & -3 \end{bmatrix}, C = \begin{bmatrix} 2 & -2 \\ 1 & -2 \\ 2 & 2 \end{bmatrix}$， 求$ABC$。
+\end{ex}
+
+\begin{ex} \label{ex:3.12}
+计算
+
+\enum
+\item[(1)] $\begin{bmatrix} \cos\varphi & -\sin\varphi \\ \sin\varphi & \cos\varphi \end{bmatrix}^n$
+
+\item[(2)] $\begin{bmatrix} 1 & \alpha & \beta \\ & 1 & \alpha \\ & & 1 \end{bmatrix}^{n}$
+
+\item[(3)] $\begin{bmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0\end{bmatrix}^3$
+
+\item[(4)] $\begin{bmatrix} \lambda & 1 & 0 & 0 \\ 0 & \lambda & 1 & 0 \\ 0 & 0 & \lambda & 1 \\ 0 & 0 & 0 & \lambda\end{bmatrix}^3$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:3.13}
+解矩阵方程：
+
+\enum
+\item[(1)] $\begin{bmatrix} 1 & 1 \\ 2 & 3 \end{bmatrix} X = \begin{bmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix}$
+
+\item[(2)] $\begin{bmatrix} 1 & 0 & 4 \\ -1 & 1 & -2 \\ 0 & 0 & 1 \end{bmatrix} X \begin{bmatrix} -1 & -3 & 0 \\ 1 & 4 & 4 \\ -1 & -3 & -1 \end{bmatrix} = \begin{bmatrix} 1 & 0 & -6 \\ -5 & -13 & 3 \\ -1 & -4 & -3 \end{bmatrix}$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:3.14}
+设$A = \begin{bmatrix} c & 0 & 0 \\ 1 & c & 0 \\ 0 & 1 & c \end{bmatrix}, f(\lambda) = \lambda^2 - 2\lambda - 1$。求$f(A)$。
+\end{ex}
+
+\begin{ex} \label{ex:3.15}
+设$A\in M_n(\mathbb{R})$为一个$n$阶方阵，
+
+\enum
+\item[(1)] 证明：如果$A$是对角阵且其主对角线上的元素各不相同，则任一与$A$乘法可交换的矩阵也是对角阵。
+
+\item[(2)] 设$P\in M_n(\mathbb{R})$， $P$可逆，$PAP^{-1}$为对角阵且其对角线上元素各不相同。设$B\in M_n(\mathbb{R}), AB = BA$。证明$PBP^{-1}$为对角阵。
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:3.16}
+求平方等于单位阵的所有二阶方阵。
+\end{ex}
+
+\begin{ex} \label{ex:3.17}
+求幂等（即平方等于自身）的所有二阶方阵。
+\end{ex}
+
+\begin{ex} \label{ex:3.18}
+设$A = (a_{ij})$为$n$阶上三角方阵且对角线上的元素均为$0$，求$A^{n-1}, A^n$。
+\end{ex}
+
+\begin{ex} \label{ex:3.19}
+证明：
+
+\enum
+\item[(1)] 对方阵$A = (a_{ij}) \in M_n(\mathbb{R})$，定义$A$的迹(trace)为$tr(A) = \sum\limits_{i=1}^n a_i$。证明：任取方阵$A, B\in M_n(\mathbb{R})$，总有$tr(AB) = tr(BA)$。
+
+\item[(2)] 对任意方阵$A, B\in M_n(\mathbb{R})$, $AB - BA \neq I_n$。
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:3.20}
+所有与下列方阵$A$可交换的方阵$B$(即满足$AB = BA$)：
+
+\enum
+\item[(1)] $A = \begin{bmatrix} 1 & 1 \\ 0 & 0 \end{bmatrix}$ \item[(2)] $\begin{bmatrix} 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \end{bmatrix}$
+\item[(3)] $\begin{bmatrix} 1 & & & \\ & 1 & & \\ & & 2 & \\ & & & 2 \end{bmatrix}$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:3.21}
+证明：与所有$n$阶方阵均可交换的方阵必为数量阵(即$aI_n, a\in\mathbb{R}$)。
+\end{ex}
+
+\begin{ex} \label{ex:3.22}
+设$J = \begin{bmatrix} & I_n \\ -I_n & \end{bmatrix} \in M_{2n}(\mathbb{R})$，求
+
+\enum
+\item[(1)] $\det J$
+\item[(2)] $J^2$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:3.23}
+设$A$为实对称矩阵，若$A^2 = 0$，求证$A = 0$。
+\end{ex}
+
+\begin{ex} \label{ex:3.24}
+证明：任一方阵均可表示为一个对称阵和一个反对称阵之和。
+\end{ex}
+
+\begin{ex} \label{ex:3.25}
+证明：若$A, B, A + B$均为可逆阵，证明$A^{-1} + B^{-1}$也为可逆阵。
+\end{ex}
+
+\begin{ex} \label{ex:3.26}
+设$A$是$n$阶方阵，满足$A^k = 0, A^{k-1} \neq 0$，(这样的方阵被称为一个幂零阵)，证明$I_n - A$可逆。
+\end{ex}
+
+\begin{ex} \label{ex:3.27}
+设$A$是$n$阶方阵，满足$A^2 = A$(这样的方阵被称为一个幂等阵)，证明$A + I_n$可逆。
+\end{ex}
+
+\begin{ex} \label{ex:3.28}
+证明：
+\enum
+\item[(1)] 上（下）三角阵的逆矩阵（如果存在）也是上（下）三角阵。
+\item[(2)] 对称阵的逆矩阵（如果存在）也是对称阵。
+\item[(3)] 反对称阵的逆矩阵（如果存在）也是反对称阵。
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:3.29}
+设$A$是$n$阶可逆阵，若$A$的每一行元素之和等于常数$c$，求证：$c\neq 0$，且$A^{-1}$的每一行元素之和等于$c^{-1}$。
+\end{ex}
+
+\begin{ex} \label{ex:3.30}
+设$A$为$n$阶可逆阵，$u,v$是$n$维列向量，且$1 + v^T A^{-1}u \neq 0$，求证
+$$(A+uv^T)^{-1} = A^{-1} - \frac{A^{-1}uv^T A^{-1}}{1 + v^T A^{-1}u}.$$
+\end{ex}
+
+\begin{ex} \label{ex:3.31}
+设$A$为$n$阶可逆阵，$U$是$n\times k$阶矩阵，$V$是$k\times n$阶矩阵，$C$是$k\times k$阶矩阵，且$ C^{-1}+VA^{-1}U$可逆，求证
+$$ \left(A+UCV \right)^{-1} = A^{-1} - A^{-1}U \left(C^{-1}+VA^{-1}U \right)^{-1} VA^{-1}.$$
+\end{ex}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{习题答案}
+
+\textbf{习题\ref{ex:3.1} 解答：}
+
+例如
+\begin{eqnarray*}
+\text{对角阵} & : & \begin{bmatrix} 1 & & \\ & 2 & \\ & & 3 \end{bmatrix}, \\
+\text{上三角阵} & : & \begin{bmatrix} 1 & 1 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 3 \end{bmatrix}, \\
+\text{对称阵} & : & \begin{bmatrix} 1 & 2 & 3\\ 2 & 2 & 1 \\ 3 & 1 & -1 \end{bmatrix}, \\
+\text{反对称阵} & : & \begin{bmatrix} 0 & 2 & 1\\ -2 & 0 & -1 \\ -1 & 1 & 0 \end{bmatrix}
+\end{eqnarray*}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.2} 解答：}
+
+$n \geqslant 2$时，取$B = A$，且$A$可逆，即有$\det(A+B) = \det(2A) = 2^n\det A \neq 2\det A = \det(A)+\det(B)$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.3} 解答：}
+
+$
+AB = \begin{bmatrix} 9 & -5 & 5 \\ 6 & -12 & -2 \\ 12 & -14 & 8 \end{bmatrix},
+BA = \begin{bmatrix} 9 & -2 & -14 \\ 5 & -4 & 2 \\ -10 & 12 & 0 \end{bmatrix},
+AB - BA = \begin{bmatrix} 0 & -3 & 19 \\  1 & -8 & -4 \\ 22 & -26 & 8 \end{bmatrix}.
+$
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.4} 解答：}
+
+$A^T = \begin{bmatrix} 1 & 2 & -1 \\ 2 & 3 & 0 \\ -1 & 2 & 2 \end{bmatrix}, B^T = \begin{bmatrix} 0 & 2 & -1 \\ 1 & -1 & -1 \\ 2 & 0 & 3 \end{bmatrix}, AB = \begin{bmatrix} 5 & 0 & -1 \\ 4  & -3 & 10 \\ -2 & -3 & 4 \end{bmatrix}, A^TB^T = \begin{bmatrix} 0 & 0 & -6 \\ 3 & 1 & -5 \\ 6 & -4 & 5 \end{bmatrix}$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.5} 解答：}
+
+设$A^{\ast} = (b_{ij})_{1 \leqslant i,j \leqslant 3}$，那么$b_{ij} = A_{ji}$，$A_{ji}$为矩阵$A$的第$(j,i)$位元素的代数余子式。$A_{11} = \begin{vmatrix} 1 & -2 \\ -3 & 3 \end{vmatrix} = -3$，类似可以算出其他矩阵元素的值。最后的结论是：
+$$A^{\ast} = \begin{bmatrix} -3 & -3 & 2 \\ -4 & -5 & 2 \\ -2 & -3 & 1 \end{bmatrix}$$
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.6} 解答：}
+
+行列式为$\cos^2\varphi + \sin^2\varphi = 1$，所以可逆。逆为$\begin{bmatrix} \cos\varphi & \sin\varphi \\ -\sin\varphi & \cos\varphi \end{bmatrix}$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.7} 解答：}
+
+\enum
+\item[(1)] $\begin{bmatrix} a & b \\ c & d \end{bmatrix}^{-1} = \frac{1}{ad-bc}\begin{bmatrix} d & -b \\ -c & a \end{bmatrix}$
+\item[(2)] $\begin{bmatrix}  \cos\varphi & 0 & -\sin\varphi \\ 0 & 1 & 0 \\ \sin\varphi & 0 & \cos\varphi \end{bmatrix}^{-1} = \begin{bmatrix}  \cos\varphi & 0 & \sin\varphi \\ 0 & 1 & 0 \\ -\sin\varphi & 0 & \cos\varphi \end{bmatrix}$
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.8} 解答：}
+
+\enum
+\item[(1)] $\det\begin{bmatrix} A & B \\ C & D \end{bmatrix} = \det(\begin{bmatrix} I_n & E \\ 0 & I_m \end{bmatrix} \begin{bmatrix} A & B \\ C & D \end{bmatrix}) = \det \begin{bmatrix} A + EC & B + ED \\ C & D \end{bmatrix}$。其余类似可以证明。
+
+\item[(2)] 由第(1)小题，$\det(I_n - UV) = \det\begin{bmatrix} I_n - UV & 0 \\ V & I_n \end{bmatrix} = \det\begin{bmatrix} I_n & U \\ V & I_n \end{bmatrix} = \det\begin{bmatrix} I_n & 0 \\ V & I_n - VU \end{bmatrix} = \det(I_n-VU)$。
+
+\item[(3)] %因为$P,Q$的秩都至多为$n-1$，所以$PQ$的秩至多为$n-1$，不满秩，所以行列式为0。
+假设$\det PQ \neq 0,$ 那么齐次线性方程组$PQX = 0, X = \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix},$ 只有零解。但是$QX=0$是$n-1$个方程，$n$个变元的齐次线性方程组，必有非零解$X_0,$ 于是$PQX_0 = P(QX_0) = 0,$ 与$PQX = 0$只有零解矛盾。因此$PQ$的行列式为0。
+
+\item[(4)] 由第(1)小题，$\det(I_n - \alpha\beta^T) = \det\begin{bmatrix} I_n - \alpha\beta^T & \alpha \\ 0 & 1 \end{bmatrix} = \det\begin{bmatrix} I_n & \alpha \\ \beta^T & 1 \end{bmatrix} = \det\begin{bmatrix} I_n & 0 \\ \beta^T & 1 - \alpha^T\beta \end{bmatrix} = 1 - \alpha^T\beta$。
+
+\item[(5)] $\begin{vmatrix} \lambda & 1 & \cdots & 1 \\ 1 & \lambda & & \vdots \\ \vdots & & \ddots & 1 \\ 1 & \cdots & 1 & \lambda \end{vmatrix} = \left| (\lambda - 1)I_n + \begin{bmatrix} 1 & 1 & \cdots & 1 \\ 1 & 1 & & \vdots \\ \vdots & & \ddots & 1 \\ 1 & \cdots & 1 & 1 \end{bmatrix} \right| = \left| (\lambda - 1)I_n + \begin{bmatrix} 1 \\ 1 \\ \vdots \\ 1 \end{bmatrix}(1,1,\cdots,1) \right|\\
+= (\lambda-1)^{n-1}(\lambda - 1 + n)$。
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.9} 解答：}
+
+$\begin{vmatrix} A & B \\ B & A \end{vmatrix} = \begin{vmatrix} A+B & B+A \\ B & A \end{vmatrix} = \begin{vmatrix} A+B & 0 \\ B & A-B \end{vmatrix} = |A + B||A - B|$
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.10} 解答：}
+
+例如$A = \begin{bmatrix} 3 & & & \\ & 1 & & \\ & & \ddots & \\ & & & 1 \end{bmatrix}, B = \begin{bmatrix} 2 & & & \\ & 1 & & \\ & & \ddots & \\ & & & 1 \end{bmatrix}$，那么
+$$(A+B)^{-1} = \begin{bmatrix} 5 & & & \\ & 1 & & \\ & & \ddots & \\ & & & 1 \end{bmatrix}^{-1} = \begin{bmatrix} \frac15 & & & \\ & 1 & & \\ & & \ddots & \\ & & & 1 \end{bmatrix},$$
+而
+$$A^{-1}+B^{-1} = \begin{bmatrix} \frac13 & & & \\ & 1 & & \\ & & \ddots & \\ & & & 1 \end{bmatrix} + \begin{bmatrix} \frac12 & & & \\ & 1 & & \\ & & \ddots & \\ & & & 1 \end{bmatrix} = \begin{bmatrix} \frac56 & & & \\ & 1 & & \\ & & \ddots & \\ & & & 1 \end{bmatrix},$$
+二者并不相等。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.11} 解答：}
+
+直接矩阵相乘，$ABC = \begin{bmatrix} -1 & -14 \\ 7 & 16 \end{bmatrix}$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.12} 解答：}
+
+\enum
+\item[(1)] $\begin{bmatrix} \cos n\varphi & -\sin n\varphi \\ \sin n\varphi & \cos n\varphi \end{bmatrix}$
+
+\item[(2)] $\begin{bmatrix} 1 & n\alpha & \frac{n(n-1)}{2}\alpha^2 + n\beta \\ & 1 & n\alpha \\ & & 1 \end{bmatrix}$
+
+\item[(3)] $\begin{bmatrix} 0 & 0 & 0 & 1 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0\end{bmatrix}$
+
+\item[(4)] $\begin{bmatrix} \lambda^3 & 3\lambda^2 & 3\lambda & 1 \\ 0 & \lambda^3 & 3\lambda^2 & 3\lambda \\ 0 & 0 & \lambda^3 & 3\lambda^2 \\ 0 & 0 & 0 & \lambda^3\end{bmatrix}$
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.13} 解答：}
+
+\enum
+\item[(1)] $X = \begin{bmatrix} 1 & 1 \\ 2 & 3 \end{bmatrix}^{-1} \begin{bmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \end{bmatrix} = \begin{bmatrix} 2 & 2 & 2 \\ -1 & -1 & -1 \end{bmatrix}$，
+
+\item[(2)] $X = \begin{bmatrix} 1 & 0 & 4 \\ -1 & 1 & -2 \\ 0 & 0 & 1 \end{bmatrix}^{-1} \cdot \begin{bmatrix} 1 & 0 & -6 \\ -5 & -13 & 3 \\ -1 & -4 & -3 \end{bmatrix} \cdot \begin{bmatrix} -1 & -3 & 0 \\ 1 & 4 & 4 \\ -1 & -3 & -1 \end{bmatrix}^{-1} = \begin{bmatrix} -2 & 1 & -2 \\ 2 & 1 & 1 \\ 1 & -1 & -1 \end{bmatrix}$。
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.14} 解答：}
+
+$f(A) = \begin{bmatrix} c^2 - 2c - 1 & 0 & 0 \\ 2c - 2 & c^2 - 2c - 1 & 0 \\ 1 & 2c - 2 & c^2 - 2c - 1 \end{bmatrix}$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.15} 解答：}
+
+\enum
+\item[(1)] 设$A = diag(\lambda_1,\cdots,\lambda_n)$，$B = (b_{ij})$与$A$可交换。分别考察$AB$与$BA$的第$(i,j)$位元素，便有$\lambda_ib_{ij} = \lambda_jb_{ij}$。由假设，如果$i\neq j$，便有$\lambda_i\neq\lambda_j$，因此必须有$b_{ij} = 0$。也就是说$B$必须为对角阵。
+
+\item[(2)] 由于$AB = BA$，所以$PBP^{-1}$可以与$PAP^{-1}$交换，由第(1)小题结论以及第(2)小题题设即可知$PBP^{-1}$也为对角阵。
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.16} 解答：}
+
+设$A = \begin{bmatrix} a & b \\ c & d \end{bmatrix}$是平方等于单位阵的二阶方阵，那么我们会有
+\begin{numcases}{ }
+  a^2 + bc = 1  \notag \\
+  ab + bd = 0 \notag \\
+  ac + cd = 0 \notag \\
+  d^2 + bc = 1 \notag
+\end{numcases}
+由$ab + bd = 0$知$b = 0$或$a + d = 0$。如果$b = 0$，那么由$a^2 + bc = 1,d^2 + bc = 1$知$a=\pm 1, d=\pm 1$，再由$ac + cd = 0$知当$a,d$符号相同时，$c = 0$，符号不同时，$c$可以任取。如果$b \neq 0$，那么必须有$a + d = 0$。只要再满足$a^2 + bc = 1$，其他两式自动成立。所以平方等于单位阵的二阶方阵有$\pm I_2$，以及
+$$\begin{bmatrix} a & b \\ c & -a \end{bmatrix}, \quad a^2 + bc = 1$$
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.17} 解答：}
+
+类似第16题可以得幂等的二阶方阵有$0, I_2$，以及
+$$\begin{bmatrix} a & b \\ c & 1-a \end{bmatrix}, \quad a^2 + bc = a$$
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.18} 解答：}
+
+$A^n = 0$。
+
+$A^{n-1}$为除了其第$(1,n)$位元素外其余元素都为0的矩阵(第$(1,n)$位元素也可能为0)：
+$$\begin{bmatrix}
+0 & \cdots & 0 & \ast \\ 0 & \cdots & 0 & 0 \\ \vdots & & \vdots & \vdots \\ 0 & \cdots & 0 & 0
+\end{bmatrix}$$
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.19} 解答：}
+
+\enum
+\item[(1)] 设$A = (a_{ij}), B = (b_{ij})$，那么
+$$tr(AB) = \sum\limits_{i=0}^n\sum\limits_{j=0}^n{a_{ij}b_{ji}} = \sum\limits_{i=0}^n\sum\limits_{j=0}^n{b_{ij}a_{ji}} = tr(BA)$$
+
+\item[(2)] 对任意方阵$A, B\in M_n(\mathbb{R})$, 有$tr(AB - BA) = tr(AB) - tr(BA)= 0 \neq n = tr(I_n)$，所以必然有$AB - BA \neq I_n$。
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.20} 解答：}
+
+\enum
+\item[(1)] 设$B = \begin{bmatrix} b_1 & b_2 \\ b_3 & b_4 \end{bmatrix}$与$A$可交换，那么有
+$$\begin{bmatrix} 1 & 1 \\ 0 & 0 \end{bmatrix} \begin{bmatrix} b_1 & b_2 \\ b_3 & b_4 \end{bmatrix} =  \begin{bmatrix} b_1 & b_2 \\ b_3 & b_4 \end{bmatrix} \begin{bmatrix} 1 & 1 \\ 0 & 0 \end{bmatrix}$$
+即$\begin{bmatrix} b_1 + b_3 & b_2 + b_4 \\ 0 & 0 \end{bmatrix} =  \begin{bmatrix} b_1 & b_1 \\ b_3 & b_3 \end{bmatrix}$，那么$b_3 = 0, b_1 = b_2 + b_4$即可。
+
+\item[(2)] 类似第(1)小题可得答案为形如$\begin{bmatrix} a & b & c & d \\ & a & b & c \\ & & a & b \\ & & & a \end{bmatrix}, a, b, c, d \in \mathbb{R}$，的矩阵。
+
+\item[(3)] $\begin{bmatrix} A_2 & 0 \\ 0 & B_2 \end{bmatrix}$，其中$A_2, B_2$是2个2阶方阵。
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.21} 解答：}
+
+设方阵$A = (a_{ij})_{1 \leqslant i,j \leqslant n}$与所有$n$阶方阵均可交换，特别的，$A$与方阵$E_{st}$可交换，其中$E_{st}$为第$(s,t)$位元素为1，其余为0的方阵。那么
+\begin{eqnarray*}
+AE_{st} & = & \begin{bmatrix} 0 & \cdots & 0 & a_{1s} & 0 & \cdots & 0 \\ \vdots & & \vdots & \vdots & \vdots & & \vdots \\ 0 & \cdots & 0 & a_{ns} & 0 & \cdots & 0 \end{bmatrix} \qquad (a_{1s},\cdots,a_{ns}\text{ 位于第$t$列}) \\
+E_{st}A & = & \begin{bmatrix} 0 & \cdots & 0 \\ \vdots & & \vdots \\ 0 & \cdots & 0 \\ a_{t1} & \cdots & a_{tn} \\ 0 & \cdots & 0 \\ \vdots & & \vdots \\ 0 & \cdots & 0 \end{bmatrix} \qquad (a_{t1}, \cdots, a_{tn}\text{ 位于第$s$行})
+\end{eqnarray*}
+$AE_{st} = E_{st}A \Rightarrow a_{ss} = a_{tt}$;以上两个矩阵其余元素都是$0$。取遍所有的$E_{st}$，便可以知道$A$的对角线元素都相等，其余元素都必须为$0$，也就是说$A$必为数量阵。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.22} 解答：}
+
+\enum
+\item[(1)] 将矩阵$J$的第$1$列与第$n+1$列交换，第$2$列与第$n+2$列交换，……，第$n$列与第$2n$列交换，得到的矩阵为$\begin{bmatrix} I_n & \\ & -I_n \end{bmatrix}$，所以
+$$\det J = (-1)^n \det\begin{bmatrix} I_n & \\ & -I_n \end{bmatrix} = (-1)^n\times(-1)^n = 1$$
+
+\item[(2)] $J^2 = \begin{bmatrix} & I_n \\ -I_n & \end{bmatrix} \cdot \begin{bmatrix} & I_n \\ -I_n & \end{bmatrix} = \begin{bmatrix} -I_n & \\ & -I_n \end{bmatrix} = -I_{2n}$
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.23} 解答：}
+
+若$A$为实对称矩阵，那么$A = A^T.$ 由$A^2 = 0$知$AA^T = 0.$ 记$A = (a_{ij})_{1 \leqslant i,j \leqslant n},$ $AA^T = (c_{ij})_{1 \leqslant i,j \leqslant n},$ 那么
+$$c_{ii} = \sum\limits_{j = 1}^n a_{ij}^2 = 0, \quad i = 1, \cdots n,$$
+因此$a_{ij} = 0,$ 对任意的$1 \leqslant i,j \leqslant n,$ 也就是说$A=0.$
+%若$A$为实对称矩阵，那么存在可逆方阵$P$，使得$P^TAP = diag(\lambda_1,\cdots,\lambda_n)$为对角矩阵。若$A^2 = 0$，那么$P^TAP = 0$，从而有$diag(\lambda_1^2,\cdots,\lambda_n^2) = 0$，所以每个$\lambda_i$都必须为0。所以$A = 0$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.24} 解答：}
+
+任取方阵$A$，有
+$$A = \frac{A+A^T}{2} + \frac{A-A^T}{2},$$
+$\frac{A+A^T}{2}$为对称阵，$\frac{A-A^T}{2}$为反对称阵。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.25} 解答：}
+
+$A^{-1} + B^{-1} = A^{-1}(A + B)B^{-1}$，能表示成三个可逆阵之积，所以也是可逆阵。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.26} 解答：}
+
+直接验证$(I_n + A + A^2 + \cdots A^{k-1})(I_n - A) = I_n$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.27} 解答：}
+
+直接验证$(A+I_n)(-\dfrac{A}{2}+I_n) = -\dfrac{A^2}{2} + \dfrac{A}{2} + I_n = I_n.$
+%因为$A^2 = A$，所以$A$的特征值只可能有0和1，也就是说存在可逆阵$P$，使得$P^{-1}AP = \Lambda$，其中$\Lambda$为一个对角线元素为0或1的上三角矩阵。那么$P^{-1}(A+I_n)P$便是一个对角线元素为1或2的上三角矩阵，自然是可逆阵。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.28} 解答：}
+
+\enum
+\item[(1)] 根据矩阵的乘法，很容易看出。
+
+\item[(2)] 设$A$是$n$阶对称阵可逆矩阵，那么$I_n = (AA^{-1})^T = (A^{-1})^T A^T = (A^{-1})^T A$，由于矩阵逆是唯一的，所以$A^{-1} = (A^{-1})^T$。
+
+\item[(3)] 与第(2)小题类似可做。
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.29} 解答：}
+
+设$A = (a_{ij})_{1\leqslant i,j \leqslant n}$，那么把第$2,3,\cdots,n$列加到第1列上，我们有
+\begin{align*}
+\det A & = \begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} = \begin{vmatrix}
+a_{11} + a_{12} + \cdots + a_{1n} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ a_{n1} + a_{n2} + \cdots + a_{nn} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} \\
+& = \begin{vmatrix}
+c & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ c & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} = c \cdot \begin{vmatrix}
+1 & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ 1 & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}
+\end{align*}
+所以必须有$c\neq 0$，否则$\det A = 0$，与$A$是$n$阶可逆阵矛盾。
+
+将$\begin{vmatrix}
+1 & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ 1 & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}$按第一列展开，我们有
+$$\det A = c\cdot(A_{11} + A_{21} + \cdots + A_{n1}),$$
+其中$A_{ij}$为$a_{ij}$的代数余子式，正好是$A$的伴随矩阵$A^{\ast}$的第$(j,i)$位元素，而$A^{\ast} = \det A \cdot A^{-1}$。也就是说我们有
+$$\det A = c\cdot(\det A \cdot A^{-1}\text{的第一行元素之和}).$$
+即有
+$$1 = c\cdot(A^{-1}\text{的第一行元素之和}).$$
+
+同样地，如果把$A$的非$i$列元素都加到第$i$列上，再按第$i$列展开，我们有
+$$1 = c\cdot(A^{-1}\text{的第$i$行元素之和})$$。
+所以$A^{-1}$的每一行元素之和都等于$c^{-1}$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.30} 解答：}
+
+可以直接验证：
+\begin{eqnarray*}
+& & (A+uv^T) (A^{-1} - {A^{-1}uv^T A^{-1} \over 1 + v^T A^{-1}u}) \\
+& = & AA^{-1} +  uv^T A^{-1} - {AA^{-1}uv^T A^{-1} + uv^T A^{-1}uv^T A^{-1} \over 1 + v^TA^{-1}u} \\
+& = & I +  uv^T A^{-1} - {uv^T A^{-1} + uv^T A^{-1}uv^T A^{-1} \over 1 + v^T A^{-1}u} \\
+& = & I + uv^T A^{-1} - {u(1 + v^T A^{-1}u) v^T A^{-1} \over 1 + v^T A^{-1}u} \\
+& = & I + uv^T A^{-1} - {1 + v^T A^{-1}u \over 1 + v^T A^{-1}u}uv^T A^{-1} \\
+& = & I + uv^T A^{-1} - uv^T A^{-1} \\
+& = & I_n.
+\end{eqnarray*}
+
+另解：也可以通过观察，发现$(A+uv^T)^{-1}$是以下方程
+$$\begin{bmatrix} A & u \\ v^T & -1 \end{bmatrix}\begin{bmatrix} X \\ Y \end{bmatrix} = \begin{bmatrix} I \\ 0 \end{bmatrix}.$$
+的解$X$，然后通过解矩阵方程组
+$$\begin{cases}
+AX + uY = I \\
+v^TX - Y = 0
+\end{cases}$$
+由第一个方程有$X = A^{-1}(I-uY)$，代入第二个方程得$v^TA^{-1}(I-uY) = Y$。合并同类项得$(1 + v^TA^{-1}u)^{-1}v^TA^{-1} = Y$。再将$Y$代回到第一个方程，就有
+$$(A+uv^T)^{-1} = X = A^{-1} - {A^{-1}uv^T A^{-1} \over 1 + v^T A^{-1}u}.$$
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:3.31} 解答：}
+
+这是上一题的推广，证明方法类似。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

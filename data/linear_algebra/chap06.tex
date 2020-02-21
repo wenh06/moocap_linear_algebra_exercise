@@ -1,0 +1,1096 @@
+\chapter{内积空间}
+
+\section{知识点解析}
+\begin{Def}
+设$\vec{\alpha},\vec{\beta}\in\mathbb{R}^n$，若$\vec{\alpha}=(x_1,x_2,\cdots,x_n)^{T}$，$\vec{\beta}=(y_1,y_2,\cdots,y_n)^{T}$，则定义：
+\begin{equation*}
+\vec{\alpha}\cdot\vec{\beta}=x_1y_1+x_2y_2+\cdots+x_ny_n=\sum_{i=1}^{n}x_iy_i
+\end{equation*}
+称为向量$\vec{\alpha}$与$\vec{\beta}$的点乘，或标准内积。
+\end{Def}
+
+\begin{Def}\label{neiji}
+设$\mathbb{R}^{n}$中任意两个向量$\vec{\alpha},\vec{\beta}$，均存在唯一对应的
+一个实数$(\vec{\alpha},\vec{\beta})$，且满足如下的性质：
+\begin{enumerate}
+  \item $\vec{\alpha}\cdot\vec{\alpha}=|\vec{\alpha}|^2\geq0$且等号成立$\Leftrightarrow\vec{\alpha}=\vec{0}$；
+  \item $\vec{\alpha}\cdot\vec{\beta}=\vec{\beta}\cdot\vec{\alpha}$；
+  \item $(k\vec{\alpha})\cdot\vec{\beta}=\vec{\alpha}\cdot(k\vec{\beta})
+        =k(\vec{\alpha}\cdot\vec{\beta})$；
+  \item $(\vec{\alpha}+\vec{\beta})\cdot\vec{\gamma}=\vec{\alpha}
+        \cdot\vec{\gamma}+\vec{\beta}\cdot\vec{\gamma}$.
+\end{enumerate}
+则称$(\vec{\alpha},\vec{\beta})$为向量$\vec{\alpha},\vec{\beta}$的内积。定义了内积的$n$维向量空间$\mathbf{R}^n$称为欧几里德空间，简称欧式空间。
+\end{Def}
+
+\begin{Def}
+对$\mathbf{R}^n$中任意向量$\vec{\alpha}$，其长度（模长）$|\vec{\alpha}|$定义为：
+\begin{equation*}
+|\vec{\alpha}|=\sqrt{(\vec{\alpha},\vec{\alpha})}
+\end{equation*}
+\end{Def}
+
+\begin{thm}
+[cauchy-Schwarz不等式]$\mathbb{R}^n$中的内积满足：
+\begin{equation*}
+(\vec{\alpha},\vec{\beta})^2\leq(\vec{\alpha},\vec{\alpha})
+(\vec{\beta},\vec{\beta})=|\vec{\alpha}|^2|\vec{\beta}|^2~~
+(\forall\vec{\alpha},\vec{\beta}\in\mathbb{R}^n)
+\end{equation*}
+其中，等号成立当且仅当$\vec{\alpha}$与$\vec{\beta}$线性相关。
+\end{thm}
+
+\begin{Def}
+对$\mathbb{R}^n$中任意两个向量$\vec{\alpha},\vec{\beta}$，它们的
+夹角$\theta=\langle\vec{\alpha},\vec{\beta}\rangle$定义为：
+\begin{equation*}
+\cos\theta=\frac{(\vec{\alpha},\vec{\beta})}{|\vec\alpha||\vec\beta|}~~
+(0\leq\theta\leq\pi)
+\end{equation*}
+\end{Def}
+
+\begin{thm}
+任意正交的向量组$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_s$线性无关。
+\end{thm}
+
+\begin{cor}
+在$n$维欧式空间$\mathbb{R}^n$中，任意正交向量组的向量个数不会超过$n$。
+\end{cor}
+
+\begin{Def}
+在$n$维欧式空间$\mathbb{R}^n$中，由$n$个两两正交的非零向量构成的向量组称为
+正交基，由单位向量组成的正交基称为标准正交基，或单位正交基。
+\end{Def}
+
+\begin{Def}
+设$Q$是$n$阶方阵，满足$Q^TQ=I_n$，则称$Q$是正交矩阵，简称正交阵。
+\end{Def}
+
+\begin{thm}
+正交矩阵具有下列性质
+\begin{enumerate}
+  \item $Q$为正交阵$\Leftrightarrow$$Q$的列（行）向量组构成$\mathbb{R}^n$的标准正交基；
+  \item $Q$为正交阵，则$|Q|=1$或-1；
+  \item 正交阵$Q$可逆，且$Q^{-1}=Q^{T}$仍为正交矩阵；
+  \item $Q$为正交阵$\Leftrightarrow$$Q$可逆，且且$Q^{-1}=Q^{T}$；
+  \item 正交阵的乘积仍是正交矩阵。
+\end{enumerate}
+\end{thm}
+
+\begin{thm}
+$n$维欧式空间$\mathbb{R}^n$中，任意$s\leq n$个线性无关的向量
+$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n$均可转化为一组正交向量组
+$\vec{\beta}_1,\vec{\beta}_2,\cdots,\vec{\beta}_n$，其中
+\begin{align*}
+\vec{\beta}_1=&\vec{\alpha}_1\\
+\vec{\beta}_2=&\vec{\alpha}_2-\frac{(\vec{\alpha}_2,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1\\
+\vec{\beta}_3=&\vec{\alpha}_3-\frac{(\vec{\alpha}_3,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1-
+              \frac{(\vec{\alpha}_3,\vec{\beta}_2)}{(\vec{\beta}_2,\vec{\beta}_2)}\vec{\beta}_2\\
+\ldots&\ldots\ldots \\
+\vec{\beta}_n=&\vec{\alpha}_n-\frac{(\vec{\alpha}_n,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1
+              -\frac{(\vec{\alpha}_n,\vec{\beta}_2)}{(\vec{\beta}_2,\vec{\beta}_2)}\vec{\beta}_2-\ldots
+                -\frac{(\vec{\alpha}_n,\vec{\beta}_{n-1})}{(\vec{\beta}_{n-1},\vec{\beta}_{n-1})}\vec{\beta}_{n-1}
+\end{align*}
+而且$L(\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_n)=L(\vec{\beta}_1,\vec{\beta}_2,\cdots,\vec{\beta}_n)$
+进而通过把$\vec{\beta}_1,\vec{\beta}_2,\cdots,\vec{\beta}_n$单位化后可得到标准正交向量组
+$\vec{\gamma}_1,\vec{\gamma}_2,\cdots,\vec{\gamma}_n$。
+\end{thm}
+
+\begin{thm}
+对任意$n$阶可逆矩阵$A$，存在一个$n$阶正交矩阵$Q$及一个$n$阶主对角元素为正数的上三角阵$R$，使$A=QR$，称为可逆矩阵$A$的QR分解，并且这种分解是唯一的。
+\end{thm}
+
+\begin{thm}
+设$\{\vec{\eta}_1,\vec{\eta}_2,\cdots,\vec{\eta}_t\}$是欧式空间$\mathbb{R}^n$中子空间$W$的一组正交基，对$W$中任意向量$\vec{\alpha}$，
+则$\vec{\alpha}$在该正交基下的第$i$个坐标，即第$i$个线性表出系数为：
+\begin{equation*}
+x_i=\frac{(\vec{\alpha},\vec{\eta}_i)}{(\vec{\eta}_i,\vec{\eta}_i)},
+(1\leq i\leq t)
+\end{equation*}
+\end{thm}
+
+\begin{Def}
+欧式空间$\mathbb{R}^n$中，给定两个向量$\vec{\alpha}$与$\vec{\beta}$，
+从$\vec{\alpha}$的终点引垂线与$\vec{\beta}$共线的向量，称为$\vec{\alpha}$
+在$\vec{\beta}$方向的正交投影向量，记为$(\vec{\alpha})_{\vec{\beta}}$.
+\end{Def}
+\begin{thm}
+设$\{\vec{\eta}_1,\vec{\eta}_2,\cdots,\vec{\eta}_t\}$是欧式空间$\mathbb{R}^n$中子空间$W$的一组正交基，对$W$中任意向量$\vec{\alpha}$，
+则$\vec{\alpha}$在该正交基下的第$i$个坐标$(1\leq i\leq t)$，
+就是$\vec{\alpha}$向第$i$个基向量$\vec{\eta}_i$的正交投影向量$(\vec{\alpha})_{\vec{\beta}}$的长度。
+\end{thm}
+
+\begin{Def}
+设$W,W_1,W_2$是欧式空间$\mathbb{R}^{n}$中的子空间，
+向量$\vec{\alpha}\in\mathbb{R}^n$，则
+\begin{enumerate}
+  \item 若$\forall\vec{\beta}\in W$，均有$\vec{\alpha}\bot\vec{\beta}$，则称
+        $\vec{\alpha}$与$W$正交，记为$\vec{\alpha}\bot W$；
+  \item 若$\forall\vec{\beta}\in W_1$，$\forall\vec{\gamma}\in W_2$，均有$\vec{\beta}\bot\vec{\gamma}$，则称$W_1$与$W_2$正交，记为$W_1\bot W_2$；
+  \item $W^{\bot}:=\{\vec{\beta}\in\mathbb{R}^n|\vec{\beta}\bot W\}$称为$W$在
+       $\mathbb{R}^n$中的正交补。
+\end{enumerate}
+\end{Def}
+
+\begin{thm}
+[正交分解]设$W$是欧式空间$\mathbb{R}^n$中的一个子空间，则$\mathbb{R}^n$中每一个向量$\vec{\alpha}$可以唯一的分解为：
+\begin{equation*}
+\vec{\alpha}=\vec{\beta}+\vec{\gamma},s.t.\vec{\beta}\in W\text{且}\vec{\gamma}\in W^{\bot}
+\end{equation*}
+其中$\vec{\beta}$称为$\vec{\alpha}$在$W$上的正交投影向量，记为$(\vec{\alpha})_{W}$。更进一步，
+若$\{\vec{\eta}_1,\vec{\eta}_2,\cdots,\vec{\eta}_p\}$
+是$W$的一组正交基，
+那么上述分解中的
+\begin{equation*}
+\vec{\beta}=\frac{(\vec{\alpha},\vec{\eta}_1)}{(\vec{\eta}_1),\vec{\eta}_1)}\vec{\eta}_1
++\cdots+\frac{(\vec{\alpha},\vec{\eta}_p)}{(\vec{\eta}_p),\vec{\eta}_p)}\vec{\eta}_p
+\end{equation*}
+\end{thm}
+
+\begin{thm}
+设$W$为$\mathbb{R}^n$中的一个子空间，则$W^{\bot}$也为$\mathbb{R}^n$中的子空间，且有
+\begin{enumerate}
+  \item $dimW+dimW^{\bot}=n$;
+  \item $W\cap W^{\bot}={\vec{0}}$.
+\end{enumerate}
+\end{thm}
+
+\begin{thm}
+设$A$是$m\times n$型矩阵，则
+\begin{enumerate}
+  \item $A$的行空间与解空间互为正交补，即$Row(A)^{\bot}=N(A)\subseteq\mathbb{R}^n$;
+  \item $A$的列空间与转置解空间互为正交补，即$Col(A)^{\bot}=N(A^T)\subseteq\mathbb{R}^m$.
+\end{enumerate}
+\end{thm}
+
+\begin{thm}[最佳逼近定理]
+设$W$是欧式空间$\mathbb{R}^n$中的子空间，对$\mathbb{R}^n$中任意向量
+$\vec{b}$，设$(\vec{b})_{W}$为$\vec{b}$在$W$上的正交投影向量，则
+\begin{equation*}
+|\vec{b}-(\vec{b})_{W}|\leq|\vec{b}-\vec{w}|,(\forall\vec{w}\in W,
+\text{且}\vec{w}\neq (\vec{b})_{W})
+\end{equation*}
+\end{thm}
+
+\begin{thm}
+对于矛盾的非齐次线性方程组$A\vec{x}=\vec{b}$，有
+\begin{enumerate}
+\item 可用法方程$A^TA\vec{x}=A^T\vec{b}$的解作为$A\vec{x}=\vec{b}$的最小二乘解;
+\item 法方程$A^TA\vec{x}=A^T\vec{b}$必有解，且当$r(A)=n$（$A$列满秩）时，$A^TA$
+可逆，法方程有唯一解
+\begin{equation*}
+\vec{x}_0=(A^TA)^{-1}A^T\vec{b}
+\end{equation*}
+\end{enumerate}
+\end{thm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{例题讲解}
+
+\begin{eg}
+在$\mathbb{R}^n$中，对于向量$\vec{\alpha}=(a_1,a_2,\cdots,a_n)^T$，
+$\vec{\beta}=(b_1,b_2,\cdots,b_n)^T$，定义
+\begin{equation*}
+(\vec{\alpha},\vec{\beta}):=a_1b-1+2a_2b_2+\cdots+na_nb_n
+\end{equation*}
+不难验证上述定义满足定义\ref{neiji}中的性质$(1)\sim(4)$，故这是一个内积。
+\end{eg}
+
+\begin{eg}
+在$R^4$中求与$\vec{\alpha}=(1,1,-1,1)^T,\vec{\beta}=(1,-1,-1,1)^T,
+\vec{\gamma}=(2,1,1,3)^T$都正交的向量。
+\end{eg}
+解：设与$\vec{\alpha},\vec{\beta},\vec{\gamma}$都正交的向量
+为$\vec{x}=(x_1,x_2,x_3,x_4)^T$，则
+\begin{equation*}
+\begin{cases}
+x_1+x_2-x_3+x_4=0\\
+x_1-x_2-x_3+x_4=0\\
+2x_1+x_2+x_3+3x_4=0
+\end{cases}
+\end{equation*}
+由Gauss消元法得到
+\begin{equation*}
+\begin{bmatrix}
+1&1&-1&1\\1&-1&-1&1\\2&1&1&3
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+1&1&-1&1\\0&-2&0&0\\0&-1&3&1
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+1&0&-4&0\\0&1&0&0\\0&0&3&1
+\end{bmatrix}
+\end{equation*}
+所以$(x_1,x_2,x_3,x_4)^T=k(4,0,1,-3)^T$，这里$k$为任意常数。
+
+\begin{eg}
+（1）$\mathbb{R}^n$的自然基$\{\vec{e}_1,\vec{e}_2,\cdots,\vec{e}_n\}$为一组
+标准正交基。\\
+（2）下列两组基底都是$\mathbb{R}^2$的标准正交基：
+\begin{equation*}
+\vec{\alpha}_1=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\1\end{bmatrix},
+\vec{\alpha}_2=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\-1\end{bmatrix};
+\vec{\beta}_1=\begin{bmatrix}\cos\theta\\ \sin\theta\end{bmatrix},
+\vec{\beta}_2=\begin{bmatrix}-\sin\theta\\ \cos\theta\end{bmatrix}.
+\end{equation*}
+\end{eg}
+\begin{eg}
+设$\vec{\varepsilon}_1,\vec{\varepsilon}_2,\cdots,\vec{\varepsilon}_n$是
+$\mathbb{R}^n$的一组标准正交基，$\vec{\alpha}\in\mathbb{R}^n$，求向量$\vec{\alpha}$在这组标准正交基下的坐标：$\vec{X}=(x_1,x_2,\cdots,x_n)^T$.\
+\end{eg}
+解：设$\vec{\alpha}=x_1\vec{\varepsilon}_1+
+x_2\vec{\varepsilon}_2+\cdots+x_n\vec{\varepsilon}_n$，等式两边同时作用$\vec{\varepsilon}_j$作内积，并且利用标准正交基的充要条件$(\vec{\varepsilon}_i,\vec{\varepsilon}_j)=\delta_{ij}$就有
+\begin{equation*}
+(\vec{\alpha},\vec{\varepsilon}_j)=(x_1\vec{\varepsilon}_1+
+x_2\vec{\varepsilon}_2+\cdots+x_n\vec{\varepsilon}_n,
+\vec{\varepsilon}_j)=x_j
+\end{equation*}
+故$\vec{\alpha}$在这组基下的坐标向量$\vec{X}$的第$j$个分量为$x_j=(\vec{\alpha},\vec{\varepsilon}),j=1,2,\cdots,n$.
+\begin{eg}
+把$\mathbb{R}^3$中的基
+$\vec{\alpha}_1=\begin{bmatrix}1\\1\\1\end{bmatrix}$,
+$\vec{\alpha}_2=\begin{bmatrix}-1\\0\\-1\end{bmatrix}$,
+$\vec{\alpha}_3=\begin{bmatrix}-1\\2\\3\end{bmatrix}$化为一组标准正交基。
+\end{eg}
+解：现正交化：
+\begin{align*}
+\vec{\beta}_1=&\vec{\alpha}_1=\begin{bmatrix}1\\1\\1\end{bmatrix}\\
+\vec{\beta}_2=&\vec{\alpha}_2-\frac{(\vec{\alpha}_2,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1
+              =\frac{1}{3}\begin{bmatrix}-1\\2\\-1\end{bmatrix}\\
+\vec{\beta}_3=&\vec{\alpha}_3-\frac{(\vec{\alpha}_3,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1-
+              \frac{(\vec{\alpha}_3,\vec{\beta}_2)}{(\vec{\beta}_2,\vec{\beta}_2)}\vec{\beta}_2
+              =\begin{bmatrix}-2\\0\\2\end{bmatrix}
+\end{align*}
+再单位化，得到：
+\begin{equation*}
+\vec{\gamma}_1=\frac{1}{\sqrt{3}}\begin{bmatrix}1\\1\\1\end{bmatrix},
+\vec{\gamma}_2=\frac{1}{\sqrt{6}}\begin{bmatrix}-1\\2\\-1\end{bmatrix},
+\vec{\gamma}_3=\frac{1}{\sqrt{2}}\begin{bmatrix}-1\\0\\1\end{bmatrix}.
+\end{equation*}
+
+\begin{eg}
+ 给出以下线性方程组
+$\begin{cases}
+x+y+z=1\\x+y+z=2
+\end{cases}$
+的最优近似解。
+\end{eg}
+解：此方程组比较简单，明显是一个矛盾方程组。令
+\begin{equation*}
+A=\begin{bmatrix}1&1&1\\1&1&1\end{bmatrix},
+\vec{b}=\begin{bmatrix}1\\2\end{bmatrix}
+\end{equation*}
+从而，有$A^TA=\begin{bmatrix}2&2&2\\2&2&2\\2&2&2\end{bmatrix}$，而
+$A^T\vec{b}=\begin{bmatrix}3\\3\\3\end{bmatrix}$。故法方程为：
+$$x+y+z=\frac{3}{2}$$
+可解得法方程的通解，也即原方程的最小二乘解为
+\begin{equation*}
+\vec{x}_0=\begin{bmatrix}\frac{3}{2}\\0\\0\end{bmatrix}+
+k_1\begin{bmatrix}-1\\1\\0\end{bmatrix}+k_2\begin{bmatrix}-1\\0\\1\end{bmatrix}
+~~~(k_1,k_2\in\mathbb{R})
+\end{equation*}
+
+\begin{eg}
+设有以下实验数据
+\begin{table}[H]
+\centering
+\begin{tabular}{cccccc}
+  \hline
+   $x_i$ & $1$ & $2$ & $3$ & $4$ & $5$ \\
+   \hline
+   $y_i$ & $1.2$ & $1.5$ & $2.3$ & $2.4$ & $3.3$ \\
+  \hline
+\end{tabular}
+\end{table}
+求形如$y=ax+b$的函数，其中$a,b$是待定参数，使它与实验数据的误差平方和最小。
+\end{eg}
+解：假设$a,b$已经确定，则当$x=1,2,3,4,5$时，$y$应得到如下理论值，即
+\begin{equation*}
+\begin{cases}
+a+b=y_1^*\\
+a+2b=y_2^*\\
+a+3b=y_3^*\\
+a+4b=y_4^*\\
+a+5b=y_5^*
+\end{cases}
+\Rightarrow
+\begin{bmatrix}
+1&1\\1&2\\1&3\\1&4\\1&5
+\end{bmatrix}
+\begin{bmatrix}
+a\\b
+\end{bmatrix}
+=\begin{bmatrix}y_1^*\\y_2^*\\y_3^*\\y_4^*\\y_5^*\\\end{bmatrix}
+\text{记为}
+A\begin{bmatrix}
+a\\b
+\end{bmatrix}
+=\vec{y}^*
+\end{equation*}
+它们与实验数据的误差平方和为：$\sum_{i=1}^5(y_i^*-y_i)^2$，
+表示为向量内积的形式且求最小值，可表示为
+\begin{equation*}
+\min|\vec{y}-\vec{y}^*|^2
+\end{equation*}
+因此求误差平方和的最小值，就是求关于$A\begin{bmatrix}a\\b\end{bmatrix}=\vec{y}$的
+最小二乘解。\\
+由于$A=\begin{bmatrix}1&1\\1&2\\1&3\\1&4\\1&5\end{bmatrix}$，
+$\vec{y}=\begin{bmatrix}1.2\\1.5\\2.3\\2.4\\3.3\end{bmatrix}$，
+且$A$明显为列满秩矩阵，分别计算
+\begin{equation*}
+A^TA=\begin{bmatrix}5&15\\15&55\end{bmatrix},
+A^T\vec{y}=\begin{bmatrix}10.7\\37.2\end{bmatrix},
+\end{equation*}
+故最小二乘解为：
+\begin{equation*}
+\begin{bmatrix}a_0\\b_0\end{bmatrix}=
+(A^TA)^{-1}A^T\vec{y}=\begin{bmatrix}0.61\\0.51\end{bmatrix},
+\end{equation*}
+故满足条件的一次函数为$y=0.61+0.51x$。
+
+\begin{eg}
+设有以下实验数据
+\begin{table}[H]
+\centering
+\begin{tabular}{cccccc}
+  \hline
+   $x_i$ & 1 & 2 & 3& 4 &5 \\
+   \hline
+   $y_i$ & 6.1 & 10.5 & 18.4& 26.5&38.2 \\
+  \hline
+\end{tabular}
+\end{table}
+求形如$y=a+bx+cx^2$的函数，其中$a,b,c$是待定参数，使它与实验数据的误差平方和最小。
+\end{eg}
+解：同上例分析，可说明使得误差平方和最小的二次函数系数$(a_0,b_0,c_0)^T$，就是
+如下线性方程组的最小二乘解：
+\begin{equation*}
+\begin{cases}
+a+b+c=6.1\\
+a+2b+4c=10.5\\
+a+3b+9c=18.4\\
+a+4b+16c=26.5\\
+a+5b+25c=38.2
+\end{cases}
+\text{记为}
+A=\begin{bmatrix}
+1&1&1\\1&2&4\\1&3&9\\1&4&16\\1&5&25
+\end{bmatrix},
+\vec{y}=\begin{bmatrix}
+6.1\\10.5\\18.4\\26.5\\38.2
+\end{bmatrix},
+\end{equation*}
+由于$A$为列满秩矩阵，分别计算
+\begin{equation*}
+A^TA=\begin{bmatrix}5&15&55\\15&55&225\\55&225&979\end{bmatrix},
+A^T\vec{y}=\begin{bmatrix}99.8\\379.3\\1592.7\end{bmatrix},
+\end{equation*}
+故最小二乘解为：
+\begin{equation*}
+\begin{bmatrix}a_0\\b_0\end{bmatrix}=
+(A^TA)^{-1}A^T\vec{y}=\begin{bmatrix}3.64\\1.35\\1.11\end{bmatrix},
+\end{equation*}
+故满足条件的二次函数为$y=3.64+1.35x+1.11x^2$。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{课后习题}
+
+\begin{ex}\label{6.1}
+以下定义在$\mathbb{R}^3$上的运算是否构成内积？并说明理由。其中$\vec{x}=(x_1,x_2,x_3 )^T$，
+ $\vec{y}=(y_1,y_2,y_3 )^T$。\\
+（1）$(\vec{x},\vec{y})=x_1y_1$；\\
+（2）$(\vec{x},\vec{y})=x_1y_1+x_2^2+y_2^2$；\\
+（3）$(\vec{x},\vec{y})=x_1y_1-x_2^2-y_2^2$；\\
+（4）$(\vec{x},\vec{y})=x_1y_1+2x_1y_2+x_3y_3$；\\
+（5）$(\vec{x},\vec{y})=x_1^2+y_1^2+y_2^2+x_3^2+y_3^2$；\\
+（6）$(\vec{x},\vec{y})=x_1y_1+2x_2y_2+x_3y_3$；
+\end{ex}
+
+\begin{ex}\label{6.2}
+2. 求下列$\mathbb{R}^4$中向量的模长。\\
+（1）$\vec{x}=(1,2,2,0)^T$；\\
+（2）$\vec{x}=(2,1,-1,-1)^T$；\\
+（3）$\vec{x}=(0,1,2,-1)^T$；\\
+（4）$\vec{x}=(3,0,-4,-5)^T$；
+\end{ex}
+
+\begin{ex}\label{6.3}
+求下列$\mathbb{R}^4$中两个向量的内积。\\
+（1）$\vec{x}=(1,1,2,0)^T$，$\vec{y}=(0,0,2,3)^T$；\\
+（2）$\vec{x}=(0,1,1,2)^T$，$\vec{y}=(1,0,3,-3)^T$；\\
+（3）$\vec{x}=(1,0,0,0)^T$，$\vec{y}=(1,-1,2,1)^T$；\\
+（4）$\vec{x}=(0,0,0,-1)^T$，$\vec{y}=(1,0,1,-3)^T$；
+\end{ex}
+
+\begin{ex}\label{6.4}
+在$\mathbb{R}^4$中，求两个向量$\vec{x}$，$\vec{y}$之间的夹角$\langle\vec{x},\vec{y}\rangle$，设\\
+（1）$\vec{x}=(1,1,2,0)^T$，$\vec{y}=(0,0,0,3)^T$；\\
+（2）$\vec{x}=(0,1,1,2)^T$，$\vec{y}=(0,-2,-2,-4)^T$；\\
+（3）$\vec{x}=(1,0,0,0)^T$，$\vec{y}=(1,-1,0,0)^T$；\\
+（4）$\vec{x}=(0,0,0,-1)^T$，$\vec{y}=(1,5,1,3)^T$；
+\end{ex}
+
+\begin{ex}\label{6.5}
+已知$|\vec{x}|=4$，$|\vec{y}|=2$，$|\vec{x}-\vec{y}|=2\sqrt{6}$，求$(\vec{x},\vec{y})$。
+\end{ex}
+
+\begin{ex}\label{6.6}
+设$|\vec{x}-\vec{y}|=|\vec{x}+\vec{y}|$，$\vec{x}=(1,1,2,1)^T$，$\vec{y}=(0,0,1,m)^T$，求$m$的值。
+\end{ex}
+
+\begin{ex}\label{6.7}
+设$\vec{\alpha}$，$\vec{\beta}$是$R^n$ 中的两个非零向量，$k$是一个正实数，证明：\\
+（1）$\langle k\vec{\alpha},\vec{\beta}\rangle=\langle\vec{\alpha},\vec{\beta}\rangle$；\\
+（2）$\langle\vec{\alpha},\vec{\beta}\rangle+\langle-\vec{\alpha},\vec{\beta}\rangle=\pi$。
+\end{ex}
+
+\begin{ex}\label{6.8}
+已知$\vec{\alpha}_1=(1,2,-1)^T$，$\vec{\alpha}_2=(2,3,4)^T$。\\
+（1）求$\vec{\alpha}_1$与$\vec{\alpha}_2$的长度。\\
+（2）求$\vec{\alpha}_1$与$\vec{\alpha}_2$的夹角。\\
+（3）求与$\vec{\alpha}_1$与$\vec{\alpha}_2$ 都正交的向量。
+\end{ex}
+
+\begin{ex}\label{6.9}
+通常$\vec{\alpha}$与$\vec{\beta}$的距离定义为$d(\vec{\alpha},\vec{\beta})=|\vec{\alpha}-\vec{\beta}|$，证明：
+\begin{equation*}
+d(\vec{\alpha},\vec{\gamma})\leq\d(\vec{\alpha},\vec{\beta})+d(\vec{\beta},\vec{\gamma}).
+\end{equation*}
+\end{ex}
+
+\begin{ex}\label{6.10}
+求$\mathbb{R}^4$中一单位向量与$(1,1,1,1)^T$，$(1,1,-1,-1)^T$，$(1,-1,1,-1)^T$正交。
+\end{ex}
+
+\begin{ex}\label{6.11}
+在$n$维向量空间$R^{n}$中，假设$\vec{\alpha}_1,\vec{\alpha}_2,\cdots,\vec{\alpha}_{n-1}$ 线性无关，
+且它们和向量$\vec{\beta}_1,\vec{\beta}_2$都正交，证明：$\vec{\beta}_1,\vec{\beta}_2$ 线性相关。\\
+\end{ex}
+
+\begin{ex}\label{6.12}
+求齐次方程组
+\begin{equation*}
+  \begin{cases}
+  2x_1+x_2+x_3+x_4=0\\
+  x_1+x_2+x_3=0
+  \end{cases}
+\end{equation*}
+的解空间（作为$\mathbb{R}^4$的子空间）的一组标准正交基。
+\end{ex}
+
+\begin{ex}\label{6.13}
+求齐次方程组
+\begin{equation*}
+  \begin{cases}
+  2x_1+x_2-x_3+x_4=0\\
+  x_1+x_2-x_3=0
+  \end{cases}
+\end{equation*}
+的解空间（作为$\mathbb{R}^4$的子空间）的一组标准正交基。
+\end{ex}
+
+\begin{ex}\label{6.14}
+求齐次方程组
+\begin{equation*}
+  \begin{cases}
+  x_1+x_2+x_3+x_4=0\\
+  x_2+x_3=0
+  \end{cases}
+\end{equation*}
+的解空间$W$的一组标准正交基以及$W^{\bot}$的一组标准正交基。
+\end{ex}
+
+\begin{ex}\label{6.15}
+设$\vec{\alpha}_1=(1,1,1,1)^T$,$\vec{\alpha}_2=(3,3,1,1)^T$,$\vec{\alpha}_3=(3,1,3,1)^T$,$\vec{\alpha}_4=(3,-1,4,3)^T$。
+求$\mathbb{R}^4$的一组标准正交基$\vec{\varepsilon}_1$,$\vec{\varepsilon}_2$,$\vec{\varepsilon}_3$,$\vec{\varepsilon}_4$ 使得\\
+$L(\vec{\varepsilon}_1,\vec{\varepsilon}_2,\vec{\varepsilon}_3,\vec{\varepsilon}_4)=L(\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3,\vec{\alpha}_4)$。
+\end{ex}
+
+\begin{ex}\label{6.16}
+假设$\vec{\varepsilon}_1$，$\vec{\varepsilon}_2$，$\vec{\varepsilon}_3$是$\mathbb{R}^3$中的一组标准正交基，证明
+\begin{eqnarray*}
+ \vec{\alpha}_1 &=& \frac{1}{3}(2\vec{\varepsilon}_1-\vec{\varepsilon}_2+2\vec{\varepsilon}_3) \\
+ \vec{\alpha}_2 &=& \frac{1}{3}(2\vec{\varepsilon}_1+2\vec{\varepsilon}_2-\vec{\varepsilon}_3) \\
+ \vec{\alpha}_3 &=& \frac{1}{3}(2\vec{\varepsilon}_2+2\vec{\varepsilon}_3-\vec{\varepsilon}_1) \\
+\end{eqnarray*}
+也是$\mathbb{R}^3$中的一组标准正交基。
+\end{ex}
+
+\begin{ex}\label{6.17}
+设$\vec{\varepsilon}_1$，$\vec{\varepsilon}_2$，$\vec{\varepsilon}_3$，$\vec{\varepsilon}_4$，$\vec{\varepsilon}_5$是$\mathbb{R}^5$的一组标准正交基，
+\begin{equation*}
+  V_1=L(\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3).
+\end{equation*}
+其中$\vec{\alpha}_1=\vec{\varepsilon}_1+\vec{\varepsilon}_4$，
+$\vec{\alpha}_2=\vec{\varepsilon}_1-\vec{\varepsilon}_2+\vec{\varepsilon}_4$，
+$\vec{\alpha}_3=2\vec{\varepsilon}_1+\vec{\varepsilon}_2+\vec{\varepsilon}_3$。
+求$V_1$的一组标准正交基。
+\end{ex}
+
+\begin{ex}\label{6.18}
+试把$(1,0,1,0)^T$,$(0,1,0,0)^T$扩充为$\mathbb{R}^4$的一组标准正交基。
+\end{ex}
+
+\begin{ex}\label{6.19}
+已知$\mathbb{R}^4$中向量$\vec{\alpha}_1=(1,0,0,0)^T$，$\vec{\alpha}_2=(0,1,1,0)^T$生成子空间
+$W=L(\vec{\alpha}_1,\vec{\alpha}_2)$。 试在标准内积下，求正交补$W^{\bot}$ 的一组标准正交基。
+\end{ex}
+
+\begin{ex}\label{6.20}
+写出所有三阶正交矩阵，它的元素是0或1。
+\end{ex}
+
+\begin{ex}\label{6.21}
+已知$Q=\begin{bmatrix}a&-\frac{3}{7}&\frac{2}{7}\\b&c&d\\-\frac{3}{7}&\frac{2}{7}&e\end{bmatrix}$ 是正交矩阵，
+求$a,b,c,d,e$的值。
+\end{ex}
+
+\begin{ex}\label{6.22}
+证明：上三角形的正交矩阵一定是对角阵，且对角线上的元素为$+1$ 或者$-1$。
+\end{ex}
+
+\begin{ex}\label{6.23}
+设$A$是$n$阶正交矩阵，$B$也是$n$阶正交矩阵。证明$AB$和$BA$也是正交矩阵。
+\end{ex}
+
+\begin{ex}\label{6.24}
+设$A$是对称矩阵，且$A$也是正交矩阵，证明
+\begin{equation*}
+ A^{k}=\begin{cases}
+  I,& k\geq2\text{且}k\text{是偶数}\\
+  A,& k\geq2\text{且}k\text{是奇数}
+  \end{cases}
+\end{equation*}
+\end{ex}
+
+\begin{ex}\label{6.25}
+设$A$是正交矩阵，证明$A$的伴随矩阵$A^*$ 也是正交矩阵。
+\end{ex}
+
+\begin{ex}\label{6.26}
+设$\vec{\alpha}$是$\mathbb{R}^3$中的一个单位向量，$I$是3阶的单位矩阵，证明
+\begin{equation*}
+Q=I-2\vec{\alpha}\vec{\alpha}^T
+\end{equation*}
+是一个正交矩阵（称为Householder 变换），当$\vec{\alpha}=\frac{1}{\sqrt{2}}(1,0,1)^T$ 时，求出$Q$。
+\end{ex}
+
+\begin{ex}\label{6.27}
+证明$A=\begin{bmatrix}\sin\theta&\cos\theta\\-\cos\theta&\sin\theta\end{bmatrix}$ 是正交矩阵。
+\end{ex}
+
+\begin{ex}\label{6.28}
+设$A=\begin{bmatrix}1&1\\1&3\end{bmatrix}$，作$A$的$QR$分解。
+\end{ex}
+
+\begin{ex}\label{6.29}
+设$A=\begin{bmatrix}1&0&1\\1&1&1\\1&2&3\end{bmatrix}$，作$A$的$QR$分解。
+\end{ex}
+
+\begin{ex}\label{6.30}
+若一个正交矩阵中每一个元素都是$\frac{1}{2}$ 或者$-\frac{1}{2}$，那么这个矩阵是几阶的？
+\end{ex}
+
+\begin{ex}\label{6.31}
+设有以下实验数据
+\begin{table}[H]
+\centering
+\begin{tabular}{ccccc}
+  \hline
+   $x_i$ & 1 & 2 & 3& 4 \\
+   \hline
+   $y_i$ & 5.1 & 8.2 & 10& 14.8 \\
+  \hline
+\end{tabular}
+\end{table}
+
+(1)求形如$y=ax+b$的函数，其中$a,b$是待定参数，使它与实验数据的误差平方和最小。
+
+(2)求形如$y=mx^2+nx+p$的函数，其中$m,n,p$是待定参数，使它与实验数据的误差平方和最小。
+\end{ex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{习题答案}
+\textbf{习题 \ref{6.1} 解答:}\\
+（1）否，不满足正定性，向量$(0,1,1)^T$ 与自己的内积为0；\\
+（2）否，不满足正定性，向量$(0,0,1)^T$ 与自己的内积为0；\\
+（3）否，不满足正定性，向量$(1,1,;1)^T$ 与自己的内积为-1；\\
+（4）否，不满足对称性，若$\vec{x}=(1,0,0)^T$， $\vec{y}=(0,1,0)^T$，那么$(\vec{x},\vec{y})=2$，$(\vec{y},\vec{x})=0$；\\
+（5）否，不满足数乘，取$\vec{x}=(1,0,0)$， $\vec{y}=(0,1,0)^T$，$k=2$，那么$(k\vec{x},\vec{y})=5$,
+          $k(\vec{x},\vec{y})=4$。\\
+（6）是。容易验证其满足正定性、对称性、数乘以及分配律。\\
+\textbf{习题 \ref{6.2} 解答:}\\
+（1）$|\vec{x}|=\sqrt{1^2+2^2+2^2+0^2}=3$；\\
+（2）$|\vec{x}|=\sqrt{2^2+1^2+(-1)^2+(-1)^2}=\sqrt{7}$；\\
+（3）$|\vec{x}|=\sqrt{0^2+1^2+2^2+(-1)^2}=\sqrt{6}$；\\
+（4）$|\vec{x}|=\sqrt{3^2+0^2+(-4)^2+(-5)^2}=5\sqrt{2}$。\\
+\textbf{习题 \ref{6.3} 解答:}\\
+（1）$(\vec{x},\vec{y})=1\times0+1\times0+2\times2+0\times3=4$；\\
+（2）$(\vec{x},\vec{y})=-3$；\\
+（3）$(\vec{x},\vec{y})=1$；\\
+（4）$(\vec{x},\vec{y})=3$。\\
+\textbf{习题 \ref{6.4} 解答:}\\
+（1）$(\vec{x},\vec{y})=0$，故$\cos\langle\vec{x},\vec{y}\rangle=0$，因此$\langle\vec{x},\vec{y}\rangle=\frac{\pi}{2}$。\\
+（2）$\pi$；\\
+（3）$\frac{\pi}{4}$；\\
+（4）$(\vec{x},\vec{y})=-3$，$|\vec{x}|=\sqrt{(-1)^2}=1$，$|\vec{y}|=\sqrt{1^2+5^2+1^2+3^2}=6$，\\
+     因此$\langle\vec{x},\vec{y}\rangle=\cos^{-1}(-\frac{1}{2})=\frac{2\pi}{3}$。\\
+\textbf{习题 \ref{6.5} 解答:}\\
+$|\vec{x}-\vec{y}|^2=|\vec{x}|^2+|\vec{y}|^2-2(\vec{x},\vec{y})=24$；\\
+$2(\vec{x},\vec{y})=24-|\vec{x}|^2-|\vec{y}|^2=4$；\\
+因此$(\vec{x},\vec{y})=2$。\\
+\textbf{习题 \ref{6.6} 解答:}\\
+由于$|\vec{x}-\vec{y}|^2=|\vec{x}|^2+|\vec{y}|^2-2(\vec{x},\vec{y})$ 以及$|\vec{x}+\vec{y}|^2=|\vec{x}|^2+|\vec{y}|^2+2(\vec{x},\vec{y})$；\\
+又由于$|\vec{x}-\vec{y}|=|\vec{x}+\vec{y}|$，\\
+则有$(\vec{x},\vec{y})=0$，因此$2+m=0$，即$m=-2$。\\
+\textbf{习题 \ref{6.7} 解答:}\\
+（1）$\langle k\vec{\alpha},\vec{\beta}\rangle=\cos^{-1}\frac{(k\vec{\alpha},\vec{\beta})}{|k\vec{\alpha}||\vec{\beta}|}
+   =\cos^{-1}\frac{k(\vec{\alpha},\vec{\beta})}{k|\vec{\alpha}||\vec{\beta}|}
+   =\cos^{-1}\frac{(\vec{\alpha},\vec{\beta})}{|\vec{\alpha}||\vec{\beta}|}
+   =\langle\vec{\alpha},\vec{\beta}\rangle$。\\
+（2）因为$\langle -\vec{\alpha},\vec{\beta}\rangle=\cos^{-1}\frac{(-\vec{\alpha},\vec{\beta})}{|-\vec{\alpha}||\vec{\beta}|}
+   =\cos^{-1}\frac{-(\vec{\alpha},\vec{\beta})}{|\vec{\alpha}||\vec{\beta}|}
+   =\pi-\cos^{-1}\frac{(\vec{\alpha},\vec{\beta})}{|\vec{\alpha}||\vec{\beta}|}
+   =\pi-\langle\vec{\alpha},\vec{\beta}\rangle$，\\
+   因此$\langle\vec{\alpha},\vec{\beta}\rangle+\langle\vec{-\alpha},\vec{\beta}\rangle=\pi$。\\
+\textbf{习题 \ref{6.8} 解答:}\\
+(1)$|\vec{\alpha}_1|=\sqrt{1^2+2^2+(-1)^2}=\sqrt{6}$；\\
+$|\vec{\alpha}_2|=\sqrt{2^2+3^2+4^2}=\sqrt{29}$；\\
+(2)$(\vec{\alpha}_1,\vec{\alpha}_2)=4$，\\
+$\langle\vec{\alpha}_1,\vec{\alpha}_2\rangle=\arccos\frac{4}{\sqrt{174}}$。\\
+(3)设$\vec{\beta}=(x_1,x_2,x_3)^T$与$\vec{\alpha}_1$与$\vec{\alpha}_2$都正交，则
+\begin{equation*}
+  \begin{cases}
+  x_1+2x_2-x_3=0\\
+  2x_1+3x_2+4x_3=0
+  \end{cases}
+\end{equation*}
+解得
+\begin{equation*}
+\vec{\beta}=k(-11,6,1)^T,\text{其中}k\text{是任意的数}.
+\end{equation*}\\
+\textbf{习题 \ref{6.9} 解答:}\\
+\begin{align*}
+(d(\vec{\alpha},\vec{\gamma}))^2=&|\vec{\alpha}-\vec{\gamma}|^2=(\vec{\alpha}-\vec{\gamma},\vec{\alpha}-\vec{\gamma})\\
+=&((\vec{\alpha}-\vec{\beta})+(\vec{\beta}-\vec{\gamma}),(\vec{\alpha}-\vec{\beta})+(\vec{\beta}-\vec{\gamma}))\\
+=&(\vec{\alpha}-\vec{\beta},\vec{\alpha}-\vec{\beta})+2(\vec{\alpha}-\vec{\beta},\vec{\beta}-\vec{\gamma})+
+(\vec{\beta}-\vec{\gamma},\vec{\beta}-\vec{\gamma})\\
+\leq&|\vec{\alpha}-\vec{\beta}|^2+2|\vec{\alpha}-\vec{\beta}||\vec{\beta}-\vec{\gamma}|+|\vec{\beta}-\vec{\gamma}|^2\\
+=&((\vec{\alpha}-\vec{\beta})+(\vec{\beta}-\vec{\gamma}))^2=(d(\vec{\alpha},\vec{\beta})+d(\vec{\beta},\vec{\gamma}))^2
+\end{align*}
+从而$d(\vec{\alpha},\vec{\gamma})\leq d(\vec{\alpha},\vec{\beta})+d(\vec{\beta},\vec{\gamma})$。\\
+\textbf{习题 \ref{6.10} 解答:}\\
+设所求向量为$(x_1,x_2,x_3,x_4)^T$，则
+\begin{equation*}
+  \begin{cases}
+  x_1+x_2+x_3+x_4=0\\
+  x_1+x_2-x_3-x_4=0\\
+  x_1-x_2+x_3-x_4=0\\
+  x_1^2+x_2^2+x_3^2+x_4^2=1\\
+  \end{cases}
+\end{equation*}
+求解得到：
+\begin{equation*}
+(x_1,x_2,x_3,x_4)^T=(\frac{1}{2},-\frac{1}{2},-\frac{1}{2},\frac{1}{2})^T.
+\end{equation*}
+\textbf{习题 \ref{6.11} 解答:}\\
+如果$\vec{\beta}_1,\vec{\beta}_2$中含有零向量，显然二者是线性相关的，故不妨设$\vec{\beta}_1,\vec{\beta}_2$
+都是非零向量。\\
+因为$\vec{\alpha}_i$，$\vec{\beta}_1$正交，有：
+\begin{equation*}
+\vec{\alpha}_i^T\vec{\beta}_1=0,~i=1,2,\cdots,n-1,
+\end{equation*}
+改写为矩阵形式：
+\begin{equation*}
+\begin{bmatrix}\vec{\alpha}_1^T\\ \vec{\alpha}_2^T\\ \vdots\\ \vec{\alpha}_{n-1}^T\end{bmatrix}
+\vec{\beta}_1=0
+\end{equation*}
+令矩阵
+\begin{equation*}
+A=\begin{bmatrix}\vec{\alpha}_1^T\\ \vec{\alpha}_2^T\\ \vdots\\ \vec{\alpha}_{n-1}^T\end{bmatrix}
+\end{equation*}
+因此，$\vec{\beta}_1$都是齐次方程组
+\begin{equation}\label{qici}
+Ax=b
+\end{equation}
+的非零解。由于$A$的行向量组线性无关，因此$R(A)=n-1$，故解空间的维数是1，故$\vec{\beta}_1$是它的一个
+基础解系。同理，$\vec{\beta}_2$ 是齐次方程组\eqref{qici}的非零解，于是$\vec{\beta}_2$ 可由$\vec{\beta}_1$
+线性表出，所以$\vec{\beta}_1,\vec{\beta}_2$ 线性相关。 \\
+\textbf{习题 \ref{6.12} 解答:}\\
+解方程组得到基础解系：\\
+$\vec{\alpha}_1=(1,-1,0,1)^T$，$\vec{\alpha}_2=(1,0,-1,-1)^T$\\
+则$W=L(\vec{\alpha}_1,\vec{\alpha}_2)$，将$\vec{\alpha}_1$，$\vec{\alpha}_2$正交化
+\begin{align*}
+\vec{\beta}_1=&\vec{\alpha}_1=(1,-1,0,1)^T\\
+\vec{\beta}_2=&\vec{\alpha}_2-\frac{(\vec{\alpha}_2,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1=\frac{1}{3}(1,2,-5,-1)^T
+\end{align*}
+再将$\vec{\beta}_1$，$\vec{\beta}_2$单位化：
+\begin{align*}
+\vec{\varepsilon}_1=&\frac{1}{|\vec{\beta}_1|}\vec{\beta}_1=\frac{1}{\sqrt{3}}(1,-1,0,1)^T\\
+\vec{\varepsilon}_2=&\frac{1}{|\vec{\beta}_2|}\vec{\beta}_2==\frac{1}{\sqrt{31}}(1,2,-5,-1)^T
+\end{align*}
+因此$\varepsilon_1$，$\varepsilon_2$是解空间$W$的一组标准正交基。\\
+\textbf{习题 \ref{6.13} 解答:}\\
+解方程组得到基础解系：\\
+$\vec{\alpha}_1=(1,0,1,-1)^T$，$\vec{\alpha}_2=(1,-1,0,-1)^T$\\
+将$\vec{\alpha}_1$，$\vec{\alpha}_2$正交化
+\begin{align*}
+\vec{\beta}_1=&\vec{\alpha}_1=(1,0,1,-1)^T\\
+\vec{\beta}_2=&\vec{\alpha}_2-\frac{(\vec{\alpha}_2,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1=\frac{1}{3}(1,-5,-2,-1)^T\\
+\end{align*}
+再将$\beta_1$，$\beta_2$单位化：
+\begin{align*}
+\vec{\varepsilon}_1=\frac{1}{\sqrt{3}}(1,-1,0,1)^T\\
+\vec{\varepsilon}_2=\frac{1}{\sqrt{31}}(1,-5,-2,-1)^T
+\end{align*}
+因此$\varepsilon_1$，$\varepsilon_2$是解空间一组标准正交基。\\
+\textbf{习题 \ref{6.14} 解答:}\\
+解方程组得到基础解系：
+\begin{equation*}
+\vec{\alpha}_1=(1,0,0,-1)^T,\vec{\alpha}_2=(0,1,-1,0)^T.
+\end{equation*}
+由于$(\vec{\alpha}_1,\vec{\alpha}_2)=0$，只须单位化：
+\begin{equation*}
+\vec{\alpha}_1=\frac{1}{\sqrt{2}}(1,0,0,-1)^T,
+\vec{\alpha}_2=\frac{1}{\sqrt{2}}(0,1,-1,0)^T.
+\end{equation*}
+那么$\vec{\beta}_1,\vec{\beta}_2$是解空间$W$ 的一组标准正交基。
+设$\vec{\gamma}=(y_1,y_2,y_3,y_4)$ 是$W^{\bot}$的基，那么$(\vec{\beta}_1,\vec{\gamma})=0$ 且$(\vec{\beta}_2,\vec{\gamma})=0$。
+即：
+\begin{equation*}
+\begin{cases}
+  y_1-y_4=0\\
+  y_2-y_3=0
+\end{cases}
+\end{equation*}
+解上述方程组得到基础解系：
+\begin{equation*}
+\vec{\gamma}_1=(1,0,0,1)^T,\vec{\gamma}_2=(0,1,1,0)^T.
+\end{equation*}
+由于$(\vec{\gamma}_1,\vec{\gamma}_2)=0$，只须单位化：
+\begin{equation*}
+\vec{\xi}_1=\frac{1}{\sqrt{2}}(1,0,0,1)^T,
+\vec{\xi}_2=\frac{1}{\sqrt{2}}(0,1,1,0)^T.
+\end{equation*}
+那么$\vec{\xi}_1,\vec{\xi}_2$是解空间$W^{\bot}$的一组标准正交基。\\
+\textbf{习题 \ref{6.15} 解答:}\\
+将$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3,\vec{\alpha}_4$ 正交化：
+\begin{align*}
+\vec{\beta}_1=&\vec{\alpha}_1=(1,1,1,1)^T\\
+\vec{\beta}_2=&\vec{\alpha}_2-\frac{(\vec{\alpha}_2,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1=(1,1,-1,-1)^T\\
+\vec{\beta}_3=&\vec{\alpha}_3-\frac{(\vec{\alpha}_3,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1-
+              \frac{(\vec{\alpha}_3,\vec{\beta}_2)}{(\vec{\beta}_2,\vec{\beta}_2)}\vec{\beta}_2\\
+             =&(3,1,3,1)^T-2(1,1,1,1)^T=(1,-1,1,-1)^T\\
+\vec{\beta}_4=&\vec{\alpha}_4-\frac{(\vec{\alpha}_4,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1-
+               \frac{(\vec{\alpha}_4,\vec{\beta}_2)}{(\vec{\beta}_2,\vec{\beta}_2)}\vec{\beta}_2
+                -\frac{(\vec{\alpha}_4,\vec{\beta}_3)}{(\vec{\beta}_3,\vec{\beta}_3)}\vec{\beta}_3\\
+             =&(3,-1,4,3)^T-\frac{9}{2}(1,1,1,1)^T+\frac{5}{2}(1,1,-1,-1)^T+\frac{5}{2}(1,-1,1,-1)\\
+             =&\frac{1}{2}(7,-11,-1,13)^T
+\end{align*}
+再将$\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3,\vec{\beta}_4$ 单位化：
+\begin{align*}
+\vec{\varepsilon}_1=&\frac{1}{|\vec{\beta}_1|}\vec{\beta}_1=\frac{1}{2}(1,1,1,1)^T\\
+\vec{\varepsilon}_2=&\frac{1}{|\vec{\beta}_2|}\vec{\beta}_2=\frac{1}{2}(1,1,-1,-1)^T\\
+\vec{\varepsilon}_3=&\frac{1}{|\vec{\beta}_3|}\vec{\beta}_3=\frac{1}{2}(1,-1,1,-1)^T\\
+\vec{\varepsilon}_4=&\frac{1}{|\vec{\beta}_4|}\vec{\beta}_4=\frac{1}{4\sqrt{105}}(7,-11,-1,13)^T
+\end{align*}
+则$\vec{\varepsilon}_1$,$\vec{\varepsilon}_2$,$\vec{\varepsilon}_3$,$\vec{\varepsilon}_4$ 是$R^4$的一组标准正交基，使得
+$L(\vec{\varepsilon}_1,\vec{\varepsilon}_2,\vec{\varepsilon}_3,\vec{\varepsilon}_4)=L(\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3,\vec{\alpha}_4)$。\\
+\textbf{习题 \ref{6.16} 解答:}\\
+由于
+\begin{eqnarray*}
+   (\vec{\alpha}_1,\vec{\alpha}_2)&=&\frac{4}{9}(\vec{\varepsilon}_1,\vec{\varepsilon}_1)
+   -\frac{2}{9}(\vec{\varepsilon}_2,\vec{\varepsilon}_2)-\frac{2}{9}(\vec{\varepsilon}_3,\vec{\varepsilon}_3)=0\\
+   (\vec{\alpha}_1,\vec{\alpha}_3)&=&-\frac{2}{9}(\vec{\varepsilon}_1,\vec{\varepsilon}_1)
+   -\frac{2}{9}(\vec{\varepsilon}_2,\vec{\varepsilon}_2)+\frac{4}{9}(\vec{\varepsilon}_3,\vec{\varepsilon}_3)=0\\
+   (\vec{\alpha}_2,\vec{\alpha}_3)&=&-\frac{2}{9}(\vec{\varepsilon}_1,\vec{\varepsilon}_1)
+   +\frac{4}{9}(\vec{\varepsilon}_2,\vec{\varepsilon}_2)-\frac{2}{9}(\vec{\varepsilon}_3,\vec{\varepsilon}_3)=0
+\end{eqnarray*}
+又由于
+\begin{eqnarray*}
+   (\vec{\alpha}_1,\vec{\alpha}_1)&=&1\\
+   (\vec{\alpha}_2,\vec{\alpha}_2)&=&1\\
+   (\vec{\alpha}_3,\vec{\alpha}_3)&=&1
+\end{eqnarray*}
+因此$\vec{\alpha}_1,\vec{\alpha}_2,\vec{\alpha}_3$ 也是$R^3$中的一组标准正交基。\\
+\textbf{习题 \ref{6.17} 解答:}\\
+首先正交化：
+\begin{align*}
+\vec{\beta}_1=&\vec{\alpha}_1=\vec{\varepsilon}_1+\vec{\varepsilon}_4\\
+\vec{\beta}_2=&\vec{\alpha}_2-\frac{(\vec{\alpha}_2,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1\\
+             =&-\vec{\varepsilon}_2\\
+\vec{\beta}_3=&\vec{\alpha}_3-\frac{(\vec{\alpha}_3,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1-
+              \frac{(\vec{\alpha}_3,\vec{\beta}_2)}{(\vec{\beta}_2,\vec{\beta}_2)}\vec{\beta}_2\\
+             =&\vec{\alpha}_3-\frac{1}{2}\vec{\beta}_1+\vec{\beta}_2=\frac{3}{2}\vec{\varepsilon}_1+\vec{\varepsilon}_3-\frac{1}{2}\vec{\varepsilon}_4
+\end{align*}
+再将$\vec{\beta}_1,\vec{\beta}_2,\vec{\beta}_3$ 单位化：
+\begin{align*}
+\vec{\beta}_1=&\frac{1}{\sqrt{2}}(\vec{\varepsilon}_1+\vec{\varepsilon}_4)\\
+\vec{\beta}_2=&\vec{\varepsilon}_2\\
+\vec{\beta}_3=&\frac{1}{\sqrt{14}}(3\vec{\varepsilon}_1+2\vec{\varepsilon}_3-\vec{\varepsilon}_4)\\
+\end{align*}
+\textbf{习题 \ref{6.18} 解答:}\\
+先将$(1,0,1,0)^T$,$(0,1,0,0)^T$ 扩充为$R^4$ 的一组标准正交基，令：
+\begin{equation*}
+\vec{\alpha}_1=(1,0,1,0)^T,\vec{\alpha}_2=(0,1,0,0)^T,\vec{\alpha}_3=(1,0,0,0)^T,\vec{\alpha}_4=(1,0,0,1)^T
+\end{equation*}
+显然，$\alpha_1,\alpha_2,\alpha_3,\alpha_4$ 是$R^4$的一组基底。下面将其正交化：
+\begin{align*}
+\vec{\beta}_1=&\vec{\alpha}_1=(1,0,1,0)^T\\
+\vec{\beta}_2=&\vec{\alpha}_2-\frac{(\vec{\alpha}_2,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1
+             =\vec{\alpha}_2=(0,1,0,0)^T\\
+\vec{\beta}_3=&\vec{\alpha}_3-\frac{(\vec{\alpha}_3,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1-
+              \frac{(\vec{\alpha}_3,\vec{\beta}_2)}{(\vec{\beta}_2,\vec{\beta}_2)}\vec{\beta}_2\\
+             =&\begin{bmatrix}1\\0\\0\\0\end{bmatrix}-\frac{1}{2}\begin{bmatrix}1\\0\\1\\0\end{bmatrix}
+             =\frac{1}{2}\begin{bmatrix}1\\0\\-1\\0\end{bmatrix}\\
+\vec{\beta}_4=&\vec{\alpha}_4-\frac{(\vec{\alpha}_4,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1-
+               \frac{(\vec{\alpha}_4,\vec{\beta}_2)}{(\vec{\beta}_2,\vec{\beta}_2)}\vec{\beta}_2
+                -\frac{(\vec{\alpha}_4,\vec{\beta}_3)}{(\vec{\beta}_3,\vec{\beta}_3)}\vec{\beta}_3\\
+             =&\begin{bmatrix}1\\0\\0\\1\end{bmatrix}-\frac{1}{2}\begin{bmatrix}1\\0\\1\\0\end{bmatrix}-
+                \frac{1}{2}\begin{bmatrix}1\\0\\-1\\0\end{bmatrix}
+              =\begin{bmatrix}0\\0\\0\\1\end{bmatrix}
+\end{align*}
+再将$\beta_1,\beta_2,\beta_3$单位化：
+\begin{align*}
+\vec{\beta}_1=&\frac{1}{\sqrt{2}}(1,0,1,0)^T\\
+\vec{\beta}_2=&(0,1,0,0)^T\\
+\vec{\beta}_3=&\frac{1}{\sqrt{2}}(1,0,-1,0)^T\\
+\vec{\beta}_4=&(0,0,0,1)^T
+\end{align*}
+\textbf{习题 \ref{6.19} 解答:}\\
+设和$\vec{\alpha}_1$,，$\vec{\alpha}_2$都正交的向量$\vec{\beta}=(x_1,x-2,x_3,x_4)^T$，
+则$(\vec{\alpha}_1,\vec{\beta})=0$，$(\vec{\alpha}_2,\vec{\beta})=0$。得到：
+\begin{equation*}
+  \begin{cases}
+  x_1=0\\
+  x_2+x_3=0
+  \end{cases}
+\end{equation*}
+解得：
+\begin{equation*}
+\vec{\beta}_1=(0,0,0,1)^T,\vec{\beta}_2=(0,1,-1,0)^T
+\end{equation*}
+显然$(\vec{\beta}_1,\vec{\beta}_2)=0$，$\vec{\beta}_1\bot\vec{\beta}_2$。单位化：
+\begin{equation*}
+\vec{\gamma}_1=(0,0,0,1)^T,\vec{\gamma}_2=\frac{1}{\sqrt{2}}(0,1,-1,0)^T
+\end{equation*}
+则$\vec{\gamma}_1$，$\vec{\gamma}_2$是$W^{\bot}$的一组标准正交基底。\\
+\textbf{习题 \ref{6.20} 解答:}\\
+\begin{equation*}
+ \begin{bmatrix}1&0&0\\0&1&0\\0&0&1\end{bmatrix},
+ \begin{bmatrix}1&0&0\\0&0&1\\0&1&0\end{bmatrix},
+ \begin{bmatrix}0&1&0\\1&0&0\\0&0&1\end{bmatrix},
+\end{equation*}
+\begin{equation*}
+ \begin{bmatrix}0&1&0\\0&0&1\\1&0&0\end{bmatrix},
+ \begin{bmatrix}0&0&1\\0&1&0\\1&0&0\end{bmatrix},
+ \begin{bmatrix}0&0&1\\1&0&0\\0&1&0\end{bmatrix},
+\end{equation*}
+\textbf{习题 \ref{6.21} 解答:}\\
+由于$Q$是正交矩阵，即:
+\begin{equation*}
+\begin{cases}
+  a^2+b^2+(-\frac{3}{7})^2 = 1 \\
+  (-\frac{3}{7})^2+c^2+(\frac{2}{7})^2 = 1 \\
+  (\frac{2}{7})^2+d^2+e^2 = 1 \\
+  -\frac{3}{7}a+bc-\frac{3}{7}\times\frac{2}{7} = 0 \\
+  \frac{2}{7}a+bd-\frac{3}{7}e = 0 \\
+  -\frac{3}{7}\times\frac{2}{7}+cd+\frac{2}{7}e = 0
+\end{cases}
+\end{equation*}
+解得：
+\begin{equation*}
+\begin{cases}
+  a = -\frac{6}{7}\\
+  b = -\frac{2}{7} \\
+  c = \frac{6}{7} \\
+  d = \frac{3}{7} \\
+  e = -\frac{6}{7}
+\end{cases}
+\text{或者}
+\begin{cases}
+  a = -\frac{6}{7}\\
+  b = \frac{2}{7} \\
+  c = -\frac{6}{7} \\
+  d = -\frac{3}{7} \\
+  e = -\frac{6}{7}
+\end{cases}
+\end{equation*}
+\textbf{习题 \ref{6.22} 解答:}\\
+设上三角阵$A$为$(a_{ij})_{n\times n}$，且当$i<j$时，$a_{ij}=0$。
+\begin{equation*}
+  AA^T=\begin{bmatrix}
+  a_{11}&a_{12}&\cdots&a_{1n}\\
+  0&a_{22}&\cdots&a_{2n}\\
+  \vdots&\vdots&\ddots&\vdots\\
+  0&\cdots&0&a_{nn}
+  \end{bmatrix}
+  \begin{bmatrix}
+  a_{11}&0&\cdots&0\\
+  a_{12}&a_{22}&\cdots&0\\
+  \vdots&\vdots&\ddots&\vdots\\
+  a_{1n}&a_{2n}&\cdots&a_{nn}
+  \end{bmatrix}
+\end{equation*}
+由于$A$是正交矩阵，从而有$AA^T=I$，因此$a_{nn}a_{nn}=1$。\\
+又由于$a_{1n}a_{nn}=0$，故$a_{1n}=0$；\\
+从而可以得到：$a_{1j}=0,j>1$且$a_{11}^2=1$。\\
+同理$a_{ij}=0,j>i$且$a_{ii}^2=1,i=1,2,\cdots,n$。
+因此$A$为对角矩阵，且$A$对角元上的元素为$+1$ 或者$-1$。\\
+\textbf{习题 \ref{6.23} 解答:}\\
+由于$A,B$都是$n$阶正交矩阵，那么$A^TA=I$ 且$B^TB=I$。
+又
+\begin{equation*}
+  (AB)^T(AB)=B^TA^TAB=B^TB=I
+\end{equation*}
+因此，$AB$是正交矩阵。同理：
+\begin{equation*}
+  (BA)^T(BA)=A^TB^TBA=A^TA=I
+\end{equation*}
+因此，$BA$也是正交矩阵。\\
+\textbf{习题 \ref{6.24} 解答:}\\
+由于$A$是对称矩阵，那么$A=A^T$；又由于$A$是正交矩阵，那么$A^TA=I$。故
+\begin{equation*}
+A^2=A^TA=I
+\end{equation*}
+因此，可以得到：
+\begin{equation*}
+ A^{k}=\begin{cases}
+  I,& k\geq2\text{且}k\text{是偶数}\\
+  A,& k\geq2\text{且}k\text{是奇数}
+  \end{cases}
+\end{equation*}
+\textbf{习题 \ref{6.25} 解答:}\\
+由于$AA^*=|A|I$，两边同时取转置：
+\begin{equation*}
+(A^*)^TA^T=|A|I
+\end{equation*}
+于是
+\begin{equation*}
+(A^*)^TA^*=(A^*)^TA^TAA^*=|A|^2I.
+\end{equation*}
+又由于$A$是正交矩阵，$A^TA=I$，$|A|^2=1$。所以
+\begin{equation*}
+(A^*)^TA^*=(A^*)^TA^TAA^*=I.
+\end{equation*}
+因此$A^*$是正交矩阵。
+\textbf{习题 \ref{6.26} 解答:}\\
+由于$\vec{\alpha}$是单位向量，即$\vec{\alpha}\vec{\alpha}^T=1$，于是
+\begin{align*}
+Q^TQ=&(I-2\vec{\alpha}\vec{\alpha}^T)^T(I-2\vec{\alpha}\vec{\alpha}^T)\\
+    =&(I-2\vec{\alpha}\vec{\alpha}^T)(I-2\vec{\alpha}\vec{\alpha}^T)\\
+    =&I-2\vec{\alpha}\vec{\alpha}^T-2\vec{\alpha}\vec{\alpha}^T+4\vec{\alpha}\vec{\alpha}^T\vec{\alpha}\vec{\alpha}^T\\
+    =&I-4\vec{\alpha}\vec{\alpha}^T+4\vec{\alpha}\vec{\alpha}^T\\
+    =&I
+\end{align*}
+因此$Q$是一个正交矩阵。
+\begin{equation*}
+Q=I-2\vec{\alpha}\vec{\alpha}^T
+   =\begin{bmatrix}0&0&1\\0&1&0\\-1&0&0\end{bmatrix}.
+\end{equation*}
+\textbf{习题 \ref{6.27} 解答:}\\
+由于
+\begin{equation*}
+ A^TA= \begin{bmatrix}\sin\theta&-\cos\theta\\ \cos\theta&\sin\theta\end{bmatrix}
+ \begin{bmatrix}\sin\theta&\cos\theta\\-\cos\theta&\sin\theta\end{bmatrix}
+ =\begin{bmatrix}1&0\\0&1\end{bmatrix}
+\end{equation*}
+因此，$A$是正交矩阵。\\
+\textbf{习题 \ref{6.28} 解答:}\\
+令$\vec{\alpha}_1=\begin{bmatrix}1\\1\end{bmatrix}$，$\vec{\alpha}_2=\begin{bmatrix}2\\3\end{bmatrix}$。
+由Schimidt正交化，有\\
+\begin{align*}
+\vec{\beta}_1=&\vec{\alpha}_1=\begin{bmatrix}1\\1\end{bmatrix}\\
+\vec{\beta}_2=&\vec{\alpha}_2-\frac{(\vec{\alpha}_2,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1
+             =\begin{bmatrix}1\\3\end{bmatrix}-\frac{4}{2}\begin{bmatrix}1\\1\end{bmatrix}=\begin{bmatrix}-1\\1\end{bmatrix}
+\end{align*}
+单位化得到：
+\begin{equation*}
+\vec{\gamma}_1=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\1\end{bmatrix},
+\vec{\gamma}_2=\frac{1}{\sqrt{2}}\begin{bmatrix}-1\\1\end{bmatrix}.
+\end{equation*}
+那么
+\begin{equation*}
+\begin{bmatrix}\vec{\alpha}_1&\vec{\alpha}_2\end{bmatrix}=
+\begin{bmatrix}\vec{\beta}_1&\vec{\beta}_2\end{bmatrix}\begin{bmatrix}1&2\\0&1\end{bmatrix}
+=\begin{bmatrix}\vec{\gamma}_1&\vec{\gamma}_2\end{bmatrix}\begin{bmatrix}\sqrt{2}&0\\0&\sqrt{2}\end{bmatrix}
+\begin{bmatrix}1&2\\0&1\end{bmatrix}
+\end{equation*}
+即
+\begin{equation*}
+A=\begin{bmatrix}\frac{1}{\sqrt{2}}&-\frac{1}{\sqrt{2}}\\ \frac{1}{\sqrt{2}}&\frac{1}{\sqrt{2}}\end{bmatrix}
+  \begin{bmatrix}\sqrt{2}&2\sqrt{2}\\0&\sqrt{2}\end{bmatrix}
+\end{equation*}
+\textbf{习题 \ref{6.29} 解答:}\\
+令$\vec{\alpha}_1=\begin{bmatrix}1\\0\\1\end{bmatrix}$，$\vec{\alpha}_2=\begin{bmatrix}1\\1\\1\end{bmatrix}$，
+$\vec{\alpha}_3=\begin{bmatrix}1\\2\\1\end{bmatrix}$，。
+由Schimidt正交化，有\\
+\begin{align*}
+\vec{\beta}_1=&\vec{\alpha}_1=\begin{bmatrix}1\\0\\1\end{bmatrix}\\
+\vec{\beta}_2=&\vec{\alpha}_2-\frac{(\vec{\alpha}_2,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1
+             =\begin{bmatrix}1\\1\\1\end{bmatrix}-\frac{2}{2}\begin{bmatrix}1\\0\\1\end{bmatrix}
+             =\begin{bmatrix}0\\1\\0\end{bmatrix}\\
+\vec{\beta}_3=&\vec{\alpha}_3-\frac{(\vec{\alpha}_3,\vec{\beta}_1)}{(\vec{\beta}_1,\vec{\beta}_1)}\vec{\beta}_1-
+              \frac{(\vec{\alpha}_3,\vec{\beta}_2)}{(\vec{\beta}_2,\vec{\beta}_2)}\vec{\beta}_2\\
+             =&\begin{bmatrix}1\\2\\3\end{bmatrix}-\frac{4}{2}\begin{bmatrix}1\\0\\1\end{bmatrix}-
+               \frac{2}{1}\begin{bmatrix}0\\1\\0\end{bmatrix}\\
+             =\begin{bmatrix}-1\\0\\1\end{bmatrix}
+\end{align*}
+单位化得到：
+\begin{equation*}
+\vec{\gamma}_1=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\0\\1\end{bmatrix},
+\vec{\gamma}_2=\begin{bmatrix}0\\1\\0\end{bmatrix},
+\vec{\gamma}_3=\frac{1}{\sqrt{2}}\begin{bmatrix}-1\\0\\1\end{bmatrix}.
+\end{equation*}
+那么
+\begin{equation*}
+\begin{bmatrix}\vec{\alpha}_1&\vec{\alpha}_2&\vec{\alpha}_3\end{bmatrix}=
+\begin{bmatrix}\vec{\beta}_1&\vec{\beta}_2&\vec{\beta}_3\end{bmatrix}\begin{bmatrix}1&1&2\\0&1&2\\0&0&1\end{bmatrix}
+=\begin{bmatrix}\vec{\gamma}_1&\vec{\gamma}_2\end{bmatrix}\begin{bmatrix}\sqrt{2}&0&0\\0&1&0\\0&0\sqrt{2}&0\end{bmatrix}
+\begin{bmatrix}1&1&2\\0&1&2\\0&0&1\end{bmatrix}
+\end{equation*}
+即
+\begin{equation*}
+A=\begin{bmatrix}1&0&1\\0&1&0\\-1&0&1\end{bmatrix}
+  \begin{bmatrix}\sqrt{2}&\sqrt{2}&2\sqrt{2}\\0&1&2\\0&0&\sqrt{2}\end{bmatrix}
+\end{equation*}
+\textbf{习题 \ref{6.30} 解答:}~~ 4阶\\
+\textbf{习题 \ref{6.31} 解答:} \\
+(1)使得误差平方和最小的二次函数系数$(a_0,b_0)^T$，就是如下线性方程组的最小二乘解：
+\begin{equation*}
+  \begin{cases}
+  a+b=5.1\\
+  2a+b=8.2\\
+  3a+b=10\\
+  4a+b=14.8
+  \end{cases}
+\end{equation*}
+令$A=\begin{bmatrix}1&1\\2&1\\3&1\\4&1\end{bmatrix}$ 以及$\vec{b}=\begin{bmatrix}5.1\\8.2\\10\\14.8\end{bmatrix}$，
+由于$A$是列满秩的，分别计算得到：
+\begin{equation*}
+  A^TA=\begin{bmatrix}30&10\\10&4\end{bmatrix},A^T\vec{b}=\begin{bmatrix}110.7\\38.1\end{bmatrix}
+\end{equation*}
+则
+\begin{equation*}
+  (A^TA)^{-1}=\begin{bmatrix}\frac{1}{5}&-\frac{1}{2}\\-\frac{1}{2}&\frac{3}{2}\end{bmatrix}
+\end{equation*}
+于是
+\begin{equation*}
+ \begin{bmatrix}a_0\\b_0\end{bmatrix}=(A^TA)^{-1}A^T\vec{b}=\begin{bmatrix}3.09\\-1.8\end{bmatrix}
+\end{equation*}
+所以误差平方和最小的一次函数为：
+\begin{equation*}
+ y=3.09x-1.8
+\end{equation*}
+(2)同上问类似，可以求得误差平方和最小的二次函数为：
+\begin{equation*}
+ y=0.425x^2+0.965x+3.925.
+\end{equation*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

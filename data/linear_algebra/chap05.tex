@@ -1,0 +1,1033 @@
+\chapter{线性方程组的解理论}
+
+\section{知识点解析}
+
+\begin{thm}
+齐次线性方程组$A_{m\times n}\vec{X}=\vec{0}$的解集合为$N(A)$是$\mathbb{R}^n$中的子空间.
+\end{thm}
+
+\begin{Def}
+解集$N(A)$称为齐次线性方程组 $A_{m\times n}\vec{X}=\vec{0}$ 的解空间;
+           $N(A)$的一组基称为齐次线性方程组 $A_{m\times n}\vec{X}=\vec{0}$ 的一组基础解系.
+\end{Def}
+
+\begin{thm}
+设$A$是 $m\times n$ 矩阵, $r(A) = r \leq n$, 则齐次线性方程组 $A_{m\times n}\vec{X}=\vec{0}$ 的基础解系含有 $n - r$ 个解向量，即$\dim N(A)= n - r$.
+\end{thm}
+
+\begin{thm}
+\begin{displaymath}\left\{\begin{aligned}
+&r(A,\vec{b})\not=r(A) \ \ \ \ \ \ \ \ \ \ \ \ \ \  \ \ \ \ \ \ \ \ \ \ \ \   \Leftrightarrow A_{m\times n}\vec{X}=\vec{b}\mbox{无解};\\
+&r(A,\vec{b})=r(A)=n(\mbox{列数}) \ \ \ \ \ \ \ \ \ \ \ \ \ \Leftrightarrow A_{m\times n}\vec{X}=\vec{b}\mbox{有唯一解};\\
+&r(A,\vec{b})=r(A)<n(\mbox{列数}) \ \ \ \ \ \ \ \ \ \ \ \ \ \Leftrightarrow A_{m\times n}\vec{X}=\vec{b}\mbox{有无穷多个解}.
+\end{aligned}\right.\end{displaymath}
+
+\end{thm}
+
+\begin{thm}
+对非齐次线性方程组 $A_{m\times n}\vec{X}=\vec{b}$,  设 $$r(A)=r(A,\vec{b})=r \leq n$$
+且$\vec{\xi}_0\in  N(A, \vec{b})$是一个特解, 则
+$$N(A,\vec{b})=\vec{\xi}_0+N(A).$$
+进一步，设 $\vec{\xi}_1, \vec{\xi}_2,\dots,\vec{\xi}_{n-r}$ 是导出组 $A\vec{X}=\vec{0}$ 的一组基础解系, 则$A\vec{X}=\vec{b}$的通解(一般解)为:
+$$\vec{\gamma}=\vec{\xi}_0+k_1\vec{\eta}_1+k_2\vec{\eta}_2+\dots+k_{n-r}\vec{\eta}_{n-r}$$
+其中$k_1, k_2,\dots,k_{n-r}\in\mathbb{R}.$
+\end{thm}
+
+\begin{thm}
+设$A$为$m\times n$型矩阵, $B$为 $m\times s$型矩阵, 则
+\begin{displaymath}\left\{\begin{aligned}
+&r(A)<r(A,B)\ \ \ \ \ \ \ \ \ \ \ \ \ \Leftrightarrow \mbox{矩阵方程}AX=B\mbox{无解};\\
+&r(A)=r(A,B)=n\ \ \ \ \ \ \ \ \Leftrightarrow \mbox{矩阵方程}AX=B\mbox{有唯一解};\\
+&r(A)=r(A,B)<n\ \ \ \ \ \ \ \Leftrightarrow \mbox{矩阵方程}AX=B\mbox{有无穷多解}\end{aligned}\right.\end{displaymath}
+\end{thm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{例题讲解}
+
+\begin{eg}
+求解下列方程组:
+\begin{displaymath}\left\{\begin{aligned}
+&x_1+x_2-5x_4=0\\
+&x_3+x_4=0\end{aligned}\right.\end{displaymath}
+
+解: 系数矩阵为
+
+\begin{displaymath}A=\begin{bmatrix}1&1&0&-5\\0&0&1&1\end{bmatrix}\end{displaymath}
+
+已是简化阶梯形矩阵，故$x_1$, $x_3$为主变量，而$x_2$, $x_4$为自由未知量 (可取任意实数). 于是，取基础解系和通解分别为：
+
+\begin{displaymath}
+\vec{\eta}_1=\begin{bmatrix}-1\\1\\0\\0\end{bmatrix},\ \vec{\eta}_2= \begin{bmatrix}5\\0\\-1\\1\end{bmatrix}; \ \ \Rightarrow \ \ \vec{\eta}=k_1\vec{\eta}_1+k_2\vec{\eta}_2=\begin{bmatrix}x_1\\x_2\\x_3\\x_4
+\end{bmatrix}=\begin{bmatrix}-k_1+5k_2\\k_1\\-k_2\\k_2\end{bmatrix}\end{displaymath}
+
+其中$k_1$, $k_2\in\mathbb{R}$.
+\end{eg}
+
+\begin{eg}
+求下列方程组的基础解系:
+
+\begin{displaymath}\left\{\begin{aligned}
+&x_1+3x_2-5x_3-x_4+2x_5=0\\
+&2x_1+6x_2-8x_3+5x_4+3x_5=0\\
+&x_1+3x_2-3x_3+6x_4+x_5=0
+\end{aligned}\right.\end{displaymath}
+
+解: 用初等行变换化系数矩阵为简化阶梯形矩阵:
+
+\begin{displaymath}
+A=\begin{bmatrix}1&3&-5&-1&2\\2&6&-8&5&3\\1&3&-3&6&1\end{bmatrix}\rightarrow
+\begin{bmatrix}1&3&-5&-1&2\\0&0&2&7&-1\\0&0&2&7&-1\end{bmatrix}\rightarrow
+\begin{bmatrix}1&3&0&\frac{33}{2}&\frac{-1}{2}\\0&0&1&\frac{7}{2}&\frac{-1}{2}\\
+0&0&0&0&0\end{bmatrix}\end{displaymath}
+
+$r=2$个主变量为$x_1,\ x_3,\ n-r = 5-2 = 3$个自由未知量为 $x_2,\ x_4\ , x_5$. 基础解系取为
+\begin{displaymath}\vec{\eta}_1=\begin{bmatrix}-3\\1\\0\\0\\0\end{bmatrix},\ \ \vec{\eta}_2=\begin{bmatrix}-\frac{33}{2}\\0\\ \frac{7}{2}\\1\\0\end{bmatrix},\ \ \vec{\eta}_3=\begin{bmatrix}\frac{1}{2}\\7\\ \frac{1}{2}\\0\\1\end{bmatrix}\end{displaymath}
+
+方程组的通解是:
+\begin{displaymath}
+\vec{X}=k_1 \vec{\eta}_1+k_2\vec{\eta}_2+k_3\vec{\eta}_3=\begin{bmatrix}
+x_1\\x_2\\x_3\\x_4\\x_5\end{bmatrix}=\begin{bmatrix}-3k_1-\frac{33}{2}k_2+\frac{1}{2}
+k_3\\k_1\\-\frac{7}{2}k_2+\frac{1}{2}k_3\\k_2\\k_3\end{bmatrix}\end{displaymath}
+
+其中 $k_1,\ k_2,\ k_3$ 可取任意实数.
+\end{eg}
+
+\begin{eg}
+设$A$为$m \times n$ 型实矩阵,  则 $r(A) = r(A^TA) = r(AA^T)$.
+证明: 因为, 如果 $A\vec{X}=\vec{0}$ (记为方程(1)), 则 $A^T(A\vec{X})=\vec{0}$ (记为方程(2)), 所以(1)的解都是(2)的解. 反之, 若$\vec{X}$ 是 $A^TA\vec{X}=\vec{0}$ 的任一解,  则两边左乘$\vec{X}^T$, 有
+\begin{displaymath}
+\vec{X}^T(A^TA\vec{X})=(A\vec{X})^TA\vec{X}=\vec{X}^T\vec{0}=0.
+\end{displaymath}
+设列向量 $$A\vec{X}=(b_1,b_2\dots,b_m)^T,$$
+则上式可化为：
+$$(A\vec{X})^TA\vec{X}=b_1^2+b_2^2+\dots+b_m^2=0.$$
+得$$b_1=b_2=\dots=b_m=0.$$
+所以$A\vec{X}=(0,0,\dots,0)^T=\vec{0},$ 即(2)的解也是(1)的解.
+
+综上，有 $N(A)=N(A^TA)$, 从而有$n-r(A) = n-r(A^TA)$, 故$r(A) = r(A^TA)$.
+同理，考虑$A^T$, 有 $r(A^T) = r(AA^T)$. 再由$r(A)=r(A^T)$, 即得结论.
+\end{eg}
+
+\begin{eg}
+若 $A$ 为 $m\times n$ 实矩阵, $r(A) = n < m$, 下式成立的是 (     ):
+\begin{displaymath}
+\begin{aligned}
+&(A) |A^TA|=0; \ \ \ \ \ \ \ \ \ \ \ \ \ \ (B)|A^TA|\not=0;  \\
+&(C) r(AA^T)=m;\ \ \ \ \ \ \ \ \ \ \ (D)r(A^TA)=n.
+\end{aligned}
+\end{displaymath}
+
+答案为:D.
+\end{eg}
+
+\begin{eg}
+设 $A$ 是 $m\times n$ 矩阵,  则下列结论中成立的是(    \ \     )  \\
+(A) 若 $A_{m\times n}\vec{X}=\vec{0}$ 仅有零解,   则 $A_{m\times n}\vec{X}=\vec{b}$ 有唯一解;\\
+(B)若 $A_{m\times n}\vec{X}=\vec{0}$ 有非零解,   则 $A_{m\times n}\vec{X}=\vec{b}$ 有无穷多解;\\
+(C)若 $A_{m\times n}\vec{X}=\vec{b}$ 有无穷多解,   则 $A_{m\times n}\vec{X}=\vec{0}$ 仅由零解;\\
+(D)若 $A_{m\times n}\vec{X}=\vec{b}$ 有无穷多解,   则 $A_{m\times n}\vec{X}=\vec{0}$ 有非零解;
+
+答案为D.
+\end{eg}
+
+
+\begin{eg}
+设 $A$ 是 $m\times n$ 矩阵,  则下列结论中成立的是( \ \ ):\\
+(A) 若 $r(A) = m$,  则 $A_{m\times n}\vec{X}=\vec{0}$  有非零解.\\
+(B) 若 $r(A) = m$,  则 $A_{m\times n}\vec{X}=\vec{0}$  仅有非零解.\\
+(C) 若 $r(A) = m$,  则 $A_{m\times n}\vec{X}=\vec{b}$  无解.\\
+(D) 若 $r(A) = m$,  则 $A_{m\times n}\vec{X}=\vec{b}$ 有解.\\
+(E) 若 $r(A) = m$,  则 $A_{m\times n}\vec{X}=\vec{b}$ 有唯一解.
+(F) 若 $r(A) = m$,  则 $A_{m\times n}\vec{X}=\vec{b}$ 有无穷多解.
+
+答案为D.
+\end{eg}
+
+\begin{eg}
+求下列方程组的通解:
+\begin{displaymath}\left\{\begin{aligned}
+&x_1-x_2-x_3+3x_5=-1\\
+&2x_1-2x_2-x_3+2x_4+4x_5=-2\\
+&3x_1-3x_2-x_3+4x_4+5x_5=-3\\
+&x_1-x_2+x_3+x_4+8x_5=2\end{aligned}\right.\end{displaymath}
+
+解: 用初等行变换将增广矩阵$(A, \vec{b})$化为简化阶梯形矩阵:
+\begin{displaymath}
+(A,\vec{b})=\begin{bmatrix}1&-1&-1&0&3&-1\\2&-2&-1&2&4&-2\\3&-3&-1&4&5&-3\\1&-1&
+1&1&8&2\end{bmatrix}\rightarrow\dots\rightarrow\begin{bmatrix}1&-1&0&0&7&1\\0&0&
+1&0&4&2\\0&0&0&1&-3&-1\\0&0&0&0&0&0\end{bmatrix}=C
+\end{displaymath}
+
+由于主元素位于第$1,3,4$列，不在最后一列，知$r(A) = r(A, \vec{b}) = 3$,  所以方程组有解. 且 $x_1, x_3, x_4$为主变量，而$x_2, x_5$为自由变量.
+
+令$\begin{bmatrix}x_2\\ x_5\end{bmatrix}=\begin{bmatrix}0\\0\end{bmatrix}$，由$C$ 的最后一列, 得特解为:
+\begin{displaymath}
+\vec{\xi}_0=(\ ,0,\ ,\ ,0)^T.
+\end{displaymath}
+
+令自由变量$\begin{bmatrix}x_2\\ x_5\end{bmatrix}=\begin{bmatrix}1\\0\end{bmatrix}$与$\begin{bmatrix}0\\1\end{bmatrix}$ 并由C的第$2,5$列, 得导出组的一组基础解系为:
+\begin{displaymath}
+\vec{\eta}_1=\begin{bmatrix}1\\1\\0\\0\\0\end{bmatrix},\ \ \vec{\eta}_2=\begin{bmatrix}-7\\0\\-4\\3\\1\end{bmatrix}
+\end{displaymath}
+
+方程组的通解为：
+\begin{displaymath}
+\vec{\eta}=\vec{\xi}_0+k_1\vec{\eta}_1+k_2\vec{\eta}2=\begin{bmatrix}
+1+k_1-7k_2\\k_1\\2-4k_2\\-1+3k_2\\k_2\end{bmatrix}.
+\end{displaymath}
+其中$k_1,k_2\in\mathbb{R}$.
+
+\end{eg}
+
+\begin{eg}
+设方程组$A\vec{X}=\vec{b}$的增广系数矩阵为
+\begin{displaymath}
+(A,\vec{b})=\begin{bmatrix}1&1&2&-1&1\\1&-1&-2&-7&3\\0&1&a&t&t-3\\1&1&2&t-2&t+3
+\end{bmatrix}\end{displaymath}
+问: $a, t$取何值时,  方程组无解, 有唯一解, 无穷多解? 有无穷多解时,  求通解.
+
+解: 用初等行变换将增广系数矩阵化为阶梯形:
+\begin{displaymath}
+\begin{bmatrix}1&1&2&-1&1\\0&-2&-4&-6&2\\0&1&a&t&t-3\\0&0&0&t-1&t+2\end{bmatrix}
+\rightarrow \begin{bmatrix}1&1&2&-1&1\\0&1&2&3&-1\\0&0&a-2&t-3&t-2\\0&0&0&t-1&t+2\end{bmatrix}
+\end{displaymath}
+\\(1) 当 $a\not=2, t \not=1$ 时, $r(A,\vec{b})=r(A)=4=n$,  方程组解唯一；\\
+(2)当 $t = 1$ 时,$r(A, \vec{b})=4\not=3=r(A)$,  方程组无解;\\
+(3)当$a=2, t \not=1$时, 可进一步进行初等行变换
+\begin{displaymath}
+\begin{bmatrix}1&1&2&-1&1\\0&1&2&3&-1\\0&0&a-2&t-3&t-2\\0&0&0&t-1&t+2\end{bmatrix}
+\rightarrow\begin{bmatrix} 1&1&2&-1&1\\0&1&2&3&-1\\0&0&0&-2&-4\\0&0&0&t-1&t+2\end{bmatrix}\rightarrow
+\begin{bmatrix} 1&1&2&-1&1\\0&1&2&3&-1\\0&0&0&1&2\\0&0&0&0&t-4\end{bmatrix}\end{displaymath}
+\\ \ \ (3-1)当$a=2$, $t\not=4$时, 方程组无解;\\
+\ \ (3-2) 当$a=2$, $t=4$时, 方程组有无穷多解, 此时,
+\begin{displaymath}
+\begin{bmatrix} 1&1&2&-1&1\\0&1&2&3&-1\\0&0&0&1&2\\0&0&0&0&0\end{bmatrix}
+\rightarrow\begin{bmatrix}1&0&0&0&10\\0&1&2&0&-7\\0&0&0&1&2\\0&0&0&0&0\end{bmatrix},\ \ \Rightarrow \vec{X}=\begin{bmatrix}10\\-7\\0\\2\end{bmatrix}+k_1\begin{bmatrix}0\\-2\\1\\0\end{bmatrix}.
+\end{displaymath}
+其中$k_1$为任意实数.
+\end{eg}
+
+
+\begin{eg}
+判断下面平面的位置关系?
+\begin{displaymath}
+\left\{\begin{aligned}
+&\pi_1:2x-y+x=2\\
+&\pi_2:x+y+z=4\\
+&\pi_3:2x-3y-z=2\end{aligned}\right.\end{displaymath}
+
+解: 由于
+\begin{displaymath}
+\overline{A}=\begin{bmatrix}2&-1&1&2\\1&1&1&4\\2&-3&-1&2\end{bmatrix}\rightarrow
+\begin{bmatrix}1&1&1&4\\0&1&1&0\\0&0&1&-3\end{bmatrix}.\end{displaymath}
+于是$$r(A)=r(\overline{A})=3.$$
+所以该三个平面相交于一点.
+\end{eg}
+
+\begin{eg}
+判断下面平面的位置关系?
+\begin{displaymath}\left\{\begin{aligned}
+&\pi_1:x+2y+z=-2\\
+&\pi_2:2x+3y=-1\\
+&\pi_3:x-y-5z=7\end{aligned}\right.\end{displaymath}
+
+解: 由于
+\begin{displaymath}
+\overline{A}=\begin{bmatrix}1&2&1&-2\\2&3&0&-1\\1&-1&-5&7\end{bmatrix}\rightarrow\begin{bmatrix}
+1&0&-3&4\\0&1&2&-3\\0&0&0&0\end{bmatrix}\end{displaymath}
+于是$$r(A)=r(\overline{A})=2.$$
+所以该三个平面有交点, 交点构成一直线还是一平面?
+
+又$\left\{\begin{aligned}&\vec{\beta}_1=(1,2,1,-2)\\&\vec{\beta}_2=(2,3,0,-1)\\&
+\vec{\beta}_3=(1,-1,-5,7)\end{aligned}\right\}$两两线性无关, 所以交点构成一条直线.
+
+\end{eg}
+
+\begin{eg}
+设\begin{displaymath}
+A=\begin{bmatrix}0&1&2\\1&1&-1\\2&4&2\end{bmatrix},\ \ B=\begin{bmatrix}1&1&2\\2&0&-1\\-1&2&1\end{bmatrix}.\end{displaymath}
+已知$AX=B$, 求$X$.
+
+解 对分块增广矩阵$(A,B)$作初等行变换：
+\begin{displaymath}\begin{aligned}
+\begin{bmatrix}A&B\end{bmatrix}=&\begin{bmatrix}0&1&2&1&1&2\\1&1&-1&2&0&-1\\2&4&2&-1&2&1\end{bmatrix}\rightarrow
+\begin{bmatrix}1&1&-1&2&0&-1\\0&1&2&1&1&2\\0&2&4&-5&2&3\end{bmatrix}\\ \rightarrow &\begin{bmatrix}1&0&-3&1&-1&-3\\0&1&2&1&1&2\\0&0&0&-7&0&-1\end{bmatrix}
+\end{aligned}\end{displaymath}
+
+得到$r(A)<r(A,B)$, 所以方程$AX=B$无解.
+\end{eg}
+
+\begin{eg}
+设
+\begin{displaymath}
+A=\begin{bmatrix}1&1&-1\\2&3&-1\\1&2&0\end{bmatrix},\ \ B=\begin{bmatrix}-1&1&2\\2&0&-1\\3&-1&-3\end{bmatrix}.\end{displaymath}
+已知$AX=B$, 求$X$.
+
+解: 用高斯消元法, 得:
+\begin{displaymath}\begin{aligned}
+\begin{bmatrix}A&B\end{bmatrix}=&\begin{bmatrix}1&1&-1&-1&1&2\\2&3&-1&2&0&-1
+\\1&2&0&3&01&3\end{bmatrix}\rightarrow\dots\rightarrow\begin{bmatrix}
+1&0&-2&-5&3&7\\0&1&1&4&-2&-5\\0&0&0&0&0&0\end{bmatrix}\end{aligned}\end{displaymath}
+得到$$r(A)=r(A,B)=2.$$于是方程有解，且有无穷多解.前两个为主变量，第三个为自由变量. 于是导出组的基础解系为：
+$$\vec{\eta}=\begin{bmatrix}2\\-1\\1\end{bmatrix}.$$
+三个(非齐次)特解分别为:
+\begin{displaymath}
+\vec{\xi}_1=\begin{bmatrix}-5\\4\\0\end{bmatrix},\ \ \vec{\xi}_2=\begin{bmatrix}3\\-1\\0\end{bmatrix},\ \ \vec{\xi}_3=\begin{bmatrix}7\\-5\\0\end{bmatrix}.
+\end{displaymath}
+故方程组$A\vec{X}_k=\vec{b_k}(1\leq k \leq 3)$的通解分别为
+\begin{displaymath}\begin{aligned}
+&\vec{\beta}_1=t_1\vec{\eta}+\vec{\xi}_1,\\
+&\vec{\beta}_2=t_2\vec{\eta}+\vec{\xi}_2,\\
+&\vec{\beta}_3=t_3\vec{\eta}+\vec{\xi}_3.\end{aligned}\end{displaymath}
+
+其中$t_1,\ t_2,\ t_3$为任意实数, 由于矩阵方程可看做是三个独立的非齐次线性方程组, 它们的通解中的任意常数互相之间没有关联, 所以用不同的符号$t_i$表示, 所以最后得到
+\begin{displaymath}
+X=\begin{bmatrix}\vec{\xi}_1&\vec{\xi}_1&\vec{\xi}_1\end{bmatrix}+\vec{eta}\begin{bmatrix}
+t_1&t_2&t_3\end{bmatrix}=\begin{bmatrix}2t_1-5&2t_2+3&2t_3+7\\-t_1+4&-t_2-2&-t_3-5\\t_1&t_2&t_3\end{bmatrix}
+\end{displaymath}
+其中$t_1,\ t_2,\ t_3\in\mathbb{R}$.
+\end{eg}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{课后习题}
+
+\begin{ex}\label{5.1}
+求解齐次线性方程组\\
+\begin{equation*}
+\begin{cases}
+x_1+x_2-x_3-x_4+x_5=0\\
+2x_1+x_2+x_3+x_4+4x_5=0\\
+4x_1+3x_2-x_3-x_4+6x_5=0\\
+x_1+2x_2-4x_3-4x_4-x_5=0
+\end{cases}
+\end{equation*}
+的通解.
+\end{ex}
+
+\begin{ex}\label{5.2}
+$\lambda$何值时，齐次线性方程组
+\begin{equation*}
+\begin{cases}
+x_1+x_2-2x_3=0\\
+-x_1+\lambda x_2+5x_3=0\\
+x_1+3x_2=0\\
+x_1+6x_2+(\lambda+1) x_3=0
+\end{cases}
+\end{equation*}
+有非零解？并在此时求出它的一个基础解系.
+\end{ex}
+
+\begin{ex}\label{5.3}
+求解齐次线性方程组
+\begin{equation*}
+\begin{cases}
+x_1+2x_2+ x_3+x_4+ x_5=0\\
+2x_1+4x_2+3x_3+x_4+ x_5=0\\
+-x_1-2x_2+ x_3+3x_4-3x_5=0\\
+2x_3+5x_4-2x_5=0
+\end{cases}
+\end{equation*}
+\end{ex}
+
+\begin{ex}\label{5.4}
+解线性方程组
+\begin{equation*}
+\begin{cases}
+2x_1-x_2-x_3=-1\\
+x_1+x_2-2x_3=1\\
+4x_1-6x_2+2x_3=-6
+\end{cases}
+\end{equation*}
+\end{ex}
+
+\begin{ex}\label{5.5}
+$t$为何值时，齐次线性方程组
+\begin{equation*}
+\begin{cases}
+x_1+x_2+tx_3=0\\
+x_1-x_2+2x_3=0\\
+-x_1+tx_2+x_3=0
+\end{cases}
+\end{equation*}
+有非零解？此时，求出其一般解.
+\end{ex}
+
+\begin{ex}\label{5.6}
+证明：设$n$元齐次线性方程组$A\vec{x}=0$ 的全体解集合为$V$，则$V$是$\mathbb{R}^n$的一个子空间.
+\end{ex}
+
+\begin{ex}\label{5.7}
+求下列齐次线性方程组的一个基础解系.
+
+(1)$\left\{\begin{aligned}&2x_1-4x_2+5x_3+3x_4=0\\&3x_1-6x_2+4x_3+2x_4=0\\&4x_1-8x_2+17x_3+11x_4=0\end{aligned}
+\right.$
+
+(2)$\left\{\begin{aligned}& x_1+2x_2+3x_3+7x_4=0 \\&3x_1+2x_2+ x_3-3x_4=0 \\&     x_2+2x_3+6x_4=0 \\&5x_1+4x_2+3x_3- x_4=0     \end{aligned}\right.$
+\end{ex}
+
+\begin{ex}\label{5.8}
+求下列齐次线性方程组的一个基础解系.
+
+(1)$\left\{\begin{aligned}& x_1-2x_2+3x_3-4x_4=0 \\&       x _2- x_3+ x_4=0 \\&  x _1+3x_2      -3x_4=0 \\&x_1-4x_2+3x_3-2x_4=0     \end{aligned}\right.$
+
+(2)$\left\{\begin{aligned}& 2x_1+3x_2- x_3+5x_4=0 \\&3x_1+ x_2+2x_3-7x_4=0 \\&4x_1+ x_2-3x_3+6x_4=0 \\& x_1-2x_2+4x_3-7x_4=0    \end{aligned}\right.$
+\end{ex}
+
+\begin{ex}\label{5.9}
+求下列非齐次线性方程组的通解.
+
+(1)$\left\{\begin{aligned}& x_1      - x_3+ x_4=2 \\& x_1-x_2+ 2x _3+ x_4=1 \\&2x_1-x_2+ x_3+2x_4=3 \\&3x_1-x_2      +3x_4=5    \end{aligned}\right.$
+
+(2)$\left\{\begin{aligned}& x_1-2x_2+3x_3-4x_4= 4 \\&       x _2- x_3+ x_4=-3 \\& x_1+3x_2      + x_4= 1 \\&    -7x_2+3x_3+ x_4=-3 \\& x_1-3x_2+2x_3+3x_4=-5     \end{aligned}\right.$
+\end{ex}
+
+\begin{ex}\label{5.10}
+求下列非齐次线性方程组的通解.
+
+(1)$\left\{\begin{aligned}&x_1+x_2     -2x_4=-6 \\&4x_1-x_2-x_3- x_4= 1 \\&3x_1-x_2-x_3      = 0     \end{aligned}\right.$
+
+(2)$\left\{\begin{aligned}&x_1+ x_2-2x_3+3x_4= 0 \\&2x_1+ x_2-6x_3+4x_4=-1 \\& 3x_1+2x _2-8x_3+7x_4=-1 \\& x_1- x_2-6x_3- x_4= 0     \end{aligned}\right.$
+\end{ex}
+
+\begin{ex}\label{5.11}
+求解下列非齐次线性方程组.
+
+(1)$\left\{\begin{aligned}&6x_1-2x_2+2x_3+ x_4=3 \\& x_1- x_2      + x_4=1 \\&2x_1      + x_3+3x_4=2     \end{aligned}\right.$
+
+(2)$\left\{\begin{aligned}&x_1- x_2+2x_3+ x_4=1 \\&2x_1- x_2+ x_3+2x_4=3 \\& x_1- x_3+ x_4=2 \\&3x_1-x_2     +3x_4=5     \end{aligned}\right.$
+\end{ex}
+
+\begin{ex}\label{5.12}
+求解下列非齐次线性方程组.
+
+(1)$\left\{\begin{aligned}&x_1-3x_2+5x_3=0 \\&2x_1-x_2-3x_3=11 \\&2x_1+x_2-3x_3=5     \end{aligned}\right.$
+
+(2)$\left\{\begin{aligned}& 3x_1+2x_2+x_3+x_4+x_5=7 \\&3x_1+2x_2+x_3+x_4-3x_5=-1 \\&5x_1+4x_2+3x_3+3x_4-x_5=9    \end{aligned}\right.$
+\end{ex}
+
+\begin{ex}\label{5.13}
+ 判断下列命题是否正确.
+
+设$A\in M_{m.n}$, 对于齐次线性方程组$A\vec{x}=\vec{0}$, 若向量组$\eta_1,\eta_2,\eta_3$是它的一个基础解系，则
+
+a. $\eta_1+\eta_2, \eta_2+\eta_3, \eta_3+\eta_1$也是$A\vec{x}=\vec{0}$的一个基础解系.
+
+b. $\eta_1-\eta_2, \eta_2-\eta_3, \eta_3-\eta_1$也是$A\vec{x}=\vec{0}$的一个基础解系.
+
+c. 与$\eta_1,\eta_2,\eta_3$等价的向量组$\alpha_1,\alpha_2,\alpha_3$也是$A\vec{x}=\vec{0}$的一个基础解系.
+
+d. 与$\eta_1,\eta_2,\eta_3$等秩的向量组$\beta_1,\beta_2,\beta_3$也是$A\vec{x}=\vec{0}$的一个基础解系.
+\end{ex}
+
+\begin{ex}\label{5.14}
+（单选题）已知$$Q=\begin{bmatrix}1&2&3\\2&4&t\\3&6&9\end{bmatrix},$$ $P$为非零的三阶矩阵，且$PQ=0$, 则(\ \ \ )
+
+(A) $t=6$时, $r(P)=1$.
+
+(B) $t=6$时, $r(P)=2$.
+
+(C) $t\not=6$时, $r(P)=1$.
+
+(D) $t\not=6$时, $r(P)=1$
+\end{ex}
+
+\begin{ex}\label{5.15}
+设$A$是一个秩为$n-1$的$n$阶矩阵，$A$的每行元素和为$0$，求齐次线性方程组$A\vec{x}=\vec{0}$的通解.
+\end{ex}
+
+\begin{ex}\label{5.16}
+已知方程组$(\romannumeral 1)$和方程组$(\romannumeral 2)$ 为
+\begin{displaymath}\begin{aligned}&
+(\romannumeral 1)\left\{ \begin{aligned}&x_1+x_2=0\\&x_2-x_4=0\end{aligned}\right.\\ &
+(\romannumeral 2)\left\{ \begin{aligned}&x_1-x_2+x_3=0\\&x_2-x_3+x_4=0\end{aligned}\right.\end{aligned}
+\end{displaymath}
+求$(\romannumeral 1)$和$(\romannumeral 2)$的公共解.
+\end{ex}
+
+\begin{ex}\label{5.17}
+已知线性方程组
+\begin{displaymath}\left\{\begin{aligned}&x_1+ x_2+ x_3=0\\&ax_1+bx_2+cx_3=0\\&a^2 x_1+b^2 x_2+c^2 x_3=0\end{aligned}\right.\end{displaymath}
+(1) $a,b,c$满足什么条件时，方程组只有零解？
+
+(2)  $a,b,c$满足什么条件时，方程组有无数多解，此时求出基础解系.
+\end{ex}
+
+\begin{ex}\label{5.18}
+当$\lambda$为何值时，非齐次线性方程组
+\begin{displaymath}\left\{\begin{aligned}&
+\lambda x_1+ x_2+ x_3=1\\& x_1+\lambda x_2+ x_3=\lambda \\& x_1+ x_2+\lambda x_3=\lambda ^2
+\end{aligned}\right.\end{displaymath}
+(1) 有唯一解
+
+(2) 无解
+
+(3) 有无穷多解
+\end{ex}
+
+\begin{ex}\label{5.19}
+讨论$a$为何值时，线性方程组
+
+\begin{displaymath}\left\{\begin{aligned}&
+x_1+x_2-x_3=1\\&2x_1+(a+2) x_2-3x_3=3\\&-3ax_2+(a+2) x_3=-3
+\end{aligned}\right.\end{displaymath}
+
+无解，有唯一解，有无穷多解；并在有解时求解.
+\end{ex}
+
+\begin{ex}\label{5.20}
+讨论$a,b$为何值时，线性方程组
+
+\begin{displaymath}\left\{\begin{aligned}&
+x_1+x_2+x_3+x_4=1\\&x_1+x_2+ax_3+x_4=1\\&x_1+ax_2+x_3+x_4=1\\&ax_1+x_2+x_3+x_4=b
+\end{aligned}\right.\end{displaymath}
+
+无解，有唯一解，有无穷多解；并在有解时求解.
+\end{ex}
+
+\begin{ex}\label{5.21}
+当$c_1,c_2,c_3,c_4,c_5$满足什么条件时, 线性方程组
+
+\begin{displaymath}\left\{\begin{aligned}&
+x_1-x_2=c_1\\&x_2-x_3=c_2\\&x_3-x_4=c_3\\&x_4-x_5=c_4\\&x_5-x_1=c_5
+\end{aligned}\right.\end{displaymath}
+
+有解？此时并求出解.
+\end{ex}
+
+\begin{ex}\label{5.22}
+证明: 设$\vec{\xi}_1,\vec{\xi}_2.\vec{\xi}_3$是齐次线性方程组$A\vec{x}=\vec{0}$的一个基础解系, 则$\vec{\xi}_1+\vec{\xi}_2,\vec{\xi}_2+\vec{\xi}_3,\vec{\xi}_3+\vec{\xi}_1$ 也是它的一个基础解系.
+\end{ex}
+
+\begin{ex}\label{5.23}
+证明:设向量$\vec{\eta}_1,\vec{\eta}_2,\dots ,\vec{\eta}_k$是齐次线性方程组$A\vec{x}=\vec{0}$ 的一个基础解系. 则 $\vec{\xi}_1=\vec{\eta}_1,\vec{\xi}_2=\vec{\eta}_2-\vec{\eta}_1,\dots,\vec{\xi}_k=\vec{\eta}_k-\vec{\eta}_{k-1}$ 也是$A\vec{x}=\vec{0}$ 的一个基础解系.
+\end{ex}
+
+\begin{ex}\label{5.24}
+设$\vec{\eta}_1,\vec{\eta}_2,\dots,\vec{\eta}_s$是非齐次线性方程组$A\vec{x}=\vec{\beta}$ 的$s$个解，$k_1,k_2,\dots,k_s$是一组常数，则$k_1 \vec{\eta}_1+k_2 \vec{\eta}_2+\dots+k_s \vec{\eta}_s$也是解的充分必要条件是$k_1+k_2+\dots +k_s=1$.
+\end{ex}
+
+\begin{ex}\label{5.25}
+证明:若$\vec{x}_0$ 是非齐次线性方程组 $A\vec{x}=\vec{b}$ 的一个特解，$\vec{x}_1,\vec{x}_2,…,\vec{x}_n$是$A\vec{x}=\vec{b}$的基础解系，则$\vec{x}_0,\vec{x}_0+\vec{x}_1,\vec{x}_0+\vec{x}_2,…,\vec{x}_0+\vec{x}_n$ 线性无关，且的任何一个解可表示为
+$$\vec{x}=k_0 \vec{x}_0+k_1 (\vec{x}_0+\vec{x}_1 )+k_2 (\vec{x}_0+\vec{x}_2 )+\dots+k_n (\vec{x}_0+\vec{x}_n ).$$
+其中$$k_0+k_1+\dots+k_n=1.$$
+\end{ex}
+
+\begin{ex}\label{5.26}
+证明: 设$A$为$m\times n$矩阵, $B$为$n\times s$矩阵，且$AB=0$，则$B$的各列都是齐次线性方程组$A\vec{x}=\vec{0}$的解.
+\end{ex}
+
+\begin{ex}\label{5.27}
+证明: 设$A$为$m\times n$矩阵, $r(A)=r<n$, 则齐次线性方程组$A\vec{x}=\vec{0}$的任意$n-r$个线性无关的解都是它的一个基础解系.
+\end{ex}
+
+\begin{ex}\label{5.28}
+证明：设$A$是$n$阶矩阵，$A^{*}$是$A$的伴随矩阵，则
+\begin{displaymath}
+r(A^{*} )=\left\{\begin{aligned}&n\ \ \ \ \ &r(A)=n\\ &1 &r(A)=n-1\\ &0 &r(A)<n-1\end{aligned}\right.\end{displaymath}
+\end{ex}
+
+\section{习题答案}
+\textbf{习题 \ref{5.1} 解答:}\\
+对系数矩阵施行行初等变换，将其化为行阶梯阵.
+\begin{align*}
+A= \begin{bmatrix}1&1&-1&-1&1\\2&1&1&1&4\\4&3&-1&-1&6\\1&2&-4&-4&-1\end{bmatrix} &
+   \xrightarrow{\begin{matrix}r_2-2r_1\\r_3-4r_1\\r_4-r_1\end{matrix}}
+   \begin{bmatrix}1&1&-1&-1&1\\0&-1&3&3&2\\0&-1&3&3&2\\0&1&-3&-3&-2\end{bmatrix} \\
+   \xrightarrow{\begin{matrix}r_3-r_2\\r_4+r_2 \end{matrix}}
+   \begin{bmatrix}1&1&-1&-1&1\\0&-1&3&3&2\\0&0&0&0&0\\0&0&0&0&0\end{bmatrix} &
+   \xrightarrow{\begin{matrix}r_1+r_2\\r_2\times(-1)\end{matrix}}
+   \begin{bmatrix}1&0&2&3&3\\0&1&-3&-3&-2\\0&0&0&0&0\\0&0&0&0&0\end{bmatrix}
+\end{align*}
+可知，系数矩阵$A$的秩为2，解空间维数为3，故基础解系含有3个解向量，有
+\begin{equation*}
+\vec{x}=\begin{bmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{bmatrix}=
+\vec{\eta}_1\begin{bmatrix}-2\\3\\1\\0\\0\end{bmatrix}+\vec{\eta}_2\begin{bmatrix}-2\\3\\0\\1\\0\end{bmatrix}
++\vec{\eta}_3\begin{bmatrix}-3\\2\\0\\0\\1\end{bmatrix}
+\end{equation*}
+\textbf{习题 \ref{5.2} 解答:}\\
+对系数矩阵施行行初等变换，将其化为行阶梯阵.
+\begin{align*}
+A= \begin{bmatrix}1&1&-2\\-1&\lambda&5\\1&3&0\\1&6&\lambda+1\end{bmatrix} &
+   \xrightarrow{\begin{matrix}r_2+r_1\\r_3-r_1\\r_4-r_1\end{matrix}}
+   \begin{bmatrix}1&1&-2\\0&\lambda+1&3\\0&2&2\\0&5&\lambda+3\end{bmatrix} \\
+   \xrightarrow[\begin{matrix}r_3-(\lambda+1)r_2\\r_4-5r_2\end{matrix}]
+   {\begin{matrix}\frac{1}{2}r_3\\r_2\leftrightarrow r_3\end{matrix}}
+   %\\r_2\leftrightarrow r_3\end{array}}{\rightarrow}
+ %  \stackrel{\begin{array} \frac{1}{2}r_3\\r_3-(\lambda+1)r_2\\r_4-5r_2\\r_2\leftrightarrow r_3\end{array}}{\rightarrow}
+   \begin{bmatrix}1&1&-2\\0&1&1\\0&0&2-\lambda\\0&0&\lambda-2\end{bmatrix} &
+   \xrightarrow{\begin{matrix}r_4+r_3\\r_1-r_2\end{matrix}}
+   \begin{bmatrix}1&0&-3\\0&1&1\\0&0&2-\lambda\\0&0&0\end{bmatrix}
+\end{align*}
+由此，知$\lambda=2$时，系数矩阵$A$的秩为2，方程组存在非零解，基础解系为$\begin{bmatrix}3\\-1\\1\end{bmatrix}$.\\
+\textbf{习题 \ref{5.3} 解答:}\\
+\begin{equation*}
+\begin{cases}
+x_1+2x_2+ x_3+x_4+ x_5=0\\
+2x_1+4x_2+3x_3+x_4+ x_5=0\\
+-x_1-2x_2+ x_3+3x_4-3x_5=0\\
+2x_3+5x_4-2x_5=0
+\end{cases}
+\end{equation*}
+解：对系数矩阵$A$进行初等行变换
+\begin{align*}
+A= \begin{bmatrix}1&2&1&1&1\\2&4&3&1&1\\-1&-2&1&3&-3\\0&0&2&5&-2\end{bmatrix} &
+   \rightarrow
+   \begin{bmatrix}1&2&1&1&1\\0&0&1&-1&-1\\0&0&2&4&-2\\0&0&2&5&-2\end{bmatrix} \\
+   \rightarrow
+   \begin{bmatrix}1&2&1&1&1\\0&0&1&-1&-1\\0&0&0&6&0\\0&0&0&7&0\end{bmatrix} &
+   \rightarrow
+   \begin{bmatrix}1&2&1&1&1\\0&0&1&-1&-1\\0&0&0&1&0\\0&0&0&0&0\end{bmatrix}=U
+\end{align*}
+得到同解方程组的系数矩阵为$U$.
+\begin{equation*}
+  r(A)=r(U)=3,n-r(A)=2.
+\end{equation*}
+故有两个自由未知量，选主元素所在的列的未知量为主变量，即$x_1,x_3,x_4$为独立未知量，则$x_2,x_5$为自由变量，得到同解方程组
+\begin{equation*}
+\begin{cases}
+x_1+x_3+x_4=-2x_2-x_5\\
+   x_3-x_4=x_5       \\
+   x_4=0
+\end{cases}
+\end{equation*}
+取$(x_2,x_5)=(1,0)$和$(x_2,x_5)=(0,1)$ 得到基础解系
+\begin{equation*}
+\vec{\xi}_1=\begin{bmatrix}-2\\1\\0\\0\\0\end{bmatrix},
+\vec{\xi}_2=\begin{bmatrix}-2\\0\\1\\0\\1\end{bmatrix}
+\end{equation*}
+于是$A\vec{x}=0$的一般解为
+\begin{equation*}
+\vec{x}=k_1\vec{\xi}_1+k_2\vec{\xi}_2.
+\end{equation*}
+即:
+\begin{equation*}
+\vec{x}=k_1\begin{bmatrix}-2\\1\\0\\0\\0\end{bmatrix}+
+k_2\begin{bmatrix}-2\\0\\1\\0\\1\end{bmatrix} (k_1,k_2\text{任意常数})
+\end{equation*}
+\textbf{习题 \ref{5.4} 解答:}\\
+写出增广矩阵
+\begin{equation*}
+\begin{bmatrix}
+2&-1&-1&-1\\1&1&-2&1\\4&-6&2&-6
+\end{bmatrix}
+\end{equation*}
+交换第一第二行，并将第三行乘以系数$\frac{1}{2}$，得
+\begin{equation*}
+\begin{bmatrix}
+1&1&-2&1\\
+2&-1&-1&-1\\
+2&-3&1&-3
+\end{bmatrix}
+\end{equation*}
+将第二个方程减去第一个方程的2 倍，第三个方程减去第一个方程的2 倍，得
+\begin{equation*}
+\begin{bmatrix}
+1&1&-2&1\\
+0&-3&3&-3\\
+0&-5&5&-5
+\end{bmatrix}
+\end{equation*}
+对第二，第三行约去公因子，得
+\begin{equation*}
+\begin{bmatrix}
+1&1&-2&1\\
+0&1&-1&1\\
+0&1&-1&1
+\end{bmatrix}
+\end{equation*}
+将第三行减去第二行，得
+\begin{equation*}
+\begin{bmatrix}
+1&0&-1&0\\
+0&1&-1&1\\
+0&0&0&0
+\end{bmatrix}
+\end{equation*}
+于是，我们有解
+\begin{equation*}
+\begin{bmatrix}
+x_1\\x_2\\x_3
+\end{bmatrix}
+=\begin{bmatrix}0\\1\\0\end{bmatrix}+
+\begin{bmatrix}1\\1\\1\end{bmatrix}\zeta,
+\end{equation*}
+即
+\begin{equation*}
+\begin{cases}
+x_1=\zeta\\
+x_2=\zeta+1\\
+x_3=\zeta
+\end{cases},
+z\in F
+\end{equation*}
+\textbf{习题 \ref{5.5} 解答:}\\
+对系数矩阵A进行行初等变换
+\begin{equation*}
+A= \begin{bmatrix}1&1&t\\1&-1&2\\-1&t&1\end{bmatrix}
+   \rightarrow
+   \begin{bmatrix}1&-1&2\\0&2&t-2\\0&t-1&3\end{bmatrix}
+   \rightarrow
+   \begin{bmatrix}1&-1&2\\0&2&t-2\\0&0&(t+1)(t-4)\end{bmatrix}
+\end{equation*}
+故当$t=1$或$t=-4$时，$r(A)=2<3$，方程组$A\vec{x}=0$有非零解.\\
+①当$t=-1$时，
+\begin{equation*}
+A \rightarrow
+   \begin{bmatrix}1&-1&2\\0&2&-3\\0&0&0\end{bmatrix}
+\end{equation*}
+此时$A\vec{x}=0$的同解方程组为
+\begin{equation*}
+\begin{cases}
+x_1-x_2+2x_3=0\\
+   2x_2-3x_3=0
+\end{cases}
+\end{equation*}
+基础解系包括一个非零解.取$x_3$为自由变量,设$x=1$，代入得$x_2=\frac{3}{2},x_3=-\frac{1}{2}$.
+得方程组的基础解系为$\vec{\xi}_1=(-\frac{1}{2},\frac{3}{2},1)^T$.
+此时方程组的一般解为：
+\begin{equation*}
+\vec{x}=k\vec{\xi}_1=
+k\begin{bmatrix}-1\\3\\2\end{bmatrix}(\text{其中}k\text{为常数}).
+\end{equation*}
+②当$t=4$时，
+\begin{equation*}
+A \rightarrow
+   \begin{bmatrix}1&-1&2\\0&2&2\\0&0&0\end{bmatrix}
+   \rightarrow
+   \begin{bmatrix}1&-1&2\\0&1&1\\0&0&0\end{bmatrix}
+\end{equation*}
+之后同理，解出基础解系$\vec{\xi}_2=(-3,-1,1)^T$，
+\begin{equation*}
+\vec{x}=k\vec{\xi}_1=
+k\begin{bmatrix}-3\\-1\\1\end{bmatrix}(\text{其中}k\text{为常数}).
+\end{equation*}
+\textbf{习题 \ref{5.6} 解答:}\\
+若$\vec{v}_1,\vec{v}_2\in V$，即$A\vec{v}_1=0,A\vec{v}_2=0$，
+则$A(\vec{v}_1+\vec{v}_2)=0$，也即$\vec{v}_1+\vec{v}_2\in V$. 若$\vec{v}\in V$,$k$ 是一个实数，
+则由$A\vec{v}=0$可得$A(k\vec{v})=kA\vec{v}=k\cdot\vec{0}=\vec{0}$，也即$k\vec{v}\in V$.
+故而$V$是$\mathbb{R}^n$的一个子空间.\\
+\textbf{习题 \ref{5.7} 解答:}\\
+(1)
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix}2&-4&5&3\\3&-6&4&2\\4&-8&17&11\end{bmatrix}\rightarrow
+\begin{bmatrix}1&-2&6&4\\3&-6&4&2\\4&-8&17&11  \end{bmatrix}\rightarrow
+\begin{bmatrix}1&-2&6&4\\0&0&-14&-10\\0&0&-7&-5  \end{bmatrix}\\ \rightarrow &
+\begin{bmatrix}1&-2&6&4\\0&0&1&5/7\\0&0&0&0  \end{bmatrix}\rightarrow
+\begin{bmatrix}1&-2&0&-2/7\\0&0&1&5/7\\0&0&0&0  \end{bmatrix}
+\end{aligned}
+\end{displaymath}
+故基础解系为$\begin{bmatrix}2\\1\\0\\0\end{bmatrix}\ \mbox{和}\ \begin{bmatrix}2\\0\\-5\\7\end{bmatrix} .$
+
+(2)
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix} 1&\ \ 2&\ \ 3&\ \ 7\\3&2&1&-3\\0&1&2&6\\5&4&3&-1   \end{bmatrix}\rightarrow
+\begin{bmatrix}1&2&3&7\\0&-4&-8&-24\\0&1&2&6\\0&-6&-12&-36    \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ \ 2&\ \ 3&\ \ 7\\0&1&2&6\\0&1&2&6\\0&1&2&6    \end{bmatrix}\\ \rightarrow &
+\begin{bmatrix}1&\ \ 2&\ \ 3&\ \ 7\\0&\ 1&\ 2&\ 6\\0&\ 0&\ 0&\ 0\\0&\ 0&\ 0&\ 0    \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ 0&\ -1&\ -5\\0&\ 1&\ 2&\ 6\\0&\ 0& \ 0&\ 0\\0&\ 0& \ 0&\ 0    \end{bmatrix}\end{aligned} \end{displaymath}
+故基础解系为$\begin{bmatrix}1\\-2\\1\\0\end{bmatrix}\ \mbox{和}\ \begin{bmatrix}5\\-6\\0\\1\end{bmatrix}$.\\
+\textbf{习题 \ref{5.8} 解答:}\\
+(1)\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix}1&\ -2&\ \ 3&\ -4\\0&1&-1&1\\1&3&0&-3\\1&-4&3&-2   \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&\ -2&\ \ 3&\ -4\\0&1&-1&1\\0&5&-3&1\\0&-2&0&2  \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ \ 0&\ \ 1&\ -2\\0&\  1&-1&1\\0&0&2&-4\\0&0&-1&2   \end{bmatrix}\\ \rightarrow &
+\begin{bmatrix}1&\ \ 0&\ \ 1&\ -2\\0&1&-1&1\\0&0&1&-2\\0&0&0&0   \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ \ 0&\ \ 0&\ \ 0\\0&1&0&-1\\0&0&1&-2\\0&0&0&0   \end{bmatrix} \end{aligned} \end{displaymath}
+故基础解系为$\begin{bmatrix}0\\1\\2\\1\end{bmatrix}$.
+
+(2)
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix}2&\ \ 3&\ -1&\ \ 5\\3&1&2&-7\\4&1&-3&6\\1&-2&4&-7   \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ -2&\ \ 4&\ -7\\0&7&-10&14\\0&9&-19&34\\0&7&-9&19    \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ -2&\ \ 4&\ -7\\0&7&-10&14\\0&9&-19&34\\0&0&1&5    \end{bmatrix}\end{aligned} \end{displaymath}
+
+至此, 其行列式按第一列, (之后的)第三行展开得
+\begin{displaymath}
+|A|=\left|\begin{array}{ccc}7&-10&14\\9&-19&34\\0&1&5\end{array}\right|=
+-\left|\begin{array}{cc}7&14\\9&34\end{array}\right|+5\left|\begin{array}{cc}7&-10\\9&-19\end{array}\right|=-
+\left|\begin{array}{cc}2&-1\\-1&-1\end{array}\right|\not=0(mod\ 5).\end{displaymath}
+
+故$A$是可逆矩阵，基础解系仅有$\vec{0}$向量.
+
+读者朋友，你可以尝试对一开始的系数矩阵$A$在模2下计算行列式，也可以更快得出$A$是可逆的，试一试吧.\\
+\textbf{习题 \ref{5.9} 解答:}\\
+(1)
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix} 1&\ 0&-1&\ 1&\ 2\\1&-1&2&1&1\\2&-1&1&2&3\\3&-1&0&3&5  \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ 0&-1&\ 1&\ 2\\0&-1&3&0&-1\\0&-1&3&0&-1\\0&-1&3&0&-1   \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&\ 0&-1&\ 1&\ 2\\0&1&-3&0&1\\0&0&0&0&0\\0&0&0&0&0  \end{bmatrix}\end{aligned} \end{displaymath}
+可设$x_1,x_2$为主变量，通解为
+\begin{displaymath}
+x=\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}=\begin{bmatrix}2\\1\\0\\0\end{bmatrix}
++k_1\begin{bmatrix}1\\3\\1\\0\end{bmatrix}+k_2\begin{bmatrix}-1\\0\\0\\1\end{bmatrix}
+\end{displaymath}
+其中$k_1,k_2$为任意常数.
+
+(2)
+
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix}  1&-2&3&-4&4\\0&1&-1&1&-3\\1&3&0&1&1\\0&-7&3&1&-3\\1&-3&2&3&-5 \end{bmatrix}\rightarrow
+\begin{bmatrix}1&-2&3&-4&4\\0&1&-1&1&-3\\0&5&-3&5&-3\\0&-7&3&1&-3\\0&-1&-1&7&-9   \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ \ 0&\ \ 1&\ -2&\ -2\\0&1&-1&1&-3\\0&0&1&0&6\\0&0&-1&2&-6\\0&0&-1&4&-6  \end{bmatrix}\\ \rightarrow&
+\begin{bmatrix}1&\ \ 0&\ \ 0&\ -2&\ -8\\0&1&0&1&3\\0&0&1&0&6\\0&0&0&2&0\\0&0&0&4&0   \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&\ \ 0&\ \ 0&\ \ 0&\ -8\\0&1&0&0&3\\0&0&1&0&6\\0&0&0&1&0\\0&0&0&0&0  \end{bmatrix} \end{aligned} \end{displaymath}
+故方程有唯一解$x=\begin{bmatrix}-8\\3\\6\\0\end{bmatrix}$.\\
+\textbf{习题 \ref{5.10} 解答:}\\
+
+(1)
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix} 1&\ \ 1&\ \ 0&\ -2&\ -6\\4&-1&-1&-1&1\\3&-1&-1&0&0 \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&\ \ 1&\ \ 0&\ -2&\ -6\\0&-5&-1&7&25\\0&-4&-1&6&18 \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&\ \ 1&\ \ 0&\ -2&\ -6\\0&-5&-1&7&25\\0&1&0&-1&-7 \end{bmatrix}\\ \rightarrow &
+\begin{bmatrix}1&\ \ 0&\ \ 0&\ -1&\ \ 1\\0&0&-1&2&-10\\0&1&0&-1&-7  \end{bmatrix} \rightarrow
+\begin{bmatrix}1&\ \ 0&\ \ 0&\ -1& \ \ 1\\0&1&0&-1&-7\\0&0&1&-2&10  \end{bmatrix}
+\end{aligned} \end{displaymath}
+
+可设$x_1,x_2,x_3$为主变量，通解为
+\begin{displaymath}
+x=\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}=\begin{bmatrix}1\\-7\\10\\0\end{bmatrix}
++k_1\begin{bmatrix}1\\1\\2\\0\end{bmatrix}
+\end{displaymath}
+其中$k_1$ 为任意常数.
+
+(2)
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix} 1&\ \ 1&\ -2&\ \ 3&\ \ 0\\2&1&-6&4&-1\\3&2&-8&7&-1\\1&-1&-6&-1&0 \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ \ 1&\ -2&\ \ 3&\ \ 0\\0&-1&-2&-2&-1\\0&-1&-2&-2&-1\\0&-2&-4&-4&0  \end{bmatrix}\\ \rightarrow &
+\begin{bmatrix}1&\ \ 1&\ -2&\ \ 3&\ \ 0\\0&1&2&2&1\\0&0&0&0&0\\0&1&2&2&0  \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&\ \ 1&\ -2&\ \ 3&\ \ 0\\0&1&2&2&1\\0&0&0&0&-1\\0&0&0&0&0 \end{bmatrix}
+\end{aligned} \end{displaymath}
+
+故原方程组无解.\\	
+\textbf{习题 \ref{5.11} 解答:}\\
+(1)
+
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix} 6&\ -2&\ \ 2&\ \ 1&\ \ 3\\1&-1&0&1&1\\2&0&1&3&2 \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ -1&\ \ 0&\ \ 1&\ \ 1\\0&4&2&-5&-3\\0&2&1&1&0  \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&\ -1&\ \ 0&\ \ 1&\ \ 1\\0&0&0&-7&-3\\0&2&1&1&0 \end{bmatrix}\\ \rightarrow&
+\begin{bmatrix}1&\ -1&\ \ 0&\ \ 1&\ \ 1\\0&2&1&1&0\\0&0&0&1&3/7  \end{bmatrix} \rightarrow
+\begin{bmatrix}1&\ -1&\ \ 0&\ \ 0&\ \ 4/7\\0&2&1&0&3/7\\0&0&0&1&3/7  \end{bmatrix}
+\end{aligned} \end{displaymath}
+设$x_1,x_3,x_4$为主变量，通解为
+\begin{displaymath}
+x=\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}=\frac{1}{7}\begin{bmatrix}4\\0\\3\\3\end{bmatrix}
++k_1\begin{bmatrix}1\\1\\-2\\0\end{bmatrix}
+\end{displaymath}
+其中$k_1$ 为任意常数.
+
+(2)
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix}1&\ -1&\ \ 2&\ \ 1&\ \ 1\\2&-1&1&2&3\\1&0&-1&1&2\\3&-1&0&3&5  \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ -1&\ \ 2&\ \ 1&\ \ 1\\0&1&-3&0&1\\0&1&-3&0&1\\0&1&-3&0&1  \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ \ 0&\ -1&\ \ 1&\ \ 2\\0&1&-3&0&1\\0&0&0&0&0\\0&0&0&0&0  \end{bmatrix}
+\end{aligned} \end{displaymath}
+
+设$x_1,x_2$为主变量，通解为
+\begin{displaymath}
+x=\begin{bmatrix}x_1\\x_2\\x_3\\x_4\end{bmatrix}=\begin{bmatrix}2\\1\\0\\0\end{bmatrix}
++k_1\begin{bmatrix}1\\3\\1\\0\end{bmatrix}+k_2\begin{bmatrix}-1\\0\\0\\1\end{bmatrix}
+\end{displaymath}
+其中$k_1,k_2$为任意常数.\\
+\textbf{习题 \ref{5.12} 解答:}\\
+(1)
+
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix} 1&\ -3&\ \ 5&\ \ 0\\2&-1&-3&11\\2&1&-3&5 \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ -3&\ \ 5&\ \ 0\\0&5&-13&11\\0&7&-13&5  \end{bmatrix}\\ \rightarrow&
+\begin{bmatrix}1&\ -3&\ \ 5&\ \ 0\\0&5&-13&11\\0&1&0&-3  \end{bmatrix} \rightarrow
+\begin{bmatrix} 1&\ \ 0&\ \ 0&\ \ 1\\0&1&0&-3\\0&0&1&-2 \end{bmatrix}
+\end{aligned} \end{displaymath}
+故原方程组只有唯一解$x=\begin{bmatrix}1\\-3\\-2\end{bmatrix}$.
+(2)
+
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix}3&\ \ 2&\ \ 1&\ \ 1&\ \ 1&\ \ 7\\3&2&1&1&-3&-1\\5&4&3&3&-1&9  \end{bmatrix}\rightarrow
+\begin{bmatrix}3&\ \ 2&\ \ 1&\ \ 1&\ \ 1& \ \ 7\\0&0&0&0&1&2\\1&1&1&1&-1&1  \end{bmatrix}\\ \rightarrow &
+\begin{bmatrix}0&\ \ 1&\ \ 2&\ \ 2& \ \ 0&\ \ 4\\0&0&0&0&1&2\\1&1&1&1&0&3  \end{bmatrix} \rightarrow
+\begin{bmatrix}1&\ \ 0&\ -1&\ -1&\ \ 0&\ -1\\0&1&2&2&0&4\\0&0&0&0&1&2  \end{bmatrix}
+\end{aligned} \end{displaymath}
+设$x_1,x_2,x_5$为主变量，通解为
+\begin{displaymath}
+x=\begin{bmatrix}x_1\\x_2\\x_3\\x_4\\x_5\end{bmatrix}=\begin{bmatrix}-1\\4\\0\\0\\2\end{bmatrix}
++k_1\begin{bmatrix}1\\-2\\1\\0\\0\end{bmatrix}+k_2\begin{bmatrix}1\\-2\\0\\1\\0\end{bmatrix}
+\end{displaymath}
+其中$k_1,k_2$为任意常数.\\
+\textbf{习题 \ref{5.13} 解答:}\\
+a,c正确; b,d错误.\\
+\textbf{习题 \ref{5.14} 解答:}\\
+观察Q, 其第1列与第2列成比例, 故当$t=6$时, $r(Q)=1$;  当$t≠6$时, $r(Q)=2$.
+
+由于$PQ=0$, 则有$r(P)+r(Q)≤3-r(PQ)=3$, 故仅当$r(Q)=2$时, 可唯一决定$r(P)=1$($P$ 是非零的, 故$r(P)≥1$).  选项C正确.\\
+\textbf{习题 \ref{5.15} 解答:}\\
+解空间维数为$dimN(A)=n-r(A)=1$, 而的行和为$0$，说明$(1,1,\dots,1)^T$是$A$ 的一组非零特解. 故通解为$(k,k,\dots,k)^T$（其中$k$为任意常数）.\\
+\textbf{习题 \ref{5.16} 解答:}\\
+求$(\romannumeral 1)$和$(\romannumeral 2)$的公共解，就是求同时满足它们的4个方程的解，即
+\begin{displaymath}\left\{\begin{aligned}&x_1+x_2         =0\\&   x_2     -x_4=0\\& x_1-x_2+x_3     =0\\&    x_2-x_3+x_4=0\end{aligned}\right.\end{displaymath}
+对系数矩阵进行行初等变换,
+
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix}1&\ \ 1&\ \ 0&\ \ 0\\0&1&0&-1\\1&-1&1&0\\0&1&-1&1 \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ \ 1&\ \ 0&\ \ 0\\0&1&0&-1\\0&-2&1&0\\0&1&-1&1 \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&\ \ 0&\ \ 0&\ \ 1\\0&1&0&-1\\0&0&1&-2\\0&0&0&0\end{bmatrix}
+\end{aligned} \end{displaymath}
+
+$r=3,\ n=4,\ n-r=1$, 故基础解系有一个解向量, 为$\xi=\begin{bmatrix}-1\\1\\2\\1\end{bmatrix}$. 故$(\romannumeral 1)$和$(\romannumeral 2)$的公共解为$x=k\xi=\begin{bmatrix}-1\\1\\2\\1\end{bmatrix}$.\\
+\textbf{习题 \ref{5.17} 解答:}\\
+
+ (1) 显然，系数矩阵组成的行列式是Vandermond行列式, 因此$|A|=(a-b)(b-c)(c-a)$, 当且仅当$a,b,c$两两不同, $|A|≠0$, 此时方程组只有零解.
+
+(2)若$a=b\not=c$,
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix}1&\ \ \ 1&\ \ \ 1\\a&a&c\\a^2&a^2&c^2 \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ \ \ 1&\ \ \ 1\\0&0&c-a\\0&0&c^2-a^2 \end{bmatrix}\rightarrow
+\begin{bmatrix}1&\ \ \ 1&\ \ \ 0\\0&0&1\\0&0&0 \end{bmatrix}
+\end{aligned} \end{displaymath}
+此时，基础解系为$\xi_c=\begin{bmatrix}-1\\1\\0\end{bmatrix}$.
+
+根据轮换性，当$b=c\not=a$ 时，基础解系为$\xi_a=\begin{bmatrix}0\\-1\\1\end{bmatrix}$. 当$c=a\not=b$时，基础解系为$\xi_b=\begin{bmatrix}1\\0\\-1\end{bmatrix}$.
+
+当$a=b=c$时,
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix}1&\ \ \ 1&\ \ \ 1\\a&a&a\\a^2&a^2&a^2 \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&\ \ \ 1&\ \ \ 1\\0&0&0\\0&0&0 \end{bmatrix}
+\end{aligned} \end{displaymath}
+以$x_1$为主变量，则基础解系为$$\xi_1=\begin{bmatrix}-1\\1\\0\end{bmatrix}\ \ \ \ \ \xi_2=\begin{bmatrix}-1\\0\\1\end{bmatrix}.$$
+\textbf{习题 \ref{5.18} 解答:}\\
+ $\lambda\not=1$且$\lambda\not=-2$时，方程组有唯一解$$x=\frac{1}{\lambda+2} \begin{bmatrix} -\lambda-1\\1\\ \lambda ^2+2\lambda+1\end{bmatrix}$$
+
+$\lambda=-2$时，方程组无解.
+
+
+$\lambda=1$时，方程组有无穷多解，解为$$x=\begin{bmatrix}1-a-b\\ab\end{bmatrix}$$   ($a,b$ 为任意常数).\\
+\textbf{习题 \ref{5.19} 解答:}\\
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix} 1&1&-1&1\\2&a+2&-3&3\\0&-3a&a+2&-3  \end{bmatrix}\rightarrow
+\begin{bmatrix}1&1&-1&1\\0&a&-1&1\\0&-3a&a+2&-3   \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&1&-1&1\\0&a&-1&1\\0&0&a-1&0  \end{bmatrix}\end{aligned} \end{displaymath}
+所以系数阵行列式是$a(a-1)$ .
+
+当$a\not=0$或$a\not=1$时，方程组有唯一解$x=\begin{bmatrix}1-\frac{1}{a}\\ \frac{1}{a}\\0\end{bmatrix}.$
+
+$a=0$时,
+ \begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix} 1&1&-1&1\\0&0&-1&1\\0&0&-1&0  \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&1&-1&1\\0&0&-1&1\\0&0&0&-1  \end{bmatrix}\end{aligned} \end{displaymath}
+线性方程组无解.
+
+$a=1$时,$$A=\begin{bmatrix}1&0&0&0\\0&1&-1&1\\0&0&0&0\end{bmatrix}.$$
+线性方程组无数解, 解为
+\begin{displaymath}
+x=\begin{bmatrix}x_1\\x_2\\x_3\end{bmatrix}=\begin{bmatrix}0\\1\\0\end{bmatrix}+k_1
+\begin{bmatrix}0\\1\\1\end{bmatrix}\end{displaymath}
+其中$k_1$为任意常数.\\
+\textbf{习题 \ref{5.20} 解答:}\\
+ \begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix} 1&1&1&1&1\\1&1&a&1&1\\1&a&1&1&1\\a&1&1&1&b \end{bmatrix}\rightarrow
+\begin{bmatrix} 1&1&1&1&1\\0&0&a-1&0&0\\0&a-1&0&0&0\\a-1&0&0&0&b-1 \end{bmatrix}\end{aligned} \end{displaymath}
+所以系数阵行列式是$(a-1)^3$, 当$a\not=1$时, 方程组有唯一解. 此时,
+
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix} 1&\ \ 1&\ \ 1&\ \ 1&\ \ 1\\0&0&1&0&0\\0&1&0&0&0\\1&0&0&0&\frac{b-1}{a-1} \end{bmatrix}\rightarrow
+\begin{bmatrix}0&\ \ 0&\ \ 0& \ \ 1&\ \ \frac{a-b}{a-1}\\0&0&1&0&0\\0&1&0&0&0\\1&0&0&0&\frac{b-1}{a-1}  \end{bmatrix} \end{aligned} \end{displaymath}
+
+所以解为$x=\begin{bmatrix}\frac{b-1}{a-1}\\0\\0\\ \frac{a-b}{a-1}\end{bmatrix}.$
+
+当$a\not=1$时, $$A\rightarrow \begin{bmatrix}1&1&1&1&1\\0&0&0&0&b-1\\0&0&0&0&0\\0&0&0&0&0\end{bmatrix}$$
+知当$b\not=1$时, 方程组无解.
+
+当$b=1$时，方程组等价于$x_1+x_2+x_3+x_4=1$, 解为
+
+$$x=\begin{bmatrix}a\\b\\c\\1-a-b-c\end{bmatrix}.$$
+$a,b,c$为任意常数.\\
+\textbf{习题 \ref{5.21} 解答:}\\
+显然有解的必要条件是$c_1+c_2+c_3+c_4+c_5=0$. 这也是充分条件.
+\begin{displaymath}
+\begin{aligned}
+A=&\begin{bmatrix}  1&-1& & & &c_1\\ &1&-1& & &c_2\\ & &1&-1& &c_3\\ & & &1&-1&c_4\\-1& & & &1&c_5\end{bmatrix}\rightarrow
+\begin{bmatrix} 1&-1& & & &c_1\\ &1&-1& & &c_2\\ & &1&-1& &c_3\\ & & &1&-1&c_4\\0&0 & & &0&0    \end{bmatrix} \end{aligned} \end{displaymath}
+所以系数矩阵的秩为1, 基础解系有$5-4=1$个, 容易构造一个特解为
+$x_{*}=\begin{bmatrix}0\\c_2+c_3+c_4+c_5\\c_3+c_4+c_5\\c_4+c_5\\c_5\end{bmatrix}$
+基础解系为$x_1=\begin{bmatrix}1\\1\\1\\1\\1\end{bmatrix}$.故解为
+$$x=\begin{bmatrix} k\\k+c_2+c_3+c_4+c_5\\k+c_3+c_4+c_5\\k+c_4+c_5\\k+c_5\end{bmatrix}$$
+$k$为任意常数.\\
+\textbf{习题 \ref{5.22} 解答:}\\
+只要证明原基可以被新基线性表示.
+\begin{displaymath}
+\begin{aligned}
+&\xi_1=\frac{1}{2} [(\xi_3+\xi_1 )+(\xi _1+\xi_2 )-(\xi_2+\xi_3 )]\\
+&\xi_2=\frac{1}{2}[(\xi_2+\xi_3 )+(\xi_3+\xi_1 )-(\xi_1+\xi_2 )]\\
+&\xi_3=\frac{1}{2} [(\xi_1+\xi_2 )+(\xi_2+\xi_3 )-(\xi_3+\xi_1 )]\end{aligned}\end{displaymath}
+命题得证.\\
+\textbf{习题 \ref{5.23} 解答:}\\
+等价于证明两组向量可以互相线性表出，事实上只需要证明$\{\eta_i \}$可以被$\{\xi_i \}$线性表出.
+$$\vec{\eta}_i=\vec{\xi}_1+\dots+\vec{\xi}_i,\ \ \ \   \forall i=1,\dots,n$$
+命题得证.\\
+\textbf{习题 \ref{5.24} 解答:}\\
+若$k_1 \vec{\eta}_1+k_2 \vec{\eta}_2+\dots+k_s  \vec{\eta}_s$是方程组$A\vec{x}=\vec{\beta}$的解, 则
+\begin{displaymath}\begin{aligned}
+\vec{\beta}&=A(k_1 \vec{\eta}_1+k_2 \vec{\eta}_2+\dots+k_s \vec{\eta}_s )\\&=k_1 A\vec{\eta}_1+k_2 A\vec{\eta}_2+\dots+k_s A\vec{\eta}_s\\&=(k_1+k_2+\dots+k_s )\vec{\beta}
+\end{aligned}
+\end{displaymath}
+又$\vec{\beta}\not=0$, 所以$$k_1+k_2+\dots+k_s=1.$$
+
+反之，若$k_1+k_2+\dots+k_s=1.$ 则
+\begin{displaymath}\begin{aligned}
+A(k_1 \vec{\eta}_1+k_2 \vec{\eta}_2+\dots+k_s \vec{\eta}_s )&=k_1 A\vec{\eta}_1+k_2 A\vec{\eta}_2+\dots+k_s A\vec{\eta}_s\\&=(k_1+k_2+\dots+k_s )\vec{\beta}\\&=\vec{\beta}
+\end{aligned}
+\end{displaymath}
+所以$k_1 \vec{\eta}_1+k_2 \vec{\eta}_2+\dots+k_s \vec{\eta}_s$是方程组$Ax=\vec{\beta}$ 的解.\\
+\textbf{习题 \ref{5.25} 解答:}\\
+$$c_0 x_0+c_1 (x_0+x_1 )+c_2 (x_0+x_2 )+\dots+c_n (x_0+x_n )=0$$
+整理
+$$(c_0+\dots+c_n) x_0+c_1 x_1+\dots+c_n x_n=0$$
+我们断言必有$$c_0+\dots+c_n=0$$
+否则就有形式$$x_0=d_1 x_1+\dots+d_n x_n$$
+蕴含$\vec{x}_0$也是$A\vec{x}=\vec{0}$的解, 矛盾. 接着由基础解系的线性无关性知$$c_1=c_2=\dots=c_n=0.$$
+故$x_0,x_0+x_1,x_0+x_2,\dots,x_0+x_n$线性无关.
+
+设$x$满足$Ax=b$, 则$$A(x-x_0)=b-b=0$$ 故$x-x_0$可以由$Ax=0$的基础解系表出, 即$$x-x_0=c_1 x_1+\dots+c_n x_n$$
+则$$x=x_0+c_1 x_1+\dots+c_n x_n$$
+$$x=(1-c_1-\dots-c_n ) x_0+c_1 (x_0+x_1 )+\dots+c_n (x_0+x_n )$$
+令$$k_0=1-c_1-\dots-c_n,\ \ k_i=c_i\ \  (i≥1)$$
+于是命题得证.\\
+\textbf{习题 \ref{5.26} 解答:}\\
+设$B=(\vec{\beta}_1,\vec{\beta}_2,\dots,\vec{\beta}_s)$, 由分块矩阵知识, $$AB=（A\vec{\beta}_1,A\vec{\beta}_2,\dots,A\vec{\beta}_s ）$$
+由$AB=0$推出 $A\vec{\beta}_i=\vec{0}$.\\
+\textbf{习题 \ref{5.27} 解答:}\\
+由定义, 基础解系是解空间的一组基, 而解空间的维数是
+\begin{displaymath}\dim ?N(A)=n-r(A)=n-r\end{displaymath}
+故$A\vec{x}=\vec{0}$ 的任意$n-r$ 个线性无关的解构成了解空间的基.\\
+\textbf{习题 \ref{5.28} 解答:}\\
+ 若$r(A)=n$, 则$A$是可逆矩阵, 由于$AA^{*}=|A|I$, 知$A^{*}$也是可逆矩阵, 故$r(A^{*})=n$;
+
+ 若$r(A)<n-1$, 则$A$的任意一个$n-1$阶子阵都为$0$, 由伴随矩阵定义, $A^{*}=0$, 故$r(A^{*})=0$;
+
+ 若$r(A)=n-1$, 则$|A|=0$, 且存在$A$ 的一个$n-1$ 阶子阵不为0, 则$A^{*}\not=0$. 由于$AA^{*}=|A|I=0$, 由20题知, $A^{*}$的各列都是齐次线性方程组$A\vec{x}=\vec{0}$的解. 又因为
+\begin{displaymath}
+\dim N(A)=n-r(A)=1.\end{displaymath}
+ $A^{*}$存在一个非零列, 故$A^{*}$ 的秩等于$A^{*}$ 的列秩等于1.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

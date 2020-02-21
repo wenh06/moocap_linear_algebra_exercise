@@ -1,0 +1,1186 @@
+\chapter{行列式}
+
+\section{知识点解析}
+
+\begin{prop}[二阶行列式的性质]\
+
+\enum
+\item[性质$1$.] 行列互换，二阶行列式的值不变，即
+$$\begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix} = \begin{vmatrix} a_{11} & a_{21} \\ a_{12} & a_{22} \end{vmatrix}$$
+\item[性质$2$.] 若二阶行列式中某行(列)每个元素分成两个数之和，则该行列式可关于该行(列)拆开成两个行列式之和，拆开时其他行均保持不变，即
+$$\begin{vmatrix} a_{11} + b_{11} & a_{12} + + b_{12} \\ a_{21} & a_{22} \end{vmatrix} = \begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix} + \begin{vmatrix} b_{11} & b_{12} \\ a_{21} & a_{22} \end{vmatrix}$$
+\item[性质$3$.] 两行(列)互换，行列式的值变号，即
+$$\begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix} = -\begin{vmatrix} a_{21} & a_{22} \\ a_{11} & a_{12} \end{vmatrix}$$
+\item[性质$4$.] 二阶行列式中某行（列）有公因子$k$时，$k$可以提出公因式外，即
+$$\begin{vmatrix} ka_{11} & ka_{12} \\ a_{21} & a_{22} \end{vmatrix} = k\begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix}$$
+\item[性质$5$.] 二阶行列式中某一行（列）加上另一行（列）的倍时，其值不变， 即
+$$\begin{vmatrix} a_{11} + ka_{21} & a_{12} + ka_{22} \\ a_{21} & a_{22} \end{vmatrix} = \begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix}$$
+\end{list}
+\end{prop}
+
+\begin{prop}[三阶行列式的性质]\
+
+\enum
+\item[性质$1'$.] 行列互换，三阶行列式的值不变。
+%$$\begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{vmatrix} = \begin{vmatrix} a_{11} & a_{21} & a_{31} \\ a_{12} & a_{22} & a_{32} \\ a_{13} & a_{23} & a_{33} \end{vmatrix}$$
+\item[性质$2'$.] 若三阶行列式某行（列）各个元素分成两个数的和，则该行列式可关于该行（列）拆开成两个行列式之和，拆开时其他行（列）均保持不变。
+%$$\begin{vmatrix} a_{11} + b_{11} & a_{12} + + b_{12} \\ a_{21} & a_{22} \end{vmatrix} = \begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix} + \begin{vmatrix} b_{11} & b_{12} \\ a_{21} & a_{22} \end{vmatrix}$$
+\item[性质$3'$.] 两行（列）互换，三阶行列式的值变号。
+%(只给出行列式的前2行变换的情形，其他情形类似)。
+%$$\begin{vmatrix} a_{11} & a_{12} & a_{13} \\ a_{21} & a_{22} & a_{23} \\ a_{31} & a_{32} & a_{33} \end{vmatrix} = \begin{vmatrix} a_{21} & a_{22} & a_{23} \\ a_{11} & a_{12} & a_{13} \\ a_{31} & a_{32} & a_{33} \end{vmatrix}$$
+\item[性质$4'$.] 三阶行列式的某一行（列）的公因式  可以提到行列式的外面. 特别的，若行列式有一行（列）为零，则行列式的值为0。
+\item[性质$5'$.] 把一行（列）的倍数加到另一行（列）上，三阶行列式的值不变。
+\end{list}
+\end{prop}
+
+\begin{Def}
+设$A = (a_{ij})_n$为一个$n$阶方阵，$A$划去第$i$行第$j$列后所剩下的$n-1$阶行列式称为元素$a_{ij}$的余子式，记为$M_{ij}$。再令$A_{ij} = (-1)^{i+j}M_{ij}$，称之为元素$a_{ij}$的代数余子式。
+\end{Def}
+
+\begin{thm}
+二，三阶行列式等于它的任一行（或列）元素与自己的代数余子式乘积之和。
+\end{thm}
+
+\begin{Def}
+由$1,2,\cdots,n$组成的有序数组称为一个$n$元排列，记为$j_1j_2\cdots j_n$。全体$n$元排列组成的集合记为$P_n$。
+\end{Def}
+
+\begin{Def}
+在一个$n$元排列$j_1j_2\cdots j_n$中，如果一个大数排在小数面前，即当$s<t$时，有$j_s>j_t$，则称这一对数$j_sj_t$构成一个逆序。此排列的逆序总数称为它的逆序数，记为$\tau(j_1j_2\cdots j_n)$。
+\end{Def}
+
+\begin{Def}
+逆序数为偶数的排列称为偶排列；逆序数为奇数的排列称为奇排列。
+\end{Def}
+
+\begin{Def}
+在一个排列中把两个数$i$与$j$互换位置，这样的操作称为对换，记为$(i, j)$。
+\end{Def}
+
+\begin{thm}
+对换改变排列奇偶性。
+\end{thm}
+
+\begin{cor}
+全部$n(\geqslant 2)$元排列中，奇偶排列各占一半。
+\end{cor}
+
+\begin{cor}
+存在$t$，使得$j_1j_2\cdots j_n$经过$t$次对换变为$12\cdots n$，且$t$与$\tau(j_1j_2\cdots j_n)$同奇偶。
+\end{cor}
+
+\begin{Def}[$n$阶行列式]
+$$\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} := \sum\limits_{j_1j_2\cdots j_n \in P_n} (-1)^{\tau(j_1j_2\cdots j_n)} a_{1j_1}a_{2j_2}\cdots a_{nj_n}.$$
+\end{Def}
+
+\begin{rmk}\
+我们可以等价地定义$n$阶行列式为
+$$\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} := \sum\limits_{i_1i_2\cdots i_n \in P_n} (-1)^{\tau(i_1i_2\cdots i_n)} a_{i_11}a_{i_22}\cdots a_{i_nn}.$$
+\end{rmk}
+
+\begin{rmk}\
+
+\enum
+\item[$\bullet$] 行列式定义式是$n!$项代数和；
+\item[$\bullet$] 每项为选自不同行，不同列的$n$个元素之积；
+\item[$\bullet$] 每项符号：行下标按自然排列排好后，列下标排列的奇偶性决定正负号；
+\item[$\bullet$] 行列式可视为对方阵$A=(a_{ij})_{n}$的一种运算，也记作$\det(A)$或$|A|$。
+\end{list}
+\end{rmk}
+
+\begin{Def}
+记行列式
+$$D = \begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}.$$
+将行列式中的行与列互换，所得新的行列式
+$$\begin{vmatrix}
+a_{11} & a_{21} & \cdots & a_{n1} \\ a_{12} & a_{22} & \cdots & a_{n2} \\ \vdots & \vdots & \ddots & \vdots \\ a_{1n} & a_{2n} & \cdots & a_{nn}
+\end{vmatrix},$$
+称为转置行列式，记为$D^T$。
+\end{Def}
+
+\begin{prop}[行列式的性质]\
+\enum
+\item[性质$1$.] 行列式与它的转置行列式相等，即$D = D^T$。
+\item[性质$2$.] 某列(行)相加可拆项。具体地说，若行列式的某一列(行)的元素都是两数之和，例如
+$$D = \begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ a_{i1}+a_{i1}' & a_{i2}+a_{i2}' & \cdots & a_{in}+a_{in}' \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix},$$
+则$D$等于下列两个行列式之和：
+$$D = \begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ a_{i1} & a_{i2} & \cdots & a_{in} \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} + \begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ a_{i1}' & a_{i2}' & \cdots & a_{in}' \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}.$$
+\item[性质$2'$.] 有时，为了方便，我们把行列式$D$按列表示为
+$$D = \left|\alpha_1, \alpha_2, \cdots, \alpha_n \right| \text{ 或 } \det(\alpha_1, \alpha_2, \cdots, \alpha_n)$$
+其中$\alpha_j$表示行列式$D$的第$j$列。于是，利用行列等价性，性质(2)还可以表示成以下形式：
+$$\left|\alpha_1, \cdots, \alpha_j + \beta_j, \cdots, \alpha_n \right| = \left|\alpha_1, \cdots, \alpha_j, \cdots, \alpha_n \right| + \left|\alpha_1, \cdots, \beta_j, \cdots, \alpha_n \right|,$$
+或
+$$\det(\alpha_1, \cdots, \alpha_j + \beta_j, \cdots, \alpha_n) = \det(\alpha_1, \cdots, \alpha_j, \cdots, \alpha_n) + \det(\alpha_1, \cdots, \beta_j, \cdots, \alpha_n).$$
+\item[性质$3$.] 行列式某一列（或行）的公因子可以提到行列式外,即
+$$\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ ka_{i1} & ka_{i2} & \cdots & ka_{in} \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} = k\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ a_{i1} & a_{i2} & \cdots & a_{in} \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}$$
+或者
+$$\left|\alpha_1, \cdots, k\alpha_i, \cdots, \alpha_n \right| = k \left|\alpha_1, \cdots, \alpha_i, \cdots, \alpha_n \right|.$$
+\item[性质$4$.] 交换任意两行（列）的位置，行列式的值变号，即
+$$\begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ a_{s1} & a_{s2} & \cdots & a_{sn} \\ \vdots & \vdots & & \vdots \\ a_{i1} & a_{i2} & \cdots & a_{in} \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix} = - \begin{vmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\ \vdots & \vdots & & \vdots \\ a_{i1} & a_{i2} & \cdots & a_{in} \\ \vdots & \vdots & & \vdots \\ a_{s1} & a_{s2} & \cdots & a_{sn} \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}
+\end{vmatrix}.$$
+或者
+$$\left|\alpha_1, \cdots, \alpha_i, \cdots, \alpha_s, \cdots, \alpha_n \right| = -\left|\alpha_1, \cdots, \alpha_s, \cdots, \alpha_i, \cdots, \alpha_n \right|.$$
+\item[性质$5$.] 把某一列（行）的常数倍加到另一列（行）上，行列式值不变，即
+$$\begin{vmatrix}
+a_{11} & \cdots & (a_{1i} + ka_{1j}) & \cdots & a_{1j} & \cdots & a_{1n} \\ a_{21} & \cdots & (a_{2i} + ka_{2j}) & \cdots & a_{2j} & \cdots & a_{2n} \\ \vdots & & \vdots & & \vdots & & \vdots \\ a_{n1} & \cdots & (a_{ni} + ka_{nj}) & \cdots & a_{nj} & \cdots & a_{nn}
+\end{vmatrix} = \begin{vmatrix}
+a_{11} & \cdots & a_{1i} & \cdots & a_{1j} & \cdots & a_{1n} \\ a_{21} & \cdots & a_{2i} & \cdots & a_{2j} & \cdots & a_{2n} \\ \vdots & & \vdots & & \vdots & & \vdots \\ a_{n1} & \cdots & a_{ni} & \cdots & a_{nj} & \cdots & a_{nn}
+\end{vmatrix}.$$
+或者
+$$\left|\alpha_1, \cdots, \alpha_i + k\alpha_j, \cdots, \alpha_j, \cdots, \alpha_n \right| = \left|\alpha_1, \cdots, \alpha_i, \cdots, \alpha_j, \cdots, \alpha_n \right|.$$
+\end{list}
+\end{prop}
+
+\begin{cor}\
+
+\enum
+\item[(1)] 行列式有一列（或行）元素全为零，则行列式的值为零。
+\item[(2)] 列式中有两列（行）元素相同，则行列式的值为零。
+\item[(3)] 列式中有两列（行）成比例，则行列式的值为零
+\end{list}
+\end{cor}
+
+\begin{thm} \label{thm:det_minor1}
+$n$阶行列式$D$等于它的任意一行的所有元素与它们的代数余子式的乘积之和，即
+$$D = a_{i1}A_{i1} + a_{i2}A_{i2} + \cdots + a_{in}A_{in} = \sum\limits_{j=1}^n a_{ij}A_{ij}, \quad (i=1,2,\cdots,n).$$
+上式称为$n$阶行列式按第$i$行展开公式。完全类似可以得到按列的展开公式：
+$$D = a_{1j}A_{1j} + a_{2j}	A_{2j} + \cdots + a_{nj}A_{nj} = \sum\limits_{i=1}^n a_{ij}A_{ij}, \quad (j=1,2,\cdots,n).$$
+\end{thm}
+
+\begin{thm} \label{thm:det_minor2}
+$n$阶行列式$D$的某一行的元素与另一行对应代数余子式的乘积之和等于零，即
+$$a_{i1}A_{k1} + a_{i2}A_{k2} + \cdots + a_{in}A_{kn} = \sum\limits_{j=1}^n a_{ij}A_{kj} = 0, \quad (i\neq k).$$
+由行列对称性，对列来说也有类似的结论：
+$$a_{1j}A_{1k} + a_{2j}A_{2k} + \cdots + a_{nj}A_{nk} = \sum\limits_{i=1}^n a_{ij}A_{ik} = 0, \quad (j\neq k).$$
+\end{thm}
+
+\begin{rmk}
+综合定理\ref{thm:det_minor1}与定理\ref{thm:det_minor2}的结论，可以得到：
+\begin{eqnarray*}
+a_{i1}A_{k1} + a_{i2}A_{k2} + \cdots + a_{in}A_{kn} & = & \sum\limits_{j=1}^n a_{ij}A_{kj} = \begin{cases}
+D, & i = k; \\ 0, & i \neq k.
+\end{cases} \\
+a_{1j}A_{1k} + a_{2j}A_{2k} + \cdots + a_{nj}A_{nk} & = & \sum\limits_{i=1}^n a_{ij}A_{ik} = \begin{cases}
+D, & j = k; \\ 0, & j \neq k.
+\end{cases}
+\end{eqnarray*}
+引入克罗内克(Kronecker)符号：
+$$\delta_{ik} =
+\begin{cases}
+1, & i = k; \\ 0, & i \neq k.
+\end{cases},$$
+上述公式可统一书写为如下形式：
+$$\sum\limits_{j=1}^n a_{ij}A_{kj} = \delta_{ik}D;$$ $$\sum\limits_{i=1}^n a_{ij}A_{ik} = \delta_{jk}D.$$
+\end{rmk}
+
+\begin{thm}[Cramer法则：n元线性方程组的求解公式]\
+
+若线性方程组
+$$\left\{ \begin{array}{rcl} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n & = & b_1 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n & = & b_2 \\ \hdotsfor{3} \\ a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nn}x_n & = & b_n \end{array}\right.$$
+的系数行列式$D\neq 0$，则方程组有唯一解：
+$$x_j = \frac{D_j}{D}, \quad j = 1,2,\cdots,n.$$
+其中$D_j$是由线性方程组的常数列替换$D$中第$j$列元素所得到的行列式。
+\end{thm}
+
+\begin{cor}
+若$n$个变量，$n$个方程的齐次线性方程组
+$$\left\{ \begin{array}{rcl} a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n & = & 0 \\ a_{21}x_1 + a_{22}x_2 + \cdots + a_{2n}x_n & = & 0 \\ \hdotsfor{3} \\ a_{n1}x_1 + a_{n2}x_2 + \cdots + a_{nn}x_n & = & 0 \end{array}\right.$$
+的系数行列式$D\neq 0$，则方程组只有零解：
+$$x_j = 0, \quad j = 1,2,\cdots,n.$$
+\end{cor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{例题讲解}
+
+\begin{eg}
+试证$\begin{vmatrix} a_1+b_1 & b_1+c_1 & c_1+a_1 \\ a_2+b_2 & b_2+c_2 & c_2+a_2 \\ a_3+b_3 & b_3+c_3 & c_3+a_3 \end{vmatrix} = 2\begin{vmatrix} a_1 & b_1 & c_1 \\ a_2 & b_2 & c_2 \\ a_3 & b_3 & c_3 \end{vmatrix}$
+\end{eg}
+\begin{proof}[证明]
+\begin{align*}
+\text{左端} & = \begin{vmatrix} a_1 & b_1+c_1 & c_1+a_1 \\ a_2 & b_2+c_2 & c_2+a_2 \\ a_3 & b_3+c_3 & c_3+a_3 \end{vmatrix} + \begin{vmatrix} b_1 & b_1+c_1 & c_1+a_1 \\ b_2 & b_2+c_2 & c_2+a_2 \\ b_3 & b_3+c_3 & c_3+a_3 \end{vmatrix} \\
+& = \begin{vmatrix} a_1 & b_1+c_1 & c_1 \\ a_2 & b_2+c_2 & c_2 \\ a_3 & b_3+c_3 & c_3 \end{vmatrix} + 0 + 0 + \begin{vmatrix} b_1 & c_1 & c_1+a_1 \\ b_2 & c_2 & c_2+a_2 \\ b_3 & c_3 & c_3+a_3 \end{vmatrix} \\
+& = \begin{vmatrix} a_1 & b_1 & c_1 \\ a_2 & b_2 & c_2 \\ a_3 & b_3 & c_3 \end{vmatrix} + 0 + 0 + \begin{vmatrix} b_1 & c_1 & a_1 \\ b_2 & c_2 & a_2 \\ b_3 & c_3 & a_3 \end{vmatrix} \\
+& = 2\begin{vmatrix} a_1 & b_1 & c_1 \\ a_2 & b_2 & c_2 \\ a_3 & b_3 & c_3 \end{vmatrix} = \text{右端}
+\end{align*}
+\end{proof}
+
+\begin{eg}
+试证$\begin{vmatrix} a_1 & 0 & 0 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{vmatrix} = a_1 \begin{vmatrix} b_2 & b_3 \\ c_2 & c_3	 \end{vmatrix}$
+\end{eg}
+\begin{proof}[证明]
+把左端行列式按第一行展开即得。
+\end{proof}
+
+\begin{eg}
+计算下列行列式：
+\enum
+\item[(1)] $\begin{vmatrix} 1 & -1 & 2 \\ 3 & 2 & 1 \\ 0 & 1 & 4 \end{vmatrix}$
+\item[(2)] $\begin{vmatrix} x & y & x+y \\ y & x+y & x \\ x+y & x & y \end{vmatrix}$
+\item[(3)] $\begin{vmatrix} 1 & 1 & 1 \\ a_1 & a_2 & a_3 \\ a_1^2 & a_2^2 & a_3^2 \end{vmatrix}$
+\end{list}
+\end{eg}
+
+\begin{solution}\
+
+\enum
+\item[(1)]
+$$\begin{vmatrix} 1 & -1 & 2 \\ 3 & 2 & 1 \\ 0 & 1 & 4 \end{vmatrix} \xrightarrow{(-3)r1+r2} \begin{vmatrix} 1 & -1 & 2 \\ 0 & 5 & -5 \\ 0 & 1 & 4 \end{vmatrix} = \begin{vmatrix} 5 & -5 \\ 1 & 4 \end{vmatrix} = 25$$
+\item[(2)]
+\begin{align*}
+& \begin{vmatrix} x & y & x+y \\ y & x+y & x \\ x+y & x & y \end{vmatrix} \xrightarrow{(r3+r2)+r1} \begin{vmatrix} 2(x+y) & 2(x+y) & 2(x+y) \\ y & x+y & x \\ x+y & x & y \end{vmatrix} \\
+= & 2(x+y)\begin{vmatrix} 1 & 1 & 1 \\ y & x+y & x \\ x+y & x & y \end{vmatrix} \xrightarrow{\substack{-c1+c2 \\ -c1+c3}} 2(x+y)\begin{vmatrix} 1 & 0 & 0 \\ y & x & x-y \\ x+y & -y & -x \end{vmatrix} \\
+= & 2(x+y)\begin{vmatrix} x & x-y \\ -y & -x \end{vmatrix} = -2(x+y)(x^2-xy+y^2) \\
+= & -2(x^3+y^3)
+\end{align*}
+\item[(3)]
+\begin{align*}
+& \begin{vmatrix} 1 & 1 & 1 \\ a_1 & a_2 & a_3 \\ a_1^2 & a_2^2 & a_3^2 \end{vmatrix} \xrightarrow{\substack{-c1+c2 \\ -c1+c3}} \begin{vmatrix} 1 & 0 & 0 \\ a_1 & a_2 - a_1 & a_3 - a_1 \\ a_1^2 & a_2^2 - a_1^2 & a_3^2 - a_1^2 \end{vmatrix} \\
+= & \begin{vmatrix} a_2 - a_1 & a_3 - a_1 \\ (a_2 - a_1)(a_2 + a_1) & (a_3 - a_1)(a_3 + a_1) \end{vmatrix} \\
+= & (a_2 - a_1)(a_3 - a_1)\begin{vmatrix} 1 & 1 \\ a_2 + a_1 & a_3 + a_1 \end{vmatrix} \\
+= & (a_2 - a_1)(a_3 - a_1)(a_3 - a_2)
+\end{align*}
+\end{list}
+\end{solution}
+
+\begin{eg}
+分别求$12\cdots n$以及$n(n-1)\cdots 21$的逆序数。
+\end{eg}
+
+\begin{solution}
+$\tau(12\cdots n) = 0$，而$\tau(n(n-1)\cdots 21) = (n-1)+(n-2)+\cdots+1 = \frac{n}{2}(n-1)$。
+\end{solution}
+
+\begin{eg}
+写出四阶行列式展开式中同时含$a_{13}$与$a_{32}$的项, 并确定正负号。
+\end{eg}
+
+\begin{solution}
+对四阶行列式
+$$
+\begin{vmatrix}
+a_{11} & a_{12} & a_{13} & a_{14} \\ a_{21} & a_{22} & a_{23} & a_{24} \\ a_{31} & a_{32} & a_{33} & a_{34} \\ a_{41} & a_{42} & a_{43} & a_{44}
+\end{vmatrix}
+$$
+按定义展开后，同时含$a_{13}$与$a_{32}$的项的一般形式为$a_{13}a_{2j_2}a_{32}a_{4j_4}$，其中$j_2j_4$为$1$与$4$的排列，\\
+共两种：$14,41$，对应的项为
+$$\begin{array}{rcl}
+(-1)^{\tau(3124)} a_{13}a_{21}a_{32}a_{44} & = &  a_{13}a_{21}a_{32}a_{44}, \\
+(-1)^{\tau(3421)} a_{13}a_{24}a_{32}a_{41} & = &  -a_{13}a_{24}a_{32}a_{41}
+\end{array}$$
+\end{solution}
+
+\begin{eg}
+已知$f(x) = \begin{vmatrix}
+x & 1 & 1 & 2 \\ 1 & x & 1 & -1 \\ 3 & 2 & x & 1 \\ 1 & 1 & 2x & 1
+\end{vmatrix}$，求$x^3$的系数。
+\end{eg}
+
+\begin{solution}
+由不同行不同列的选取原则知，含$x^3$的系数有两项，即
+$$(-1)^{\tau(1234)} a_{11}a_{22}a_{33}a_{44} + (-1)^{\tau(1243)} a_{11}a_{22}a_{34}a_{43} = x^3 - 2x^3 = -x^3$$
+故$x^3$的系数为-1。
+\end{solution}
+
+\begin{eg}
+证明对角行列式，上（下）三角行列式均等于其主对角元素的乘积，即均等于
+$$a_{11}a_{22}\cdots a_{nn} = \prod\limits_{i=1}^n a_{ii}.$$
+\end{eg}
+
+\begin{proof}[证明]
+只以“下三角行列式”为例来证明。先决定所有可能的非零项：
+\begin{eqnarray*}
+a_{1j_1}a_{2j_2}\cdots a_{nj_n} = a_{11}a_{22}\cdots a_{nn} \\
+(\because j_1 = 1 \Rightarrow j_2 = 2 \Rightarrow \cdots \Rightarrow j_n = n)
+\end{eqnarray*}
+其次决定其非零项的符号：
+$$\begin{vmatrix}
+a_{11} & 0 & \cdots & 0 \\ a_{21} & a_{22} & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn} \end{vmatrix} = (-1)^{\tau(12\cdots n)}a_{11}a_{22}\cdots a_{nn} = a_{11}a_{22}\cdots a_{nn}.$$
+\end{proof}
+
+\begin{eg}
+计算$\begin{vmatrix}
+a_{11} & a_{12} & a_{13} & a_{14} & a_{15} \\a_{21} & a_{22} & a_{23} & a_{24} & a_{25} \\ a_{31} & a_{32} & 0 & 0 & 0 \\ a_{41} & a_{42} & 0 & 0 & 0 \\ a_{51} & a_{52} & 0 & 0 & 0 \end{vmatrix}$
+\end{eg}
+
+\begin{solution}
+当$j\geqslant 3$时，$a_{3j}, a_{4j}, a_{5j}$均为零，对行列式展开式中每一项$a_{1j_1}a_{2j_2}a_{3j_3}a_{4j_4}a_{5j_5}$，$j_1,j_2,j_3$互不相同，必然有一个$\geqslant 3$，而每项乘积均为0。故整个行列式为0。
+\end{solution}
+
+\begin{eg}
+利用行列式, 可以将如下行列式拆分为哪几项之和？
+$$D = \begin{vmatrix}
+a_1 + b_1 & a_2 + b_2 \\ a_3 + b_3 & a_4 + b_4 \end{vmatrix}$$
+\end{eg}
+
+\begin{solution}
+$$D = \begin{vmatrix}
+a_1 & a_2 + b_2 \\ a_3 & a_4 + b_4 \end{vmatrix} + \begin{vmatrix}
+b_1 & a_2 + b_2 \\ b_3 & a_4 + b_4 \end{vmatrix} = \begin{vmatrix}
+a_1 & a_2 \\ a_3 & a_4 \end{vmatrix} + \begin{vmatrix}
+a_1 & b_2 \\ a_3 & b_4 \end{vmatrix} + \begin{vmatrix}
+b_1 & a_2 \\ b_3 & a_4 \end{vmatrix} + \begin{vmatrix}
+b_1 & b_2 \\ b_3 & b_4 \end{vmatrix}.$$
+\end{solution}
+
+\begin{eg} 利用二阶行列式性质4，我们有
+\begin{eqnarray*}
+\begin{vmatrix} -15 & 30 \\ 2 & 3 \end{vmatrix} & = & 15 \times \begin{vmatrix} -1 & 2 \\ 2 & 3 \end{vmatrix} = 15 \times (-3-4) = -105 \\
+& = & 3 \times \begin{vmatrix} -15 & 10 \\ 2 & 1 \end{vmatrix} = 3 \times 5 \times \begin{vmatrix} -3 & 2 \\ 2 & 1 \end{vmatrix} = -105
+\end{eqnarray*}
+\end{eg}
+
+\begin{eg}
+计算下面的四阶行列式$D = \begin{vmatrix} 1 & 2 & -2 & 3 \\ -1 & -2 & 4 & -2 \\ 0 & 1 & 2 & -1 \\ 2 & 3 & -3 & 10 \end{vmatrix}$。
+\end{eg}
+
+\begin{solution}
+通过行变换将$D$化为上三角行列式
+\begin{eqnarray*}
+D & \xlongequal[(-2)\times r_1 + r_4]{r_1 + r_2} & \begin{vmatrix} 1 & 2 & -2 & 3 \\ 0 & 0 & 2 & 1 \\ 0 & 1 & 2 & -1 \\ 0 & -1 & 1 & 4 \end{vmatrix} \xlongequal{r_3 + r_4} \begin{vmatrix} 1 & 2 & -2 & 3 \\ 0 & 0 & 2 & 1 \\ 0 & 1 & 2 & -1 \\ 0 & 0 & 3 & 3 \end{vmatrix} \xrightarrow{r_2 \leftrightarrow r_3} -\begin{vmatrix} 1 & 2 & -2 & 3 \\ 0 & 1 & 2 & -1 \\ 0 & 0 & 2 & 1 \\ 0 & 0 & 3 & 3 \end{vmatrix} \\
+& \xrightarrow{(-3/2)\times r_3 + r_4} & -\begin{vmatrix} 1 & 2 & -2 & 3 \\ 0 & 1 & 2 & -1 \\ 0 & 0 & 2 & 1 \\ 0 & 0 & 0 & 3/2 \end{vmatrix} = -3
+\end{eqnarray*}
+\end{solution}
+
+\begin{eg}
+计算$n$阶行列式$D_n = \begin{vmatrix}
+a & b & \cdots & b \\ b & a & \cdots & b \\ \vdots & \vdots & \ddots & \vdots \\ b & b & \cdots & a \end{vmatrix}$
+\end{eg}
+
+\begin{solution}
+分析特点：每行元素之和均为$a+(n-1)b$。
+
+操作：把第$2\sim n$列加到第$1$列，提出公因子，然后将第$1$行的$-1$倍加到其余各行，即可化简。
+\begin{eqnarray*}
+D_n & = & [a+(n-1)b] \begin{vmatrix} 1 & b & \cdots & b \\ 1 & a & \cdots & b \\ \vdots & \vdots & \ddots & \vdots \\ 1 & b & \cdots & a \end{vmatrix} = [a+(n-1)b] \begin{vmatrix} 1 & b & \cdots & b \\ & a-b & & \\ & & \ddots & \\ & & & a-b \end{vmatrix} \\
+& = & [a+(n-1)b](a-b)^{n-1}
+\end{eqnarray*}
+\end{solution}
+
+\begin{eg}
+计算下列行列式（其中$a_i \neq 0, i = 1,…, n$）：
+$$D_{n+1} = \begin{vmatrix}
+a_0 & b_1 & b_2 & \cdots & b_{n-1} & b_n \\ c_1 & a_1 & 0 & \cdots & 0 & 0 \\ c_2 & 0 & a_2 & \cdots & 0 & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\ c_n & 0 & 0 & \cdots & 0 & a_n \end{vmatrix}.$$
+这种行列式称为\underline{箭形行列式}。
+\end{eg}
+
+\begin{solution}
+对箭形行列式有固定方法，即把第$i+1$列的$-c_i/a_i$倍加到第1列$(i=1,2,…,n)$，就可以把这个行列式化为三角行列式：
+\begin{eqnarray*}
+D_{n+1} & = & \begin{vmatrix}
+a_0 - \sum\limits_{i=1}^n\frac{b_ic_i}{a_i} & b_1 & b_2 & \cdots & b_{n-1} & b_n \\ 0 & a_1 & 0 & \cdots & 0 & 0 \\ 0 & 0 & a_2 & \cdots & 0 & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\ 0 & 0 & 0 & \cdots & 0 & a_n \end{vmatrix} = a_1\cdots a_n\left( a_0 - \sum\limits_{i=1}^n \dfrac{b_ic_i}{a_i} \right) \\
+& = & \prod\limits_{j=0}^n a_j - \sum\limits_{i=1}^n \widetilde{a}_ib_ic_i \quad (\text{其中 } \widetilde{a}_i := a_1\cdots a_n / a_i).
+\end{eqnarray*}
+\end{solution}
+
+\begin{eg}
+计算行列式$D = \begin{vmatrix}
+1+a_1 & 1 & \cdots & 1 \\ 1 & 1+a_2 & \cdots & 1 \\ \vdots & \vdots & \ddots & \vdots \\ 1 & 1 & \cdots & 1+a_n \end{vmatrix}$，其中$a_i \neq 0, i = 1,…, n$。
+\end{eg}
+
+\begin{solution}[解法一]
+$D$的第$2\sim n$行均减第$1$行，可化成箭形行列式：
+\begin{eqnarray*}
+D & = & \begin{vmatrix} 1+a_1 & 1 & \cdots & 1 \\ -a_1 & a_2 & & \\ \vdots & & \ddots & \\ -a_1 & & & a_n \end{vmatrix} = \begin{vmatrix} 1+a_1+\sum\limits_{i=2}^n\frac{a_1}{a_i} & 1 & \cdots & 1 \\ 0 & a_2 & & \\ \vdots & & \ddots & \\ 0 & & & a_n \end{vmatrix} \\
+& = & (1+a_1+\sum\limits_{i=2}^n\frac{a_1}{a_i})a_2\cdots a_n = (\prod\limits_{k=1}^n a_k)(1+\sum\limits_{i=1}^n\frac{1}{a_i})
+\end{eqnarray*}
+\end{solution}
+
+\begin{solution}[解法二]
+除主对角线外，将每项的$1$写成$1+0$，将$D$拆成$2^n$个行列式，只有如下的$n+1$个非$0$：
+\begin{eqnarray*}
+D & = & \begin{vmatrix} 1 & & & \\ 1 & a_2 & & \\ \vdots & & \ddots & \\ 1 & & & a_n \end{vmatrix} + \begin{vmatrix} a_1 & 1 & & \\ & 1 & & & \\ & \vdots & \ddots & \\ & 1 & & a_n \end{vmatrix} + \cdots + \begin{vmatrix} a_1 & & & 1 \\ & a_2 & & 1 \\ & & \ddots & \vdots \\  & & & 1 \end{vmatrix} + \begin{vmatrix} a_1 & & & \\ & a_2 & & \\ & & \ddots & \\ & & & a_n \end{vmatrix} \\
+& = & \frac{1}{a_1}\prod\limits_{k=1}^n a_k + \frac{1}{a_2}\prod\limits_{k=1}^n a_k + \cdots + \frac{1}{a_n}\prod\limits_{k=1}^n a_k + \prod\limits_{k=1}^n a_k \\
+& = & (\prod\limits_{k=1}^n a_k)(1+\sum\limits_{i=1}^n\frac{1}{a_i})
+\end{eqnarray*}
+\end{solution}
+
+\begin{solution}[解法三]
+在$D$的上面加一行$(1,1,\cdots,1)$，左边加一列$(1,0,\cdots,0)^T$，得到$n+1$阶行列式$D_1$，这种方法叫加边法（升阶法）：
+\begin{eqnarray*}
+D & = & D_1 = \begin{vmatrix}
+1 & 1 & \cdots & 1 \\ 0 & 1+a_1 & \cdots & 1 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 1 & \cdots & 1+a_n \end{vmatrix} = \begin{vmatrix}
+1 & 1 & \cdots & 1 \\ -1 & a_1 & \cdots & \\ \vdots & & \ddots & \\ -1 & & & a_n \end{vmatrix} \quad (\text{化为了箭形行列式}) \\
+& = & \begin{vmatrix} 1+\sum\limits_{i=1}^n\frac{1}{a_i} & 1 & \cdots & 1 \\ 0 & a_1 & & \\ \vdots & & \ddots & \\ 0 & & & a_n \end{vmatrix} = (1+\sum\limits_{i=1}^n\frac{1}{a_i})(\prod\limits_{k=1}^n a_k)
+\end{eqnarray*}
+\end{solution}
+
+\begin{eg}
+对于$2$阶行列式$\begin{vmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{vmatrix}$，有
+$$M_{11} = A_{11} = a_{22}, M_{12} = a_{21}, A_{12} = -a_{21},$$
+$$\Rightarrow D = a_{11}A_{11} + a_{12}A_{12} = a_{11}a_{22} - a_{12}a_{21}.$$
+\end{eg}
+
+\begin{eg}
+\begin{eqnarray*}
+D & = & \begin{vmatrix}
+5 & 3 & -1 & 2 & 0 \\  1 & 7 & 2 & 5 & 2 \\ 0 & -2 & 3 & 1 & 0 \\ 0 & -4 & -1 & 4 & 0 \\ 0 & 2 & 3 & 5 & 0
+\end{vmatrix} \xlongequal{\text{按最后一列展开}} (-1)^{2+5}2 \begin{vmatrix}
+5 & 3 & -1 & 2 \\ 0 & -2 & 3 & 1 \\ 0 & -4 & -1 & 4 \\ 0 & 2 & 3 & 5
+\end{vmatrix} \\
+& \xlongequal{\text{按第一列展开}} & -2\cdot 5 \begin{vmatrix}
+-2 & 3 & 1 \\ -4 & -1 & 4 \\ 2 & 3 & 5
+\end{vmatrix} \xlongequal[r_1+r_3]{-2r_1+r_2} -10 \begin{vmatrix}
+-2 & 3 & 1 \\ 0 & -7 & 2 \\ 0 & 6 & 6
+\end{vmatrix} \\
+& \xlongequal{\text{按第一列展开}} & -10\cdot(-2) \begin{vmatrix}
+-7 & 2 \\ 6 & 6
+\end{vmatrix} = 20(-42-12) = -1080
+\end{eqnarray*}
+\end{eg}
+
+\begin{eg}
+证明$n$阶范德蒙（Vandermonde）行列式$(n \geqslant 2)$
+$$D_n = \begin{vmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+a_1 & a_2 & a_3 & \cdots & a_n \\
+a_1^2 & a_2^2 & a_3^2 & \cdots & a_n^2 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_1^{n-1} & a_2^{n-1} & a_3^{n-1} & \cdots & a_n^{n-1} \\
+\end{vmatrix} = \prod_{1\leqslant j < i \leqslant n} (a_i - a_j).$$
+\end{eg}
+
+\begin{proof}[证明]
+用数学归纳法。
+
+当$n=2$时，$D_n = \begin{vmatrix} 1 & 1\\ a_1 & a_2 \end{vmatrix} = a_2 - a_1 = \prod_{1\leqslant j < i \leqslant 2} (a_i - a_j)$。
+
+假设结论对$n=k-1$成立，即
+$$D_{k-1} = \begin{vmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+a_1 & a_2 & a_3 & \cdots & a_{k-1} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_1^{k-2} & a_2^{k-2} & a_3^{k-2} & \cdots & a_{k-1}^{k-2} \\
+\end{vmatrix} = \prod_{1\leqslant j < i \leqslant k-1} (a_i - a_j)$$
+则当$n=k$时，观察$D_k$的第一列，下面元素是上面元素的$a_1$倍。从第$n$行到第$2$行，依次将前一行的$(-a_1)$倍加到本行上，得
+\begin{eqnarray*}
+D_{k} & = & \begin{vmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+0 & a_2-a_1 & a_3-a_1 & \cdots & a_k-a_1 \\
+0 & a_2(a_2-a_1) & a_3(a_3-a_1) & \cdots & a_k(a_k-a_1) \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & a_1^{k-2}(a_2-a_1) & a_2^{k-2}(a_3-a_1) & \cdots & a_{k-1}^{k-2}(a_k-a_1) \\
+\end{vmatrix} \\
+& = & (a_k - a_1)\cdots(a_2-a_1)\begin{vmatrix}
+1 & 1 & 1 & \cdots & 1 \\
+a_1 & a_2 & a_3 & \cdots & a_{k-1} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_1^{k-2} & a_2^{k-2} & a_3^{k-2} & \cdots & a_{k-1}^{k-2} \\
+\end{vmatrix} \\
+& = & (a_k - a_1)\cdots(a_2-a_1)\prod_{2\leqslant j < i \leqslant k} (a_i - a_j) \\
+& = & \prod_{1\leqslant j < i \leqslant k} (a_i - a_j).
+\end{eqnarray*}
+\end{proof}
+
+\begin{eg}
+计算下列行列式
+\enum
+\item[(1)] $\begin{vmatrix}
+a_1^2 & a_2^2 & a_3^2 \\ a_1 & a_2 & a_3 \\ 1 & 1 & 1
+\end{vmatrix}$
+\item[(2)]$\begin{vmatrix}
+1 & 1 & 4 & a \\ 3 & \frac12 & 8 & aq \\ 9 & \frac14 & 16 & aq^2 \\ 27 & \frac18 & 32 & aq^3
+\end{vmatrix}$
+\end{list}
+\end{eg}
+
+\begin{solution}\
+
+\enum
+\item[(1)] $\begin{vmatrix}
+a_1^2 & a_2^2 & a_3^2 \\ a_1 & a_2 & a_3 \\ 1 & 1 & 1
+\end{vmatrix} \xlongequal{r_1 \leftrightarrow r_3} - \begin{vmatrix}
+1 & 1 & 1 \\ a_1 & a_2 & a_3 \\ a_1^2 & a_2^2 & a_3^2
+\end{vmatrix} = -(a_2 - a_1)(a_3 - a_1)(a_3 - a_2)$。
+\item[(2)]$\begin{vmatrix}
+1 & 1 & 4 & a \\ 3 & \frac12 & 8 & aq \\ 9 & \frac14 & 16 & aq^2 \\ 27 & \frac18 & 32 & aq^3
+\end{vmatrix} = 4a \begin{vmatrix}
+1 & 1 & 1 & 1 \\ 3 & \frac12 & 2 & q \\ 3^2 & (\frac12)^2 & 2^2 & q^2 \\ 3^3 & (\frac12)^3 & 2^3 & q^3
+\end{vmatrix} = 15a(q-\frac12)(q-3)(q-2)$。
+\end{list}
+\end{solution}
+
+\begin{eg}
+计算$D = \begin{vmatrix}
+1 & 1 & 1 \\ a_1 & a_2 & a_3 \\ a_1^3 & a_2^3 & a_3^3
+\end{vmatrix}$.
+\end{eg}
+
+\begin{solution}
+考虑
+$$D' = \begin{vmatrix}
+1 & 1 & 1 & 1 \\ x &  a_1 & a_2 & a_3 \\ x^2 & a_1^2 & a_2^2 & a_3^2 \\ x^3 & a_1^3 & a_2^3 & a_3^3
+\end{vmatrix}.$$
+一方面，$D'$是一个标准范德蒙行列式，有
+$$D' = (a_1-x)(a_2-x)(a_3-x)\prod_{1\leqslant j < i \leqslant 3} (a_i - a_j).$$
+故$D'$是关于$x$的$3$次多项式，其中$x^2$的系数为
+$$(a_1+a_2+a_3)\prod_{1\leqslant j < i \leqslant 3} (a_i - a_j).$$
+另一方面，将$D'$按第一列展开，可知$x^2$的系数为
+$$(-1)^{3+1}D = D.$$
+比较两种方法所得$x^2$的系数，有
+$$D = (a_1+a_2+a_3)\prod_{1\leqslant j < i \leqslant 3} (a_i - a_j) = \left(\sum\limits_{k=1}^n a_k\right)\cdot\prod_{1\leqslant j < i \leqslant 3} (a_i - a_j).$$
+
+本例中的$D$称为\underline{超范德蒙行列式}，且结果可以推广到一般情况。
+\end{solution}
+
+\begin{eg}
+计算$n$阶三对角行列式（递推公式法）
+$$D_n = \begin{vmatrix}
+\alpha + \beta & \alpha\beta & & & & \\ 1 & \alpha + \beta & \alpha\beta & & & \makebox(0,0){\text{\Huge0}} \\ & 1 & \alpha + \beta & \alpha\beta & & \\ & & \ddots & \ddots & \ddots & \\ & \makebox(0,0){\text{\Huge0}} & & \ddots & \ddots & \alpha\beta \\ & & & & 1 & \alpha + \beta
+\end{vmatrix}$$
+\end{eg}
+
+\begin{solution}
+将$D_n$按第一列展开，得
+\begin{eqnarray*}
+& D_n = & (\alpha + \beta) D_{n-1} - \begin{vmatrix}
+\alpha\beta & 0 & \cdots & \cdots & 0 \\ 1 & \alpha + \beta & \alpha\beta & & \\ & 1 & \ddots & \ddots & \\ & & \ddots & \ddots & \alpha\beta \\ & & & 1 & \alpha + \beta
+\end{vmatrix} \\
+& \Longrightarrow & D_n = (\alpha + \beta) D_{n-1} - \alpha\beta D_{n-2}
+\end{eqnarray*}
+可化为
+$$D_n - \beta D_{n-1}= \alpha D_{n-1} - \alpha\beta D_{n-2} = \alpha(D_{n-1} - \beta D_{n-2})$$
+令$d_n = D_n - \beta D_{n-1}$得
+$$d_n = \alpha d_{n-1} = \alpha^2 d_{n-2} = \cdots = \alpha^{n-2} d_2 = \alpha^{n-2}(D_2 - \beta D_1) = \alpha^n,$$
+从而有
+\begin{eqnarray*}
+D_n & = & \beta D_{n-1} + \alpha^n = \beta (\beta D_{n-2} + \alpha^{n-1}) + \alpha^n \\
+& = & \beta^2 D_{n-2} + \alpha^{n-1}\beta + \alpha^n \\
+& \cdots & \\
+& = & \beta^n + \beta^{n-1}\alpha + \beta^{n-2}\alpha^2 + \cdots + \beta\alpha^{n-1} + \alpha^n
+\end{eqnarray*}
+\end{solution}
+
+\begin{eg} \label{eg:block_matrix}
+证明
+\[
+  \setlength{\dashlinegap}{2pt}
+  \left| \begin{array}{ccc:ccc}
+    a_{11} & \cdots & a_{1r} & 0 & \cdots & 0 \\
+    \vdots & & \vdots & \vdots & & \vdots \\
+    a_{r1} & \cdots & a_{rr} & 0 & \cdots & 0 \\
+    \hdashline
+    c_{11} & \cdots & c_{1r} & b_{11} & \cdots & b_{1s} \\
+    \vdots & & \vdots & \vdots & & \vdots \\
+    c_{s1} & \cdots & c_{sr} & b_{s1} & \cdots & b_{ss} \\
+  \end{array} \right| =
+\begin{vmatrix}
+a_{11} & \cdots & a_{1r} \\
+\vdots & & \vdots \\
+a_{r1} & \cdots & a_{rr}
+\end{vmatrix} \cdot
+\begin{vmatrix}
+b_{11} & \cdots & b_{1s} \\
+\vdots & & \vdots \\
+b_{s1} & \cdots & b_{ss}
+\end{vmatrix}
+\]
+\end{eg}
+
+\begin{proof}[证明]
+设$A=(a_{ij})_{r\times r}, B=(b_{ij})_{s\times s}, C=(c_{ij})_{s\times r}, O$为零矩阵，则要证明的结论可简写为
+$$\begin{vmatrix} A & 0 \\ C & B\end{vmatrix} = |A|\cdot|B|.$$
+
+对$r$作归纳。当$r=1$时，按第一行展开知，结论成立。
+
+假设结论对$r-1$成立，则对$r$的情形，仍把行列式按第一行展开，且将$A$中去掉第$1$行第$j$列的矩阵记为$A_j$，将$C$中去掉第$j$列的矩阵记为$C_j, 1 \leqslant j \leqslant r$，则有
+$$\begin{vmatrix} A & 0 \\ C & B\end{vmatrix} = a_{11}\begin{vmatrix} A_1 & 0 \\ C_1 & B\end{vmatrix} + (-1)^{1+2}a_{12}\begin{vmatrix} A_2 & 0 \\ C_2 & B\end{vmatrix} + \cdots + (-1)^{1+r}a_{1r}\begin{vmatrix} A_r & 0 \\ C_r & B\end{vmatrix}.$$
+由于$A_j$均为$r-1$阶方阵，根据归纳假设，有$\begin{vmatrix} A_j & 0 \\ C_j & B\end{vmatrix} = |A_j|\cdot|B|$。故
+$$\begin{vmatrix} A & 0 \\ C & B\end{vmatrix} = \sum\limits_{j=1}^r (-1)^{1+j}a_{1j}|A_j|\cdot|B| = (\sum\limits_{j=1}^r (-1)^{1+j}a_{1j}|A_j|)\cdot|B| = |A|\cdot|B|.$$
+
+类似地，可得如下结论：
+\enum
+\item[(1)] $\begin{vmatrix} A_{r\times r} & 0 \\ C_{s\times r} & B_{s\times s}\end{vmatrix} = \begin{vmatrix} A_{r\times r} & C_{r\times s} \\ 0 & B_{s\times s}\end{vmatrix} = |A_{r\times r}|\cdot|B_{s\times s}|$。
+\item[(2)] $\begin{vmatrix} 0 &  A_{r\times r} \\ B_{s\times s} & C_{s\times r} \end{vmatrix} = \begin{vmatrix} C_{r\times s} & A_{r\times r}  \\ B_{s\times s} & 0 \end{vmatrix} = (-1)^{rs}|A_{r\times r}|\cdot|B_{s\times s}|$。
+
+利用上述结论，可尽量使行列式的整块化零，从而降阶，简化计算。这样的方法称为：分块三角阵法或分块打洞法。
+\end{list}
+\end{proof}
+
+\begin{eg}
+用克拉默法则解方程组$\begin{cases}
+3x_1 + 5x_2 + 2x_3 + x_4 = 3 \\
+3x_2 + 4x_4 = 4 \\
+x_1 + x_2 + x_3 + x_4 = 11/6 \\
+x_1 - x_2 - 3x_3 + 2x_4 = 5/6
+\end{cases}$
+\end{eg}
+
+\begin{solution}
+$D = \begin{vmatrix} 3 & 5 & 2 & 1 \\ 0 & 3 & 0 & 4 \\ 1 & 1 & 1 & 1 \\ 1 & -1 & -3 & 2 \end{vmatrix} = 67 \neq 0$，
+$D_1 = \begin{vmatrix} 3 & 5 & 2 & 1 \\ 4 & 3 & 0 & 4 \\ 11/6 & 1 & 1 & 1 \\ 5/6 & -1 & -3 & 2 \end{vmatrix} = 67/3$，
+$D_2 = \begin{vmatrix} 3 & 3 & 2 & 1 \\ 0 & 4 & 0 & 4 \\ 1 & 11/6 & 1 & 1 \\ 1 & 5/6 & -3 & 2 \end{vmatrix} = 0$，
+$D_3 = \begin{vmatrix} 3 & 5 & 3 & 1 \\ 0 & 3 & 4 & 4 \\ 1 & 1 & 11/6 & 1 \\ 1 & -1 & 5/6 & 2 \end{vmatrix} = 67/2$，
+$D_4 = \begin{vmatrix} 3 & 5 & 2 & 3 \\ 0 & 3 & 0 & 4 \\ 1 & 1 & 1 & 11/6 \\ 1 & -1 & -3 & 5/6 \end{vmatrix} =67$。即可算得：
+$$
+\begin{cases}
+x_1 = D_1/D = 1/3 \\ x_2 = D_2/D = 0 \\ x_3 = D_3/D = 1/2 \\ x_4 = D_4/D = 1
+\end{cases}$$
+\end{solution}
+
+\begin{eg}
+设$P_i = (x_i ,y_i),$ $i=1, 2, 3$，为平面上不共线的三点，且$x_1,$ $x_2,$ $x_3$两两互不相等，求过点$P_1,$ $P_2,$ $P_3$的二次曲线$y = ax^2+bx+c$。
+\end{eg}
+
+\begin{solution}
+将$P_i = (x_i ,y_i)$代入曲线方程$y = ax^2+bx+c$，得
+$$\begin{cases}
+ax_1^2 + bx_1 + c = y_1 \\
+ax_2^2 + bx_2 + c = y_2 \\
+ax_3^2 + bx_3 + c = y_3
+\end{cases}$$
+这是一个以$a, b, c$为未知量的线性方程组，其系数行列式为
+$$D = \begin{vmatrix} x_1^2 & x_1 & 1 \\ x_2^2 & x_2 & 1 \\ x_3^2 & x_3 & 1 \end{vmatrix} \neq 0 \quad(\text{因为$x_1, x_2, x_3$互不相等}).$$
+$$D_1 = \begin{vmatrix} y_1 & x_1 & 1 \\ y_2 & x_2 & 1 \\ y_3 & x_3 & 1 \end{vmatrix},
+D_2 = \begin{vmatrix} x_1^2 & y_1 & 1 \\ x_2^2 & y_2 & 1 \\ x_3^2 & y_3 & 1 \end{vmatrix},
+D_3 = \begin{vmatrix} x_1^2 & x_1 & y_1 \\ x_2^2 & x_2 & y_2 \\ x_3^2 & x_3 & y_3 \end{vmatrix},$$
+因为$P_1, P_2, P_3$不共线，所以$D_1\neq 0$，所以
+$$a = D_1/D\neq 0, b = D_2/D, c = D_3/D,$$
+代入二次曲线方程，有
+$$y = ax^2+bx+c = \begin{vmatrix} x_1^2 & x_1 & 1 \\ x_2^2 & x_2 & 1 \\ x_3^2 & x_3 & 1 \end{vmatrix}^{-1}\cdot\begin{vmatrix} x^2 & x & 1 & 0 \\ x_1^2 & x_1 & 1 & y_1 \\ x_2^2 & x_2 & 1 & y_2 \\ x_3^2 & x_3 & 1 & y_3 \end{vmatrix}.$$
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{课后习题}
+
+\begin{ex} \label{ex:2.1}
+求以下排列的逆序数：
+
+\enum
+\item[(1)] $(1374625)$
+\item[(2)] $(21436587)$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:2.2}
+证明：任意一个$1,2,\cdots,n$的排列，可经过不多于$n$次对换，变成$(123\cdots n)$。
+\end{ex}
+
+\begin{ex} \label{ex:2.3}
+在数$1,2,\cdots,n$组成的任意一个排列中，逆序数和正序数之和等于多少？
+\end{ex}
+
+\begin{ex} \label{ex:2.4}
+设$1,2,\cdots,n$组成的排列$a_1,\cdots,a_n$的逆序数为$k$，请问$a_n,\cdots,a_1$逆序数等于多少？
+\end{ex}
+
+\begin{ex} \label{ex:2.5}
+如果$n$阶行列式中所有元素都变号，则行列式值如何变化？
+\end{ex}
+
+\begin{ex} \label{ex:2.6}
+设$n$阶行列式$|A|$的值为$D$，若将$|A|$的每个元素$a_{ij}$变为$(-1)^{i+j}a_{ij}$，则行列式值如何变化？
+\end{ex}
+
+\begin{ex} \label{ex:2.7}
+求下列2阶行列式：
+
+\enum
+\item[(1)] $\begin{vmatrix} 0.7 & 0.3 \\ 0.2 & 0.8 \end{vmatrix}$
+\item[(2)] $\begin{vmatrix} \cos\theta & -\sin\theta \\ \sin\theta & \cos\theta \end{vmatrix}$
+\item[(3)] $\begin{vmatrix} a & b \\ c & d \end{vmatrix}$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:2.8}
+求下列3阶行列式：
+
+\enum
+\item[(1)] $\begin{vmatrix} 1 & 4 & 4 \\ -1 & -3 & -2 \\ 1 & 3 & 3 \end{vmatrix}$
+\item[(2)] $\begin{vmatrix} 1 & 1 & 0 \\ 0 & 1 & 4 \\ -1 & -1 & 1 \end{vmatrix}$
+\item[(3)] $\begin{vmatrix} -2 & -1 & -4 \\ -3 & -2 & -4 \\ -2 & -1 & -3 \end{vmatrix}$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:2.9}
+求下列4阶行列式：
+
+\enum
+\item[(1)] $\begin{vmatrix} 0 & -1 & 4 & 0 \\ 1 & 0 & -3 & 0 \\ 1 & 0 & -2 & -1 \\ 3 & -3 & 0 & 4 \end{vmatrix}$
+\item[(2)] $\begin{vmatrix} 1 & 2 & -1 & -2 \\ 0 & 1 & 0 & -3 \\ 0 & 0 & 1 & -4 \\ 0 & 0 & 1 & -3 \end{vmatrix}$
+\item[(3)] $\begin{vmatrix} 2 & 4 & 3 & 4 \\ -2 & -3 & -3 & 0 \\ -1 & -2 & -1 & -4 \\ 0 & 2 & 3 & -3 \end{vmatrix}$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:2.10}
+求下列5阶行列式：
+
+\enum
+\item[(1)] $\begin{vmatrix} -3 & 5 & 0 & 1 & -1 \\ 1 & -2 & 7 & -3 & 1 \\ 0 & 0 & 1 & -3 & 0 \\ 0 & 0 & 1 & 2 & 3 \\ 0 & 0 & 0 & -2 & -1 \end{vmatrix}$
+\item[(2)] $\begin{vmatrix} 1 & 0 & 0 & 0 & 0 \\ 2 & 4 & 3 & -3 & -2 \\ 3 & -1 & 0 & -1 & -3 \\ 4 & -3 & -2 & 2 & 1 \\ 5 & 1 & 2 & -3 & -4 \end{vmatrix}$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:2.11}
+计算行列式$\begin{vmatrix} 103 & 100 & 204 \\ 199 & 200 & 395 \\ 301 & 300 & 600 \end{vmatrix}$。
+\end{ex}
+
+\begin{ex} \label{ex:2.12}
+利用范德蒙行列式的结果，计算以下行列式
+
+\enum
+\item[(1)] $\begin{vmatrix} 1 & 1 & 1 \\ 2 & 3 & 4 \\ 4 & 9 & 16 \end{vmatrix}$
+\item[(2)] $\begin{vmatrix} 1 & 2 & 4 & 8 \\ -1 & -3 & -9 & -27 \\ 1 & 4 & 16 & 64 \\ -1 & 5 & -25 & 125 \end{vmatrix}$
+\item[(3)] $\begin{vmatrix} a_1 + a_2 & a_2 + a_3 & \cdots & a_n + a_1 \\ a_1^2 + a_2^2 & a_2^2 + a_3^2 & \cdots & a_n^2 + a_1^2 \\ \vdots & \vdots & \ddots & \vdots \\ a_1^n + a_2^n & a_2^n + a_3^n & \cdots & a_n^n + a_1^n \end{vmatrix}$
+\end{list}
+\end{ex}
+
+\begin{ex}\  \label{ex:2.13}
+
+\enum
+\item[(1)] 计算行列式$\begin{vmatrix} 1 & 1 & 1 & 1 \\ x & a & b & c \\ x^2 & a^2 & b^2 & c^2 \\ x^3 & a^3 & b^3 & c^3 \end{vmatrix}$。
+\item[(2)] 结合展开公式，求行列式$\begin{vmatrix} 1 & 1 & 1 \\ a & b & c \\ a^3 & b^3 & c^3 \end{vmatrix}$以及$\begin{vmatrix} 1 & 1 & 1 \\ a^2 & b^2 & c^2 \\ a^3 & b^3 & c^3 \end{vmatrix}$。
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:2.14}
+令$\{F_n\}$为Fibonacci数列，由
+$$
+\begin{cases}
+F_1 = 1, F_2 = 2 \\
+F_n = F_{n-1} + F_{n-2}, & n \geqslant 3
+\end{cases}
+$$
+给出。证明
+$F_n = \begin{vmatrix} 1 & 1 & & & \\ -1 & 1 & \ddots & & \\ & \ddots & \ddots & \ddots & \\ & & \ddots & \ddots & 1 \\ & & & -1 & 1 \end{vmatrix}_{n}$。
+\end{ex}
+
+\begin{ex} \label{ex:2.15}
+展开以下行列式：
+
+\enum
+\item[(1)] $\begin{vmatrix} a & x & b & x \\ x & a & x & b \\ b & x & b & x \\ x & b & x & b \end{vmatrix}$
+\item[(2)] $\begin{vmatrix} 1 & x & x^2 & x^3 \\ x^3 & 1 & x & x^2 \\ x^2 & x^3 & 1 & x \\ x & x^2 & x^3 & 1 \end{vmatrix}$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:2.16}
+证明下列恒等式：
+
+\enum
+\item[(1)] $\begin{vmatrix} a^2 & ab & b^2 \\ 2a & a + b & 2b \\ 1 & 1 & 1 \end{vmatrix} = (a - b)^3$
+
+\item[(2)] $\begin{vmatrix} a_1 + b_1x & a_1x + b_1 & c_1 \\ a_2 + b_2x & a_2x + b_2 & c_2 \\ a_3 + b_3x & a_3x + b_3 & c_3 \end{vmatrix} = (1 - x^2)\begin{vmatrix} a_1 & b_1 & c_1 \\ a_2 & b_2 & c_2 \\ a_3 & b_3 & c_3 \end{vmatrix}$
+
+\item[(3)] $\begin{vmatrix} x & -1 & & & \\ & x & -1 & & \\ & & \ddots & \ddots & \\ & & & x & -1 \\ a_n & a_{n-1} & \cdots & a_2 & x + a_1 \end{vmatrix} = x^n + \sum\limits_{k=1}^n a_kx^{n-k}$
+
+\item[(4)] $\begin{vmatrix} \cos\theta & 1 & & & \\ 1 & 2\cos\theta & 1 & & \\ & \ddots & \ddots & \ddots & \\ & & 1 & 2\cos\theta & 1 \\ & & & 1 & 2\cos\theta \end{vmatrix}_n = \cos n\theta$
+
+\item[(5)] $\begin{vmatrix} 0 & \cdots & 0 & a_{1n} \\ 0 & \cdots & a_{2,n-1} & a_{2n} \\ \vdots & \ddots & \vdots & \vdots \\ a_{n1} & \cdots & a_{n,n-1} & a_{nn} \end{vmatrix} = (-1)^{\frac{n(n-1)}{2}}a_{1n}a_{2,n-1}\cdots a_{n1}$
+
+%\item[(6)] $\begin{vmatrix} 1 + a_1 & 1 & \cdots & 1 \\ 1 & 1 + a_2 & \cdots & 1 \\ \vdots & \vdots & \ddots & \vdots \\ 1 & 1 & \cdots & 1 + a_n \end{vmatrix} = (1 + \sum\limits_{i=1}^n\frac{1}{a_i}) \prod\limits_{i=1}^n a_i, \quad a_i \neq 0, i = 1, 2, \cdots, n$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:2.17}
+设
+$$D = \begin{vmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & & \vdots \\ a_{n1} & \cdots & a_{nn} \end{vmatrix},$$
+求证：
+$$D' = \begin{vmatrix} a_{11}+x_1 & a_{12}+x_2 & \cdots & a_{1n}+x_n \\ a_{21}+x_1 & a_{22}+x_2 & \cdots & a_{2n}+x_n \\ \vdots & \vdots & & \vdots \\ a_{n1}+x_1 & a_{n2}+x_2 & \cdots & a_{nn}+x_n \end{vmatrix} = D + \sum\limits_{j=1}^n x_j \sum\limits_{i=1}^n A_{ij},$$
+其中$A_{ij}$为$D$中元素$a_{ij}$的代数余子式。
+\end{ex}
+
+\begin{ex} \label{ex:2.18}
+用Cramer法则解下述线性方程组（首先验证Cramer法则的适用条件是否满足）
+
+\enum
+\item[(1)] $\begin{bmatrix} -1 & 0 & 0 \\ -5 & -2 & 6 \\ -5 & -3 & 7 \end{bmatrix} \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} -2 \\ 1 \\ -1 \end{bmatrix}$
+
+\item[(2)] $\begin{bmatrix} -2 & 1 & 1 \\ -2 & -2 & 2 \\ -2 & 0 & 2 \end{bmatrix} \begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} -1 \\ 0 \\ 1 \end{bmatrix}$
+
+\item[(3)] $\begin{bmatrix} 0 & -2 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 2 & -2 & 0 & 0 \\ 0 & 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} x_1 \\ x_2 \\ x_3 \\ x_4 \end{bmatrix} = \begin{bmatrix} 1 \\ 2 \\ 3 \\ 4 \end{bmatrix}$
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:2.19}
+假设平面上三个点$(x_1, y_1), (x_2, y_2), (x_3, y_3)$不共线。证明：由方程
+ $$\begin{vmatrix} 1 & x & y & x^2 + y^2 \\ 1 & x_1 & y_1 & x_1^2 + y_1^2 \\ 1 & x_2 & y_2 & x_2^2 + y_2^2 \\ 1 & x_3 & y_3 & x_3^2 + y_3^2 \end{vmatrix} = 0$$ ($x,y$为未知元) 给出的解集是平面上过$(x_1, y_1), (x_2, y_2), (x_3, y_3)$这三个点的圆。
+\end{ex}
+
+\begin{ex} \label{ex:2.20}
+设$\left\{ \begin{array}{rcl} L_1: \alpha x + \beta y + \gamma = 0 \\ L_2: \gamma x + \alpha y + \beta = 0 \\ L_3: \beta x + \gamma y + \alpha = 0\end{array}\right.$是三条不同的直线，若$L_1, L_2, L_3$交于一点，试证$\alpha + \beta + \gamma = 0$。
+\end{ex}
+
+\begin{ex} \label{ex:2.21}
+设$A$为$n$阶方阵，$\alpha,\beta$为$n$维列向量，$b,c$为实数。假设有$\begin{vmatrix} A & \alpha \\ \beta^T & b \end{vmatrix} = 0$，求证$$\begin{vmatrix} A & \alpha \\ \beta^T & c \end{vmatrix} = (c-b)|A|.$$
+\end{ex}
+
+\begin{ex}\ \label{ex:2.22}
+
+\enum
+\item[(1)] 设$n > 1,$ 由
+$$\begin{vmatrix} 1 & 1 & \cdots & 1 \\ 1 & 1 & \cdots & 1 \\ \vdots & \vdots &  & \vdots \\ 1 & 1 & \cdots & 1 \end{vmatrix}_{n\times n} = 0,$$
+证明数$1,2,\cdots,n$组成的所有排列中，奇偶排列各占一半。
+
+\item[(2)] 计算$\sum\limits_{i_1i_2\cdots i_n\in P_n} \begin{vmatrix} a_{1i_1} & a_{1i_2} & \cdots & a_{1i_n} \\ a_{2i_1} & a_{2i_2} & \cdots & a_{2i_n} \\ \vdots & \vdots &  & \vdots \\ a_{ni_1} & a_{ni_2} & \cdots & a_{ni_n} \end{vmatrix}$。
+\end{list}
+\end{ex}
+
+\begin{ex} \label{ex:2.23}
+设$|A| = \det (a_{ij})_{n\times n}$为$n$阶行列式。如果$a_{ii}>0 (i = 1,2,\cdots,n)$，$a_{ij}<0 (i\neq j)$，又设$\sum\limits_{i=1}^n a_{ij} > 0 (j = 1,2,\cdots,n)$。试证行列式
+$$D_n = \begin{vmatrix} a_{11} & \cdots & a_{1n} \\ \vdots & & \vdots \\ a_{n1} & \cdots & a_{nn} \end{vmatrix} > 0$$
+\end{ex}
+
+\begin{ex} \label{ex:2.24}
+设$n(n \geqslant 2)$阶行列式$\det A$的所有元素为$1$或者$-1$，
+
+\enum
+\item[(1)] 求证：$\det A$的绝对值小于等于$n!$。
+\item[(2)] 求证：$\det A$被$2^{n-1}$整除。
+\item[(3)] 求证：$\det A$的绝对值小于等于$(n-1)!\cdot2(n-1)$。
+\item[(4)] 求证：$n > 2$时，$\det A$的绝对值小于等于$(n-1)!\cdot(n-1)$。
+\end{list}
+\end{ex}
+
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{习题答案}
+
+\textbf{习题\ref{ex:2.1} 解答：}
+
+\enum
+\item[(1)] 逆序数为$0 + 1 + 4 + 1 + 2 + 0 (\text{分别为1, 3, 7, 4, 6, 2的逆序数})= 8$。
+
+\item[(2)] 逆序数为4。
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.2} 解答：}
+
+可以用数学归纳法证明。
+
+也可以直接证明：如果$1$不在排列的第一位，则通过一次对换把$1$换到第一位。如果$2$不在新得到的排列的第二位，则通过一次对换把$2$换到第二位……如此便可以可经过不多于$n$次对换，变
+成$(123\cdots n)$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.3} 解答：}
+
+任意一个$1,2,\cdots,n$的排列，可经过不多于$n$次有限次对换，变成自然排列$(123\cdots n)$。每次对换，正序数增加（减少）的个数恰好等于逆序数减少（增加）的个数，所以逆序数和正序数之和等于自然排列$(123\cdots n)$的正序数（其逆序数为0），等于$\frac{n(n-1)}{2}$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.4} 解答：}
+
+因为排列$a_1,\cdots,a_n$的逆序数为$k$，所以排列$a_n,\cdots,a_1$的正序数为$k$。由上一题知数$1,2,\cdots,n$组成的任意一个排列中，逆序数和正序数之和等于$\frac{n(n-1)}{2}$，所以$a_n,\cdots,a_1$ 的逆序数便等于$\frac{n(n-1)}{2}-k$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.5} 解答：}
+
+变为原行列式值乘以$(-1)^n$。
+
+从行列式定义式即可以看出新的行列式定义式的每一个求和项都是原行列式的相应的项的$(-1)^n$倍。也可以利用行列式的性质，把新行列式每行都提出一个$(-1)$，总共提出$n$个$(-1)$，即变为原行列式乘以$(-1)^n$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.6} 解答：}
+
+设$D' = \det ((-1)^{i+j}a_{ij})_{n\times n}$，那么根据行列式定义，有
+\begin{eqnarray*}
+D' & = & \sum\limits_{i_1i_2\cdots i_n\in P_n} (-1)^{\tau(i_1i_2\cdots i_n)} ((-1)^{1+i_1}a_{1i_1}) ((-1)^{2+i_2}a_{2i_2}) \cdots ((-1)^{n+i_n}a_{ni_n}) \\
+& = & \sum\limits_{i_1i_2\cdots i_n\in P_n} (-1)^{\tau(i_1i_2\cdots i_n)} (-1)^{1+i_1+2+i_2+\cdots+n+i_n} a_{1i_1} a_{2i_2} \cdots a_{ni_n} \\
+& = & \sum\limits_{i_1i_2\cdots i_n\in P_n} (-1)^{\tau(i_1i_2\cdots i_n)} ((-1)^{1+2+\cdots+n})^2 a_{1i_1} a_{2i_2} \cdots a_{ni_n} \\
+& = &  \sum\limits_{i_1i_2\cdots i_n\in P_n} (-1)^{\tau(i_1i_2\cdots i_n)} a_{1i_1} a_{2i_2} \cdots a_{ni_n} \\
+& = & D
+\end{eqnarray*}
+所以行列式值不变。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.7} 解答：}
+
+直接通过行列式的定义做即可。第(1)小题：
+$$\begin{vmatrix} 0.7 & 0.3 \\ 0.2 & 0.8 \end{vmatrix} = 0.7\times 0.8 - 0.3\times 0.2 = 0.56 - 0.06 = 0.5.$$
+其他小题的做法类似，答案分别为$1, ad-bc.$
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.8} 解答：}
+
+答案都是1，通过行或列的初等变换把行列式化成容易计算的形式。第(1)小题：
+$$\begin{vmatrix} 1 & 4 & 4 \\ -1 & -3 & -2 \\ 1 & 3 & 3 \end{vmatrix} = \begin{vmatrix} 1 & 4 & 4 \\ 0 & 1 & 2 \\ 0 & -1 & -1 \end{vmatrix} = \begin{vmatrix} 1 & 4 & 4 \\ 0 & 1 & 2 \\ 0 & 0 & 1 \end{vmatrix} = 1.$$
+其他小题的做法类似。直接通过行列式的定义做也可以。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.9} 解答：}
+
+答案都是1，通过行或列的初等变换把行列式化成容易计算的形式，与上一题做法相似。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.10} 解答：}
+
+答案都是1，要注意利用例题\ref{eg:block_matrix}的结论进行化简计算。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.11} 解答：}
+
+\begin{eqnarray*}
+& & \begin{vmatrix} 103 & 100 & 204 \\ 199 & 200 & 395 \\ 301 & 300 & 600 \end{vmatrix}
+=\begin{vmatrix} 100+3 & 100 & 200+4 \\ 200-1 & 200 & 400-5 \\ 300+1 & 300 & 600+0 \end{vmatrix} = \begin{vmatrix} 3 & 100 & 4 \\ -1 & 200 & -5 \\ 1 & 300 & 0 \end{vmatrix} \\
+& = & 100\begin{vmatrix} 3 & 1 & 4 \\ -1 & 2 & -5 \\ 1 & 3 & 0 \end{vmatrix} = 2000
+\end{eqnarray*}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.12} 解答：}
+
+\enum
+\item[(1)] $\begin{vmatrix} 1 & 1 & 1 \\ 2 & 3 & 4 \\ 4 & 9 & 16 \end{vmatrix} = (4-2)\times(4-3)\times(3-2) = 2$
+
+\item[(2)] $\begin{vmatrix} 1 & 2 & 4 & 8 \\ -1 & -3 & -9 & -27 \\ 1 & 4 & 16 & 64 \\ -1 & 5 & -25 & 125 \end{vmatrix} = \det\begin{vmatrix} 1 & 2 & 4 & 8 \\ 1 & 3 & 9 & 27 \\ 1 & 4 & 16 & 64 \\ 1 & -5 & 25 & -125 \end{vmatrix} \\ = (-5-4)\times(-5-3)\times(-5-2)\times(4-3) \times(4-2)\times(3-2)= -1008$
+
+\item[(3)] 设$v_i = \begin{bmatrix} a_i \\ a_i^2\\ \vdots\\ a_i^n\end{bmatrix}$，那么
+$$\begin{vmatrix} a_1 + a_2 & a_2 + a_3 & \cdots & a_n + a_1 \\ a_1^2 + a_2^2 & a_2^2 + a_3^2 & \cdots & a_n^2 + a_1^2 \\ \vdots & \vdots & \ddots & \vdots \\ a_1^n + a_2^n & a_2^n + a_3^n & \cdots & a_n^n + a_1^n \end{vmatrix} = \begin{vmatrix} v_1 + v_2, v_2 + v_3, \cdots, v_n + v_1 \end{vmatrix}.$$
+利用行列式对列的线性性，展开上式，发现除了 $\begin{vmatrix} v_1, v_2, \cdots, v_n\end{vmatrix}$ 和 $\begin{vmatrix} v_2, v_3, \cdots, v_n, v_1\end{vmatrix},$ 其他项都有至少一对相同的列，所以
+\begin{eqnarray*}
+& & \begin{vmatrix} a_1 + a_2 & a_2 + a_3 & \cdots & a_n + a_1 \\ a_1^2 + a_2^2 & a_2^2 + a_3^2 & \cdots & a_n^2 + a_1^2 \\ \vdots & \vdots & \ddots & \vdots \\ a_1^n + a_2^n & a_2^n + a_3^n & \cdots & a_n^n + a_1^n \end{vmatrix} \\
+& = & \begin{vmatrix} v_1, v_2, \cdots, v_n\end{vmatrix} + \begin{vmatrix} v_2, v_3, \cdots, v_n, v_1\end{vmatrix} \\
+& = & (1 + (-1)^{n-1}) \cdot \begin{vmatrix} a_1 & a_2& \cdots & a_n \\ a_1^2 & a_2^2 & \cdots & a_n^2 \\ \vdots & \vdots & \ddots & \vdots \\ a_1^n & a_2^n & \cdots & a_n^n \end{vmatrix} \\
+& = & (1 + (-1)^{n-1}) \cdot \prod\limits_{1\leqslant i < j \leqslant n}(a_j - a_i)
+\end{eqnarray*}
+
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.13} 解答：}
+
+根据范德蒙行列式的结果，
+$$\begin{vmatrix} 1 & 1 & 1 & 1 \\ x & a & b & c \\ x^2 & a^2 & b^2 & c^2 \\ x^3 & a^3 & b^3 & c^3 \end{vmatrix} = (x-a)(x-b)(x-c)(a-b)(a-c)(b-c).$$
+
+在第一列展开的话，$\begin{vmatrix} 1 & 1 & 1 \\ a & b & c \\ a^3 & b^3 & c^3 \end{vmatrix}$和$-\begin{vmatrix} 1 & 1 & 1 \\ a^2 & b^2 & c^2 \\ a^3 & b^3 & c^3 \end{vmatrix}$分别为第(1)小题中求到的行列式表达式中$x^2$和$x$的系数，所以
+\begin{eqnarray*}
+\begin{vmatrix} 1 & 1 & 1 \\ a & b & c \\ a^3 & b^3 & c^3 \end{vmatrix} & = & -(a+b+c)(a-b)(a-c)(b-c) \\
+\begin{vmatrix} 1 & 1 & 1 \\ a^2 & b^2 & c^2 \\ a^3 & b^3 & c^3 \end{vmatrix} & = & -(ab+ac+bc)(a-b)(a-c)(b-c)
+\end{eqnarray*}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.14} 解答：}
+
+设$n \geqslant 3$，将$F_n$按第一列展开，很容易得到递推公式：
+\begin{eqnarray*}
+F_n & = & \begin{vmatrix} 1 & 1 & & & \\ -1 & 1 & \ddots & & \\ & \ddots & \ddots & \ddots & \\ & & \ddots & \ddots & 1 \\ & & & -1 & 1 \end{vmatrix}_{n} \\
+& = & (-1)^{1+1}\begin{vmatrix} 1 & 1 & & & \\ -1 & 1 & \ddots & & \\ & \ddots & \ddots & \ddots & \\ & & \ddots & \ddots & 1 \\ & & & -1 & 1 \end{vmatrix}_{n-1} + (-1)^{2+1}\cdot(-1)\begin{vmatrix} 1 & 0 & & & & & \\ -1 & 1 & 1 & & & \\ 0 & -1 & 1 & \ddots & & \\ & & \ddots & \ddots & \ddots & \\ & & & \ddots & \ddots & 1 \\ & & & & -1 & 1 \end{vmatrix}_{n-1} \\
+& = & F_{n-1} + (-1)^{2+1}\cdot(-1)\cdot(-1)^{1+1}\begin{vmatrix} 1 & 1 & & & \\ -1 & 1 & \ddots & & \\ & \ddots & \ddots & \ddots & \\ & & \ddots & \ddots & 1 \\ & & & -1 & 1 \end{vmatrix}_{n-2} \\
+& = & F_{n-1} + F_{n-2}
+\end{eqnarray*}
+剩下的只要验证$n = 1, 2$的特殊情形了。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.15} 解答：}
+
+\enum
+\item[(1)] $a^{2} b^{2} - 2 a b^{3} + b^{4} -  a^{2} x^{2} + 2 a b x^{2} -  b^{2} x^{2}$
+
+\item[(2)] $-x^{12} + 3x^8 - 3x^4 + 1$
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.16} 解答：}
+
+\enum
+\item[(1)]
+\begin{eqnarray*}
+\begin{vmatrix} a^2 & ab & b^2 \\ 2a & a + b & 2b \\ 1 & 1 & 1 \end{vmatrix} & = & \begin{vmatrix} a^2 - 2ab + b^2 & ab & b^2 \\ 0 & a + b & 2b \\ 0 & 1 & 1 \end{vmatrix} = (a^2 - 2ab + b^2) \begin{vmatrix} a + b & 2b \\ 1 & 1 \end{vmatrix} \\
+& = & (a - b)^3
+\end{eqnarray*}
+
+\item[(2)]
+\begin{eqnarray*}
+& & \begin{vmatrix} a_1 + b_1x & a_1x + b_1 & c_1 \\ a_2 + b_2x & a_2x + b_2 & c_2 \\ a_3 + b_3x & a_3x + b_3 & c_3 \end{vmatrix} = \begin{vmatrix} a_1 + b_1x & (b_1 - a_1)(1 - x) & c_1 \\ a_2 + b_2x & (b_2 - a_2)(1 - x) & c_2 \\ a_3 + b_3x & (b_3 - a_3)(1 - x) & c_3 \end{vmatrix} \\
+& = & (1 - x)\cdot\begin{vmatrix} a_1 + b_1x & b_1 - a_1 & c_1 \\ a_2 + b_2x & b_2 - a_2 & c_2 \\ a_3 + b_3x & b_3 - a_3 & c_3 \end{vmatrix} = (1 - x)\cdot\begin{vmatrix} b_1(1+x) & b_1 - a_1 & c_1 \\ b_2(1+x) & b_2 - a_2 & c_2 \\ b_3(1+x) & b_3 - a_3 & c_3 \end{vmatrix} \\
+& = & (1 - x^2)\cdot\begin{vmatrix} b_1 & b_1 - a_1 & c_1 \\ b_2 & b_2 - a_2 & c_2 \\ b_3 & b_3 - a_3 & c_3 \end{vmatrix} = (1 - x^2)\cdot\begin{vmatrix} b_1 & -a_1 & c_1 \\ b_2 & -a_2 & c_2 \\ b_3 & -a_3 & c_3 \end{vmatrix}\\
+& = & (1 - x^2)\begin{vmatrix} a_1 & b_1 & c_1 \\ a_2 & b_2 & c_2 \\ a_3 & b_3 & c_3 \end{vmatrix}
+\end{eqnarray*}
+
+\item[(3)] 按最后一列展开。行列式降阶之后继续按最后一列展开，直到阶数降到2，能够直接计算。
+
+\item[(4)] 按最后一列展开，利用数学归纳法证明：设
+$D_n = \begin{vmatrix} \cos\theta & 1 & & & \\ 1 & 2\cos\theta & 1 & & \\ & \ddots & \ddots & \ddots & \\ & & 1 & 2\cos\theta & 1 \\ & & & 1 & 2\cos\theta \end{vmatrix}_n = \cos n\theta$, 那么有
+\begin{align*}
+    D_{n+1} & = (-1)^{n+1+n+1} \cdot 2\cos\theta \cdot \begin{vmatrix} \cos\theta & 1 & & & \\ 1 & 2\cos\theta & 1 & & \\ & \ddots & \ddots & \ddots & \\ & & 1 & 2\cos\theta & 1 \\ & & & 1 & 2\cos\theta \end{vmatrix}_{n} - (-1)^{n+1+n}\begin{vmatrix} \cos\theta & 1 & & & \\ 1 & 2\cos\theta & 1 & & \\ & \ddots & \ddots & \ddots & \\ & & 1 & 2\cos\theta & 1 \\ & & & & 1 \end{vmatrix}_{n} \\
+    & = 2\cos\theta \cdot D_{n} + \quad \begin{vmatrix} \cos\theta & 1 & & & \\ 1 & 2\cos\theta & 1 & & \\ & \ddots & \ddots & \ddots & \\ & & 1 & 2\cos\theta & 1 \\ & & & 1 & 2\cos\theta \end{vmatrix}_{n-1} = 2\cos\theta \cdot D_{n} - D_{n-1} \\
+    & = 2\cos\theta \cos n\theta - \cos (n-1)\theta \\
+    & = 2\cos\theta \cos n\theta - (\cos n\theta \cos\theta + \sin n\theta \sin\theta) \\ 
+    & = \cos\theta \cos n\theta - \sin n\theta \sin\theta \\
+    & = \cos (n+1)\theta
+\end{align*}
+
+\item[(5)] 利用行列式定义式，发现只有$(-1)^{\frac{n(n-1)}{2}}a_{1n}a_{2,n-1}\cdots a_{n1}$项是非零的。
+
+%\item[(6)] 将最后一行乘以$-1$加到前$n-1$行，
+%$$\text{原式左边} = \begin{vmatrix} a_1 & 0 & 0 & \cdots & -a_n \\ 0 & 0a_2 & 0 & \cdots & -a_n \\ \vdots & & \ddots & & \vdots \\ \vdots &  &  & a_{n-1} & -a_n \\ 1 & \cdots & \cdots & 1 & 1+a_n \end{vmatrix},$$
+%再把第$i$行（$i = 1, 2, \cdots, n-1$）乘以$-\frac{1}{a_i}$加到最后一行，得$$\begin{vmatrix} a_1 & 0 & 0 & \cdots & -a_n \\ 0 & 0a_2 & 0 & \cdots & -a_n \\ \vdots & & \ddots & & \vdots \\ \vdots &  &  & a_{n-1} & a_n \\ 0 & \cdots & \cdots & 0 & 1+a_n+\frac{a_n}{a_1}+\cdots+\frac{a_n}{a_{n-1}} \end{vmatrix} = \text{原式右边}.$$
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.17} 解答：}
+
+\begin{eqnarray*}
+D' & = & \begin{vmatrix} a_{11} & a_{12}+x_2 & \cdots & a_{1n}+x_n \\ a_{21} & a_{22}+x_2 & \cdots & a_{2n}+x_n \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2}+x_2 & \cdots & a_{nn}+x_n \end{vmatrix} + \begin{vmatrix} x_1 & a_{12}+x_2 & \cdots & a_{1n}+x_n \\ x_1 & a_{22}+x_2 & \cdots & a_{2n}+x_n \\ \vdots & \vdots & & \vdots \\ x_1 & a_{n2}+x_2 & \cdots & a_{nn}+x_n \end{vmatrix} \\
+& = & \begin{vmatrix} a_{11} & a_{12}+x_2 & \cdots & a_{1n}+x_n \\ a_{21} & a_{22}+x_2 & \cdots & a_{2n}+x_n \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2}+x_2 & \cdots & a_{nn}+x_n \end{vmatrix} + x_1 \begin{vmatrix} 1 & a_{12}+x_2 & \cdots & a_{1n}+x_n \\ 1 & a_{22}+x_2 & \cdots & a_{2n}+x_n \\ \vdots & \vdots & & \vdots \\ 1 & a_{n2}+x_2 & \cdots & a_{nn}+x_n \end{vmatrix} \\
+& = & \begin{vmatrix} a_{11} & a_{12}+x_2 & \cdots & a_{1n}+x_n \\ a_{21} & a_{22}+x_2 & \cdots & a_{2n}+x_n \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2}+x_2 & \cdots & a_{nn}+x_n \end{vmatrix} + x_1 \sum\limits_{i=1}^n A_{i1} \\
+& = & \begin{vmatrix} a_{11} & a_{12} & \cdots & a_{1n}+x_n \\ a_{21} & a_{22} & \cdots & a_{2n}+x_n \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn}+x_n \end{vmatrix} + \begin{vmatrix} a_{11} & x_2 & \cdots & a_{1n}+x_n \\ a_{21} & x_2 & \cdots & a_{2n}+x_n \\ \vdots & \vdots & & \vdots \\ a_{n1} & x_2 & \cdots & a_{nn}+x_n \end{vmatrix} + x_1 \sum\limits_{i=1}^n A_{i1} \\
+& \cdots & \cdots\cdots\cdots \\
+& = & D + x_n \sum\limits_{i=1}^n A_{in} + \cdots + x_1 \sum\limits_{i=1}^n A_{i1} \\
+& = & D + \sum\limits_{j=1}^n x_j \sum\limits_{i=1}^n A_{ij}
+\end{eqnarray*}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.18} 解答：}
+
+先验证(1)的行列式为$-4$，(2)的行列式为$4$，(3)的行列式为$-4$，都满足Cramer法则的适用条件，然后再应用Cramer法则即可。
+
+\enum
+\item[(1)] $D_1 = \begin{vmatrix} -2 & 0 & 0 \\ 1 & -2 & 6 \\ -1 & -3 & 7 \end{vmatrix} = -8,$ 类似可算得$D_2 = -23, D_3 = -15$。所以解为
+$$\begin{cases} x=2 \\ y=\frac{23}{4} \\ z=\frac{15}{4} \end{cases}$$
+\item[(2)] 类似第(1)小题可求得解为
+$$\begin{cases} x=2 \\ y=\frac12 \\ z=\frac52 \end{cases}$$
+\item[(3)] 类似第(1)小题可求得解为
+$$\begin{cases} x_1=3 \\ x_2=\frac32 \\ x_3=2 \\ x_4=4 \end{cases}$$
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.19} 解答：}
+
+$\begin{vmatrix} 1 & x & y & x^2 + y^2 \\ 1 & x_1 & y_1 & x_1^2 + y_1^2 \\ 1 & x_2 & y_2 & x_2^2 + y_2^2 \\ 1 & x_3 & y_3 & x_3^2 + y_3^2 \end{vmatrix}$按第一行展开的话，因为这三点不共线，所以$(x^2+y^2)$的系数$-\begin{vmatrix} 1 & x_1 & y_1 \\ 1 & x_2 & y_2 \\ 1 & x_3 & y_3 \end{vmatrix}$不为0，因此可以看出这是一个圆方程。把$(x, y)$分别用这三个点$(x_1, y_1), (x_2, y_2), (x_3, y_3)$代入，容易看出左边行列式都是0，等式成立，也就是说这个圆过这3个点。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.20} 解答：}
+
+若$L_1, L_2, L_3$交于一点，则线性方程组
+$$\left\{ \begin{array}{rcl} \alpha x + \beta y & = & -\gamma \\ \gamma x + \alpha y & = & -\beta \\ \beta x + \gamma y & = & -\alpha \end{array}\right. \qquad (\ast)$$
+有唯一解。因此它的增广矩阵（方阵）的行列式必须为$0,$ 否则化为阶梯形矩阵，它会有主元在最后一列，导致无解。也就是说我们必须有
+\begin{eqnarray*}
+\begin{vmatrix}
+\alpha & \beta & -\gamma \\ \gamma & \alpha & -\beta \\ \beta & \gamma & -\alpha \end{vmatrix} & = & \alpha^3 + \beta^3 + \gamma^3 - 3\alpha\beta\gamma \\
+& = & (\alpha + \beta + \gamma)(\alpha^2 + \beta^2 + \gamma^2 - \alpha\beta - \beta\gamma - \alpha\gamma) \\
+& = & \dfrac{1}{2}(\alpha + \beta + \gamma)((\alpha - \beta)^2 + (\gamma - \beta)^2 + (\gamma - \alpha)^2 + \alpha^2 + \beta^2 + \gamma^2)
+\end{eqnarray*}
+由于题设$L_1, L_2, L_3$是三条不同的直线，所以
+$$((\alpha - \beta)^2 + (\gamma - \beta)^2 + (\gamma - \alpha)^2 + \alpha^2 + \beta^2 + \gamma^2)\neq 0,$$
+所以必须有
+$$\alpha + \beta + \gamma = 0.$$
+反过来，如果$\alpha + \beta + \gamma = 0,$ 把线性方程组$(\ast)$的前两个方程加到第三个方程上，有
+$$\left\{ \begin{array}{rcl} \alpha x + \beta y & = & -\gamma \\ \gamma x + \alpha y & = & -\beta \\ (\alpha + \beta + \gamma) x + (\alpha + \beta + \gamma) y & = & -(\alpha + \beta + \gamma) \end{array}\right.$$
+即
+$$\left\{ \begin{array}{rcl} \alpha x + \beta y & = & -\gamma \\ \gamma x + \alpha y & = & -\beta \\ 0 & = & 0 \end{array}\right.$$
+注意到$\alpha,\beta$不能同时为$0,$ 那么系数方阵行列式为
+$$\begin{vmatrix}
+\alpha & \beta \\ -(\alpha+\beta) & \alpha \end{vmatrix} = \alpha^2 + \beta^2 + \alpha\beta >0,$$
+把线性方程组$(\ast)$便有唯一解。
+%线性方程组$(\ast)$可化为
+%$$\left\{ \begin{array}{rcl} (\alpha + \beta + \gamma) x + (\alpha + \beta + \gamma) y & = & -(\alpha + \beta + \gamma) \\ \gamma x + \alpha y & = & -\beta \\ \beta x + \gamma y & = & -\alpha \end{array}\right.$$
+%如果$\alpha + \beta + \gamma \neq 0,$ 那么线性方程组化为
+%$$\left\{ \begin{array}{rcl} x + y & = & -1 \\ \gamma x + \alpha y & = & -\beta \\ \beta x + \gamma y & = & -\alpha \end{array}\right.$$
+%进一步可化简为
+%$$\left\{ \begin{array}{rcl} x + y & = & -1 \\ (\alpha - \gamma) y & = & \gamma - \beta \\ (\gamma - \beta) y & = & \beta - \alpha \end{array}\right.$$
+%由于题设$L_1, L_2, L_3$是三条不同的直线，所以$\alpha - \gamma, \gamma - \beta$至少有一个不等于$0$，否则会有$\alpha = \gamma = \beta,$ $L_1, L_2, L_3$是同一条直线。
+%这等价于$\alpha + \beta + \gamma = 0$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.21} 解答：}
+
+$$\begin{vmatrix} A & \alpha \\ \beta^T & c \end{vmatrix} = \begin{vmatrix} A & \alpha+0 \\ \beta^T & b+(c-b) \end{vmatrix} = \begin{vmatrix} A & \alpha \\ \beta^T & b \end{vmatrix} + \begin{vmatrix} A & 0 \\ \beta^T & c-b \end{vmatrix} = (c-b)|A|$$
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.22} 解答：}
+
+\enum
+\item[(1)] 由行列式定义，我们有
+$$\begin{vmatrix} 1 & 1 & \cdots & 1 \\ 1 & 1 & \cdots & 1 \\ \vdots & \vdots &  & \vdots \\ 1 & 1 & \cdots & 1 \end{vmatrix}_{n\times n} = \sum\limits_{i_1i_2\cdots i_n\in P_n} (-1)^{\tau(i_1i_2\cdots i_n)}a_{1i_1}a_{2i_2}\cdots a_{ni_n},$$
+其中$a_{ji_1} = a_{ji_2} = \cdots = a_{ji_n} = 1 (j = 1,2,\cdots,n)$。所以
+$$\begin{vmatrix} 1 & 1 & \cdots & 1 \\ 1 & 1 & \cdots & 1 \\ \vdots & \vdots &  & \vdots \\ 1 & 1 & \cdots & 1 \end{vmatrix}_{n\times n} = \sum\limits_{i_1i_2\cdots i_n\in P_n} (-1)^{\tau(i_1i_2\cdots i_n)}.$$
+由于原行列式为$0$，所以有$\sum\limits_{i_1i_2\cdots i_n\in P_n} (-1)^{\tau(i_1i_2\cdots i_n)} = 0$，故知数$1,2,\cdots,n$组成的所有排列中，奇偶排列各占一半。
+
+\item[(2)]
+\begin{eqnarray*}
+& & \sum\limits_{i_1i_2\cdots i_n\in P_n} \begin{vmatrix} a_{1i_1} & a_{1i_2} & \cdots & a_{1i_n} \\ a_{2i_1} & a_{2i_2} & \cdots & a_{2i_n} \\ \vdots & \vdots &  & \vdots \\ a_{ni_1} & a_{ni_2} & \cdots & a_{ni_n} \end{vmatrix} = \sum\limits_{i_1i_2\cdots i_n\in P_n} (-1)^{\tau(i_1i_2\cdots i_n)}  \begin{vmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots &  & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn} \end{vmatrix} \\
+& = & \begin{vmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots &  & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn} \end{vmatrix} \cdot (\sum\limits_{i_1i_2\cdots i_n\in P_n} (-1)^{\tau(i_1i_2\cdots i_n)}) = \begin{vmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots &  & \vdots \\ a_{n1} & a_{n2} & \cdots & a_{nn} \end{vmatrix} \cdot 0 \\
+& = & 0
+\end{eqnarray*}
+\end{list}
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.23} 解答：}
+
+对行列式的阶数$n$用归纳法。$n=2$时，由于$a_{11},a_{22}$大于0，$a_{12},a_{21}$小于0，所以$D_2 = a_{11}a_{22} - a_{12}a_{21} > 0$成立。假设题目的结论对所有满足题设条件的$n-1$阶行列式行列式都成立，那么对$D_n$，把第一列乘以$(-\frac{a_{1j}}{a_{11}})$加到第$j$列上去（$j=2,\cdots,n$），于是
+$$D_n = \begin{vmatrix} a_{11} & 0 & \cdots & 0 \\ a_{21} & a_{22}' & \cdots & a_{2n}' \\ \vdots & \vdots & & \vdots \\ a_{n1} & a_{n2}' & \cdots & a_{nn}' \end{vmatrix} = a_{11} \begin{vmatrix}  a_{22}' & \cdots & a_{2n}' \\ \vdots & & \vdots \\ a_{n2}' & \cdots & a_{nn}' \end{vmatrix},$$
+其中$a_{ij}' = a_{ij} - a_{i1}\frac{a_{1j}}{a_{11}}$，我们需要证明上面这个$n-1$阶行列式仍然满足题设条件：
+\enum
+\item[(1)] $a_{ii}' = a_{ii} - a_{i1}\frac{a_{1i}}{a_{11}} = \frac{a_{ii}a_{11} - a_{i1}a_{1i}}{a_{11}} > 0,$
+\item[(2)] $a_{ij}' = a_{ij} - a_{i1}\frac{a_{1i}}{a_{11}} < 0,$
+\item[(3)] $\sum\limits_{i=2}^n a_{ij}' = \sum\limits_{i=2}^n a_{ij} - \sum\limits_{i=2}^n a_{i1}\frac{a_{1j}}{a_{11}} > -a_{1j} - a_{1j}\sum\limits_{i=2}^n \frac{a_{i1}}{a_{11}} = -a_{1j}(a_{11} + \sum\limits_{i=2}^n a_{i1}) / a_{11} > 0.$
+\end{list}
+所以由归纳假设知
+$$\begin{vmatrix}  a_{22}' & \cdots & a_{2n}' \\ \vdots & & \vdots \\ a_{n2}' & \cdots & a_{nn}' \end{vmatrix} > 0，$$
+所以有$D_n > 0$。
+
+\vspace{1.5em}
+
+\textbf{习题\ref{ex:2.24} 解答：}
+
+\enum
+\item[(1)] 设$A = (a_{ij})_{n\times n}$，那么
+$$\det A = \sum\limits_{i_1i_2\cdots i_n\in P_n} (-1)^{\tau(i_1i_2\cdots i_n)}a_{1i_1}a_{2i_2}\cdots a_{ni_n}.$$
+所以（以下$|\cdot|$表示绝对值）
+\begin{eqnarray*}
+|\det A| & = & |\sum\limits_{i_1i_2\cdots i_n\in P_n} (-1)^{\tau(i_1i_2\cdots i_n)}a_{1i_1}a_{2i_2}\cdots a_{ni_n}| \\
+& \leqslant & \sum\limits_{i_1i_2\cdots i_n\in P_n} |(-1)^{\tau(i_1i_2\cdots i_n)}||a_{1i_1}||a_{2i_2}|\cdots |a_{ni_n}| \\
+& = & \sum\limits_{i_1i_2\cdots i_n\in P_n}1 = n!
+\end{eqnarray*}
+\item[(2)] 把第一列中元素为$-1$的行都乘以$-1$后，第一行的$-1$倍加到各行上，有
+$$\det A = \pm \begin{vmatrix} 1 & \ast & \cdots & \ast \\ 0 & & & \\ \vdots & & \makebox(0,0){\huge $A_{n-1}$} & \\ 0 & & & \end{vmatrix} = \det A_{n-1},$$
+其中$\ast$表示元素值未知，$\det A_{n-1}$是一个元素由$\pm2,0$组成的行列式，所以
+$$\det A_{n-1} = 2^{n-1}\det B_{n-1},$$
+$\det B_{n-1}$是$\det A_{n-1}$每行除以2所得的行列式（若$\det A_{n-1}$某行全为$0$，此时$\det A_{n-1} = 0$，也可被看成被$2^{n-1}$整除）。所以$\det A$被$2^{n-1}$整除。
+\item[(3)] 对行列式的阶数$n$用归纳法。根据行列式定义式很容易看出当$n=2$时，$|\det A| \leqslant 2$。假设当阶数等于$n$时，所有满足题设的行列式的绝对值都小于等于$(n-1)!\cdot2(n-1)$，那么任取一个所有元素为$1$或者$-1$的$n+1$阶行列式$\det A$，把他按第一行展开，有$\det A = \sum\limits_{i=1}^{n+1} a_{1i}A_{1i}$，其中$A_{1i}$是$a_{1i}$的代数余子式，是一个所有元素为$1$或者$-1$的$n$ 阶行列式乘以$(-1)^{1+i}$。所以依据归纳假设有
+\begin{eqnarray*}
+|\det A| & = & \left|\sum\limits_{i=1}^{n+1} a_{1i}A_{1i}\right| \leqslant \sum\limits_{i=1}^{n+1} \left|A_{1i}\right| \leqslant \sum\limits_{i=1}^{n+1} (n-1)! \cdot 2(n-1) \\
+& = & (n+1)\cdot\left[(n-1)! \cdot 2(n-1)\right] \\
+& = & (n-1)! \cdot 2(n^2-1) \\
+& < & (n-1)! \cdot 2n^2 = n!\cdot 2n.
+\end{eqnarray*}
+所以原命题成立。
+\item[(4)] 类似本题第(3)小题，我们可以用归纳法证明，唯一的区别是还要对$n = 3$进行验证。以下设$A$为一个$3$阶行列式。我们验证必定有$|\det A| \leqslant 4$。由本题第(1)小题知，$|\det A| \leqslant 3! = 6$，又由本题第(2)小题知$\det A$被$2^{3-1} = 4$整除，所以$|\det A|$不能取$5$或$6$，所以必须有$|\det A| \leqslant 4$。
+\end{list}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
